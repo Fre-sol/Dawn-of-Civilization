@@ -147,6 +147,7 @@ public:
 	int AI_bonusVal(BonusTypes eBonus, int iChange = 1) const;
 	int AI_baseBonusVal(BonusTypes eBonus, int iChange = 1) const;
 	int AI_bonusTradeVal(BonusTypes eBonus, PlayerTypes ePlayer, int iChange) const;
+	bool AI_isStrategicBonus(BonusTypes eBonus) const;
 	DenialTypes AI_bonusTrade(BonusTypes eBonus, PlayerTypes ePlayer) const;
 	int AI_corporationBonusVal(BonusTypes eBonus, int iChange = 1) const;
 

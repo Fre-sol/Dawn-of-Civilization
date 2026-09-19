@@ -7278,11 +7278,12 @@ int CvPlayerAI::AI_bonusActualHealthChange(BonusTypes eBonus, int iChange) const
 }
 
 // Leoreth
-int CvPlayerAI::AI_bonusAffectedCitiesChange(BonusTypes eBonus, int iChange) const
+int CvPlayerAI::AI_bonusAffectedCitiesChange(BonusTypes eBonus, int iChange, bool bAssumeNone) const
 {
 	CvBonusInfo& kBonus = GC.getBonusInfo(eBonus);
 
-	int iNumBonuses = getNumAvailableBonuses(eBonus);
+	// Fresol: bAssumeNone asks for the value as if this player owned no copy of the resource
+	int iNumBonuses = bAssumeNone ? 0 : getNumAvailableBonuses(eBonus);
 	int iNumCities = getNumCities();
 
 	int iCurrentAffectedCities = std::min(iNumBonuses * kBonus.getAffectedCities(), iNumCities);
@@ -7295,21 +7296,22 @@ int CvPlayerAI::AI_bonusAffectedCitiesChange(BonusTypes eBonus, int iChange) con
 }
 
 // Leoreth
-int CvPlayerAI::AI_bonusHappinessChange(BonusTypes eBonus, int iChange) const
+int CvPlayerAI::AI_bonusHappinessChange(BonusTypes eBonus, int iChange, bool bAssumeNone) const
 {
-	return GC.getBonusInfo(eBonus).getHappiness() * AI_bonusAffectedCitiesChange(eBonus, iChange);
+	return GC.getBonusInfo(eBonus).getHappiness() * AI_bonusAffectedCitiesChange(eBonus, iChange, bAssumeNone);
 }
 
 // Leoreth
-int CvPlayerAI::AI_bonusHealthChange(BonusTypes eBonus, int iChange) const
+int CvPlayerAI::AI_bonusHealthChange(BonusTypes eBonus, int iChange, bool bAssumeNone) const
 {
-	return GC.getBonusInfo(eBonus).getHealth() * AI_bonusAffectedCitiesChange(eBonus, iChange);
+	return GC.getBonusInfo(eBonus).getHealth() * AI_bonusAffectedCitiesChange(eBonus, iChange, bAssumeNone);
 }
 
 // Leoreth
-int CvPlayerAI::AI_bonusBuildingHappinessChange(BonusTypes eBonus, int iChange) const
+int CvPlayerAI::AI_bonusBuildingHappinessChange(BonusTypes eBonus, int iChange, bool bAssumeNone) const
 {
-	int iNumBonuses = getNumAvailableBonuses(eBonus);
+	// Fresol: as if this player owned no copy
+	int iNumBonuses = bAssumeNone ? 0 : getNumAvailableBonuses(eBonus);
 
 	if (iChange == 0 || (iChange > 0 && iNumBonuses > 0) || (iChange < 0 && iNumBonuses + iChange > 0))
 	{
@@ -7341,9 +7343,10 @@ int CvPlayerAI::AI_bonusBuildingHappinessChange(BonusTypes eBonus, int iChange) 
 }
 
 // Leoreth
-int CvPlayerAI::AI_bonusBuildingHealthChange(BonusTypes eBonus, int iChange) const
+int CvPlayerAI::AI_bonusBuildingHealthChange(BonusTypes eBonus, int iChange, bool bAssumeNone) const
 {
-	int iNumBonuses = getNumAvailableBonuses(eBonus);
+	// Fresol: as if this player owned no copy
+	int iNumBonuses = bAssumeNone ? 0 : getNumAvailableBonuses(eBonus);
 	if (iChange == 0 || (iChange > 0 && iNumBonuses > 0) || (iChange < 0 && iNumBonuses + iChange > 0))
 	{
 		return 0;
@@ -7376,13 +7379,13 @@ int CvPlayerAI::AI_bonusBuildingHealthChange(BonusTypes eBonus, int iChange) con
 // Leoreth
 // note: the returned value is always positive, even if iChange is negative
 // this is because negative value is being used when we calculate the value of our bonus we trade away
-int CvPlayerAI::AI_bonusEffectVal(BonusTypes eBonus, int iChange) const
+int CvPlayerAI::AI_bonusEffectVal(BonusTypes eBonus, int iChange, bool bAssumeNone) const
 {
 	int iHappinessValue = 50;
 	int iHealthValue = 30;
 
-	int iHappinessChange = AI_bonusHappinessChange(eBonus, iChange) + AI_bonusBuildingHappinessChange(eBonus, iChange);
-	int iHealthChange = AI_bonusHealthChange(eBonus, iChange) + AI_bonusBuildingHealthChange(eBonus, iChange);
+	int iHappinessChange = AI_bonusHappinessChange(eBonus, iChange, bAssumeNone) + AI_bonusBuildingHappinessChange(eBonus, iChange, bAssumeNone);
+	int iHealthChange = AI_bonusHealthChange(eBonus, iChange, bAssumeNone) + AI_bonusBuildingHealthChange(eBonus, iChange, bAssumeNone);
 
 	return iHappinessValue * iHappinessChange + iHealthValue * iHealthChange;
 }
@@ -7872,6 +7875,21 @@ int CvPlayerAI::AI_bonusTradeVal(BonusTypes eBonus, PlayerTypes ePlayer, int iCh
 			iValue /= 2;
 		}
 	}
+
+	// Fresol - start: charge at least what one copy is worth to a player who owns none of it, so
+	// that a resource is never sold below its own worth just because the buyer already has some.
+	// Unlock value (units, buildings, routes) is not counted: a buyer who owns a copy has already
+	// unlocked it. Only when an AI sells to a human - an AI that buys must not pay for unused value.
+	if (isHuman() && !GET_PLAYER(ePlayer).isHuman())
+	{
+		int iOwnValue = AI_bonusEffectVal(eBonus, 1, true) / 10;
+
+		if (iValue < iOwnValue)
+		{
+			iValue = iOwnValue;
+		}
+	}
+	// Fresol - end
 
 	// Fresol: this function values a bonus from the point of view of the player who receives it (see
 	// AI_dealVal), so the evaluated player is the buyer here and ePlayer is the seller. An AI that has

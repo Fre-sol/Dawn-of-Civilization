@@ -227,6 +227,17 @@ def checkRemoveJainismIndia():
 		lReligionDeclinesApplied.append(iJainism)
 
 
+# Fresol: also on loading, so a scenario starting after the year shows the declined state from its
+# first turn instead of its second. This one leaves no mark on purpose: if the regions are not ready
+# to be swept this early it simply does nothing, and the turn check above still applies it.
+@handler("GameStart")
+def applyReligionDeclinesOnStart():
+	if year() >= year(1000):
+		removeBuddhismIndia()
+	if year() >= year(1200):
+		removeJainismIndia()
+
+
 @handler("techAcquired")
 def checkReformation(iTech, iTeam, iPlayer):
 	if scenario() == i1700AD:

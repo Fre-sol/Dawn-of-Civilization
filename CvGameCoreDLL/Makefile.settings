@@ -1,9 +1,11 @@
 # Fresol: only use the Civ4SDK location when it is actually there, so that build
 # environments without it (AppVeyor installs the Visual C++ Toolkit 2003 in its
 # default location) fall back to the defaults in the Makefile instead of failing.
+# Fresol: the Windows SDK in the Civ4SDK package has no sal.h, so this machine builds
+# against a copy that does. Point PSDK at your own copy if you build the DLL yourself.
 !IF [IF NOT EXIST "C:\Program Files (x86)\Civ4SDK\Microsoft Visual C++ Toolkit 2003\bin\cl.exe" EXIT 1] != 0
 !ELSE
 TOOLKIT=C:\Program Files (x86)\Civ4SDK\Microsoft Visual C++ Toolkit 2003
-PSDK=C:\Program Files (x86)\Civ4SDK\WindowsSDK
+PSDK=C:\Users\86136\Civ4SDK\WindowsSDK
 !ENDIF
 CUSTOM_LDFLAGS = psapi.lib

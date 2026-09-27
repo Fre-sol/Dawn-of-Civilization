@@ -47,7 +47,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_BLUE_MOSQUE_HELP</Tag>
-		<English>[ICON_BULLET]At most 1[ICON_UNHAPPY] from temporary effects</English>
+		<English>[ICON_BULLET]At most 1[ICON_UNHAPPY] from temporary effects in This City</English>
 		<French>[ICON_BULLET]Maximum de 1[ICON_UNHAPPY] caus&#233; par des effets temporaires</French>
 		<German>[ICON_BULLET]At most 1[ICON_UNHAPPY] from temporary effects</German>
 		<Italian>[ICON_BULLET]At most 1[ICON_UNHAPPY] from temporary effects</Italian>
@@ -211,7 +211,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_TEMPLE_OF_KUKULKAN_HELP</Tag>
-		<English>[ICON_BULLET]+1[ICON_HAPPY] from Plantations</English>
+		<English>[ICON_BULLET]+1[ICON_HAPPY] from worked Plantation in each city</English>
 		<French>[ICON_BULLET]+1[ICON_HAPPY] from Plantations</French>
 		<German>[ICON_BULLET]+1[ICON_HAPPY] from Plantations</German>
 		<Italian>[ICON_BULLET]+1[ICON_HAPPY] from Plantations</Italian>
@@ -291,7 +291,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_EMPIRE_STATE_BUILDING_HELP</Tag>
-		<English>[ICON_BULLET]Provides [ICON_GOLD] bonus equal to city's population</English>
+		<English>[ICON_BULLET]Provides [ICON_GOLD] bonus equal to this city's population</English>
 		<French>[ICON_BULLET]Rapporte un bonus en [ICON_GOLD] &#233;quivalent &#233; &#224; la population de la ville</French>
 		<German>[ICON_BULLET]Produziert [ICON_GOLD] entsprechend der Bev&#246;lkerung seiner Stadt</German>
 		<Italian>[ICON_BULLET]Provides [ICON_GOLD] bonus equal to city's population</Italian>
@@ -455,7 +455,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_HELP_HIMEJI_CASTLE</Tag>
-		<English>[ICON_BULLET]City defense increases culture output in all cities[NEWLINE][ICON_BULLET]+1[ICON_CULTURE] per level of every fully fortified unit in the city</English>
+		<English>[ICON_BULLET]City defense increases culture output in all cities[NEWLINE][ICON_BULLET]+1[ICON_CULTURE] per level of every fully fortified unit in this city</English>
 		<French>[ICON_BULLET]Le niveau de d&#233;fense des villes augmente leur production de culture[NEWLINE][ICON_BULLET]+1[ICON_CULTURE] par niveau de chaque unit&#233; compl&#232;tement fortifi&#233;e dans la ville</French>
 		<German>[ICON_BULLET]Stadtverteidigung erh&#246;ht Kulturaussto&#223; in allen St&#228;dten[NEWLINE][ICON_BULLET]+1[ICON_CULTURE] pro Level f&#252;r jede vollst&#228;ndig befestigte Einheit in der Stadt</German>
 		<Italian>[ICON_BULLET]City defense increases culture output in all cities[NEWLINE][ICON_BULLET]+1[ICON_CULTURE] per level of every fully fortified unit in the city</Italian>
@@ -571,7 +571,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_MACHU_PICCHU_HELP</Tag>
-		<English>[ICON_BULLET]+2[ICON_GOLD] per Peak in City Radius</English>
+		<English>[ICON_BULLET]+2[ICON_GOLD] in This City per Peak in City Radius</English>
 		<French>[ICON_BULLET]+2[ICON_GOLD] par montagne dans les environs de la ville</French>
 		<German>[ICON_BULLET]+2[ICON_GOLD] per Peak in City Radius</German>
 		<Italian>[ICON_BULLET]+2[ICON_GOLD] per Peak in City Radius</Italian>
@@ -671,7 +671,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_MOAI_STATUES_HELP</Tag>
-		<English>[ICON_BULLET]+2[ICON_PRODUCTION] for Water Improvements[NEWLINE][COLOR_WARNING_TEXT]Requires 20 Water Tiles in City Radius[COLOR_REVERT]</English>
+		<English>[ICON_BULLET]+2[ICON_PRODUCTION] for Water Improvements in All Cities[NEWLINE][COLOR_WARNING_TEXT]Requires 20 Water Tiles in City Radius[COLOR_REVERT]</English>
 		<French>[ICON_BULLET]+2 [ICON_PRODUCTION] pour les am&#233;nagements maritimes[NEWLINE][COLOR_WARNING_TEXT]N&#233;cessite 20 cases d'eau dans les environs de la ville[COLOR_REVERT]</French>
 		<German>[ICON_BULLET]+2[ICON_PRODUCTION] for Water Improvements[NEWLINE][COLOR_WARNING_TEXT]Requires 20 Water Tiles in City Radius[COLOR_REVERT]</German>
 		<Italian>[ICON_BULLET]+2[ICON_PRODUCTION] for Water Improvements[NEWLINE][COLOR_WARNING_TEXT]Requires 20 Water Tiles in City Radius[COLOR_REVERT]</Italian>
@@ -719,7 +719,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_HANGING_GARDENS_HELP</Tag>
-		<English>[ICON_BULLET]No [ICON_UNHEALTHY] from Flood Plains</English>
+		<English>[ICON_BULLET]No [ICON_UNHEALTHY] from Flood Plains in All Cities</English>
 		<French>[ICON_BULLET]Pas de [ICON_UNHEALTHY] caus&#233;s par les plaines inondables</French>
 		<German>[ICON_BULLET]No [ICON_UNHEALTHY] from Flood Plains</German>
 		<Italian>[ICON_BULLET]No [ICON_UNHEALTHY] from Flood Plains</Italian>
@@ -867,7 +867,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_PYRAMIDS_HELP</Tag>
-		<English>[ICON_BULLET]+1 [ICON_GREATPEOPLE] per [ICON_HAPPY] from resources</English>
+		<English>[ICON_BULLET]+1 [ICON_GREATPEOPLE] in This City per [ICON_HAPPY] from resources</English>
 		<French>[ICON_BULLET]+1 [ICON_GREATPEOPLE] per [ICON_HAPPY] from resources</French>
 		<German>[ICON_BULLET]+1 [ICON_GREATPEOPLE] per [ICON_HAPPY] from resources</German>
 		<Italian>[ICON_BULLET]+1 [ICON_GREATPEOPLE] per [ICON_HAPPY] from resources</Italian>
@@ -1275,7 +1275,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_WESTMINSTER_PALACE_HELP</Tag>
-		<English>[ICON_BULLET]+1[ICON_GOLD] per Colony</English>
+		<English>[ICON_BULLET]+1[ICON_GOLD] in This City per Colony owned</English>
 		<French>[ICON_BULLET]+1[ICON_GOLD] per Colony</French>
 		<German>[ICON_BULLET]+1[ICON_GOLD] per Colony</German>
 		<Italian>[ICON_BULLET]+1[ICON_GOLD] per Colony</Italian>
@@ -1323,7 +1323,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_JETAVANARAMAYA_HELP</Tag>
-		<English>[ICON_BULLET]+1[ICON_FOOD] on Coastal Hill tiles</English>
+		<English>[ICON_BULLET]+1[ICON_FOOD] on Coastal Hill tiles in All Cities</English>
 		<French>[ICON_BULLET]+1[ICON_FOOD] on Coastal Hill tiles</French>
 		<German>[ICON_BULLET]+1[ICON_FOOD] on Coastal Hill tiles</German>
 		<Italian>[ICON_BULLET]+1[ICON_FOOD] on Coastal Hill tiles</Italian>
@@ -1363,7 +1363,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_PRAMBANAN_HELP</Tag>
-		<English>[ICON_BULLET]+1 [ICON_PRODUCTION] per [ICON_HAPPY] from resources</English>
+		<English>[ICON_BULLET]+1 [ICON_PRODUCTION] in This City per [ICON_HAPPY] from resources</English>
 		<French>[ICON_BULLET]+1 [ICON_PRODUCTION] per [ICON_HAPPY] from resources</French>
 		<German>[ICON_BULLET]+1 [ICON_PRODUCTION] per [ICON_HAPPY] from resources</German>
 		<Italian>[ICON_BULLET]+1 [ICON_PRODUCTION] per [ICON_HAPPY] from resources</Italian>
@@ -1487,7 +1487,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_SALSAL_BUDDHA_HELP</Tag>
-		<English>[ICON_BULLET]+50% Commerce from Corporations</English>
+		<English>[ICON_BULLET]+50% Commerce from Corporations in All Cities</English>
 		<French>[ICON_BULLET]+50% de [ICON_COMMERCE] des soci&#233;t&#233;s commerciales</French>
 		<German>[ICON_BULLET]+50% Commerce from Corporations</German>
 		<Italian>[ICON_BULLET]+50% Commerce from Corporations</Italian>
@@ -1639,7 +1639,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_ESCORIAL_HELP</Tag>
-		<English>[ICON_BULLET]Provides [ICON_GOLD] for every acquired colony[NEWLINE][ICON_BULLET]+2[ICON_GOLD] for every controlled [LINK=literal]Silver[\LINK] and [LINK=literal]Gold[\LINK] resource</English>
+		<English>[ICON_BULLET]Provides [ICON_GOLD] for every acquired colony[NEWLINE][ICON_BULLET]+2[ICON_GOLD] in This City for every controlled Silver and Gold resource</English>
 		<French>[ICON_BULLET]Provides [ICON_GOLD] for every acquired colony[NEWLINE][ICON_BULLET]+2[ICON_GOLD] for every controlled [LINK=literal]Silver[\LINK] and [LINK=literal]Gold[\LINK] resource</French>
 		<German>[ICON_BULLET]Provides [ICON_GOLD] for every acquired colony[NEWLINE][ICON_BULLET]+2[ICON_GOLD] for every controlled [LINK=literal]Silver[\LINK] and [LINK=literal]Gold[\LINK] resource</German>
 		<Italian>[ICON_BULLET]Provides [ICON_GOLD] for every acquired colony[NEWLINE][ICON_BULLET]+2[ICON_GOLD] for every controlled [LINK=literal]Silver[\LINK] and [LINK=literal]Gold[\LINK] resource</Italian>
@@ -1687,7 +1687,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_POTALA_PALACE_HELP</Tag>
-		<English>[ICON_BULLET]+1 [ICON_GREATPEOPLE] per Hill in city radius</English>
+		<English>[ICON_BULLET]+1 [ICON_GREATPEOPLE] in This City per Hill in city radius</English>
 		<French>[ICON_BULLET]+1 [ICON_GREATPEOPLE] par colline dans les environs de la ville</French>
 		<German>[ICON_BULLET]+1 [ICON_GREATPEOPLE] per Hill in city radius</German>
 		<Italian>[ICON_BULLET]+1 [ICON_GREATPEOPLE] per Hill in city radius</Italian>
@@ -1715,7 +1715,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_SHALIMAR_GARDENS_HELP</Tag>
-		<English>[ICON_BULLET]Excess [ICON_HEALTHY] counts as [ICON_HAPPY]</English>
+		<English>[ICON_BULLET]Excess [ICON_HEALTHY] in This City counts as [ICON_HAPPY]</English>
 		<French>[ICON_BULLET]Les [ICON_HEALTHY] en exc&#232;s comptent comme des [ICON_HAPPY]</French>
 		<German>[ICON_BULLET]Excess [ICON_HEALTHY] counts as [ICON_HAPPY]</German>
 		<Italian>[ICON_BULLET]Excess [ICON_HEALTHY] counts as [ICON_HAPPY]</Italian>
@@ -1743,7 +1743,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_IMAGE_OF_THE_WORLD_SQUARE_HELP</Tag>
-		<English>[ICON_BULLET]+1 trade route per culture level</English>
+		<English>[ICON_BULLET]+1 trade route in This City per culture level</English>
 		<French>[ICON_BULLET]+1 route commerciale par niveau de culture</French>
 		<German>[ICON_BULLET]+1 Handelsroute pro Kulturstufe</German>
 		<Italian>[ICON_BULLET]+1 trade route per culture level</Italian>
@@ -1791,7 +1791,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_ITSUKUSHIMA_SHRINE_HELP</Tag>
-		<English>[ICON_BULLET]+1 [ICON_GREATPEOPLE] per Water tile in city radius</English>
+		<English>[ICON_BULLET]+1 [ICON_GREATPEOPLE] in This City per Water tile in city radius</English>
 		<French>[ICON_BULLET]+1 [ICON_GREATPEOPLE] par case d'eau dans les environs de la ville</French>
 		<German>[ICON_BULLET]+1 [ICON_GREATPEOPLE] per Water tile in city radius</German>
 		<Italian>[ICON_BULLET]+1 [ICON_GREATPEOPLE] per Water tile in city radius</Italian>
@@ -2023,7 +2023,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_SAGRADA_FAMILIA_HELP</Tag>
-		<English>[ICON_BULLET]+25% [ICON_PRODUCTION] converted when building [ICON_COMMERCE]</English>
+		<English>[ICON_BULLET]+25% [ICON_PRODUCTION] converted when building [ICON_COMMERCE] in All Cities</English>
 		<French>[ICON_BULLET]+25% [ICON_PRODUCTION] converted when building [ICON_COMMERCE]</French>
 		<German>[ICON_BULLET]+25% [ICON_PRODUCTION] converted when building [ICON_COMMERCE]</German>
 		<Italian>[ICON_BULLET]+25% [ICON_PRODUCTION] converted when building [ICON_COMMERCE]</Italian>
@@ -2111,7 +2111,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_ATOMIUM_HELP</Tag>
-		<English>[ICON_BULLET]+10[ICON_RESEARCH] per [LINK=literal]Uranium[\LINK] resource[NEWLINE][ICON_BULLET]+1[ICON_RESEARCH] per [LINK=literal]Iron[\LINK], [LINK=literal]Copper[\LINK], and [LINK=literal]Aluminum[\LINK] resource</English>
+		<English>[ICON_BULLET]+10[ICON_RESEARCH] per Uranium resource in This City[NEWLINE][ICON_BULLET]+1[ICON_RESEARCH] per Iron, Copper, and Aluminum resource in This City</English>
 		<French>[ICON_BULLET]+10[ICON_RESEARCH] per [LINK=literal]Uranium[\LINK] resource[NEWLINE][ICON_BULLET]+1[ICON_RESEARCH] per [LINK=literal]Iron[\LINK], [LINK=literal]Copper[\LINK], and [LINK=literal]Aluminum[\LINK] resource</French>
 		<German>[ICON_BULLET]+10[ICON_RESEARCH] per [LINK=literal]Uranium[\LINK] resource[NEWLINE][ICON_BULLET]+1[ICON_RESEARCH] per [LINK=literal]Iron[\LINK], [LINK=literal]Copper[\LINK], and [LINK=literal]Aluminum[\LINK] resource</German>
 		<Italian>[ICON_BULLET]+10[ICON_RESEARCH] per [LINK=literal]Uranium[\LINK] resource[NEWLINE][ICON_BULLET]+1[ICON_RESEARCH] per [LINK=literal]Iron[\LINK], [LINK=literal]Copper[\LINK], and [LINK=literal]Aluminum[\LINK] resource</Italian>
@@ -2139,7 +2139,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_WORLD_TRADE_CENTER_HELP</Tag>
-		<English>[ICON_BULLET]+50% Commerce from Corporations</English>
+		<English>[ICON_BULLET]+50% Commerce from Corporations in All Cities</English>
 		<French>[ICON_BULLET]+50% de [ICON_COMMERCE] des soci&#233;t&#233;s commerciales</French>
 		<German>[ICON_BULLET]+50% Commerce from Corporations</German>
 		<Italian>[ICON_BULLET]+50% Commerce from Corporations</Italian>
@@ -2167,7 +2167,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_HARBOUR_OPERA_HELP</Tag>
-		<English>[ICON_BULLET]+100%[ICON_CULTURE] from Great Works</English>
+		<English>[ICON_BULLET]+100%[ICON_CULTURE] in This City from Great Works</English>
 		<French>[ICON_BULLET]+100%[ICON_CULTURE] from Great Works</French>
 		<German>[ICON_BULLET]+100%[ICON_CULTURE] from Great Works</German>
 		<Italian>[ICON_BULLET]+100%[ICON_CULTURE] from Great Works</Italian>
@@ -2195,7 +2195,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_BURJ_KHALIFA_HELP</Tag>
-		<English>[ICON_BULLET]Requires a total of 10 Desert, Semidesert, or Salt Flat tiles in city radius[NEWLINE][ICON_BULLET]+1[ICON_COMMERCE] per Corporation in the world</English>
+		<English>[ICON_BULLET]Requires a total of 10 Desert, Semidesert, or Salt Flat tiles in city radius[NEWLINE][ICON_BULLET]+1[ICON_COMMERCE] in This City per Corporation in the world</English>
 		<French>[ICON_BULLET]Requires a total of 10 Desert, Semidesert, or Salt Flat tiles in city radius[NEWLINE][ICON_BULLET]+1[ICON_COMMERCE] per Corporation in the world</French>
 		<German>[ICON_BULLET]Requires a total of 10 Desert, Semidesert, or Salt Flat tiles in city radius[NEWLINE][ICON_BULLET]+1[ICON_COMMERCE] per Corporation in the world</German>
 		<Italian>[ICON_BULLET]Requires a total of 10 Desert, Semidesert, or Salt Flat tiles in city radius[NEWLINE][ICON_BULLET]+1[ICON_COMMERCE] per Corporation in the world</Italian>
@@ -2231,7 +2231,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_HUBBLE_SPACE_TELESCOPE_HELP</Tag>
-		<English>[ICON_BULLET]+3[ICON_RESEARCH] for Satellites</English>
+		<English>[ICON_BULLET]+3[ICON_RESEARCH] for Satellites in All Cities</English>
 		<French>[ICON_BULLET]+3[ICON_RESEARCH] par satellite</French>
 		<German>[ICON_BULLET]+3[ICON_RESEARCH] f&#252;r Satelliten</German>
 		<Italian>[ICON_BULLET]+3[ICON_RESEARCH] for Satellites</Italian>
@@ -2251,7 +2251,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_CHANNEL_TUNNEL_HELP</Tag>
-		<English>[ICON_BULLET]+100% [ICON_TRADE] income with friendly relations</English>
+		<English>[ICON_BULLET]+100% [ICON_TRADE] income with friendly relations in All Cities</English>
 		<French>[ICON_BULLET]Les routes commerciales rapportent +100% [ICON_TRADE] si les relations sont enthousiastes</French>
 		<German>[ICON_BULLET]+100% [ICON_TRADE] income with friendly relations</German>
 		<Italian>[ICON_BULLET]+100% [ICON_TRADE] income with friendly relations</Italian>
@@ -2335,7 +2335,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_ORIENTAL_PEARL_TOWER_HELP</Tag>
-		<English>[ICON_BULLET]+2[ICON_RESEARCH] per city population</English>
+		<English>[ICON_BULLET]+2[ICON_RESEARCH] in This City per city population</English>
 		<French>[ICON_BULLET]+2 [ICON_RESEARCH] par point de population dans la ville</French>
 		<German>[ICON_BULLET]+2[ICON_RESEARCH] per city population</German>
 		<Italian>[ICON_BULLET]+2[ICON_RESEARCH] per city population</Italian>
@@ -2363,7 +2363,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_GARDENS_BY_THE_BAY_HELP</Tag>
-		<English>[ICON_BULLET]+1[ICON_HAPPY] per building that provides [ICON_HEALTHY]</English>
+		<English>[ICON_BULLET]+1[ICON_HAPPY] per building that provides [ICON_HEALTHY] in All Cities</English>
 		<French>[ICON_BULLET]+1[ICON_HAPPY] per building that provides [ICON_HEALTHY]</French>
 		<German>[ICON_BULLET]+1[ICON_HAPPY] per building that provides [ICON_HEALTHY]</German>
 		<Italian>[ICON_BULLET]+1[ICON_HAPPY] per building that provides [ICON_HEALTHY]</Italian>
@@ -2455,7 +2455,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_BERLAYMONT_HELP</Tag>
-		<English>[ICON_BULLET]+2 possible defensive pacts[NEWLINE][ICON_BULLET]Other civilization are more willing to enter into defensive pacts[NEWLINE][ICON_BULLET]+1 free specialist per defensive pact</English>
+		<English>[ICON_BULLET]+2 possible defensive pacts[NEWLINE][ICON_BULLET]Other civilization are more willing to enter into defensive pacts[NEWLINE][ICON_BULLET]+1 free specialist in This City per defensive pact</English>
 		<French>[ICON_BULLET]+2 pactes de d&#233;fense possibles[NEWLINE][ICON_BULLET]Other civilization are more willing to enter into defensive pacts[NEWLINE][ICON_BULLET]+1 sp&#233;cialiste gratuit par pacte de d&#233;fense</French>
 		<German>[ICON_BULLET]+2 possible defensive pacts[NEWLINE][ICON_BULLET]Other civilization are more willing to enter into defensive pacts[NEWLINE][ICON_BULLET]+1 free specialist per defensive pact</German>
 		<Italian>[ICON_BULLET]+2 possible defensive pacts[NEWLINE][ICON_BULLET]Other civilization are more willing to enter into defensive pacts[NEWLINE][ICON_BULLET]+1 free specialist per defensive pact</Italian>
@@ -2483,7 +2483,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_ITER_HELP</Tag>
-		<English>[ICON_BULLET]+1[ICON_COMMERCE] for every 20 power consumed in the world</English>
+		<English>[ICON_BULLET]+1[ICON_COMMERCE] in This City for every 20 power consumed in the world</English>
 		<French>[ICON_BULLET]+1[ICON_COMMERCE] for every 20 power consumed in the world</French> <!-- needs translation -->
 		<German>[ICON_BULLET]+1[ICON_COMMERCE] for every 20 power consumed in the world</German>
 		<Italian>[ICON_BULLET]+1[ICON_COMMERCE] for every 20 power consumed in the world</Italian>
@@ -2539,7 +2539,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_SHWEDAGON_PAYA_HELP</Tag>
-		<English>[ICON_BULLET][ICON_GREATPEOPLE] Birth Rate is increased by Current [ICON_GOLD] Rate</English>
+		<English>[ICON_BULLET][ICON_GREATPEOPLE] Birth Rate in This City is increased by Current [ICON_GOLD] Rate</English>
 		<French>[ICON_BULLET][ICON_GREATPEOPLE] Birth Rate is increased by Current [ICON_GOLD] Rate</French>
 		<German>[ICON_BULLET][ICON_GREATPEOPLE] Birth Rate is increased by Current [ICON_GOLD] Rate</German>
 		<Italian>[ICON_BULLET][ICON_GREATPEOPLE] Birth Rate is increased by Current [ICON_GOLD] Rate</Italian>
@@ -2647,7 +2647,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_MOUNT_ATHOS_HELP</Tag>
-		<English>[ICON_BULLET]Double [ICON_GREATPEOPLE] from Buildings</English>
+		<English>[ICON_BULLET]Double [ICON_GREATPEOPLE] from Buildings in All Cities</English>
 		<French>[ICON_BULLET]Les b&#226;timents rapportent le double de [ICON_GREATPEOPLE]</French>
 		<German>[ICON_BULLET]Double [ICON_GREATPEOPLE] from Buildings</German>
 		<Italian>[ICON_BULLET]Double [ICON_GREATPEOPLE] from Buildings</Italian>
@@ -2675,7 +2675,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_GLOBAL_SEED_VAULT_HELP</Tag>
-		<English>[ICON_BULLET]Requires Tundra in city radius[NEWLINE][ICON_BULLET]+1 [ICON_RESEARCH] per Farm, Paddy Field, Orchard and Plantation resource</English>
+		<English>[ICON_BULLET]Requires Tundra in city radius[NEWLINE][ICON_BULLET]+1 [ICON_RESEARCH] in This City per Farm, Paddy Field, Orchard and Plantation resource</English>
 		<French>[ICON_BULLET]Requires Tundra in city radius[NEWLINE][ICON_BULLET]+1 [ICON_RESEARCH] per Farm, Paddy Field, Orchard and Plantation resource</French>
 		<German>[ICON_BULLET]Requires Tundra in city radius[NEWLINE][ICON_BULLET]+1 [ICON_RESEARCH] per Farm, Paddy Field, Orchard and Plantation resource</German>
 		<Italian>[ICON_BULLET]Requires Tundra in city radius[NEWLINE][ICON_BULLET]+1 [ICON_RESEARCH] per Farm, Paddy Field, Orchard and Plantation resource</Italian>
@@ -2703,7 +2703,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_GUADALUPE_BASILICA_HELP</Tag>
-		<English>[ICON_BULLET]Cannot be built on the same continent as the Catholic Shrine[NEWLINE][ICON_BULLET]+1 [ICON_GOLD] per Catholic city on the same continent</English>
+		<English>[ICON_BULLET]Cannot be built on the same continent as the Catholic Shrine[NEWLINE][ICON_BULLET]+1 [ICON_GOLD] in This City per Catholic city on the same continent</English>
 		<French>[ICON_BULLET]Ne peut &#234;tre construite sur le m&#234;me continent que le sanctuaire catholique[NEWLINE][ICON_BULLET]+1 [ICON_GOLD] par ville catholique sur le m&#234;me continent</French>
 		<German>[ICON_BULLET]Cannot be built on the same continent as the Catholic Shrine[NEWLINE][ICON_BULLET]+1 [ICON_GOLD] per Catholic city on the same continent</German>
 		<Italian>[ICON_BULLET]Cannot be built on the same continent as the Catholic Shrine[NEWLINE][ICON_BULLET]+1 [ICON_GOLD] per Catholic city on the same continent</Italian>
@@ -2731,7 +2731,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_MOLE_ANTONELLIANA_HELP</Tag>
-		<English>[ICON_BULLET]+2 [ICON_PRODUCTION] per Peak in city radius</English>
+		<English>[ICON_BULLET]+2 [ICON_PRODUCTION] in This City per Peak in city radius</English>
 		<French>[ICON_BULLET]+2 [ICON_PRODUCTION] par montagne dans les environs de la ville</French>
 		<German>[ICON_BULLET]+2 [ICON_PRODUCTION] per Peak in city radius</German>
 		<Italian>[ICON_BULLET]+2 [ICON_PRODUCTION] per Peak in city radius</Italian>
@@ -2795,7 +2795,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_LOTUS_TEMPLE_HELP</Tag>
-		<English>[ICON_BULLET]Requires at least four religions[NEWLINE][ICON_BULLET]+1 [ICON_FOOD] per Non-State [ICON_RELIGION] in all cities</English>
+		<English>[ICON_BULLET]Requires at least four religions present in the city[NEWLINE][ICON_BULLET]+1 [ICON_FOOD] per Non-State [ICON_RELIGION] in all cities</English>
 		<French>[ICON_BULLET]N&#233;cessite au moins quatre religions[NEWLINE][ICON_BULLET]+1 [ICON_FOOD] par [ICON_RELIGION] non officielle dans toutes les villes</French>
 		<German>[ICON_BULLET]Requires at least four religions[NEWLINE][ICON_BULLET]+1 [ICON_FOOD] per Non-State [ICON_RELIGION] in all cities</German>
 		<Italian>[ICON_BULLET]Requires at least four religions[NEWLINE][ICON_BULLET]+1 [ICON_FOOD] per Non-State [ICON_RELIGION] in all cities</Italian>
@@ -2831,7 +2831,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_AQUA_APPIA_HELP</Tag>
-		<English>[ICON_BULLET]+1[ICON_FOOD] per Culture Level</English>
+		<English>[ICON_BULLET]+1[ICON_FOOD] per Culture Level in This City</English>
 		<French>[ICON_BULLET]+1[ICON_FOOD] per Culture Level</French>
 		<German>[ICON_BULLET]+1[ICON_FOOD] per Culture Level</German>
 		<Italian>[ICON_BULLET]+1[ICON_FOOD] per Culture Level</Italian>
@@ -2947,7 +2947,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_METROPOLITAIN_HELP</Tag>
-		<English>[ICON_BULLET]+1[ICON_COMMERCE] for every +2[ICON_CULTURE] on buildings in the city</English>
+		<English>[ICON_BULLET]+1[ICON_COMMERCE] for every +2[ICON_CULTURE] on buildings in this city</English>
 		<French>[ICON_BULLET]+1[ICON_COMMERCE] par +2[ICON_CULTURE] des b&#226;timents dans la ville</French>
 		<German>[ICON_BULLET]+1[ICON_COMMERCE] pro +2[ICON_CULTURE] von Geb&#228;uden in der Stadt</German>
 		<Italian>[ICON_BULLET]+1[ICON_COMMERCE] for every +2[ICON_CULTURE] on buildings in the city</Italian>
@@ -3071,7 +3071,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_OLD_SYNAGOGUE_HELP</Tag>
-		<English>[ICON_BULLET]+2[ICON_GOLD] from Jewish religious buildings</English>
+		<English>[ICON_BULLET]+2[ICON_GOLD] from Jewish religious buildings in All Cities</English>
 		<French>[ICON_BULLET]+2 [ICON_GOLD] par b&#226;timent religieux juif</French>
 		<German>[ICON_BULLET]+2[ICON_GOLD] durch j&#252;dische religi&#246;se Geb&#228;ude</German>
 		<Italian>[ICON_BULLET]+2[ICON_GOLD] from Jewish religious buildings</Italian>
@@ -3167,7 +3167,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_CHAPULTEPEC_CASTLE_HELP</Tag>
-		<English>[ICON_BULLET]+1 unit experience per culture level</English>
+		<English>[ICON_BULLET]+1 unit experience in This City per culture level</English>
 		<French>[ICON_BULLET]+1 EXP par niveau de culture</French>
 		<German>[ICON_BULLET]+1 Einheitenerfahrung pro Kulturstufe</German>
 		<Italian>[ICON_BULLET]+1 unit experience per culture level</Italian>
@@ -3251,7 +3251,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_PYRAMID_OF_THE_SUN_HELP</Tag>
-		<English>[ICON_BULLET]+3 [ICON_GREATPEOPLE] per Citizen</English>
+		<English>[ICON_BULLET]+3 [ICON_GREATPEOPLE] in This City per Citizen specialist</English>
 		<French></French>
 		<German></German>
 		<Italian></Italian>
@@ -3267,7 +3267,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_GREAT_ADOBE_MOSQUE_HELP</Tag>
-		<English>[ICON_BULLET]+1[ICON_COMMERCE] on Desert and Semidesert</English>
+		<English>[ICON_BULLET]+1[ICON_COMMERCE] on Desert and Semidesert in All Cities</English>
 		<French>[ICON_BULLET]+1[ICON_COMMERCE] sur les cases de d&#233;sert et semi-d&#233;sert</French>
 		<German>[ICON_BULLET]+1[ICON_COMMERCE] on Desert and Semidesert</German>
 		<Italian>[ICON_BULLET]+1[ICON_COMMERCE] on Desert and Semidesert</Italian>
@@ -3275,7 +3275,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_UNIVERSITY_OF_SANKORE_HELP</Tag>
-		<English>[ICON_BULLET]Receive additional [ICON_GOLD] when trading technologies</English>
+		<English>[ICON_BULLET]Receive additional [ICON_GOLD] when acquiring technologies through trade</English>
 		<French>[ICON_BULLET]Receive additional [ICON_GOLD] when trading technologies</French>
 		<German>[ICON_BULLET]Receive additional [ICON_GOLD] when trading technologies</German>
 		<Italian>[ICON_BULLET]Receive additional [ICON_GOLD] when trading technologies</Italian>
@@ -3307,7 +3307,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_PANTHEON_HELP</Tag>
-		<English>[ICON_BULLET]+1[ICON_GOLD] per [LINK=literal]Pagan Temple[\LINK][NEWLINE][ICON_BULLET]Extra [ICON_GOLD] when a [LINK=literal]Pagan Temple[\LINK] is removed[NEWLINE][ICON_BULLET]No [ICON_OCCUPATION] when converting from a Pagan to a Major Religion</English>
+		<English>[ICON_BULLET]+1[ICON_GOLD] in This City per Pagan Temple owned[NEWLINE][ICON_BULLET]Extra [ICON_GOLD] when a Pagan Temple owned gets removed[NEWLINE][ICON_BULLET]No [ICON_OCCUPATION] when converting from a Pagan to a Major Religion</English>
 		<French>[ICON_BULLET]+1[ICON_GOLD] per [LINK=literal]Pagan Temple[\LINK][NEWLINE][ICON_BULLET]Extra [ICON_GOLD] when a [LINK=literal]Pagan Temple[\LINK] is removed[NEWLINE][ICON_BULLET]No [ICON_OCCUPATION] when converting from a Pagan to a Major Religion</French>
 		<German>[ICON_BULLET]+1[ICON_GOLD] per [LINK=literal]Pagan Temple[\LINK][NEWLINE][ICON_BULLET]Extra [ICON_GOLD] when a [LINK=literal]Pagan Temple[\LINK] is removed[NEWLINE][ICON_BULLET]No [ICON_OCCUPATION] when converting from a Pagan to a Major Religion</German>
 		<Italian>[ICON_BULLET]+1[ICON_GOLD] per [LINK=literal]Pagan Temple[\LINK][NEWLINE][ICON_BULLET]Extra [ICON_GOLD] when a [LINK=literal]Pagan Temple[\LINK] is removed[NEWLINE][ICON_BULLET]No [ICON_OCCUPATION] when converting from a Pagan to a Major Religion</Italian>
@@ -3355,7 +3355,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_FLORALIS_GENERICA_HELP</Tag>
-		<English>[ICON_BULLET]+1[ICON_COMMERCE] during Golden Ages</English>
+		<English>[ICON_BULLET]+1[ICON_COMMERCE] to each worked tile in All Cities during Golden Ages</English>
 		<French>[ICON_BULLET]+1[ICON_COMMERCE] during Golden Ages</French>
 		<German>[ICON_BULLET]+1[ICON_COMMERCE] during Golden Ages</German>
 		<Italian>[ICON_BULLET]+1[ICON_COMMERCE] during Golden Ages</Italian>

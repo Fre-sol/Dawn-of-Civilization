@@ -4218,7 +4218,16 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
             			pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_PRIORITY_FOOD),
             			pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_PRIORITY_PRODUCTION),
             			pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_PRIORITY_COMMERCE));
-            		szString.append(szTempBuffer);
+            			szString.append(szTempBuffer);
+            			
+            			// Fresol: debug only - the two numbers a slave's happiness gate looks at, for the plot's
+            			// working city, plus whether the plot is currently worked (unhappiness from improvements
+            			// counts only on worked plots).
+            			szTempBuffer.Format(L"\n  city %s (pop %d): happy %d, unhappy %d, plot worked %s",
+            				pWorkingCity->getName().c_str(), pWorkingCity->getPopulation(),
+            				pWorkingCity->happyLevel(), pWorkingCity->unhappyLevel(),
+            				pPlot->isBeingWorked() ? L"yes" : L"no");
+            			szString.append(szTempBuffer);
             	// Fresol: debug only - does this team even see a bonus here, and which tech reveals it
             	{
             		BonusTypes ePlotBonus = pPlot->getBonusType();

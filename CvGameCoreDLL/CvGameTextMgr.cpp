@@ -4214,6 +4214,38 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
             	szTempBuffer.Format(L"\n  plot %d: turn %d, probe %d, cached %d %s", iPlotIndex, iTurn, iProbe, iCachedValue,
             		(eCachedBuild == NO_BUILD) ? L"(no build)" : GC.getBuildInfo(eCachedBuild).getDescription());
             	szString.append(szTempBuffer);
+            	// Fresol: debug only - does this team even see a bonus here, and which tech reveals it
+            	{
+            		BonusTypes ePlotBonus = pPlot->getBonusType();
+            		BonusTypes eSeenBonus = pPlot->getBonusType(pPlot->getTeam());
+            		BonusTypes eLiveBonus = pPlot->getNonObsoleteBonusType(pPlot->getTeam());
+            		ImprovementTypes eOnPlot = pPlot->getImprovementType();
+            	
+            		szTempBuffer.Format(L"\n  bonus tile %s, seen %s, live %s, on plot %s",
+            			(ePlotBonus == NO_BONUS) ? L"none" : GC.getBonusInfo(ePlotBonus).getDescription(),
+            			(eSeenBonus == NO_BONUS) ? L"none" : GC.getBonusInfo(eSeenBonus).getDescription(),
+            			(eLiveBonus == NO_BONUS) ? L"none" : GC.getBonusInfo(eLiveBonus).getDescription(),
+            			(eOnPlot == NO_IMPROVEMENT) ? L"none" : GC.getImprovementInfo(eOnPlot).getDescription());
+            		szString.append(szTempBuffer);
+            	
+            		if (ePlotBonus != NO_BONUS)
+            		{
+            			TechTypes eReveal = (TechTypes)GC.getBonusInfo(ePlotBonus).getTechReveal();
+            			bool bHasReveal = ((eReveal != NO_TECH) && GET_TEAM(pPlot->getTeam()).isHasTech(eReveal));
+            	
+            			szTempBuffer.Format(L"\n  reveal tech %s, has it %s, force revealed %s",
+            				(eReveal == NO_TECH) ? L"none" : GC.getTechInfo(eReveal).getDescription(),
+            				bHasReveal ? L"yes" : L"no",
+            				GET_TEAM(pPlot->getTeam()).isForceRevealedBonus(ePlotBonus) ? L"yes" : L"no");
+            			szString.append(szTempBuffer);
+            		}
+            	
+            		if (eLiveBonus != NO_BONUS)
+            		{
+            			szTempBuffer.Format(L"\n  owner AI_bonusVal %d", GET_PLAYER(pPlot->getOwnerINLINE()).AI_bonusVal(eLiveBonus));
+            			szString.append(szTempBuffer);
+            		}
+            	}
             	
             	if (iTurn < 0)
             	{

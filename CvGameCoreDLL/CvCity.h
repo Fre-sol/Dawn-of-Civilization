@@ -19,21 +19,25 @@ void addGoodOrBad(int iValue, int& iGood, int& iBad);
 void subtractGoodOrBad(int iValue, int& iGood, int& iBad);
 // BUG - end
 
-// Fresol - start: debug only - how close the worker AI's decision for a plot was. Only filled
-// when someone can actually look at it (debug mode), see CvCityAI::AI_bestPlotBuild().
-struct CvBestBuildDebugInfo
+// Fresol - start: debug only - one field of the worker AI's record for a plot, see
+// CvCityAI::AI_getBestBuildDebugInfo(). Plain ints on purpose: the values travel the same way
+// as AI_getBestBuildValue(), which the tooltip already reads successfully.
+enum BestBuildDebugField
 {
-	ImprovementTypes eCurrentImprovement;	// the improvement the plot already has
-	int iCurrentValue;						// its score, i.e. what doing nothing is worth
-	BuildTypes eSecondBestBuild;			// runner up among the improvement candidates
-	int iSecondValue;						// its score
-	BuildTypes eOldRuleBuild;				// what would be picked with the rule of 7f7e7f489 enabled
-	int iOldRuleValue;						// and with which score
-	BuildTypes eWinnerBuild;				// and what is picked as it stands, with its raw score,
-	int iWinnerValue;						// so the other numbers can be compared against it
-	int iWrittenTurn;						// game turn the city AI last evaluated this plot, -1 = never
+	BEST_BUILD_DEBUG_CURRENT_VALUE = 0,
+	BEST_BUILD_DEBUG_CURRENT_IMPROVEMENT,
+	BEST_BUILD_DEBUG_SECOND_VALUE,
+	BEST_BUILD_DEBUG_SECOND_BUILD,
+	BEST_BUILD_DEBUG_WINNER_VALUE,
+	BEST_BUILD_DEBUG_WINNER_BUILD,
+	BEST_BUILD_DEBUG_OLD_RULE_VALUE,
+	BEST_BUILD_DEBUG_OLD_RULE_BUILD,
+	BEST_BUILD_DEBUG_TURN,
+	BEST_BUILD_DEBUG_PROBE,
+	BEST_BUILD_DEBUG_FIELDS
 };
 // Fresol - end
+
 
 class CvCity : public CvDLLEntity
 {
@@ -1286,7 +1290,8 @@ public:
 	virtual void AI_updateBestBuild() = 0;
 	virtual int AI_cityValue() const = 0;
 	virtual int AI_clearFeatureValue(int iIndex) = 0;
-	virtual CvBestBuildDebugInfo AI_getBestBuildDebugInfo(int iIndex) = 0;								// Fresol: debug only
+	virtual int AI_getBestBuildDebugInfo(int iIndex, int iField) = 0;								// Fresol: debug only
+	virtual void AI_setBestBuildDebugProbe(int iIndex, int iValue) = 0;						// Fresol: debug only
 
 	virtual int AI_calculateCulturePressure(bool bGreatWork = false) = 0;
 	virtual int AI_calculateWaterWorldPercent() = 0;

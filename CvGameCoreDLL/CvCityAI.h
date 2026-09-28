@@ -9,6 +9,23 @@
 
 typedef std::vector<std::pair<UnitAITypes, int> > UnitTypeWeightArray;
 
+// Fresol - start: debug only - what the worker AI made of one plot. A plain local struct:
+// only CvCityAI.cpp ever touches it, the values are stored and read as plain ints.
+struct CvBestBuildDebugInfo
+{
+	ImprovementTypes eCurrentImprovement;	// the improvement the plot already has
+	int iCurrentValue;						// its score, i.e. what doing nothing is worth
+	BuildTypes eSecondBestBuild;			// runner up among the improvement candidates
+	int iSecondValue;
+	BuildTypes eWinnerBuild;				// what is picked as it stands
+	int iWinnerValue;
+	BuildTypes eOldRuleBuild;			// what would be picked with the rule of 7f7e7f489 enabled
+	int iOldRuleValue;
+	int iTurn;								// game turn this was written on, -1 = never
+	int iProbe;							// written and read back by the tooltip, must stay 777777
+};
+// Fresol - end
+
 class CvCityAI : public CvCity
 {
 
@@ -87,7 +104,9 @@ public:
 	void AI_forceEmphasizeCulture(bool bNewValue);
 
 	int AI_getBestBuildValue(int iIndex);
-	CvBestBuildDebugInfo AI_getBestBuildDebugInfo(int iIndex);											// Fresol: debug only
+	int AI_getBestBuildDebugInfo(int iIndex, int iField);									// Fresol: debug only
+	void AI_setBestBuildDebugProbe(int iIndex, int iValue);							// Fresol: debug only
+	void AI_storeBestBuildDebug(int iIndex, CvBestBuildDebugInfo* pInfo);			// Fresol: debug only
 	int AI_totalBestBuildValue(CvArea* pArea);
 
 	int AI_clearFeatureValue(int iIndex);
@@ -140,7 +159,7 @@ protected:
 
 	BuildTypes m_aeBestBuild[NUM_CITY_PLOTS];
 
-	CvBestBuildDebugInfo m_akBestBuildDebug[NUM_CITY_PLOTS];											// Fresol: debug only
+	int m_aiBestBuildDebug[NUM_CITY_PLOTS][BEST_BUILD_DEBUG_FIELDS];						// Fresol: debug only
 
 	bool* m_pbEmphasize;
 	

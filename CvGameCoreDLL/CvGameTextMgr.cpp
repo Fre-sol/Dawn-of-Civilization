@@ -4193,46 +4193,59 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
                 szString.append(szTempBuffer);
             }
 
-            // Fresol - start: debug only - how close the decision was. All four numbers are the
-            // raw scores from AI_bestPlotBuild(), so they are comparable with each other (the value
-            // printed for the build actually picked is the smoothed one). keep: what the improvement
-            // already on the plot scored (n/a: it did not compete). win: what is picked now. 2nd: the
-            // runner up. old rule: what the margin rule that 7f7e7f489 added and d9d17a861 disabled
-            // would pick instead. The city AI does not look at the city tile itself; that says so.
+            // Fresol - start: debug only - how close the decision was, plus a probe: a value is written
+            // and read back through the debug accessor, so a broken accessor shows up as probe!=777777
+            // instead of a plausible looking number. keep: what the improvement already on the plot
+            // scored (n/a: it did not compete). win: what is picked now. 2nd: the runner up. old rule:
+            // what the margin rule that 7f7e7f489 added and d9d17a861 disabled would pick instead.
             if (iPlotIndex < 0)
             {
             	szString.append(L"\n  plot: not a plot of this city");
             }
             else
             {
-            	CvBestBuildDebugInfo kDebug = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex);
+            	pWorkingCity->AI_setBestBuildDebugProbe(iPlotIndex, 777777);
             	
-            	if (kDebug.iWrittenTurn < 0)
+            	int iTurn = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_TURN);
+            	int iProbe = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_PROBE);
+            	int iCachedValue = pWorkingCity->AI_getBestBuildValue(iPlotIndex);
+            	BuildTypes eCachedBuild = pWorkingCity->AI_getBestBuild(iPlotIndex);
+            	
+            	szTempBuffer.Format(L"\n  plot %d: turn %d, probe %d, cached %d %s", iPlotIndex, iTurn, iProbe, iCachedValue,
+            		(eCachedBuild == NO_BUILD) ? L"(no build)" : GC.getBuildInfo(eCachedBuild).getDescription());
+            	szString.append(szTempBuffer);
+            	
+            	if (iTurn < 0)
             	{
-            		szTempBuffer.Format(L"\n  plot %d: not evaluated by the city AI", iPlotIndex);
-            		szString.append(szTempBuffer);
+            		szString.append(L"\n  not recorded: the city AI has not evaluated this plot");
             	}
             	else
             	{
+            		ImprovementTypes eCurrent = (ImprovementTypes)pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_CURRENT_IMPROVEMENT);
+            		BuildTypes eWinner = (BuildTypes)pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_WINNER_BUILD);
+            		BuildTypes eSecond = (BuildTypes)pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_SECOND_BUILD);
+            		BuildTypes eOldRule = (BuildTypes)pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_OLD_RULE_BUILD);
+            		int iCurrentValue = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_CURRENT_VALUE);
+            		
             		CvWString szDebug = CvWString::format(L"\n  plot %d keep ", iPlotIndex);
-            		szDebug += (kDebug.eCurrentImprovement == NO_IMPROVEMENT) ? L"none" : GC.getImprovementInfo(kDebug.eCurrentImprovement).getDescription();
-            		if (kDebug.iCurrentValue < -100000)
+            		szDebug += (eCurrent == NO_IMPROVEMENT) ? L"none" : GC.getImprovementInfo(eCurrent).getDescription();
+            		if (iCurrentValue < -100000)
             		{
             			szDebug += L" (n/a)";
             		}
             		else
             		{
-            			szDebug += CvWString::format(L" (%d)", kDebug.iCurrentValue);
+            			szDebug += CvWString::format(L" (%d)", iCurrentValue);
             		}
             		szDebug += L" | win ";
-            		szDebug += (kDebug.eWinnerBuild == NO_BUILD) ? L"unchanged" : GC.getBuildInfo(kDebug.eWinnerBuild).getDescription();
-            		szDebug += CvWString::format(L" (%d)", kDebug.iWinnerValue);
+            		szDebug += (eWinner == NO_BUILD) ? L"unchanged" : GC.getBuildInfo(eWinner).getDescription();
+            		szDebug += CvWString::format(L" (%d)", pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_WINNER_VALUE));
             		szDebug += L" | 2nd ";
-            		szDebug += (kDebug.eSecondBestBuild == NO_BUILD) ? L"(none)" : GC.getBuildInfo(kDebug.eSecondBestBuild).getDescription();
-            		szDebug += CvWString::format(L" (%d)", kDebug.iSecondValue);
+            		szDebug += (eSecond == NO_BUILD) ? L"(none)" : GC.getBuildInfo(eSecond).getDescription();
+            		szDebug += CvWString::format(L" (%d)", pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_SECOND_VALUE));
             		szDebug += L" | old rule ";
-            		szDebug += (kDebug.eOldRuleBuild == NO_BUILD) ? L"unchanged" : GC.getBuildInfo(kDebug.eOldRuleBuild).getDescription();
-            		szDebug += CvWString::format(L" (%d)", kDebug.iOldRuleValue);
+            		szDebug += (eOldRule == NO_BUILD) ? L"unchanged" : GC.getBuildInfo(eOldRule).getDescription();
+            		szDebug += CvWString::format(L" (%d)", pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_OLD_RULE_VALUE));
             		szString.append(szDebug);
             	}
             }

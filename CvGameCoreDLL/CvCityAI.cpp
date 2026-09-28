@@ -232,11 +232,14 @@ void CvCityAI::AI_reset()
 	for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 	{
 		m_akBestBuildDebug[iI].eCurrentImprovement = NO_IMPROVEMENT;
-		m_akBestBuildDebug[iI].iCurrentValue = 0;
+		m_akBestBuildDebug[iI].iCurrentValue = -999999;
 		m_akBestBuildDebug[iI].eSecondBestBuild = NO_BUILD;
 		m_akBestBuildDebug[iI].iSecondValue = 0;
+		m_akBestBuildDebug[iI].eWinnerBuild = NO_BUILD;
+		m_akBestBuildDebug[iI].iWinnerValue = 0;
 		m_akBestBuildDebug[iI].eOldRuleBuild = NO_BUILD;
 		m_akBestBuildDebug[iI].iOldRuleValue = 0;
+		m_akBestBuildDebug[iI].iWrittenTurn = -1;
 	}
 
 	for (iI = 0; iI < NUM_YIELD_TYPES; iI++)
@@ -9307,6 +9310,7 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 			pDebugInfo->iSecondValue = iSecondValue;
 			pDebugInfo->eWinnerBuild = eBestBuild;
 			pDebugInfo->iWinnerValue = iBestValue;
+			pDebugInfo->iWrittenTurn = GC.getGameINLINE().getGameTurn();
 		}
 		// Fresol - end
 		if (piBestValue != NULL)

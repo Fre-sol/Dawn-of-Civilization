@@ -31,6 +31,7 @@ struct CvBestBuildDebugInfo
 	int iOldRuleValue;						// and with which score
 	BuildTypes eWinnerBuild;				// and what is picked as it stands, with its raw score,
 	int iWinnerValue;						// so the other numbers can be compared against it
+	int iWrittenTurn;						// game turn the city AI last evaluated this plot, -1 = never
 };
 // Fresol - end
 

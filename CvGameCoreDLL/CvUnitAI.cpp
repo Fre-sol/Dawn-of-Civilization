@@ -9874,7 +9874,7 @@ bool CvUnitAI::AI_lead(std::vector<UnitAITypes>& aeUnitAITypes)
 // is used for both. Great people are not affected, they only pass through AI_join().
 static bool canCitySpareHappinessForSlave(CvCity* pCity)
 {
-	return ((pCity != NULL) && ((pCity->happyLevel() - pCity->unhappyLevel()) > 2));
+	return ((pCity != NULL) && ((pCity->happyLevel() - pCity->unhappyLevel()) > 3));
 }
 // Fresol - end
 

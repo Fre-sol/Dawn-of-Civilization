@@ -19,6 +19,19 @@ void addGoodOrBad(int iValue, int& iGood, int& iBad);
 void subtractGoodOrBad(int iValue, int& iGood, int& iBad);
 // BUG - end
 
+// Fresol - start: debug only - how close the worker AI's decision for a plot was. Only filled
+// when someone can actually look at it (debug mode), see CvCityAI::AI_bestPlotBuild().
+struct CvBestBuildDebugInfo
+{
+	ImprovementTypes eCurrentImprovement;	// the improvement the plot already has
+	int iCurrentValue;						// its score, i.e. what doing nothing is worth
+	BuildTypes eSecondBestBuild;			// runner up among the improvement candidates
+	int iSecondValue;						// its score
+	BuildTypes eOldRuleBuild;				// what would be picked with the rule of 7f7e7f489 enabled
+	int iOldRuleValue;						// and with which score
+};
+// Fresol - end
+
 class CvCity : public CvDLLEntity
 {
 
@@ -1270,6 +1283,7 @@ public:
 	virtual void AI_updateBestBuild() = 0;
 	virtual int AI_cityValue() const = 0;
 	virtual int AI_clearFeatureValue(int iIndex) = 0;
+	virtual CvBestBuildDebugInfo AI_getBestBuildDebugInfo(int iIndex) = 0;								// Fresol: debug only
 
 	virtual int AI_calculateCulturePressure(bool bGreatWork = false) = 0;
 	virtual int AI_calculateWaterWorldPercent() = 0;

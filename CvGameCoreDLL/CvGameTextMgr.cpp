@@ -4192,6 +4192,32 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
                 szTempBuffer.Format(L"\nBest Build: %s (%d)", GC.getBuildInfo(eBestBuild).getDescription(), iBuildValue);
                 szString.append(szTempBuffer);
             }
+
+            // Fresol - start: debug only - how close that decision was. "keep" is what the
+            // improvement already on the plot scored (n/a: it did not compete at all), "2nd" the
+            // runner up among the candidates, "with old rule" what would be picked instead if the
+            // margin rule that 7f7e7f489 added and d9d17a861 disabled were restored.
+            {
+            	CvBestBuildDebugInfo kDebug = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex);
+            	CvWString szDebug = L"\n  keep ";
+            	szDebug += (kDebug.eCurrentImprovement == NO_IMPROVEMENT) ? L"none" : GC.getImprovementInfo(kDebug.eCurrentImprovement).getDescription();
+            	if (kDebug.iCurrentValue < -100000)
+            	{
+            		szDebug += L" (n/a)";
+            	}
+            	else
+            	{
+            		szDebug += CvWString::format(L" (%d)", kDebug.iCurrentValue);
+            	}
+            	szDebug += L" | 2nd ";
+            	szDebug += (kDebug.eSecondBestBuild == NO_BUILD) ? L"none" : GC.getBuildInfo(kDebug.eSecondBestBuild).getDescription();
+            	szDebug += CvWString::format(L" (%d)", kDebug.iSecondValue);
+            	szDebug += L" | with old rule ";
+            	szDebug += (kDebug.eOldRuleBuild == NO_BUILD) ? L"none" : GC.getBuildInfo(kDebug.eOldRuleBuild).getDescription();
+            	szDebug += CvWString::format(L" (%d)", kDebug.iOldRuleValue);
+            	szString.append(szDebug);
+            }
+            // Fresol - end
 		}
 
 		{

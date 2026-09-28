@@ -87,6 +87,7 @@ public:
 	void AI_forceEmphasizeCulture(bool bNewValue);
 
 	int AI_getBestBuildValue(int iIndex);
+	CvBestBuildDebugInfo AI_getBestBuildDebugInfo(int iIndex);											// Fresol: debug only
 	int AI_totalBestBuildValue(CvArea* pArea);
 
 	int AI_clearFeatureValue(int iIndex);
@@ -139,6 +140,8 @@ protected:
 
 	BuildTypes m_aeBestBuild[NUM_CITY_PLOTS];
 
+	CvBestBuildDebugInfo m_akBestBuildDebug[NUM_CITY_PLOTS];											// Fresol: debug only
+
 	bool* m_pbEmphasize;
 	
 	int* m_aiSpecialYieldMultiplier;
@@ -187,7 +190,8 @@ protected:
 	int AI_experienceWeight();
 	int AI_buildUnitProb();
 
-	void AI_bestPlotBuild(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange);
+	void AI_bestPlotBuild(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange, CvBestBuildDebugInfo* pDebugInfo = NULL);
+	void AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange, bool bOldRule, CvBestBuildDebugInfo* pDebugInfo);
 	
 	void AI_buildGovernorChooseProduction();
 	

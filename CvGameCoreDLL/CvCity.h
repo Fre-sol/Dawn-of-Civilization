@@ -29,6 +29,8 @@ struct CvBestBuildDebugInfo
 	int iSecondValue;						// its score
 	BuildTypes eOldRuleBuild;				// what would be picked with the rule of 7f7e7f489 enabled
 	int iOldRuleValue;						// and with which score
+	BuildTypes eWinnerBuild;				// and what is picked as it stands, with its raw score,
+	int iWinnerValue;						// so the other numbers can be compared against it
 };
 // Fresol - end
 

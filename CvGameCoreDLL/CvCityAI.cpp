@@ -9305,6 +9305,8 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 			pDebugInfo->iCurrentValue = iCurrentValue;
 			pDebugInfo->eSecondBestBuild = eSecondBuild;
 			pDebugInfo->iSecondValue = iSecondValue;
+			pDebugInfo->eWinnerBuild = eBestBuild;
+			pDebugInfo->iWinnerValue = iBestValue;
 		}
 		// Fresol - end
 		if (piBestValue != NULL)

@@ -4193,10 +4193,12 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
                 szString.append(szTempBuffer);
             }
 
-            // Fresol - start: debug only - how close that decision was. "keep" is what the
-            // improvement already on the plot scored (n/a: it did not compete at all), "2nd" the
-            // runner up among the candidates, "with old rule" what would be picked instead if the
-            // margin rule that 7f7e7f489 added and d9d17a861 disabled were restored.
+            // Fresol - start: debug only - how close the decision was. All four numbers are the
+            // raw scores from AI_bestPlotBuild(), so they are comparable with each other (the
+            // value printed for the build actually picked is the smoothed one). keep: what the
+            // improvement already on the plot scored (n/a: it did not compete at all). win: what
+            // is picked now. 2nd: the runner up. old rule: what the margin rule that 7f7e7f489
+            // added and d9d17a861 disabled would pick instead.
             {
             	CvBestBuildDebugInfo kDebug = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex);
             	CvWString szDebug = L"\n  keep ";
@@ -4209,11 +4211,14 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
             	{
             		szDebug += CvWString::format(L" (%d)", kDebug.iCurrentValue);
             	}
+            	szDebug += L" | win ";
+            	szDebug += (kDebug.eWinnerBuild == NO_BUILD) ? L"unchanged" : GC.getBuildInfo(kDebug.eWinnerBuild).getDescription();
+            	szDebug += CvWString::format(L" (%d)", kDebug.iWinnerValue);
             	szDebug += L" | 2nd ";
-            	szDebug += (kDebug.eSecondBestBuild == NO_BUILD) ? L"none" : GC.getBuildInfo(kDebug.eSecondBestBuild).getDescription();
+            	szDebug += (kDebug.eSecondBestBuild == NO_BUILD) ? L"(none)" : GC.getBuildInfo(kDebug.eSecondBestBuild).getDescription();
             	szDebug += CvWString::format(L" (%d)", kDebug.iSecondValue);
-            	szDebug += L" | with old rule ";
-            	szDebug += (kDebug.eOldRuleBuild == NO_BUILD) ? L"none" : GC.getBuildInfo(kDebug.eOldRuleBuild).getDescription();
+            	szDebug += L" | old rule ";
+            	szDebug += (kDebug.eOldRuleBuild == NO_BUILD) ? L"unchanged" : GC.getBuildInfo(kDebug.eOldRuleBuild).getDescription();
             	szDebug += CvWString::format(L" (%d)", kDebug.iOldRuleValue);
             	szString.append(szDebug);
             }

@@ -14944,6 +14944,34 @@ bool CvUnitAI::AI_fortTerritory(bool bCanal, bool bAirbase)
 }
 
 // Returns true if a mission was pushed...
+// Fresol - start: does eCandidate give this plot at least as much in every yield as eCurrent,
+// and more in at least one? Calculated on the plot itself, so bonus yields count too. Used to
+// let a slave unit spend itself on upgrading a bonus tile it can improve further.
+static bool isBetterImprovementOnPlot(CvPlot* pPlot, ImprovementTypes eCandidate, ImprovementTypes eCurrent)
+{
+	int iBetterCount = 0;
+
+	for (int iI = 0; iI < NUM_YIELD_TYPES; iI++)
+	{
+		int iCandidate = pPlot->calculateImprovementYieldChange(eCandidate, (YieldTypes)iI, pPlot->getOwnerINLINE(), false);
+		int iCurrent = pPlot->calculateImprovementYieldChange(eCurrent, (YieldTypes)iI, pPlot->getOwnerINLINE(), false);
+
+		if (iCandidate < iCurrent)
+		{
+			return false;
+		}
+
+		if (iCandidate > iCurrent)
+		{
+			iBetterCount++;
+		}
+	}
+
+	return (iBetterCount > 0);
+}
+// Fresol - end
+
+
 bool CvUnitAI::AI_improveBonus(int iMinValue, CvPlot** ppBestPlot, BuildTypes* peBestBuild, int* piBestValue)
 {
 	PROFILE_FUNC();
@@ -15008,6 +15036,39 @@ bool CvUnitAI::AI_improveBonus(int iMinValue, CvPlot** ppBestPlot, BuildTypes* p
                         else if (GC.getImprovementInfo(eImprovement).isActsAsCity() || GC.getImprovementInfo(eImprovement).isImprovementBonusTrade(eNonObsoleteBonus))
                         {
                         	bDoImprove = false;
+                        	
+                        	// Fresol - start: a slave unit is spent on the build, and the improvements it can build
+                        	// (slave mine, slave plantation) yield more than the ordinary ones. Let it replace one of
+                        	// those, but only while the city can pay for the extra unhappiness that costs.
+                        	if (m_pUnitInfo->isSlave())
+                        	{
+                        		CvCity* pSlaveCity = pLoopPlot->getWorkingCity();
+                        	
+                        		if ((pSlaveCity != NULL) && ((pSlaveCity->happyLevel() - pSlaveCity->unhappyLevel()) > 1))
+                        		{
+                        			for (iJ = 0; iJ < GC.getNumBuildInfos(); iJ++)
+                        			{
+                        				eBuild = (BuildTypes)iJ;
+                        	
+                        				if (GC.getBuildInfo(eBuild).getImprovement() == NO_IMPROVEMENT)
+                        				{
+                        					continue;
+                        				}
+                        	
+                        				ImprovementTypes eSlaveImprovement = (ImprovementTypes)GC.getBuildInfo(eBuild).getImprovement();
+                        	
+                        				if ((eSlaveImprovement != eImprovement)
+                        				 && GC.getImprovementInfo(eSlaveImprovement).isImprovementBonusTrade(eNonObsoleteBonus)
+                        				 && canBuild(pLoopPlot, eBuild)
+                        				 && isBetterImprovementOnPlot(pLoopPlot, eSlaveImprovement, eImprovement))
+                        				{
+                        					bDoImprove = true;
+                        					break;
+                        				}
+                        			}
+                        		}
+                        	}
+                        	// Fresol - end
                         }
                         else if (eImprovement == (ImprovementTypes)(GC.getDefineINT("RUINS_IMPROVEMENT")))
                         {

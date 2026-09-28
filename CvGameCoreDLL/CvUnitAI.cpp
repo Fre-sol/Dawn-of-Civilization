@@ -9869,14 +9869,6 @@ bool CvUnitAI::AI_lead(std::vector<UnitAITypes>& aeUnitAITypes)
 
 // Returns true if a mission was pushed...
 // iMaxCounts = 1 would mean join a city if there's no existing joined GP of that type.
-// Fresol - start: a slave unit is spent when it works and costs a happiness point when it
-// settles as a specialist, so it may only act where the city can pay for that: the same test
-// is used for both. Great people are not affected, they only pass through AI_join().
-static bool canCitySpareHappinessForSlave(CvCity* pCity)
-{
-	return ((pCity != NULL) && ((pCity->happyLevel() - pCity->unhappyLevel()) > 3));
-}
-// Fresol - end
 
 
 bool CvUnitAI::AI_join(int iMaxCount)

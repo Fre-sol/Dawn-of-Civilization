@@ -7384,6 +7384,17 @@ bool CvUnit::build(BuildTypes eBuild)
 	{
 		return false;
 	}
+	
+	// Fresol - start: an AI slave may have been sent while its city was happier, but the build
+	// spends the unit and costs the city a happiness point, so check again on arrival
+	if (m_pUnitInfo->isSlave() && !GET_PLAYER(getOwnerINLINE()).isHuman())
+	{
+		if (!canCitySpareHappinessForSlave(plot()->getWorkingCity()))
+		{
+			return false;
+		}
+	}
+	// Fresol - end
 
 	// Note: notify entity must come before changeBuildProgress - because once the unit is done building,
 	// that function will notify the entity to stop building.

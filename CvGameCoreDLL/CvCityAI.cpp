@@ -5793,15 +5793,6 @@ int CvCityAI::AI_getBestBuildDebugInfo(int iIndex, int iField)	// Fresol: debug 
 }
 
 
-void CvCityAI::AI_setBestBuildDebugProbe(int iIndex, int iValue)	// Fresol: debug only
-{
-	if (iIndex >= 0 && iIndex < NUM_CITY_PLOTS)
-	{
-		m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_PROBE] = iValue;
-	}
-}
-
-
 void CvCityAI::AI_storeBestBuildDebug(int iIndex, CvBestBuildDebugInfo* pInfo)	// Fresol: debug only
 {
 	FAssertMsg(iIndex >= 0 && iIndex < NUM_CITY_PLOTS, "iIndex is out of range");

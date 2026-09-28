@@ -29,7 +29,6 @@ struct CvBestBuildDebugInfo
 	int iProductionPriority;
 	int iCommercePriority;
 	int iTurn;								// game turn this was written on, -1 = never
-	int iProbe;							// written and read back by the tooltip, must stay 777777
 };
 // Fresol - end
 
@@ -112,7 +111,6 @@ public:
 
 	int AI_getBestBuildValue(int iIndex);
 	int AI_getBestBuildDebugInfo(int iIndex, int iField);									// Fresol: debug only
-	void AI_setBestBuildDebugProbe(int iIndex, int iValue);							// Fresol: debug only
 	void AI_storeBestBuildDebug(int iIndex, CvBestBuildDebugInfo* pInfo);			// Fresol: debug only
 	int AI_totalBestBuildValue(CvArea* pArea);
 

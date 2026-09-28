@@ -4193,9 +4193,9 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
                 szString.append(szTempBuffer);
             }
 
-            // Fresol - start: debug only - how close the decision was, plus a probe: a value is written
-            // and read back through the debug accessor, so a broken accessor shows up as probe!=777777
-            // instead of a plausible looking number. keep: what the improvement already on the plot
+            // Fresol - start: debug only - how close the decision was. All four numbers are the
+            // raw scores from AI_bestPlotBuild(), so they are comparable with each other (the value
+            // printed for the build actually picked is the smoothed one). keep: what the improvement
             // scored (n/a: it did not compete). win: what is picked now. 2nd: the runner up. old rule:
             // what the margin rule that 7f7e7f489 added and d9d17a861 disabled would pick instead.
             if (iPlotIndex < 0)
@@ -4204,14 +4204,12 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
             }
             else
             {
-            	pWorkingCity->AI_setBestBuildDebugProbe(iPlotIndex, 777777);
-            	
+
             	int iTurn = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_TURN);
-            	int iProbe = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_PROBE);
             	int iCachedValue = pWorkingCity->AI_getBestBuildValue(iPlotIndex);
             	BuildTypes eCachedBuild = pWorkingCity->AI_getBestBuild(iPlotIndex);
-            	
-            	szTempBuffer.Format(L"\n  plot %d: turn %d, probe %d, cached %d %s", iPlotIndex, iTurn, iProbe, iCachedValue,
+
+            	szTempBuffer.Format(L"\n  plot %d: turn %d, cached %d %s", iPlotIndex, iTurn, iCachedValue,
             		(eCachedBuild == NO_BUILD) ? L"(no build)" : GC.getBuildInfo(eCachedBuild).getDescription());
             	szString.append(szTempBuffer);
             		szTempBuffer.Format(L"\n  priorities food %d, production %d, commerce %d",
@@ -4219,7 +4217,7 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
             			pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_PRIORITY_PRODUCTION),
             			pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_PRIORITY_COMMERCE));
             			szString.append(szTempBuffer);
-            			
+
             			// Fresol: debug only - the two numbers a slave's happiness gate looks at, for the plot's
             			// working city, plus whether the plot is currently worked (unhappiness from improvements
             			// counts only on worked plots).
@@ -4234,32 +4232,32 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
             		BonusTypes eSeenBonus = pPlot->getBonusType(pPlot->getTeam());
             		BonusTypes eLiveBonus = pPlot->getNonObsoleteBonusType(pPlot->getTeam());
             		ImprovementTypes eOnPlot = pPlot->getImprovementType();
-            	
+
             		szTempBuffer.Format(L"\n  bonus tile %s, seen %s, live %s, on plot %s",
             			(ePlotBonus == NO_BONUS) ? L"none" : GC.getBonusInfo(ePlotBonus).getDescription(),
             			(eSeenBonus == NO_BONUS) ? L"none" : GC.getBonusInfo(eSeenBonus).getDescription(),
             			(eLiveBonus == NO_BONUS) ? L"none" : GC.getBonusInfo(eLiveBonus).getDescription(),
             			(eOnPlot == NO_IMPROVEMENT) ? L"none" : GC.getImprovementInfo(eOnPlot).getDescription());
             		szString.append(szTempBuffer);
-            	
+
             		if (ePlotBonus != NO_BONUS)
             		{
             			TechTypes eReveal = (TechTypes)GC.getBonusInfo(ePlotBonus).getTechReveal();
             			bool bHasReveal = (GET_TEAM(pPlot->getTeam()).isHasTech(eReveal) || GET_TEAM(pPlot->getTeam()).isForceRevealedBonus(ePlotBonus));	// Fresol: mirrors CvPlot::getBonusType()
-            	
+
             					szTempBuffer.Format(L"\n  reveal tech %s, bonus visible to owner %s",
             							(eReveal == NO_TECH) ? L"none needed" : GC.getTechInfo(eReveal).getDescription(),
             							bHasReveal ? L"yes" : L"no");
             			szString.append(szTempBuffer);
             		}
-            	
+
             		if (eLiveBonus != NO_BONUS)
             		{
             			szTempBuffer.Format(L"\n  owner AI_bonusVal %d", GET_PLAYER(pPlot->getOwnerINLINE()).AI_bonusVal(eLiveBonus));
             			szString.append(szTempBuffer);
             		}
             	}
-            	
+
             	if (iTurn < 0)
             	{
             		szString.append(L"\n  not recorded: the city AI has not evaluated this plot");

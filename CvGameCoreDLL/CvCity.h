@@ -39,7 +39,6 @@ enum BestBuildDebugField
 	BEST_BUILD_DEBUG_PRIORITY_PRODUCTION,
 	BEST_BUILD_DEBUG_PRIORITY_COMMERCE,
 	BEST_BUILD_DEBUG_TURN,
-	BEST_BUILD_DEBUG_PROBE,
 	BEST_BUILD_DEBUG_FIELDS
 };
 // Fresol - end
@@ -1297,7 +1296,6 @@ public:
 	virtual int AI_cityValue() const = 0;
 	virtual int AI_clearFeatureValue(int iIndex) = 0;
 	virtual int AI_getBestBuildDebugInfo(int iIndex, int iField) = 0;								// Fresol: debug only
-	virtual void AI_setBestBuildDebugProbe(int iIndex, int iValue) = 0;						// Fresol: debug only
 
 	virtual int AI_calculateCulturePressure(bool bGreatWork = false) = 0;
 	virtual int AI_calculateWaterWorldPercent() = 0;

@@ -15027,6 +15027,19 @@ bool CvUnitAI::AI_improveBonus(int iMinValue, CvPlot** ppBestPlot, BuildTypes* p
                     {
                         eImprovement = pLoopPlot->getImprovementType();
 
+                        // Fresol - start: a slave unit is spent on the build, and every improvement it can build
+                        // costs a happiness point. Let it work only while its city can pay for that - this covers
+                        // both replacing an ordinary mine or plantation and improving an empty bonus tile.
+                        if (m_pUnitInfo->isSlave())
+                        {
+                        	CvCity* pSlaveCity = pLoopPlot->getWorkingCity();
+                        
+                        	if ((pSlaveCity == NULL) || ((pSlaveCity->happyLevel() - pSlaveCity->unhappyLevel()) <= 1))
+                        	{
+                        		continue;
+                        	}
+                        }
+                        // Fresol - end
                         bool bDoImprove = false;
 
                         if (eImprovement == NO_IMPROVEMENT)
@@ -15037,38 +15050,33 @@ bool CvUnitAI::AI_improveBonus(int iMinValue, CvPlot** ppBestPlot, BuildTypes* p
                         {
                         	bDoImprove = false;
                         	
-                        	// Fresol - start: a slave unit is spent on the build, and the improvements it can build
-                        	// (slave mine, slave plantation) yield more than the ordinary ones. Let it replace one of
-                        	// those, but only while the city can pay for the extra unhappiness that costs.
-                        	if (m_pUnitInfo->isSlave())
+                        // Fresol - start: the improvements a slave can build yield more than the ordinary mine or
+                        // plantation, and it is spent on the build, so let it replace one of those. Whether it may
+                        // work at all is decided by the happiness gate above.
+                        if (m_pUnitInfo->isSlave())
+                        {
+                        	for (iJ = 0; iJ < GC.getNumBuildInfos(); iJ++)
                         	{
-                        		CvCity* pSlaveCity = pLoopPlot->getWorkingCity();
-                        	
-                        		if ((pSlaveCity != NULL) && ((pSlaveCity->happyLevel() - pSlaveCity->unhappyLevel()) > 1))
+                        		eBuild = (BuildTypes)iJ;
+                        
+                        		if (GC.getBuildInfo(eBuild).getImprovement() == NO_IMPROVEMENT)
                         		{
-                        			for (iJ = 0; iJ < GC.getNumBuildInfos(); iJ++)
-                        			{
-                        				eBuild = (BuildTypes)iJ;
-                        	
-                        				if (GC.getBuildInfo(eBuild).getImprovement() == NO_IMPROVEMENT)
-                        				{
-                        					continue;
-                        				}
-                        	
-                        				ImprovementTypes eSlaveImprovement = (ImprovementTypes)GC.getBuildInfo(eBuild).getImprovement();
-                        	
-                        				if ((eSlaveImprovement != eImprovement)
-                        				 && GC.getImprovementInfo(eSlaveImprovement).isImprovementBonusTrade(eNonObsoleteBonus)
-                        				 && canBuild(pLoopPlot, eBuild)
-                        				 && isBetterImprovementOnPlot(pLoopPlot, eSlaveImprovement, eImprovement))
-                        				{
-                        					bDoImprove = true;
-                        					break;
-                        				}
-                        			}
+                        			continue;
+                        		}
+                        
+                        		ImprovementTypes eSlaveImprovement = (ImprovementTypes)GC.getBuildInfo(eBuild).getImprovement();
+                        
+                        		if ((eSlaveImprovement != eImprovement)
+                        		 && GC.getImprovementInfo(eSlaveImprovement).isImprovementBonusTrade(eNonObsoleteBonus)
+                        		 && canBuild(pLoopPlot, eBuild)
+                        		 && isBetterImprovementOnPlot(pLoopPlot, eSlaveImprovement, eImprovement))
+                        		{
+                        			bDoImprove = true;
+                        			break;
                         		}
                         	}
-                        	// Fresol - end
+                        }
+                        // Fresol - end
                         }
                         else if (eImprovement == (ImprovementTypes)(GC.getDefineINT("RUINS_IMPROVEMENT")))
                         {

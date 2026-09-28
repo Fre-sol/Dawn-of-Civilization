@@ -9301,18 +9301,6 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 
 		}
 
-		// Fresol - start: debug only
-		if (pDebugInfo != NULL)
-		{
-			pDebugInfo->eCurrentImprovement = eCurrentImprovement;
-			pDebugInfo->iCurrentValue = iCurrentValue;
-			pDebugInfo->eSecondBestBuild = eSecondBuild;
-			pDebugInfo->iSecondValue = iSecondValue;
-			pDebugInfo->eWinnerBuild = eBestBuild;
-			pDebugInfo->iWinnerValue = iBestValue;
-			pDebugInfo->iWrittenTurn = GC.getGameINLINE().getGameTurn();
-		}
-		// Fresol - end
 		if (piBestValue != NULL)
 		{
 			*piBestValue = iBestValue;
@@ -9322,6 +9310,19 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 			*peBestBuild = eBestBuild;
 		}
 	}
+	// Fresol - start: debug only - written for every plot of the city, whether or not the
+	// AI decided to change it, so the tooltip can tell "never looked at" from "looked at"
+	if (pDebugInfo != NULL)
+	{
+		pDebugInfo->eCurrentImprovement = eCurrentImprovement;
+		pDebugInfo->iCurrentValue = iCurrentValue;
+		pDebugInfo->eSecondBestBuild = eSecondBuild;
+		pDebugInfo->iSecondValue = iSecondValue;
+		pDebugInfo->eWinnerBuild = eBestBuild;
+		pDebugInfo->iWinnerValue = iBestValue;
+		pDebugInfo->iWrittenTurn = GC.getGameINLINE().getGameTurn();
+	}
+	// Fresol - end
 }
 
 // Fresol - start: debug only - the caller's entry point. The work is done in

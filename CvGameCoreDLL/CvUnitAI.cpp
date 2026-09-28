@@ -9869,6 +9869,16 @@ bool CvUnitAI::AI_lead(std::vector<UnitAITypes>& aeUnitAITypes)
 
 // Returns true if a mission was pushed...
 // iMaxCounts = 1 would mean join a city if there's no existing joined GP of that type.
+// Fresol - start: a slave unit is spent when it works and costs a happiness point when it
+// settles as a specialist, so it may only act where the city can pay for that: the same test
+// is used for both. Great people are not affected, they only pass through AI_join().
+static bool canCitySpareHappinessForSlave(CvCity* pCity)
+{
+	return ((pCity != NULL) && ((pCity->happyLevel() - pCity->unhappyLevel()) > 2));
+}
+// Fresol - end
+
+
 bool CvUnitAI::AI_join(int iMaxCount)
 {
 	PROFILE_FUNC();
@@ -9889,6 +9899,13 @@ bool CvUnitAI::AI_join(int iMaxCount)
 
 	for (pLoopCity = GET_PLAYER(getOwnerINLINE()).firstCity(&iLoop); pLoopCity != NULL; pLoopCity = GET_PLAYER(getOwnerINLINE()).nextCity(&iLoop))
 	{
+		// Fresol - start: settling a slave costs the city a happiness point too (the slave
+		// specialist is worth -1), so only settle one where the city can spare it
+		if (m_pUnitInfo->isSlave() && !canCitySpareHappinessForSlave(pLoopCity))
+		{
+			continue;
+		}
+		// Fresol - end
 		if (AI_plotValid(pLoopCity->plot()))
 		{
 			if (!(pLoopCity->plot()->isVisibleEnemyUnit(this)))
@@ -15034,7 +15051,7 @@ bool CvUnitAI::AI_improveBonus(int iMinValue, CvPlot** ppBestPlot, BuildTypes* p
                         {
                         	CvCity* pSlaveCity = pLoopPlot->getWorkingCity();
                         
-                        	if ((pSlaveCity == NULL) || ((pSlaveCity->happyLevel() - pSlaveCity->unhappyLevel()) <= 2))
+                        	if (!canCitySpareHappinessForSlave(pSlaveCity))
                         	{
                         		continue;
                         	}

@@ -21,6 +21,10 @@ struct CvBestBuildDebugInfo
 	int iWinnerValue;
 	BuildTypes eOldRuleBuild;			// what would be picked with the rule of 7f7e7f489 enabled
 	int iOldRuleValue;
+	int iDbgBestValue;						// best candidate overall, even if it scored below zero
+	BuildTypes eDbgBestBuild;
+	BuildTypes eForcedBuild;				// set when a worker is already building on this plot,
+										// which locks the candidates to that one build
 	int iTurn;								// game turn this was written on, -1 = never
 	int iProbe;							// written and read back by the tooltip, must stay 777777
 };

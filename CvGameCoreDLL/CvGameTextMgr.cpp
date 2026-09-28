@@ -4225,6 +4225,11 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
             		BuildTypes eWinner = (BuildTypes)pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_WINNER_BUILD);
             		BuildTypes eSecond = (BuildTypes)pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_SECOND_BUILD);
             		BuildTypes eOldRule = (BuildTypes)pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_OLD_RULE_BUILD);
+            		int iWinnerValue = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_WINNER_VALUE);
+            		int iDbgBestValue = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_DBG_BEST_VALUE);
+            		int iSecondValue = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_SECOND_VALUE);
+            		BuildTypes eDbgBest = (BuildTypes)pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_DBG_BEST_BUILD);
+            		BuildTypes eForced = (BuildTypes)pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_FORCED_BUILD);
             		int iCurrentValue = pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_CURRENT_VALUE);
             		
             		CvWString szDebug = CvWString::format(L"\n  plot %d keep ", iPlotIndex);
@@ -4239,13 +4244,35 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
             		}
             		szDebug += L" | win ";
             		szDebug += (eWinner == NO_BUILD) ? L"unchanged" : GC.getBuildInfo(eWinner).getDescription();
-            		szDebug += CvWString::format(L" (%d)", pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_WINNER_VALUE));
+            		szDebug += CvWString::format(L" (%d)", iWinnerValue);
             		szDebug += L" | 2nd ";
             		szDebug += (eSecond == NO_BUILD) ? L"(none)" : GC.getBuildInfo(eSecond).getDescription();
-            		szDebug += CvWString::format(L" (%d)", pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_SECOND_VALUE));
+            		if (iSecondValue < -1000000)
+            		{
+            			szDebug += L" (n/a)";
+            		}
+            		else
+            		{
+            			szDebug += CvWString::format(L" (%d)", iSecondValue);
+            		}
             		szDebug += L" | old rule ";
             		szDebug += (eOldRule == NO_BUILD) ? L"unchanged" : GC.getBuildInfo(eOldRule).getDescription();
             		szDebug += CvWString::format(L" (%d)", pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_OLD_RULE_VALUE));
+            		if (!((eDbgBest == eWinner) && (iDbgBestValue == iWinnerValue)))
+            		{
+            			szDebug += L" | best ";
+            			szDebug += (eDbgBest == NO_BUILD) ? L"(none)" : GC.getBuildInfo(eDbgBest).getDescription();
+            			if (iDbgBestValue < -1000000)
+            			{
+            				szDebug += L" (n/a)";
+            			}
+            			else
+            			{
+            				szDebug += CvWString::format(L" (%d)", iDbgBestValue);
+            			}
+            		}
+            		szDebug += L" | forced ";
+            			szDebug += (eForced == NO_BUILD) ? L"none" : GC.getBuildInfo(eForced).getDescription();
             		szString.append(szDebug);
             	}
             }

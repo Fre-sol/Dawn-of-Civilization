@@ -239,6 +239,8 @@ void CvCityAI::AI_reset()
 		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_SECOND_BUILD] = NO_BUILD;
 		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_WINNER_BUILD] = NO_BUILD;
 		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_OLD_RULE_BUILD] = NO_BUILD;
+		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_DBG_BEST_BUILD] = NO_BUILD;
+		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_FORCED_BUILD] = NO_BUILD;
 		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_CURRENT_VALUE] = -999999;
 		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_TURN] = -1;
 	}
@@ -5804,6 +5806,9 @@ void CvCityAI::AI_storeBestBuildDebug(int iIndex, CvBestBuildDebugInfo* pInfo)	/
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_CURRENT_VALUE] = pInfo->iCurrentValue;
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_CURRENT_IMPROVEMENT] = (int)pInfo->eCurrentImprovement;
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_SECOND_VALUE] = pInfo->iSecondValue;
+	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_DBG_BEST_VALUE] = pInfo->iDbgBestValue;
+	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_DBG_BEST_BUILD] = (int)pInfo->eDbgBestBuild;
+	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_FORCED_BUILD] = (int)pInfo->eForcedBuild;
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_SECOND_BUILD] = (int)pInfo->eSecondBestBuild;
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_WINNER_VALUE] = pInfo->iWinnerValue;
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_WINNER_BUILD] = (int)pInfo->eWinnerBuild;
@@ -8579,8 +8584,10 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 	int iI, iJ;
 
 	// Fresol - start: debug only - tracked so the tooltip can show how close the decision was
-	int iSecondValue = 0;
+	int iSecondValue = -2000000;
 	BuildTypes eSecondBuild = NO_BUILD;
+	int iDbgBestValue = -2000000;	// Fresol: debug only
+	BuildTypes eDbgBestBuild = NO_BUILD;	// Fresol: debug only
 	ImprovementTypes eCurrentImprovement = NO_IMPROVEMENT;
 	int iCurrentValue = -999999;	// Fresol: debug only - not evaluated
 	// Fresol - end
@@ -9148,34 +9155,40 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 						}
 					}
 
-					// Fresol - start: debug only
-					if (eImprovement == pPlot->getImprovementType())
+					// Fresol - start: debug only - rank every candidate that got a final score, even when that
+					// score is zero or negative. The AI's own comparison below only ever sees values above zero,
+					// so on its own it cannot show a candidate that lost.
+					if (iValue > iDbgBestValue)
 					{
-						eCurrentImprovement = eImprovement;
-						iCurrentValue = iValue;
+						iSecondValue = iDbgBestValue;
+						eSecondBuild = eDbgBestBuild;
+					
+						iDbgBestValue = iValue;
+						eDbgBestBuild = eBestTempBuild;
 					}
-					// Fresol - end
-					if (iValue > iBestValue)
-					{
-						// Fresol - start: debug only - the previous best becomes the runner up
-						iSecondValue = iBestValue;
-						eSecondBuild = eBestBuild;
-						// Fresol - end
-						iBestValue = iValue;
-						eBestBuild = eBestTempBuild;
-
-						for (iJ = 0; iJ < NUM_YIELD_TYPES; iJ++)
-						{
-							aiBestDiffYields[iJ] = aiDiffYields[iJ];
-						}
-					}
-					// Fresol - start: debug only
 					else if (iValue > iSecondValue)
 					{
 						iSecondValue = iValue;
 						eSecondBuild = eBestTempBuild;
 					}
 					// Fresol - end
+					
+					if (eImprovement == pPlot->getImprovementType())
+					{
+						eCurrentImprovement = eImprovement;
+						iCurrentValue = iValue;
+					}
+					
+					if (iValue > iBestValue)
+					{
+						iBestValue = iValue;
+						eBestBuild = eBestTempBuild;
+					
+						for (iJ = 0; iJ < NUM_YIELD_TYPES; iJ++)
+						{
+							aiBestDiffYields[iJ] = aiDiffYields[iJ];
+						}
+					}
 				}
 			}
 		}
@@ -9348,6 +9361,9 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 		pDebugInfo->eCurrentImprovement = eCurrentImprovement;
 		pDebugInfo->iCurrentValue = iCurrentValue;
 		pDebugInfo->eSecondBestBuild = eSecondBuild;
+		pDebugInfo->iDbgBestValue = iDbgBestValue;
+		pDebugInfo->eDbgBestBuild = eDbgBestBuild;
+		pDebugInfo->eForcedBuild = eForcedBuild;
 		pDebugInfo->iSecondValue = iSecondValue;
 		pDebugInfo->eWinnerBuild = eBestBuild;
 		pDebugInfo->iWinnerValue = iBestValue;

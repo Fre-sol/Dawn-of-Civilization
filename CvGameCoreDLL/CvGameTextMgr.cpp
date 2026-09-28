@@ -4214,6 +4214,11 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
             	szTempBuffer.Format(L"\n  plot %d: turn %d, probe %d, cached %d %s", iPlotIndex, iTurn, iProbe, iCachedValue,
             		(eCachedBuild == NO_BUILD) ? L"(no build)" : GC.getBuildInfo(eCachedBuild).getDescription());
             	szString.append(szTempBuffer);
+            		szTempBuffer.Format(L"\n  priorities food %d, production %d, commerce %d",
+            			pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_PRIORITY_FOOD),
+            			pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_PRIORITY_PRODUCTION),
+            			pWorkingCity->AI_getBestBuildDebugInfo(iPlotIndex, BEST_BUILD_DEBUG_PRIORITY_COMMERCE));
+            		szString.append(szTempBuffer);
             	// Fresol: debug only - does this team even see a bonus here, and which tech reveals it
             	{
             		BonusTypes ePlotBonus = pPlot->getBonusType();

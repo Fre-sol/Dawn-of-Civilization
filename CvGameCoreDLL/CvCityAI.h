@@ -25,6 +25,9 @@ struct CvBestBuildDebugInfo
 	BuildTypes eDbgBestBuild;
 	BuildTypes eForcedBuild;				// set when a worker is already building on this plot,
 										// which locks the candidates to that one build
+	int iFoodPriority;					// the three multipliers AI_bestPlotBuild() was called with
+	int iProductionPriority;
+	int iCommercePriority;
 	int iTurn;								// game turn this was written on, -1 = never
 	int iProbe;							// written and read back by the tooltip, must stay 777777
 };

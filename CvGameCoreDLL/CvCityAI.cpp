@@ -241,6 +241,9 @@ void CvCityAI::AI_reset()
 		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_OLD_RULE_BUILD] = NO_BUILD;
 		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_DBG_BEST_BUILD] = NO_BUILD;
 		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_FORCED_BUILD] = NO_BUILD;
+		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_PRIORITY_FOOD] = 0;
+		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_PRIORITY_PRODUCTION] = 0;
+		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_PRIORITY_COMMERCE] = 0;
 		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_CURRENT_VALUE] = -999999;
 		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_TURN] = -1;
 	}
@@ -5809,6 +5812,9 @@ void CvCityAI::AI_storeBestBuildDebug(int iIndex, CvBestBuildDebugInfo* pInfo)	/
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_DBG_BEST_VALUE] = pInfo->iDbgBestValue;
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_DBG_BEST_BUILD] = (int)pInfo->eDbgBestBuild;
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_FORCED_BUILD] = (int)pInfo->eForcedBuild;
+	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_PRIORITY_FOOD] = pInfo->iFoodPriority;
+	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_PRIORITY_PRODUCTION] = pInfo->iProductionPriority;
+	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_PRIORITY_COMMERCE] = pInfo->iCommercePriority;
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_SECOND_BUILD] = (int)pInfo->eSecondBestBuild;
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_WINNER_VALUE] = pInfo->iWinnerValue;
 	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_WINNER_BUILD] = (int)pInfo->eWinnerBuild;
@@ -6345,6 +6351,9 @@ void CvCityAI::AI_updateBestBuild()
 			{
 				CvBestBuildDebugInfo kDebugInfo;
 				AI_bestPlotBuild(pLoopPlot, &(m_aiBestBuildValue[iI]), &(m_aeBestBuild[iI]), iFoodMultiplier, iProductionMultiplier, iCommerceMultiplier, bChop, iHappyAdjust, iHealthAdjust, iDesiredFoodChange, &kDebugInfo);
+				kDebugInfo.iFoodPriority = iFoodMultiplier;
+				kDebugInfo.iProductionPriority = iProductionMultiplier;
+				kDebugInfo.iCommercePriority = iCommerceMultiplier;
 				AI_storeBestBuildDebug(iI, &kDebugInfo);
 				m_aiBestBuildValue[iI] *= 4;
 				m_aiBestBuildValue[iI] += 3 + iWorkerCount;  // to round up

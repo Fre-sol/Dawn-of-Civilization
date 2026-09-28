@@ -15028,13 +15028,13 @@ bool CvUnitAI::AI_improveBonus(int iMinValue, CvPlot** ppBestPlot, BuildTypes* p
                         eImprovement = pLoopPlot->getImprovementType();
 
                         // Fresol - start: a slave unit is spent on the build, and every improvement it can build
-                        // costs a happiness point. Let it work only while its city can pay for that - this covers
-                        // both replacing an ordinary mine or plantation and improving an empty bonus tile.
+                        // costs a happiness point. It may only work while the city keeps at least two points to spare after paying
+                        // for it, so this covers replacing a mine or plantation and improving an empty tile.
                         if (m_pUnitInfo->isSlave())
                         {
                         	CvCity* pSlaveCity = pLoopPlot->getWorkingCity();
                         
-                        	if ((pSlaveCity == NULL) || ((pSlaveCity->happyLevel() - pSlaveCity->unhappyLevel()) <= 1))
+                        	if ((pSlaveCity == NULL) || ((pSlaveCity->happyLevel() - pSlaveCity->unhappyLevel()) <= 2))
                         	{
                         		continue;
                         	}

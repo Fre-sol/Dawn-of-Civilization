@@ -4231,12 +4231,11 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
             		if (ePlotBonus != NO_BONUS)
             		{
             			TechTypes eReveal = (TechTypes)GC.getBonusInfo(ePlotBonus).getTechReveal();
-            			bool bHasReveal = ((eReveal != NO_TECH) && GET_TEAM(pPlot->getTeam()).isHasTech(eReveal));
+            			bool bHasReveal = (GET_TEAM(pPlot->getTeam()).isHasTech(eReveal) || GET_TEAM(pPlot->getTeam()).isForceRevealedBonus(ePlotBonus));	// Fresol: mirrors CvPlot::getBonusType()
             	
-            			szTempBuffer.Format(L"\n  reveal tech %s, has it %s, force revealed %s",
-            				(eReveal == NO_TECH) ? L"none" : GC.getTechInfo(eReveal).getDescription(),
-            				bHasReveal ? L"yes" : L"no",
-            				GET_TEAM(pPlot->getTeam()).isForceRevealedBonus(ePlotBonus) ? L"yes" : L"no");
+            					szTempBuffer.Format(L"\n  reveal tech %s, bonus visible to owner %s",
+            							(eReveal == NO_TECH) ? L"none needed" : GC.getTechInfo(eReveal).getDescription(),
+            							bHasReveal ? L"yes" : L"no");
             			szString.append(szTempBuffer);
             		}
             	

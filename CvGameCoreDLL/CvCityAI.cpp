@@ -228,25 +228,6 @@ void CvCityAI::AI_reset()
 		m_aeBestBuild[iI] = NO_BUILD;
 	}
 
-	// Fresol: debug only
-	for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
-	{
-		for (iJ = 0; iJ < BEST_BUILD_DEBUG_FIELDS; iJ++)
-		{
-			m_aiBestBuildDebug[iI][iJ] = 0;
-		}
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_CURRENT_IMPROVEMENT] = NO_IMPROVEMENT;
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_SECOND_BUILD] = NO_BUILD;
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_WINNER_BUILD] = NO_BUILD;
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_OLD_RULE_BUILD] = NO_BUILD;
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_DBG_BEST_BUILD] = NO_BUILD;
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_FORCED_BUILD] = NO_BUILD;
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_PRIORITY_FOOD] = 0;
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_PRIORITY_PRODUCTION] = 0;
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_PRIORITY_COMMERCE] = 0;
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_CURRENT_VALUE] = -999999;
-		m_aiBestBuildDebug[iI][BEST_BUILD_DEBUG_TURN] = -1;
-	}
 
 	for (iI = 0; iI < NUM_YIELD_TYPES; iI++)
 	{
@@ -5782,38 +5763,6 @@ int CvCityAI::AI_getBestBuildValue(int iIndex)
 }
 
 
-int CvCityAI::AI_getBestBuildDebugInfo(int iIndex, int iField)	// Fresol: debug only
-{
-	if (iIndex < 0 || iIndex >= NUM_CITY_PLOTS || iField < 0 || iField >= BEST_BUILD_DEBUG_FIELDS)
-	{
-		return -1;
-	}
-
-	return m_aiBestBuildDebug[iIndex][iField];
-}
-
-
-void CvCityAI::AI_storeBestBuildDebug(int iIndex, CvBestBuildDebugInfo* pInfo)	// Fresol: debug only
-{
-	FAssertMsg(iIndex >= 0 && iIndex < NUM_CITY_PLOTS, "iIndex is out of range");
-
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_CURRENT_VALUE] = pInfo->iCurrentValue;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_CURRENT_IMPROVEMENT] = (int)pInfo->eCurrentImprovement;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_SECOND_VALUE] = pInfo->iSecondValue;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_DBG_BEST_VALUE] = pInfo->iDbgBestValue;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_DBG_BEST_BUILD] = (int)pInfo->eDbgBestBuild;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_FORCED_BUILD] = (int)pInfo->eForcedBuild;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_PRIORITY_FOOD] = pInfo->iFoodPriority;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_PRIORITY_PRODUCTION] = pInfo->iProductionPriority;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_PRIORITY_COMMERCE] = pInfo->iCommercePriority;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_SECOND_BUILD] = (int)pInfo->eSecondBestBuild;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_WINNER_VALUE] = pInfo->iWinnerValue;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_WINNER_BUILD] = (int)pInfo->eWinnerBuild;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_OLD_RULE_VALUE] = pInfo->iOldRuleValue;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_OLD_RULE_BUILD] = (int)pInfo->eOldRuleBuild;
-	m_aiBestBuildDebug[iIndex][BEST_BUILD_DEBUG_TURN] = pInfo->iTurn;
-}
-
 
 int CvCityAI::AI_totalBestBuildValue(CvArea* pArea)
 {
@@ -6340,12 +6289,7 @@ void CvCityAI::AI_updateBestBuild()
 
 			if (NULL != pLoopPlot && pLoopPlot->getWorkingCity() == this)
 			{
-				CvBestBuildDebugInfo kDebugInfo;
-				AI_bestPlotBuild(pLoopPlot, &(m_aiBestBuildValue[iI]), &(m_aeBestBuild[iI]), iFoodMultiplier, iProductionMultiplier, iCommerceMultiplier, bChop, iHappyAdjust, iHealthAdjust, iDesiredFoodChange, &kDebugInfo);
-				kDebugInfo.iFoodPriority = iFoodMultiplier;
-				kDebugInfo.iProductionPriority = iProductionMultiplier;
-				kDebugInfo.iCommercePriority = iCommerceMultiplier;
-				AI_storeBestBuildDebug(iI, &kDebugInfo);
+				AI_bestPlotBuild(pLoopPlot, &(m_aiBestBuildValue[iI]), &(m_aeBestBuild[iI]), iFoodMultiplier, iProductionMultiplier, iCommerceMultiplier, bChop, iHappyAdjust, iHealthAdjust, iDesiredFoodChange);
 				m_aiBestBuildValue[iI] *= 4;
 				m_aiBestBuildValue[iI] += 3 + iWorkerCount;  // to round up
 				m_aiBestBuildValue[iI] /= (4 + iWorkerCount);
@@ -8558,7 +8502,7 @@ int CvCityAI::AI_buildUnitProb()
 
 
 // Improved worker AI provided by Blake - thank you!
-void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange, bool bOldRule, CvBestBuildDebugInfo* pDebugInfo)
+void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange)
 {
 	PROFILE_FUNC();
 
@@ -8583,14 +8527,6 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 	int iBestTempBuildValue;
 	int iI, iJ;
 
-	// Fresol - start: debug only - tracked so the tooltip can show how close the decision was
-	int iSecondValue = -2000000;
-	BuildTypes eSecondBuild = NO_BUILD;
-	int iDbgBestValue = -2000000;	// Fresol: debug only
-	BuildTypes eDbgBestBuild = NO_BUILD;	// Fresol: debug only
-	ImprovementTypes eCurrentImprovement = NO_IMPROVEMENT;
-	int iCurrentValue = -999999;	// Fresol: debug only - not evaluated
-	// Fresol - end
 
 	if (piBestValue != NULL)
 	{
@@ -8874,13 +8810,6 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 
 			if (bValid)
 			{
-				// Fresol - start: debug only - the improvement the plot already has, remembered here so
-				// the tooltip can name it even when it turns out not to compete at all
-				if (eImprovement == pPlot->getImprovementType())
-				{
-					eCurrentImprovement = eImprovement;
-				}
-				// Fresol - end
 				eFinalImprovement = finalImprovementUpgrade(eImprovement);
 
 				if (eFinalImprovement == NO_IMPROVEMENT)
@@ -9147,38 +9076,8 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 
 						// Leoreth: should be better by a significant margin
 						//iValue -= iBestValue / 4;
-						if (bOldRule)
-						{
-							// Fresol: debug only - this is the line commented out above; the tooltip uses this
-							// pass to show what the AI would decide (and score) if that rule were restored
-							iValue -= iBestValue / 4;
-						}
 					}
 
-					// Fresol - start: debug only - rank every candidate that got a final score, even when that
-					// score is zero or negative. The AI's own comparison below only ever sees values above zero,
-					// so on its own it cannot show a candidate that lost.
-					if (iValue > iDbgBestValue)
-					{
-						iSecondValue = iDbgBestValue;
-						eSecondBuild = eDbgBestBuild;
-					
-						iDbgBestValue = iValue;
-						eDbgBestBuild = eBestTempBuild;
-					}
-					else if (iValue > iSecondValue)
-					{
-						iSecondValue = iValue;
-						eSecondBuild = eBestTempBuild;
-					}
-					// Fresol - end
-					
-					if (eImprovement == pPlot->getImprovementType())
-					{
-						eCurrentImprovement = eImprovement;
-						iCurrentValue = iValue;
-					}
-					
 					if (iValue > iBestValue)
 					{
 						iBestValue = iValue;
@@ -9354,51 +9253,12 @@ void CvCityAI::AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTy
 			*peBestBuild = eBestBuild;
 		}
 	}
-	// Fresol - start: debug only - written for every plot of the city, whether or not the
-	// AI decided to change it, so the tooltip can tell "never looked at" from "looked at"
-	if (pDebugInfo != NULL)
-	{
-		pDebugInfo->eCurrentImprovement = eCurrentImprovement;
-		pDebugInfo->iCurrentValue = iCurrentValue;
-		pDebugInfo->eSecondBestBuild = eSecondBuild;
-		pDebugInfo->iDbgBestValue = iDbgBestValue;
-		pDebugInfo->eDbgBestBuild = eDbgBestBuild;
-		pDebugInfo->eForcedBuild = eForcedBuild;
-		pDebugInfo->iSecondValue = iSecondValue;
-		pDebugInfo->eWinnerBuild = eBestBuild;
-		pDebugInfo->iWinnerValue = iBestValue;
-		pDebugInfo->iTurn = GC.getGameINLINE().getGameTurn();
-	}
-	// Fresol - end
 }
 
-// Fresol - start: debug only - the caller's entry point. The work is done in
-// AI_bestPlotBuildInternal(); when someone can read the result (debug mode) the plot is
-// evaluated a second time with the rule of 7f7e7f489 enabled, so the tooltip can show how
-// the decision would change if that rule were restored.
-void CvCityAI::AI_bestPlotBuild(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange, CvBestBuildDebugInfo* pDebugInfo)
+void CvCityAI::AI_bestPlotBuild(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange)
 {
-	if (pDebugInfo != NULL)
-	{
-		pDebugInfo->eCurrentImprovement = NO_IMPROVEMENT;
-		pDebugInfo->iCurrentValue = -999999;		// not evaluated
-		pDebugInfo->iTurn = -2;			// Fresol: debug only - the wrapper ran, the evaluation has not recorded yet
-	}
-
-	AI_bestPlotBuildInternal(pPlot, piBestValue, peBestBuild, iFoodPriority, iProductionPriority, iCommercePriority, bChop, iHappyAdjust, iHealthAdjust, iFoodChange, false, pDebugInfo);
-
-	if (pDebugInfo != NULL && gDLL->getChtLvl() > 0)
-	{
-		int iOldRuleValue = 0;
-		BuildTypes eOldRuleBuild = NO_BUILD;
-
-		AI_bestPlotBuildInternal(pPlot, &iOldRuleValue, &eOldRuleBuild, iFoodPriority, iProductionPriority, iCommercePriority, bChop, iHappyAdjust, iHealthAdjust, iFoodChange, true, NULL);
-
-		pDebugInfo->eOldRuleBuild = eOldRuleBuild;
-		pDebugInfo->iOldRuleValue = iOldRuleValue;
-	}
+	AI_bestPlotBuildInternal(pPlot, piBestValue, peBestBuild, iFoodPriority, iProductionPriority, iCommercePriority, bChop, iHappyAdjust, iHealthAdjust, iFoodChange);
 }
-// Fresol - end
 
 
 int CvCityAI::AI_getHappyFromHurry(HurryTypes eHurry)

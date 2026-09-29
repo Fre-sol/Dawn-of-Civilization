@@ -9,28 +9,6 @@
 
 typedef std::vector<std::pair<UnitAITypes, int> > UnitTypeWeightArray;
 
-// Fresol - start: debug only - what the worker AI made of one plot. A plain local struct:
-// only CvCityAI.cpp ever touches it, the values are stored and read as plain ints.
-struct CvBestBuildDebugInfo
-{
-	ImprovementTypes eCurrentImprovement;	// the improvement the plot already has
-	int iCurrentValue;						// its score, i.e. what doing nothing is worth
-	BuildTypes eSecondBestBuild;			// runner up among the improvement candidates
-	int iSecondValue;
-	BuildTypes eWinnerBuild;				// what is picked as it stands
-	int iWinnerValue;
-	BuildTypes eOldRuleBuild;			// what would be picked with the rule of 7f7e7f489 enabled
-	int iOldRuleValue;
-	int iDbgBestValue;						// best candidate overall, even if it scored below zero
-	BuildTypes eDbgBestBuild;
-	BuildTypes eForcedBuild;				// set when a worker is already building on this plot,
-										// which locks the candidates to that one build
-	int iFoodPriority;					// the three multipliers AI_bestPlotBuild() was called with
-	int iProductionPriority;
-	int iCommercePriority;
-	int iTurn;								// game turn this was written on, -1 = never
-};
-// Fresol - end
 
 class CvCityAI : public CvCity
 {
@@ -110,8 +88,6 @@ public:
 	void AI_forceEmphasizeCulture(bool bNewValue);
 
 	int AI_getBestBuildValue(int iIndex);
-	int AI_getBestBuildDebugInfo(int iIndex, int iField);									// Fresol: debug only
-	void AI_storeBestBuildDebug(int iIndex, CvBestBuildDebugInfo* pInfo);			// Fresol: debug only
 	int AI_totalBestBuildValue(CvArea* pArea);
 
 	int AI_clearFeatureValue(int iIndex);
@@ -164,7 +140,6 @@ protected:
 
 	BuildTypes m_aeBestBuild[NUM_CITY_PLOTS];
 
-	int m_aiBestBuildDebug[NUM_CITY_PLOTS][BEST_BUILD_DEBUG_FIELDS];						// Fresol: debug only
 
 	bool* m_pbEmphasize;
 	
@@ -214,8 +189,8 @@ protected:
 	int AI_experienceWeight();
 	int AI_buildUnitProb();
 
-	void AI_bestPlotBuild(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange, CvBestBuildDebugInfo* pDebugInfo = NULL);
-	void AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange, bool bOldRule, CvBestBuildDebugInfo* pDebugInfo);
+	void AI_bestPlotBuild(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange);
+	void AI_bestPlotBuildInternal(CvPlot* pPlot, int* piBestValue, BuildTypes* peBestBuild, int iFoodPriority, int iProductionPriority, int iCommercePriority, bool bChop, int iHappyAdjust, int iHealthAdjust, int iFoodChange);
 	
 	void AI_buildGovernorChooseProduction();
 	

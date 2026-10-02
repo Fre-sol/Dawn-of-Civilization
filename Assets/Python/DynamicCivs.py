@@ -487,7 +487,7 @@ dEmpireThreshold = {
 	iPoland : 3,
 	iInca : 3,
 	iMongols : 8,
-	iMughals : 6,
+	iMughals : 9,
 	iItaly : 7,
 	iTatars: 3,
 	iRussia : 8,
@@ -1271,11 +1271,17 @@ def specificName(iPlayer):
 			return "TXT_KEY_CIV_BENGAL_BANGLADESH"
 		
 		if iEra <= iRenaissance:
-			if iReligion == iHinduism:
-				return "TXT_KEY_CIV_BENGAL_SENA"
+			if bEmpire:
+				if iReligion == iHinduism:
+					return "TXT_KEY_CIV_BENGAL_SENA"
 			
-			if iReligion == iBuddhism:
-				return "TXT_KEY_CIV_BENGAL_PALA"
+				if iReligion == iBuddhism:
+					return "TXT_KEY_CIV_BENGAL_PALA"
+				
+				return civAdjective(iPlayer)
+			
+			if iReligion != iIslam:
+				return capital.getName()
 		
 	elif iCiv == iArabia:
 		if bResurrected:
@@ -2015,7 +2021,10 @@ def specificAdjective(iPlayer):
 	
 	elif iCiv == iMughals:
 		if not tPlayer.isHasTech(iFirearms):
-			return "TXT_KEY_CIV_MUGHALS_GHORID"
+			if getColumn(iPlayer) <= 7:
+				return "TXT_KEY_CIV_MUGHALS_TUGHLUQ"
+			
+			return "TXT_KEY_CIV_MUGHALS_LODI"
 	
 	elif iCiv == iTatars:
 		if capital.getRegionID() in [rUrals, rSiberia]:
@@ -2422,6 +2431,9 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 			return "TXT_KEY_CIV_BYZANTIUM_DESPOTATE"
 	
 	elif iCiv == iRajputs:
+		if iReligion == iIslam:
+			return "TXT_KEY_SULTANATE_OF"
+		
 		if bEmpire:
 			return "TXT_KEY_EMPIRE_ADJECTIVE"
 		
@@ -2734,6 +2746,9 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 			return "TXT_KEY_CIV_AZTECS_ALTEPETL"
 				
 	elif iCiv == iMughals:
+		if iReligion != iIslam:
+			return "TXT_KEY_MAHARAJATE_OF"
+		
 		if bResurrected:
 			if bEmpire:
 				return "TXT_KEY_EMPIRE_OF"
@@ -2972,6 +2987,9 @@ def leader(iPlayer):
 		
 		if iEra >= iMedieval: return iZaraYaqob
 	
+	elif iCiv == iTamils:
+		if iEra >= iRenaissance: return iMangammal
+	
 	elif iCiv == iKarnataka:
 		if getColumn(iPlayer) >= 11: return iKrishnaDevaRaya
 		
@@ -2980,6 +2998,9 @@ def leader(iPlayer):
 	
 	elif iCiv == iMali:
 		if getColumn(iPlayer) >= 6: return iMansaMusa
+		
+	elif iCiv == iRajputs:
+		if getColumn(iPlayer) >= 9: return iSanga
 	
 	elif iCiv == iMalays:
 		if iEra >= iRenaissance: return iTunPerak
@@ -2992,6 +3013,9 @@ def leader(iPlayer):
 		if scenarioStartYear() >= 1500: return iChristian
 		
 		if iReligion != -1 and capital in cities.rectangle(tNorway): return iHaakon
+	
+	elif iCiv == iBengal:
+		if iReligion == iIslam: return iAlauddin
 		
 	elif iCiv == iTurks:
 		if bResurrected: return iTamerlane

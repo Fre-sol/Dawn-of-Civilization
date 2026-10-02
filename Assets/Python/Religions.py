@@ -38,9 +38,6 @@ iNetherlands: 10,
 iAmerica	: 20,
 }, 50)
 
-def getCatholicPreference(iPlayer):
-	return dCatholicPreference[iPlayer]
-
 
 ## HANDLERS
 	
@@ -208,34 +205,11 @@ def spreadReligionByContact(iReligion, rRegion, lCivilizations):
 			spreadCity.spreadReligion(iReligion)
 
 
-# Fresol: from that year on these declines are a state rather than an event, so a scenario whose
-# first turn is already later applies them there too. Each one is swept once, not every turn.
-lReligionDeclinesApplied = []
-
-
 @handler("BeginGameTurn")
-def checkRemoveBuddhismIndia():
-	if year() >= year(1000) and iBuddhism not in lReligionDeclinesApplied:
-		removeBuddhismIndia()
-		lReligionDeclinesApplied.append(iBuddhism)
-
-
-@handler("BeginGameTurn")
-def checkRemoveJainismIndia():
-	if year() >= year(1200) and iJainism not in lReligionDeclinesApplied:
-		removeJainismIndia()
-		lReligionDeclinesApplied.append(iJainism)
-
-
-# Fresol: also on loading, so a scenario starting after the year shows the declined state from its
-# first turn instead of its second. This one leaves no mark on purpose: if the regions are not ready
-# to be swept this early it simply does nothing, and the turn check above still applies it.
-@handler("GameStart")
-def applyReligionDeclinesOnStart():
-	if year() >= year(1000):
-		removeBuddhismIndia()
-	if year() >= year(1200):
-		removeJainismIndia()
+def checkReligionDisappearance():
+	for iYear, func in dDisappearances.items():
+		if year() == year(iYear):
+			func()
 
 
 @handler("techAcquired")
@@ -381,11 +355,11 @@ def reformationChoice(iPlayer):
 
 
 def chooseProtestantism(iPlayer):
-	return rand(100) >= getCatholicPreference(iPlayer)
+	return rand(100) >= dCatholicPreference[iPlayer]
 
 
 def isProtestantAnyway(iPlayer):
-	return rand(100) >= (getCatholicPreference(iPlayer)+50)/2
+	return rand(100) >= (dCatholicPreference[iPlayer]+50)/2
 
 
 def embraceReformation(iPlayer):
@@ -459,6 +433,15 @@ def removeJainismIndia():
 	lMinorityRegions = [rRajputana, rDeccan, rPunjab]
 	for plot in plots.regions(*lMinorityRegions):
 		plot.setSpreadFactor(iJainism, iMinority)
+
+
+### functions by year ###
+
+
+dDisappearances = {
+	1000: removeBuddhismIndia,
+	1200: removeJainismIndia,
+}
 
 
 ### popup handlers - transition to using Popups module ###

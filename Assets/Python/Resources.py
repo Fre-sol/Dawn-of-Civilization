@@ -339,6 +339,7 @@ dFeaturesDict = {
 	(68, 57)  : (1100, iFloodPlains), # Lombardy
 	(67, 55)  : (1100, iFloodPlains), # Tuscany
 	(114, 43) : (1200, iRainforest),  # Bengal
+	(38, 65)  : (1400, iStrait),      # Newfoundland
 	(120, 40) : (1700, iRainforest),  # Laos
 	(8, 55)   : (1850, iFloodPlains), # California
 	(8, 54)   : (1850, iFloodPlains), # California
@@ -441,7 +442,8 @@ def createTerrains():
 @handler("BeginGameTurn")
 def createFeatures():
 	for tile, iFeature in dFeatures[game.getGameTurn()]:
-		plot(tile).setFeatureType(iFeature, 0)
+		if not plot(tile).isCity() or iFeature == iFloodPlains:
+			plot(tile).setFeatureType(iFeature, 0)
 
 
 @handler("BeginGameTurn")
@@ -512,7 +514,8 @@ def setupScenarioResources():
 	for iTurn, lFeatures in dFeatures:
 		if iTurn <= iStartTurn:
 			for (x, y), iFeature in lFeatures:
-				plot(x, y).setFeatureType(iFeature, 0)
+				if not plot(x, y).isCity() or iFeature == iFloodPlains:
+					plot(x, y).setFeatureType(iFeature, 0)
 	
 	for iTurn, lFeatures in dRemovedFeatures:
 		if iTurn <= iStartTurn:

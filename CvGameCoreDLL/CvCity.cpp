@@ -4584,12 +4584,12 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bObsolet
 
 			for (iI = 0; iI < GC.getNumSpecialistInfos(); iI++)
 			{
-				changeStateReligionSpecialistCount(eReligion, (SpecialistTypes)iI, GC.getBuildingInfo(eBuilding).getStateReligionSpecialistCount((SpecialistTypes)iI));
+				changeStateReligionSpecialistCount(eReligion, (SpecialistTypes)iI, GC.getBuildingInfo(eBuilding).getStateReligionSpecialistCount((SpecialistTypes)iI) * iChange);
 			}
 
 			for (iI = 0; iI < NUM_COMMERCE_TYPES; iI++)
 			{
-				changeStateReligionCommerceRateModifier(eReligion, (CommerceTypes)iI, GC.getBuildingInfo(eBuilding).getStateReligionCommerceRateModifier((CommerceTypes)iI));
+				changeStateReligionCommerceRateModifier(eReligion, (CommerceTypes)iI, GC.getBuildingInfo(eBuilding).getStateReligionCommerceRateModifier((CommerceTypes)iI) * iChange);
 			}
 		}
 
@@ -10081,7 +10081,11 @@ void CvCity::setStateReligionCommerceRateModifier(ReligionTypes eReligion, Comme
 // Leoreth
 void CvCity::changeStateReligionCommerceRateModifier(ReligionTypes eReligion, CommerceTypes eCommerce, int iChange)
 {
+	if (iChange == 0) return;
+		
 	m_ppaiStateReligionCommerceRateModifier[eReligion][eCommerce] += iChange;
+
+	updateCommerce(eCommerce);
 }
 
 
@@ -18511,8 +18515,6 @@ void CvCity::liberate(bool bConquest)
 
 	if (NO_PLAYER != ePlayer)
 	{
-		CvEventReporter::getInstance().cityLiberated(this);
-
 		int iOldOwnerCulture = getCultureTimes100(eOwner);
 		int iOldMasterLand = 0;
 		int iOldVassalLand = 0;
@@ -18539,8 +18541,12 @@ void CvCity::liberate(bool bConquest)
 		}
 		GC.getGameINLINE().addReplayMessage(REPLAY_MESSAGE_MAJOR_EVENT, eOwner, szBuffer, getX_INLINE(), getY_INLINE(), (ColorTypes)GC.getInfoTypeForString("COLOR_HIGHLIGHT_TEXT"));
 
+		CvPlot* const pPlot = plot();
+
 		GET_PLAYER(ePlayer).acquireCity(this, bConquest, true, true);
 		GET_PLAYER(ePlayer).AI_changeMemoryCount(eOwner, MEMORY_LIBERATED_CITIES, 1);
+
+		CvEventReporter::getInstance().cityLiberated(pPlot->getPlotCity());
 
 		if (GET_TEAM(GET_PLAYER(ePlayer).getTeam()).isVassal(GET_PLAYER(eOwner).getTeam()))
 		{
@@ -18614,7 +18620,8 @@ PlayerTypes CvCity::getLiberationPlayer(bool bConquest) const
 
 	for (int iPlayer = 0; iPlayer < MAX_CIV_PLAYERS; ++iPlayer)
 	{
-		CvPlayer& kLoopPlayer = GET_PLAYER((PlayerTypes)iPlayer);
+		PlayerTypes ePlayer = (PlayerTypes)iPlayer;
+		CvPlayer& kLoopPlayer = GET_PLAYER(ePlayer);
 
 		if (kLoopPlayer.isMinorCiv())
 		{
@@ -18625,6 +18632,9 @@ PlayerTypes CvCity::getLiberationPlayer(bool bConquest) const
 		{
 			if (kLoopPlayer.canReceiveTradeCity())
 			{
+				if (plot()->getSettlerValue(ePlayer) == 0 && getCultureTimes100(ePlayer) * 5 < countTotalCultureTimes100() && !isPreviousOwner(ePlayer))
+					continue;
+
 				CvCity* pCapital = kLoopPlayer.getCapitalCity();
 				if (NULL != pCapital)
 				{

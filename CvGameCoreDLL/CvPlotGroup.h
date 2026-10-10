@@ -23,6 +23,7 @@ public:
 
 	void addPlot(CvPlot* pPlot);
 	void removePlot(CvPlot* pPlot);
+	int countReachablePlots(PlayerTypes ePlayer, CvPlot* pBlockedPlot = NULL);	// Fresol
 	void recalculatePlots();														
 
 	int getID() const;

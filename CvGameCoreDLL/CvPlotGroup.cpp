@@ -25,8 +25,15 @@ static std::vector<char>	s_abPlotGroupTradeNet;		// cached isTradeNetwork result
 static std::vector<CvPlot*>	s_apPlotGroupStack;
 static int					s_iPlotGroupStamp = 0;
 
-static int countReachablePlots(CvPlotGroup* pPlotGroup, CvPlot* pStartPlot, PlayerTypes ePlayer)
+int CvPlotGroup::countReachablePlots(PlayerTypes ePlayer, CvPlot* pBlockedPlot)
 {
+	CLLNode<XYCoords>* pHeadNode = headPlotsNode();
+
+	if (pHeadNode == NULL)
+	{
+		return 0;
+	}
+
 	CvMap& kMap = GC.getMapINLINE();
 	const int iNumPlots = kMap.numPlotsINLINE();
 
@@ -43,6 +50,30 @@ static int countReachablePlots(CvPlotGroup* pPlotGroup, CvPlot* pStartPlot, Play
 	const TeamTypes eTeam = GET_PLAYER(ePlayer).getTeam();
 
 	s_apPlotGroupStack.clear();
+
+	// Start from the first member that is not blocked: that is the node recalculatePlots
+	// would start its own walk from once the blocked plot has been taken out of the group.
+	CLLNode<XYCoords>* pNode = pHeadNode;
+	CvPlot* pStartPlot = NULL;
+
+	while (pNode != NULL)
+	{
+		CvPlot* pCandidate = kMap.plotSorenINLINE(pNode->m_data.iX, pNode->m_data.iY);
+
+		if (pCandidate != pBlockedPlot)
+		{
+			pStartPlot = pCandidate;
+			break;
+		}
+
+		pNode = nextPlotsNode(pNode);
+	}
+
+	if (pStartPlot == NULL)
+	{
+		return 0;
+	}
+
 	s_apPlotGroupStack.push_back(pStartPlot);
 	s_aiPlotGroupSeen[kMap.plotNumINLINE(pStartPlot->getX_INLINE(), pStartPlot->getY_INLINE())] = s_iPlotGroupStamp;
 
@@ -59,12 +90,12 @@ static int countReachablePlots(CvPlotGroup* pPlotGroup, CvPlot* pStartPlot, Play
 		{
 			CvPlot* pAdjacentPlot = plotDirection(pPlot->getX_INLINE(), pPlot->getY_INLINE(), (DirectionTypes)iI);
 
-			if (pAdjacentPlot == NULL)
+			if (pAdjacentPlot == NULL || pAdjacentPlot == pBlockedPlot)
 			{
 				continue;
 			}
 
-			if (pAdjacentPlot->getPlotGroup(ePlayer) != pPlotGroup)
+			if (pAdjacentPlot->getPlotGroup(ePlayer) != this)
 			{
 				continue;
 			}
@@ -217,9 +248,7 @@ void CvPlotGroup::recalculatePlots()
 
 	if (pPlotNode != NULL)
 	{
-		pPlot = GC.getMapINLINE().plotSorenINLINE(pPlotNode->m_data.iX, pPlotNode->m_data.iY);
-
-		if (countReachablePlots(this, pPlot, eOwner) == getLengthPlots())
+		if (countReachablePlots(eOwner) == getLengthPlots())
 		{
 			return;
 		}

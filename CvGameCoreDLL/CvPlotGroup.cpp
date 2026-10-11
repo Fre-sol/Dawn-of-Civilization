@@ -2,6 +2,20 @@
 
 #include "CvGameCoreDLL.h"
 #include "CvPlotGroup.h"
+
+// Fresol - start: see recalculatePlots
+static bool s_bSuspendCityBonusSync = false;
+
+void setSuspendCityBonusSync(bool bSuspend)
+{
+	s_bSuspendCityBonusSync = bSuspend;
+}
+
+bool isCityBonusSyncSuspended()
+{
+	return s_bSuspendCityBonusSync;
+}
+// Fresol - end
 #include <map> // Fresol: the rebuild groups its members per component
 #include "CvPlot.h"
 #include "CvGlobals.h"
@@ -395,6 +409,40 @@ void CvPlotGroup::removePlot(CvPlot* pPlot)
 }
 
 
+// Fresol - start
+// A city keeps the bonus counts of the plot group it sits in. Rebuilding a group plot
+// by plot used to move every bonus in and out of every city of the group at every
+// step, and each of those moves walks the group (see changeNumBonuses), so the upkeep
+// was quadratic in the size of the group. What comes out of a rebuild only depends on
+// the groups it ends in, so the counts are written once, at the end, and the
+// incremental upkeep is suspended while the group is taken apart and put back.
+static void syncCityBonuses(PlayerTypes eOwner, const std::vector<int>& aiPlotIndex)
+{
+	CvMap& kMap = GC.getMapINLINE();
+	const int iNumBonuses = GC.getNumBonusInfos();
+
+	for (int i = 0; i < (int)aiPlotIndex.size(); ++i)
+	{
+		CvPlot* pPlot = kMap.plotByIndexINLINE(aiPlotIndex[i]);
+		CvCity* pCity = pPlot->getPlotCity();
+
+		if (pCity == NULL || pCity->getOwnerINLINE() != eOwner)
+		{
+			continue;
+		}
+
+		CvPlotGroup* pNewPlotGroup = pPlot->getPlotGroup(eOwner);
+
+		for (int iI = 0; iI < iNumBonuses; ++iI)
+		{
+			const int iNew = (pNewPlotGroup != NULL) ? pNewPlotGroup->getNumBonuses((BonusTypes)iI) : 0;
+
+			pCity->changeNumBonuses((BonusTypes)iI, iNew - pCity->getNumBonuses((BonusTypes)iI));
+		}
+	}
+}
+// Fresol - end
+
 void CvPlotGroup::recalculatePlots()
 {
 	PROFILE_FUNC();
@@ -416,6 +464,9 @@ void CvPlotGroup::recalculatePlots()
 			return;
 		}
 	}
+
+	bool bWasSuspended = isCityBonusSyncSuspended(); // Fresol
+	setSuspendCityBonusSync(true); // Fresol
 
 	oldPlotGroup.clear();
 
@@ -442,6 +493,9 @@ void CvPlotGroup::recalculatePlots()
 
 	computeRebuildComponents(eOwner, oldPlotGroup, aiPlotIndex, aiLabel);
 	rebuildPlotGroups(eOwner, aiPlotIndex, aiLabel);
+
+	syncCityBonuses(eOwner, aiPlotIndex); // Fresol
+	setSuspendCityBonusSync(bWasSuspended); // Fresol
 }
 
 
@@ -494,21 +548,24 @@ void CvPlotGroup::changeNumBonuses(BonusTypes eBonus, int iChange)
 
 		//FAssertMsg(m_paiNumBonuses[eBonus] >= 0, "m_paiNumBonuses[eBonus] is expected to be non-negative (invalid Index)"); XXX
 
-		pPlotNode = headPlotsNode();
-
-		while (pPlotNode != NULL)
+		if (!s_bSuspendCityBonusSync)
 		{
-			pCity = GC.getMapINLINE().plotSorenINLINE(pPlotNode->m_data.iX, pPlotNode->m_data.iY)->getPlotCity();
+			pPlotNode = headPlotsNode();
 
-			if (pCity != NULL)
+			while (pPlotNode != NULL)
 			{
-				if (pCity->getOwnerINLINE() == getOwnerINLINE())
-				{
-					pCity->changeNumBonuses(eBonus, iChange);
-				}
-			}
+				pCity = GC.getMapINLINE().plotSorenINLINE(pPlotNode->m_data.iX, pPlotNode->m_data.iY)->getPlotCity();
 
-			pPlotNode = nextPlotsNode(pPlotNode);
+				if (pCity != NULL)
+				{
+					if (pCity->getOwnerINLINE() == getOwnerINLINE())
+					{
+						pCity->changeNumBonuses(eBonus, iChange);
+					}
+				}
+
+				pPlotNode = nextPlotsNode(pPlotNode);
+			}
 		}
 
 		// Leoreth: Escorial

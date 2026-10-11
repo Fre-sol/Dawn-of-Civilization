@@ -20298,7 +20298,20 @@ void CvCity::spare(int iCaptureGold)
 void CvCity::raze(int iCaptureGold)
 {
 	setTotalPopulationLoss(getPopulation());
-	completeAcquisition(iCaptureGold);
+
+	// Fresol - start: burning a city down loots what sacking it loots
+	int iSackGold = iCaptureGold / 2;
+
+	// Leoreth: Norse UP
+	if (getCivilizationType() == NORSE && GET_PLAYER(getOwnerINLINE()).getCurrentEra() <= ERA_MEDIEVAL)
+	{
+		iSackGold += iCaptureGold + iSackGold;
+	}
+
+	GET_PLAYER(getOwnerINLINE()).changeGold(iSackGold);
+	// Fresol - end
+
+	completeAcquisition(iCaptureGold + iSackGold);
 }
 
 void CvCity::completeRaze()

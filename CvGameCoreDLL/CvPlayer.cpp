@@ -5306,6 +5306,7 @@ void CvPlayer::raze(CvCity* pCity)
 		if (GET_PLAYER(eHighestCulturePlayer).getTeam() != getTeam())
 		{
 			GET_PLAYER(eHighestCulturePlayer).AI_changeMemoryCount(getID(), MEMORY_RAZED_CITY, 1);
+			GET_PLAYER(eHighestCulturePlayer).AI_changeMemoryCount(getID(), MEMORY_SACKED_CITY, 1);	// Fresol: razing carries the sack's resentment as well
 		}
 	}
 

@@ -136,7 +136,8 @@ def exportAreaExport(lPlots, bWaterException, bPeakException):
 	
 	exceptions = [location(p) for p in plots.rectangle(tTL, tBR) if location(p) not in lPlots and not p.isWater()]
 
-	file_path = "%s/%s/%s" % (path.getModDir(), EXPORT_MAPS_PATH, "Export/Area.txt")
+	# Fresol: normpath so the path shown and used has one kind of separator
+	file_path = os.path.normpath("%s/%s/%s" % (path.getModDir(), EXPORT_MAPS_PATH, "Export/Area.txt"))
 	file = open(file_path, "w")
 	
 	try:
@@ -182,8 +183,8 @@ def exportAreaExport(lPlots, bWaterException, bPeakException):
 dCsvFolders = {'SettlerValues': 'Settler', 'WarMaps': 'War'}
 
 def writeMapCsv(sFileLocation, sName, valueFunction, *args, **kwargs):
-	sFolder = os.path.join(os.getcwd(), 'Mods', 'RFC Dawn of Civilization',
-		EXPORT_MAPS_PATH, dCsvFolders.get(sFileLocation, sFileLocation))
+	sFolder = os.path.normpath(os.path.join(os.getcwd(), 'Mods', 'RFC Dawn of Civilization',
+		EXPORT_MAPS_PATH, dCsvFolders.get(sFileLocation, sFileLocation)))
 	if not os.path.isdir(sFolder):
 		os.makedirs(sFolder)
 

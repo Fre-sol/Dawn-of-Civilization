@@ -67,11 +67,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_AQUEDUCT_STRATEGY</Tag>
-		<English>[COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] store food to help increase a city's growth rate. [COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] are required to build a [COLOR_BUILDING_TEXT]Bath[COLOR_REVERT].</English>
-		<French>[COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] store food to help increase a city's growth rate. [COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] are required to build a [COLOR_BUILDING_TEXT]Bath[COLOR_REVERT].</French>
-		<German>[COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] store food to help increase a city's growth rate. [COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] are required to build a [COLOR_BUILDING_TEXT]Bath[COLOR_REVERT].</German>
-		<Italian>[COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] store food to help increase a city's growth rate. [COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] are required to build a [COLOR_BUILDING_TEXT]Bath[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] store food to help increase a city's growth rate. [COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] are required to build a [COLOR_BUILDING_TEXT]Bath[COLOR_REVERT].</Spanish>
+		<English>[COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] store food to help increase a city's growth rate, and they bring fresh water to a city that has none - worth two health, where a city on a river or a fresh water lake already has it. [COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] are required to build a [COLOR_BUILDING_TEXT]Bath[COLOR_REVERT].</English>
+		<French>[COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] store food to help increase a city's growth rate, and they bring fresh water to a city that has none - worth two health, where a city on a river or a fresh water lake already has it. [COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] are required to build a [COLOR_BUILDING_TEXT]Bath[COLOR_REVERT].</French>
+		<German>[COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] store food to help increase a city's growth rate, and they bring fresh water to a city that has none - worth two health, where a city on a river or a fresh water lake already has it. [COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] are required to build a [COLOR_BUILDING_TEXT]Bath[COLOR_REVERT].</German>
+		<Italian>[COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] store food to help increase a city's growth rate, and they bring fresh water to a city that has none - worth two health, where a city on a river or a fresh water lake already has it. [COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] are required to build a [COLOR_BUILDING_TEXT]Bath[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] store food to help increase a city's growth rate, and they bring fresh water to a city that has none - worth two health, where a city on a river or a fresh water lake already has it. [COLOR_BUILDING_TEXT]Aqueducts[COLOR_REVERT] are required to build a [COLOR_BUILDING_TEXT]Bath[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_ARGENTINE_REFRIGERATION_PLANT</Tag>

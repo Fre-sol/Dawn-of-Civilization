@@ -2433,14 +2433,7 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 
 		if (eBuilding == eHarbor)
 		{
-			bool bWater = false;
-			for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
-			{
-				CvPlot* pLoopPlot = getCityIndexPlot(iI);
-				if (pLoopPlot != NULL && pLoopPlot->isWater()) { bWater = true; break; }
-			}
-
-			if (!bWater) return false;
+			if (!hasWaterInRadius()) return false;
 		}
 	}
 	// Fresol - end
@@ -5531,6 +5524,19 @@ bool CvCity::isCoastalOld() const
 	return plot()->isCoastalLand(0);
 }
 //Rhye - end
+
+// Fresol - start: is there water anywhere among the city's twenty-one tiles?
+bool CvCity::hasWaterInRadius() const
+{
+	for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
+	{
+		CvPlot* pLoopPlot = getCityIndexPlot(iI);
+		if (pLoopPlot != NULL && pLoopPlot->isWater()) return true;
+	}
+
+	return false;
+}
+// Fresol - end
 
 
 bool CvCity::isDisorder() const

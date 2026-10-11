@@ -548,6 +548,14 @@
 		<Spanish>[COLOR_WARNING_TEXT]Requires Access to Coast[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUILDING_REQUIRES_WATER_RADIUS</Tag>
+		<English>[COLOR_WARNING_TEXT]Requires water tile within city radius[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]Requires water tile within city radius[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]Requires water tile within city radius[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]Requires water tile within city radius[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]Requires water tile within city radius[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUILDING_REQUIRES_WATER_POWER</Tag>
 		<English>[COLOR_WARNING_TEXT]Requires River Crossing between Hills or Peaks adjacent to City[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]Requires River Crossing between Hills or Peaks adjacent to City[COLOR_REVERT]</French>

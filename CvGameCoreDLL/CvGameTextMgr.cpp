@@ -12417,6 +12417,22 @@ void CvGameTextMgr::buildBuildingRequiresString(CvWStringBuffer& szBuffer, Build
 			}
 		}
 
+		// Fresol - start: the harbor asks for water anywhere in its radius, not on its doorstep
+		{
+			static BuildingTypes eHarbor = NO_BUILDING;
+			if (eHarbor == NO_BUILDING) eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
+
+			if (eBuilding == eHarbor)
+			{
+				if (NULL == pCity || NO_PLAYER == ePlayer || !pCity->hasWaterInRadius())
+				{
+					szBuffer.append(NEWLINE);
+					szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_REQUIRES_WATER_RADIUS"));
+				}
+			}
+		}
+		// Fresol - end
+
 		if (kBuilding.isRiver())
 		{
 			if (NULL == pCity || NO_PLAYER == ePlayer || !pCity->plot()->isRiver())

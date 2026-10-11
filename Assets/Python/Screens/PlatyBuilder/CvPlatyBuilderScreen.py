@@ -1431,7 +1431,7 @@ class CvWorldBuilderScreen:
 							sText = CyTranslator().getText(str(lReligionMapTexts[i]), ())
 							screen.addPullDownString("PresetValue", sText, i, i, i == self.m_iReligionMapValue)
 					elif self.iPlayerAddMode == iModeWarMap:
-						for i in range(0, iMaxWarValue+1, 2):
+						for i in lWarPresetValues:
 							screen.addPullDownString("PresetValue", str(i), i, i, i == iWarValue)
 					if self.iPlayerAddMode == iModeSettlerValue:
 						for i in range(len(lPresetValues)):

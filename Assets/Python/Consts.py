@@ -1372,9 +1372,11 @@ lScenarioStartYears = [-3000, 600, 1500, 1700, 1815]
 iNumPlotStabilityTypes = 4
 (iCoreArea, iHistoricalArea, iConquestArea, iForeignArea) = range(iNumPlotStabilityTypes)
 lStabilityColors = ["COLOR_CYAN", "COLOR_GREEN", "COLOR_YELLOW", "COLOR_RED"]
-lPresetValues = [3, 20, 90, 200, 500, 700]
+# Fresol: the options the WorldBuilder presets offer. Settler values are the four
+# tiers the AI distinguishes (0, below 5, 10 and 20); war values only 2, 5 and 10.
+lPresetValues = [1, 5, 10, 20]
 
-iMaxWarValue = 12
+lWarPresetValues = [2, 5, 10]
 lWarMapColors = ["COLOR_RED", "COLOR_PLAYER_ORANGE", "COLOR_YELLOW", "COLOR_GREEN", "COLOR_PLAYER_DARK_GREEN", "COLOR_BLUE"]
 
 lReligionMapColors = ["COLOR_PLAYER_ORANGE", "COLOR_YELLOW", "COLOR_GREEN", "COLOR_CYAN"]

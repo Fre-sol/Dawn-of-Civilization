@@ -127,25 +127,6 @@ def onCityAcquired(iOwner, iPlayer, city, bConquest):
 	if player(iPlayer).isBarbarian():
 		checkBarbarianCollapse(iOwner)
 
-@handler("cityRazed")
-def onCityRazed(city, iPlayer):
-	iOwner = slot(Civ(city.getPreviousCiv()))
-	if iOwner < 0:
-		return 
-	
-	if player(iOwner).isBarbarian():
-		return
-
-	if player(iPlayer).isHuman() and civ(iPlayer) != iMongols:
-		iRazePenalty = -10
-		if city.getHighestPopulation() < 5 and not city.isCapital():
-			iRazePenalty = -2 * city.getHighestPopulation()
-			
-		if is_minor(iOwner): iRazePenalty /= 2
-			
-		data.iHumanRazePenalty += iRazePenalty
-		checkStability(iPlayer)
-
 @handler("techAcquired")
 def onTechAcquired(iTech, iTeam, iPlayer):
 	if year() == scenarioStartTurn():

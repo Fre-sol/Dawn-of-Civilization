@@ -3088,7 +3088,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=7,y=22
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_OCEAN
 	PlotType=3
 EndPlot
@@ -3912,7 +3911,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=9,y=10
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_OCEAN
 	PlotType=3
 EndPlot
@@ -12230,7 +12228,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=27,y=58
-	FeatureType=FEATURE_STRAIT, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -12678,7 +12675,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=28,y=59
-	FeatureType=FEATURE_STRAIT, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -16440,7 +16436,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=36,y=58
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -58438,7 +58433,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=129,y=22
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -58893,13 +58887,11 @@ EndPlot
 BeginPlot
 	x=130,y=22
 	BonusType=BONUS_OIL
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=130,y=23
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -59363,7 +59355,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=131,y=23
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -59829,7 +59820,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=132,y=23
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -60291,7 +60281,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=133,y=24
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -60737,7 +60726,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=134,y=24
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -61175,7 +61163,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=135,y=24
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -61613,7 +61600,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=136,y=24
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -62044,7 +62030,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=137,y=24
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -62485,7 +62470,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=138,y=24
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -66318,7 +66302,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=147,y=19
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -66734,7 +66717,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=148,y=19
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -67157,7 +67139,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=149,y=19
-	FeatureType=FEATURE_CAPE, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot

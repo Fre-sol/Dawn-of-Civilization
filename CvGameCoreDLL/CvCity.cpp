@@ -1375,6 +1375,10 @@ void CvCity::doTurn()
 	// Leoreth: update art style type once per turn
 	updateArtStyleType();
 
+	// Fresol: an aqueduct counts as fresh water, so a city that already had one
+	// when it was loaded has to pick that up again
+	updateFreshWaterHealth();
+
 	/*if (headOrderQueueNode() != NULL)
 	{
 		if (headOrderQueueNode()->m_data.eOrderType == ORDER_MAINTAIN)

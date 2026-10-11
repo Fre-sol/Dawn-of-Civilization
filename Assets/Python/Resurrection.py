@@ -127,7 +127,8 @@ def isPartOfResurrection(iCiv, city, bOnlyOne):
 		if bCapital:
 			return True
 		
-		if city.isCore(iCiv) and not city.isPlayerCore(iOwner):
+		# core does not flip: Manchuria is an exception because its moved core disrupts the Chinese respawn
+		if city.isCore(iCiv) and (not city.isPlayerCore(iOwner) or civ(iOwner) == iManchuria):
 			return True
 		
 		if city.isColony():
@@ -159,6 +160,10 @@ def doResurrection(iCiv, lCityList, bAskFlip=True, bDisplay=False):
 	if iPlayer == -1:
 		log.rise("RESURRECTION ABORTED: NO FREE SLOT FOR: %s", infos.civ(iCiv).getText())
 		return
+		
+	for p in plots.all().land():
+		if p.getExpansion() == iPlayer:
+			p.resetExpansion()
 
 	updateCivilization(iPlayer, iCiv)
 

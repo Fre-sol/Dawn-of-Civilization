@@ -6906,7 +6906,7 @@ int CvPlayer::getProductionNeeded(BuildingTypes eBuilding) const
 	iProductionNeeded /= 100;
 
 	// Leoreth: cheaper palace in earlier eras, more expensive later
-	if (eBuilding == GC.getInfoTypeForString("BUILDING_PALACE"))
+	if (eBuilding == BUILDING_PALACE)
 	{
 		// half in ancient, the same in medieval, +50% in industrial, +100% in future
 		iProductionNeeded = iProductionNeeded * (2 + getCurrentEra()) / 4;
@@ -23172,7 +23172,7 @@ bool CvPlayer::isVotingMember(VoteSourceTypes eVoteSource) const
 
 PlayerTypes CvPlayer::pickConqueredCityOwner(const CvCity& kCity) const
 {
-	PlayerTypes eBestPlayer = kCity.getLiberationPlayer(true);
+	/*PlayerTypes eBestPlayer = kCity.getLiberationPlayer(true);
 
 	if (NO_PLAYER != eBestPlayer)
 	{
@@ -23180,7 +23180,7 @@ PlayerTypes CvPlayer::pickConqueredCityOwner(const CvCity& kCity) const
 		{
 			return eBestPlayer;
 		}
-	}
+	}*/
 
 	return getID();
 }

@@ -1118,9 +1118,12 @@ class CvWorldBuilderScreen:
 			# screen.setImageButton("StoredDataScreen", "", iX, iY, iButtonWidth, iButtonWidth, WidgetTypes.WIDGET_PYTHON, 1029, 41)
 			# screen.setStyle("StoredDataScreen", "Button_HUDAdvisorRecord_Style")
 			# iX += iAdjust
-			# screen.addCheckBoxGFC("DoCMapsScreen", "Art/Interface/Buttons/DoCMaps.dds", CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SMALLCIRCLE").getPath(),
-				# iX, iY, iButtonWidth, iButtonWidth, WidgetTypes.WIDGET_PYTHON, 1029, 42, ButtonStyles.BUTTON_STYLE_LABEL)
-			# iX += iAdjust
+			# Fresol: show the DoC map layers in WorldBuilder, so a scenario's setting
+			# maps (cities, cores, settler and war values, religions, regions) can be
+			# looked at and exported.
+			screen.addCheckBoxGFC("DoCMapsScreen", "Art/Interface/Buttons/DoCMaps.dds", CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SMALLCIRCLE").getPath(),
+				iX, iY, iButtonWidth, iButtonWidth, WidgetTypes.WIDGET_PYTHON, 1029, 42, ButtonStyles.BUTTON_STYLE_LABEL)
+			iX += iAdjust
 			screen.addCheckBoxGFC("MoveMapScreen", "Art/Interface/Buttons/MoveMap.dds", CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SMALLCIRCLE").getPath(),
 				iX, iY, iButtonWidth, iButtonWidth, WidgetTypes.WIDGET_PYTHON, 1029, 44, ButtonStyles.BUTTON_STYLE_LABEL)
 			iX += iAdjust

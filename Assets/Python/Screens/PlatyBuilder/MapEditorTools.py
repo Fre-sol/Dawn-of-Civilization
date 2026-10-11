@@ -1,5 +1,7 @@
 from Core import *
 from RFCUtils import *
+# Fresol: getSettlerValue / exportCore use this and it lives in Resources
+from Resources import dConquerorPlotTypesDict
 
 import BugPath as path
 
@@ -72,9 +74,9 @@ def exportSettlerMap(iPlayer):
 	sLocation = "SettlerValues"
 	sName = getCivName(iPlayer)
 	valueFunction = getSettlerValue
-	writeMapFile(sLocation, sName, valueFunction, iPlayer = iPlayer, bDictStyle = True)
+	sPath = writeMapCsv(sLocation, sName, valueFunction, iPlayer = iPlayer)
 	
-	show("Settlermap of %s exported" % sName)
+	show("Settlermap of %s exported to %s" % (sName, sPath))
 	
 def getSettlerValue(plot, *args, **kwargs):
 	iPlayer = kwargs.get('iPlayer', None)
@@ -93,9 +95,9 @@ def exportWarMap(iPlayer):
 	sLocation = "WarMaps"
 	sName = getCivName(iPlayer)
 	valueFunction = getWarValue
-	writeMapFile(sLocation, sName, valueFunction, iPlayer = iPlayer, bDictStyle = True)
+	sPath = writeMapCsv(sLocation, sName, valueFunction, iPlayer = iPlayer)
 	
-	show("Warmap of %s exported" % sName)
+	show("Warmap of %s exported to %s" % (sName, sPath))
 	
 def getWarValue(plot, *args, **kwargs):
 	iPlayer = kwargs.get('iPlayer', None)
@@ -171,11 +173,60 @@ def exportAreaExport(lPlots, bWaterException, bPeakException):
 	"""
 
 
+## Fresol - start: write the csv the game loads, not the old tuple dump
+#
+# The settler and war exporters below wrote a python literal into
+# Export/<dir>/<name>.txt, which nothing reads any more: Rise.py loads
+# Assets/Maps/<dir>/<name>.csv.  So write that file directly, with water plots
+# left blank the way the shipped files have them.
+dCsvFolders = {'SettlerValues': 'Settler', 'WarMaps': 'War'}
+
+def writeMapCsv(sFileLocation, sName, valueFunction, *args, **kwargs):
+	sFolder = os.path.join(os.getcwd(), 'Mods', 'RFC Dawn of Civilization',
+		EXPORT_MAPS_PATH, dCsvFolders.get(sFileLocation, sFileLocation))
+	if not os.path.isdir(sFolder):
+		os.makedirs(sFolder)
+
+	# Fresol: export beside the original rather than over it - replacing the shipped
+	# map stays a deliberate step the player takes.
+	sPath = os.path.join(sFolder, sName + '_export.csv')
+	file = open(sPath, 'wb')
+
+	try:
+		iW = globals().get('iWorldX', 150)
+		iH = globals().get('iWorldY', 80)
+
+		for y in reversed(range(iH)):
+			lCells = []
+			for x in range(iW):
+				p = plot_(x, y)
+				if p.isWater():
+					lCells.append('')
+				else:
+					lCells.append('%d' % valueFunction(p, *args, **kwargs))
+			file.write(','.join(lCells) + '\r\n')
+	finally:
+		file.close()
+
+	return sPath
+## Fresol - end
+
+
+## Fresol - start: the exporters wrote into Export/<dir>/ which does not exist
+def ensureFolder(sFile):
+	sFolder = os.path.dirname(sFile)
+	if sFolder and not os.path.isdir(sFolder):
+		os.makedirs(sFolder)
+## Fresol - end
+
+
 def writeMapFile(sFileLocaton, sName, valueFunction, *args, **kwargs):
 	sMapName = kwargs.get('sMapName', None)
 	bDictStyle = kwargs.get('bDictStyle', False)
 	
-	file = open(IMAGE_LOCATION + "\\" + sFileLocaton + "\\" + sName + ".txt", 'wt')
+	sFile = IMAGE_LOCATION + "\\" + sFileLocaton + "\\" + sName + ".txt"
+	ensureFolder(sFile)
+	file = open(sFile, 'wt')
 
 	try:
 		if sMapName:
@@ -208,7 +259,9 @@ def writeTRBLDictFile(sFileLocaton, sName, tSquare, sDictName, tExceptions = Non
 		iTabs = (iLongestName - len(sName) - 1) // 4 + 1
 		sIdentifierText = sIdentifier + " :" + iTabs*"\t"
 	
-	file = open(IMAGE_LOCATION + "\\" + sFileLocaton + "\\" + sName + ".txt", 'wt')
+	sFile = IMAGE_LOCATION + "\\" + sFileLocaton + "\\" + sName + ".txt"
+	ensureFolder(sFile)
+	file = open(sFile, 'wt')
 	try:
 		file.write("# " + sDictName + "\n")
 		file.write(sIdentifierText + "("+ str(BL) + ",\t" + str(TR) + ")")

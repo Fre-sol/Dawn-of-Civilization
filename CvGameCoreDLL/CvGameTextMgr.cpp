@@ -10816,6 +10816,25 @@ void CvGameTextMgr::setBuildingHelpActual(CvWStringBuffer &szBuffer, BuildingTyp
 		szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_PROVIDES_AREA_CLEAN_POWER"));
 	}
 
+	// Fresol - start: the aqueduct is fresh water for a city that has none
+	{
+		static BuildingTypes eAqueduct = NO_BUILDING;
+		if (eAqueduct == NO_BUILDING) eAqueduct = (BuildingTypes)GC.getInfoTypeForString("BUILDING_AQUEDUCT");
+
+		if (eBuilding == eAqueduct)
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_PROVIDES_FRESH_WATER"));
+
+			if (NULL == pCity || !pCity->plot()->isFreshWater())
+			{
+				szTempBuffer.Format(L" (+%d%c)", abs(GC.getDefineINT("FRESH_WATER_HEALTH_CHANGE")), ((GC.getDefineINT("FRESH_WATER_HEALTH_CHANGE") > 0) ? gDLL->getSymbolID(HEALTHY_CHAR) : gDLL->getSymbolID(UNHEALTHY_CHAR)));
+				szBuffer.append(szTempBuffer);
+			}
+		}
+	}
+	// Fresol - end
+
 	// Leoreth: change Great Wall effect
 	/*if (kBuilding.isAreaBorderObstacle())
 	{

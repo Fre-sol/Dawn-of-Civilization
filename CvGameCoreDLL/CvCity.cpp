@@ -4727,6 +4727,7 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bObsolet
 
 		updateExtraBuildingHappiness();
 		updateExtraBuildingHealth();
+		updateFreshWaterHealth();	// Fresol: the aqueduct is fresh water, so it has to be recomputed when buildings move
 
 		// Byzantine UP: +1 espionage in capital per 100 gold in treasury and +1 gold per 200 culture in capital
 		if (getCivilizationType() == BYZANTIUM && eBuilding == 0)
@@ -7723,7 +7724,12 @@ void CvCity::updateFreshWaterHealth()
 	iNewGoodHealth = 0;
 	iNewBadHealth = 0;
 
-	if (plot()->isFreshWater())
+	// Fresol - start: an aqueduct carries fresh water to a city that has none, and
+	// is worth nothing to one that already draws from a river or a fresh water lake
+	static BuildingTypes eAqueduct = NO_BUILDING;
+	if (eAqueduct == NO_BUILDING) eAqueduct = (BuildingTypes)GC.getInfoTypeForString("BUILDING_AQUEDUCT");
+
+	if (plot()->isFreshWater() || (eAqueduct != NO_BUILDING && hasBuilding(eAqueduct)))
 	{
 		if (GC.getDefineINT("FRESH_WATER_HEALTH_CHANGE") > 0)
 		{

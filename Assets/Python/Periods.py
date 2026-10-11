@@ -306,6 +306,10 @@ def onTechAcquired(iTech, iTeam, iPlayer):
 	iEra = player(iPlayer).getCurrentEra()
 	iColumn = getColumn(iPlayer)
 	
+	if iCiv == iChina:
+		if iEra >= iIndustrial:		# Fresol: reaches the industrial era, becomes the Ming
+			setPeriod(iChina, iPeriodMing)
+
 	if iCiv == iNubia:
 		if iEra == iMedieval:
 			setPeriod(iNubia, iPeriodMakuria)

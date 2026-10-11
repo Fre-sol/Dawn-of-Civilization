@@ -928,7 +928,9 @@ class Birth(object):
 		if self.iPlayer is None:
 			if self.sharesLimitedSlot():
 				self.canceled = True
-				self.player.setAlive(False, False)
+				# Fresol: there is no player yet, self.player is None here by construction,
+				# so the setAlive that used to be on this line raised AttributeError and took
+				# the rest of that turn's births with it.
 				log.rise("BIRTH CANCELED: skipping %s slot to keep it free", infos.civ(self.iCiv).getText())
 				return
 			

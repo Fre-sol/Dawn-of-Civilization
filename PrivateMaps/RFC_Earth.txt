@@ -12299,7 +12299,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=27,y=70
-	FeatureType=FEATURE_ISLANDS_STRAIT, FeatureVariety=1
+	FeatureType=FEATURE_ISLANDS, FeatureVariety=0
 	TerrainType=TERRAIN_ARCTIC_COAST
 	PlotType=3
 EndPlot

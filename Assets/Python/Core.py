@@ -2488,7 +2488,9 @@ city_ = city
 # field nothing else here uses -- only random map generation writes it, and it
 # only ever writes 0 and up. So -1 (the default) means "no extra kind" and
 # anything below it is ours.
-#   river id = -(1 + mask), bit 0 = the north edge, bit 1 = the west edge
+#   river id = -(1 + mask), and the bits follow the plot's own river flags:
+#   bit 0 = the edge it calls isNOfRiver, which it draws along its southern
+#   side, and bit 1 = the one it calls isWOfRiver, drawn along its eastern side.
 # A later kind would take the next pair of bits.
 iRiverKindNavNorth = 1
 iRiverKindNavWest = 2

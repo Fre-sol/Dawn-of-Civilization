@@ -5184,48 +5184,6 @@ void CvPlot::setWOfRiver(bool bNewValue, CardinalDirectionTypes eRiverDir)
 
 CardinalDirectionTypes CvPlot::getRiverNSDirection() const
 {
-	// Fresol - start
-	// Temporary. The engine works a river piece's shape out into one byte and
-	// looks that byte up in a 256 entry table to pick the model. Rather than
-	// copying that arithmetic out of the disassembly and hoping it is right,
-	// borrow the engine's own routine: it is a plain thiscall CvPlot method in
-	// the exe, and the exe sits at its preferred base, so the address holds.
-	{
-		static bool bInDescriptorProbe = false;
-		static int iDescriptorDumps = 0;
-
-		if (!bInDescriptorProbe && iDescriptorDumps < 80)
-		{
-			FILE* pProbeFile;
-			int iDescriptor;
-			const void* pDescriptorThis = this;
-
-			bInDescriptorProbe = true;
-			++iDescriptorDumps;
-
-			// the engine's routine takes the plot in ecx and returns the byte in eax
-			__asm
-			{
-				mov ecx, pDescriptorThis
-				mov eax, 0x006062D0
-				call eax
-				mov iDescriptor, eax
-			}
-
-			pProbeFile = fopen("navriver_probe.log", "a");
-
-			if (pProbeFile != NULL)
-			{
-				fprintf(pProbeFile, "DESC plot=%d,%d NS=%d WE=%d desc=%d\n", getX_INLINE(), getY_INLINE(),
-						(int)m_eRiverNSDirection, (int)m_eRiverWEDirection, iDescriptor);
-				fclose(pProbeFile);
-			}
-
-			bInDescriptorProbe = false;
-		}
-	}
-	// Fresol - end
-
 	return (CardinalDirectionTypes)m_eRiverNSDirection;
 }
 

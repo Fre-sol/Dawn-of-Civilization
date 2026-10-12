@@ -756,6 +756,7 @@ class CvWorldBuilderScreen:
 	def setRiver ( self, pPlot, bNorth, eDirection ):
 		# Fresol: lay down the kind of river picked in the selection table. Every
 		# kind is an ordinary river as well, so only the extra kind is marked.
+		CvUtil.pyPrint("FresolDBG place river: selection=%d north=%d" % (self.iSelection, bNorth))
 		if self.iSelection == iRiverKindNavIndex:
 			iMask = getRiverKindMask(pPlot)
 			if bNorth:
@@ -2864,9 +2865,12 @@ class CvWorldBuilderScreen:
 				self.refreshSelection()
 
 		elif inputClass.getFunctionName() == "WBSelectItem":
+			bDeleteOverlay = False		# Fresol: keep the overlay of the current mode
 			self.iSelection = inputClass.getData2()
 			self.iSelectClass = 0
+			CvUtil.pyPrint("FresolDBG picked item: mode=%d selection=%d notify=%d" % (self.iPlayerAddMode, self.iSelection, inputClass.getNotifyCode()))
 			self.refreshSelection()
+			self.updateOverlay()
 
 		elif inputClass.getFunctionName() == "RevealMode":
 			self.iPlayerAddMode = lRevealModes[screen.getPullDownData("RevealMode", screen.getSelectedPullDownID("RevealMode"))]

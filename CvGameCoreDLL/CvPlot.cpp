@@ -21,7 +21,32 @@ extern "C" void* _ReturnAddress(void);
 void navRiverProbe(const char* szWho, void* pCaller)
 {
 	static int iProbeCalls = 0;
+	static bool bDumpedSlots = false;
 	FILE* pProbeFile;
+
+	// Fresol: one shot. The engine's IAT slots hold the addresses it resolved, so
+	// reading them and matching them against this DLL's own .map file names every
+	// function the engine calls, rather than guessing from the disassembly.
+	if (!bDumpedSlots)
+	{
+		bDumpedSlots = true;
+
+		pProbeFile = fopen("navriver_probe.log", "a");
+
+		if (pProbeFile != NULL)
+		{
+			fprintf(pProbeFile, "self=%p\n", (void*)&navRiverProbe);
+			fprintf(pProbeFile, "slot bc1fe4 -> %p\n", *(void**)0x00bc1fe4);
+			fprintf(pProbeFile, "slot bc2a34 -> %p\n", *(void**)0x00bc2a34);
+			fprintf(pProbeFile, "slot bc2a38 -> %p\n", *(void**)0x00bc2a38);
+			fprintf(pProbeFile, "slot bc2aac -> %p\n", *(void**)0x00bc2aac);
+			fprintf(pProbeFile, "slot bc2ab0 -> %p\n", *(void**)0x00bc2ab0);
+			fprintf(pProbeFile, "slot bc1b54 -> %p\n", *(void**)0x00bc1b54);
+			fprintf(pProbeFile, "slot bc1b60 -> %p\n", *(void**)0x00bc1b60);
+			fprintf(pProbeFile, "slot bc195c -> %p\n", *(void**)0x00bc195c);
+			fclose(pProbeFile);
+		}
+	}
 
 	if (iProbeCalls >= 400)
 	{

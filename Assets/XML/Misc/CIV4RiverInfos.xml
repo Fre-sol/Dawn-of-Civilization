@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Civ4RiverInfos xmlns="x-schema:CIV4MiscSchema.xml">
+	<RiverInfos>
+		<RiverInfo>
+			<Type>RIVER_RIVER</Type>
+		</RiverInfo>
+		<!-- Fresol: a second river type, so the trial can hand the engine a
+		     different one for the plots that carry an extra river kind. -->
+		<RiverInfo>
+			<Type>RIVER_NAVIGABLE</Type>
+		</RiverInfo>
+	</RiverInfos>
+</Civ4RiverInfos>

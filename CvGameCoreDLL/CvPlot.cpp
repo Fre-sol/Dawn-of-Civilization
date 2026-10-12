@@ -9522,9 +9522,12 @@ void CvPlot::updateRiverSymbol(bool bForce, bool bAdjacent)
 		gDLL->getRiverIFace()->destroy(m_pRiverSymbol);
 		m_pRiverSymbol = gDLL->getRiverIFace()->createRiver();
 		FAssertMsg(m_pRiverSymbol != NULL, "m_pRiverSymbol is not expected to be equal with NULL");
-		// Fresol: trial - hand the engine a different river type for the plots
-		// that carry an extra kind, to find out whether the type picks the art.
-		gDLL->getRiverIFace()->init(m_pRiverSymbol, 0, 0, (getNavRiverMask() != 0) ? 1 : 0, this);
+		// Fresol: trial - hand the engine non zero iID and iOffset as well as a
+		// different type for the plots that carry an extra kind. The name list
+		// the exe keeps shows it never asks a plot for a river type and never
+		// mentions one, so these three ints are all it can be told; iType alone
+		// changed nothing, so the other two get a try before giving up on this.
+		gDLL->getRiverIFace()->init(m_pRiverSymbol, (getNavRiverMask() != 0) ? 1 : 0, (getNavRiverMask() != 0) ? 1 : 0, (getNavRiverMask() != 0) ? 1 : 0, this);
 
 		//force tree cuts for adjacent plots
 		DirectionTypes affectedDirections[] = {NO_DIRECTION, DIRECTION_EAST, DIRECTION_SOUTHEAST, DIRECTION_SOUTH};

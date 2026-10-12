@@ -11,12 +11,6 @@
 //------------------------------------------------------------------------------------------------
 #include "CvGameCoreDLL.h"
 #include "CvInfos.h"
-#include <stdio.h>		// Fresol: the river model probe below writes a small log
-
-// Fresol: the probe below asks for the address it was called from. The VC2003
-// toolkit has no intrin.h, so the intrinsic is declared here by hand.
-extern "C" void* _ReturnAddress(void);
-#pragma intrinsic(_ReturnAddress)
 #include "CvGlobals.h"
 #include "CvArtFileMgr.h"
 #include "CvXMLLoadUtility.h"
@@ -10499,31 +10493,6 @@ const TCHAR* CvRiverModelInfo::getDeltaString() const
 
 const TCHAR* CvRiverModelInfo::getConnectString() const
 {
-	// Fresol - start
-	// Temporary probe. The engine picks a river's model by comparing this string
-	// with the one it built for the piece, so whatever calls this is the matching
-	// code. Writing down where the call came from points straight at it, which is
-	// the only way in: the engine never asks a plot for a river type and keeps no
-	// such notion, so there is nowhere else to hook. Stops after a few calls.
-	{
-		static int iProbeCalls = 0;
-
-		if (iProbeCalls < 40)
-		{
-			FILE* pProbeFile;
-
-			++iProbeCalls;
-			pProbeFile = fopen("navriver_probe.log", "a");
-
-			if (pProbeFile != NULL)
-			{
-				fprintf(pProbeFile, "caller=%p obj=%p connect=\"%s\"\n", _ReturnAddress(), (const void*)this, m_szConnectString);
-				fclose(pProbeFile);
-			}
-		}
-	}
-	// Fresol - end
-
 	return m_szConnectString;
 }
 

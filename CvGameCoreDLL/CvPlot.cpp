@@ -8,6 +8,12 @@
 #include "CvArea.h"
 #include "CvGameAI.h"
 #include "CvDLLInterfaceIFaceBase.h"
+#include <stdio.h>	// Fresol: the river piece probe writes a small log
+
+// Fresol: the probe asks for the address it was called from. The VC2003
+// toolkit has no intrin.h, so the intrinsic is declared here by hand.
+extern "C" void* _ReturnAddress(void);
+#pragma intrinsic(_ReturnAddress)
 #include "CvDLLSymbolIFaceBase.h"
 #include "CvDLLEntityIFaceBase.h"
 #include "CvDLLPlotBuilderIFaceBase.h"
@@ -5187,6 +5193,34 @@ void CvPlot::setWOfRiver(bool bNewValue, CardinalDirectionTypes eRiverDir)
 
 CardinalDirectionTypes CvPlot::getRiverNSDirection() const
 {
+	// Fresol - start
+	// Temporary probe. The engine builds each river piece from a plot's flags and
+	// bend directions, so whoever asks this is the piece building code, and the
+	// model it picks lives right there. Only calls coming from the engine's own
+	// code are logged, which keeps the DLL's own hundred uses out of the file.
+	{
+		static int iProbeCalls = 0;
+
+		if (iProbeCalls < 60)
+		{
+			void* pProbeCaller = _ReturnAddress();
+
+			if (((unsigned)(size_t)pProbeCaller) < 0x00a00000)
+			{
+				FILE* pProbeFile = fopen("navriver_probe.log", "a");
+
+				++iProbeCalls;
+
+				if (pProbeFile != NULL)
+				{
+					fprintf(pProbeFile, "NSDirection caller=%p plot=%d,%d\n", pProbeCaller, getX_INLINE(), getY_INLINE());
+					fclose(pProbeFile);
+				}
+			}
+		}
+	}
+	// Fresol - end
+
 	return (CardinalDirectionTypes)m_eRiverNSDirection;
 }
 

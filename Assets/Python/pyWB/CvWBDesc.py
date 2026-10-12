@@ -1814,8 +1814,20 @@ class CvPlotDesc:
 		return True
 		
 	def applyRivers(self):
-		# Fresol: a navigable river is an ordinary river as well, so its token
-		# alone brings the river, its graphics and everything a river does.
+		# Fresol: the kind has to be on the plot before the river edges go down.
+		# Setting an edge is what makes the engine build the river symbol, and the
+		# symbol is what carries the kind's art, so the other order would build it
+		# as an ordinary river and leave it that way.
+		if self.isNOfNavRiver is not None or self.isWOfNavRiver is not None:
+			iMask = getRiverKindMask(self.plot)
+			if self.isNOfNavRiver is not None:
+				iMask |= iRiverKindNavNorth
+			if self.isWOfNavRiver is not None:
+				iMask |= iRiverKindNavWest
+			setRiverKindMask(self.plot, iMask)
+
+		# A navigable river is an ordinary river as well, so its token alone
+		# brings the river, its graphics and everything a river does.
 		if self.isNOfNavRiver is not None:
 			self.plot.setNOfRiver(True, self.riverWEDirection)
 
@@ -1827,14 +1839,6 @@ class CvPlotDesc:
 
 		if self.isWOfRiver is not None:
 			self.plot.setWOfRiver(self.isWOfRiver, self.riverNSDirection)
-
-		if self.isNOfNavRiver is not None or self.isWOfNavRiver is not None:
-			iMask = getRiverKindMask(self.plot)
-			if self.isNOfNavRiver is not None:
-				iMask |= iRiverKindNavNorth
-			if self.isWOfNavRiver is not None:
-				iMask |= iRiverKindNavWest
-			setRiverKindMask(self.plot, iMask)
 	
 	def applyBonus(self):
 		if self.bonusType:

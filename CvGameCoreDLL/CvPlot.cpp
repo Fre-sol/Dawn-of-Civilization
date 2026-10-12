@@ -21,15 +21,16 @@ extern "C" void* _ReturnAddress(void);
 void navRiverProbe(const char* szWho, void* pCaller)
 {
 	static int iProbeCalls = 0;
-	static bool bDumpedSlots = false;
+	static int iSlotDumps = 0;
 	FILE* pProbeFile;
 
-	// Fresol: one shot. The engine's IAT slots hold the addresses it resolved, so
-	// reading them and matching them against this DLL's own .map file names every
-	// function the engine calls, rather than guessing from the disassembly.
-	if (!bDumpedSlots)
+	// Fresol: these slots are lazy import thunks - they hold the thunk address
+	// until the first call through them replaces it with the real one. So the
+	// dump is taken a few times rather than once, and the last one is the real
+	// addresses, which this DLL's own .map file can name.
+	if (iSlotDumps < 5)
 	{
-		bDumpedSlots = true;
+		++iSlotDumps;
 
 		pProbeFile = fopen("navriver_probe.log", "a");
 

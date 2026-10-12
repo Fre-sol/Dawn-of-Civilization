@@ -719,6 +719,7 @@ class CvWorldBuilderScreen:
 			else:
 				pPlot.setNOfRiver(False, CardinalDirectionTypes.NO_CARDINALDIRECTION)
 				pPlot.setWOfRiver(False, CardinalDirectionTypes.NO_CARDINALDIRECTION)
+				setRiverKindMask(pPlot, 0)		# Fresol: the extra kinds go with the river
 				
 		elif self.iPlayerAddMode == iModeAddLandMark:
 			CyEngine().removeSign(pPlot, -1)
@@ -752,94 +753,110 @@ class CvWorldBuilderScreen:
 				self.TempInfo.remove(tPlot)
 		return 1
 
+	def setRiver ( self, pPlot, bNorth, eDirection ):
+		# Fresol: lay down the kind of river picked in the selection table. Every
+		# kind is an ordinary river as well, so only the extra kind is marked.
+		if self.iSelection == iRiverKindNavIndex:
+			iMask = getRiverKindMask(pPlot)
+			if bNorth:
+				iMask |= iRiverKindNavNorth
+			else:
+				iMask |= iRiverKindNavWest
+			setRiverKindMask(pPlot, iMask)
+
+		if bNorth:
+			pPlot.setNOfRiver(True, eDirection)
+		else:
+			pPlot.setWOfRiver(True, eDirection)
+
 	def placeRiverNW ( self, bUseCurrent = True ):
 		if bUseCurrent:
 			if not self.m_pRiverStartPlot.isNone():
-				self.m_pRiverStartPlot.setNOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_WEST)
+				self.setRiver(self.m_pRiverStartPlot, True, CardinalDirectionTypes.CARDINALDIRECTION_WEST)
 
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX()-1, self.m_pRiverStartPlot.getY())
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setWOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
+			self.setRiver(pRiverStepPlot, False, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX()-1, self.m_pRiverStartPlot.getY()+1)
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setWOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
+			self.setRiver(pRiverStepPlot, False, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
 		return
 
 	def placeRiverN ( self, bUseCurrent = True ):
 		if bUseCurrent:
 			if not self.m_pRiverStartPlot.isNone():
-				self.m_pRiverStartPlot.setWOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
+				self.setRiver(self.m_pRiverStartPlot, False, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
 
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX(), self.m_pRiverStartPlot.getY()+1)
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setWOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
+			self.setRiver(pRiverStepPlot, False, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
 		return
 
 	def placeRiverNE ( self, bUseCurrent = True ):
 		if bUseCurrent:
 			if not self.m_pRiverStartPlot.isNone():
-				self.m_pRiverStartPlot.setNOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
+				self.setRiver(self.m_pRiverStartPlot, True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
 
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX()+1, self.m_pRiverStartPlot.getY())
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setNOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
-			pRiverStepPlot.setWOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
+			self.setRiver(pRiverStepPlot, True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
+			self.setRiver(pRiverStepPlot, False, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX()+1, self.m_pRiverStartPlot.getY()+1)
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setWOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
+			self.setRiver(pRiverStepPlot, False, CardinalDirectionTypes.CARDINALDIRECTION_NORTH)
 		return
 
 	def placeRiverW ( self, bUseCurrent = True ):
 		if bUseCurrent:
 			if not self.m_pRiverStartPlot.isNone():
-				self.m_pRiverStartPlot.setNOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_WEST)
+				self.setRiver(self.m_pRiverStartPlot, True, CardinalDirectionTypes.CARDINALDIRECTION_WEST)
 
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX()-1, self.m_pRiverStartPlot.getY())
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setNOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_WEST)
+			self.setRiver(pRiverStepPlot, True, CardinalDirectionTypes.CARDINALDIRECTION_WEST)
 		return
 
 	def placeRiverE ( self, bUseCurrent = True ):
 		if bUseCurrent:
 			if not self.m_pRiverStartPlot.isNone():
-				self.m_pRiverStartPlot.setNOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
+				self.setRiver(self.m_pRiverStartPlot, True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
 
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX()+1, self.m_pRiverStartPlot.getY())
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setNOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
+			self.setRiver(pRiverStepPlot, True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
 		return
 
 	def placeRiverSW ( self, bUseCurrent = True ):
 		if bUseCurrent:
 			if not self.m_pRiverStartPlot.isNone():
-				self.m_pRiverStartPlot.setNOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_WEST)
+				self.setRiver(self.m_pRiverStartPlot, True, CardinalDirectionTypes.CARDINALDIRECTION_WEST)
 
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX()-1, self.m_pRiverStartPlot.getY()-1)
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setWOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_SOUTH)
+			self.setRiver(pRiverStepPlot, False, CardinalDirectionTypes.CARDINALDIRECTION_SOUTH)
 		return
 
 	def placeRiverS ( self, bUseCurrent = True ):
 		if bUseCurrent:
 			if not self.m_pRiverStartPlot.isNone():
-				self.m_pRiverStartPlot.setWOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_SOUTH)
+				self.setRiver(self.m_pRiverStartPlot, False, CardinalDirectionTypes.CARDINALDIRECTION_SOUTH)
 
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX(), self.m_pRiverStartPlot.getY()-1)
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setWOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_SOUTH)
+			self.setRiver(pRiverStepPlot, False, CardinalDirectionTypes.CARDINALDIRECTION_SOUTH)
 		return
 
 	def placeRiverSE ( self, bUseCurrent = True ):
 		if bUseCurrent:
 			if not self.m_pRiverStartPlot.isNone():
-				self.m_pRiverStartPlot.setNOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
+				self.setRiver(self.m_pRiverStartPlot, True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
 
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX()+1, self.m_pRiverStartPlot.getY())
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setNOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
+			self.setRiver(pRiverStepPlot, True, CardinalDirectionTypes.CARDINALDIRECTION_EAST)
 		pRiverStepPlot = plot_(self.m_pRiverStartPlot.getX()+1, self.m_pRiverStartPlot.getY()-1)
 		if not pRiverStepPlot.isNone():
-			pRiverStepPlot.setWOfRiver(True, CardinalDirectionTypes.CARDINALDIRECTION_SOUTH)
+			self.setRiver(pRiverStepPlot, False, CardinalDirectionTypes.CARDINALDIRECTION_SOUTH)
 		return
 
 	def toggleUnitEditCB(self):
@@ -1762,6 +1779,21 @@ class CvWorldBuilderScreen:
 					self.iSelection = item[1]
 				screen.setTableText("WBSelectItem", 0, iRow, "<font=3>" + item[0] + "</font>", gc.getImprovementInfo(item[1]).getButton(), WidgetTypes.WIDGET_PYTHON, 7877, item[1], CvUtil.FONT_LEFT_JUSTIFY)
 
+		elif self.iPlayerAddMode == iModeRiver:
+			# Fresol: pick which kind of river the placement tool lays down. Every
+			# kind draws and behaves like a river; the extra kind is marked on top.
+			iY = 25
+			lItems = [(sName, i) for i, sName in enumerate(lRiverKinds)]
+			iHeight = min(len(lItems) * 24 + 2, screen.getYResolution() - iY)
+			screen.addTableControlGFC("WBSelectItem", 1, 0, iY, iWidth, iHeight, False, False, 24, 24, TableStyles.TABLE_STYLE_EMPTY)
+			screen.setTableColumnHeader("WBSelectItem", 0, "", iWidth)
+			for item in lItems:
+				iRow = screen.appendTableRow("WBSelectItem")
+				sButton = CyArtFileMgr().getInterfaceArtInfo("WORLDBUILDER_RIVER_PLACEMENT").getPath()
+				if item[1] == 1:
+					sButton = CyArtFileMgr().getInterfaceArtInfo("WORLDBUILDER_PLOT_TYPE_OCEAN").getPath()
+				screen.setTableText("WBSelectItem", 0, iRow, "<font=3>" + item[0] + "</font>", sButton, WidgetTypes.WIDGET_PYTHON, 7890, item[1], CvUtil.FONT_LEFT_JUSTIFY)
+
 		elif self.iPlayerAddMode == iModeBonus:
 			iY = 25
 			screen.addDropDownBoxGFC("WBSelectClass", 0, iY, iWidth, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
@@ -1909,6 +1941,12 @@ class CvWorldBuilderScreen:
 			ItemInfo = gc.getTerrainInfo(self.iSelection)
 			sText = "<font=3>" + CyTranslator().getText("[COLOR_HIGHLIGHT_TEXT]", ()) + ItemInfo.getDescription() + "</color></font>"
 			screen.setTableText("WBCurrentItem", 0, 0 , sText, ItemInfo.getButton(), WidgetTypes.WIDGET_PYTHON, 7875, self.iSelection, CvUtil.FONT_LEFT_JUSTIFY)
+		elif self.iPlayerAddMode == iModeRiver:
+			sText = "<font=3>" + CyTranslator().getText("[COLOR_HIGHLIGHT_TEXT]", ()) + lRiverKinds[self.iSelection] + "</color></font>"
+			sButton = CyArtFileMgr().getInterfaceArtInfo("WORLDBUILDER_RIVER_PLACEMENT").getPath()
+			if self.iSelection == iRiverKindNavIndex:
+				sButton = CyArtFileMgr().getInterfaceArtInfo("WORLDBUILDER_PLOT_TYPE_OCEAN").getPath()
+			screen.setTableText("WBCurrentItem", 0, 0, sText, sButton, WidgetTypes.WIDGET_PYTHON, 7890, self.iSelection, CvUtil.FONT_LEFT_JUSTIFY)
 		else:
 			screen.hide("WBCurrentItem")
 
@@ -1977,6 +2015,8 @@ class CvWorldBuilderScreen:
 			self.showRegionOverlay()
 		elif self.iPlayerAddMode == iModeVictoryMap:
 			self.showVictoryOverlay()
+		elif self.iPlayerAddMode == iModeRiver:
+			self.showRiverKindOverlay()
 
 	def showFlipZone(self):
 		removeStabilityOverlay()
@@ -2250,6 +2290,14 @@ class CvWorldBuilderScreen:
 			self.m_advancedStartTabCtrl = getWBToolAdvancedStartTabCtrl()
 			self.m_advancedStartTabCtrl.enable(False)
 		return
+
+	def showRiverKindOverlay(self):
+		# Fresol: mark the tiles that carry a river of an extra kind. Those draw
+		# exactly like an ordinary river, so this is the only way to tell them apart.
+		removeStabilityOverlay()
+		for pPlot in plots.all():
+			if getRiverKindMask(pPlot) & iRiverKindNavMask:
+				CyEngine().fillAreaBorderPlotAlt(pPlot.getX(), pPlot.getY(), 1000, "COLOR_CYAN", 0.7)
 
 	def setRiverHighlights(self):
 		CyEngine().clearColoredPlots(PlotLandscapeLayers.PLOT_LANDSCAPE_LAYER_REVEALED_PLOTS)
@@ -2674,8 +2722,11 @@ class CvWorldBuilderScreen:
 			self.refreshSideMenu()
 
 		elif inputClass.getFunctionName() == "AddRiverButton":
+			bDeleteOverlay = False
 			self.iPlayerAddMode = iModeRiver
+			self.iSelection = 0					# Fresol: default to the ordinary river
 			self.refreshSideMenu()
+			self.showRiverKindOverlay()
 
 		elif inputClass.getFunctionName() == "DoCMapsScreen":
 			bDeleteOverlay = False

@@ -2482,3 +2482,36 @@ infos = Infos()
 
 plot_ = plot
 city_ = city
+
+
+# Fresol: the mod's extra river kinds are packed into the plot's river id, a
+# field nothing else here uses -- only random map generation writes it, and it
+# only ever writes 0 and up. So -1 (the default) means "no extra kind" and
+# anything below it is ours.
+#   river id = -(1 + mask), bit 0 = the north edge, bit 1 = the west edge
+# A later kind would take the next pair of bits.
+iRiverKindNavNorth = 1
+iRiverKindNavWest = 2
+iRiverKindNavMask = iRiverKindNavNorth | iRiverKindNavWest
+
+# What the WorldBuilder's river tool offers, in the order of its selection table.
+lRiverKinds = ["River", "NavRiver"]
+iRiverKindNavIndex = 1
+
+
+def getRiverKindMask(pPlot):
+	iRiverID = pPlot.getRiverID()
+	if iRiverID < -1:
+		return -iRiverID - 1
+	return 0
+
+
+def setRiverKindMask(pPlot, iMask):
+	if iMask:
+		pPlot.setRiverID(-1 - iMask)
+	else:
+		pPlot.setRiverID(-1)
+
+
+def isNavRiver(pPlot):
+	return (getRiverKindMask(pPlot) & iRiverKindNavMask) != 0

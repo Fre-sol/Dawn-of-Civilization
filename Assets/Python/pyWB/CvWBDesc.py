@@ -1538,6 +1538,10 @@ class CvPlotDesc:
 		self.isNOfRiver = None
 		self.riverWEDirection = CardinalDirectionTypes.NO_CARDINALDIRECTION
 		self.isWOfRiver = None
+		# Fresol: the extra river kinds, one flag per kind per edge. A navigable
+		# river is an ordinary river as well, only the token differs.
+		self.isNOfNavRiver = None
+		self.isWOfNavRiver = None
 		self.isStartingPlot = 0
 		self.bonusType = None
 		self.bonusVarietyType = None
@@ -1603,10 +1607,17 @@ class CvPlotDesc:
 				f.write("\tRiverNSDirection=%d\n" %(int(plot.getRiverNSDirection()),) )
 			if (plot.isNOfRiver()):
 				f.write("\tisNOfRiver\n")
+			# Fresol: the extra river kinds are written next to the ordinary
+			# river, so a reader without them still gets the river itself.
+			iRiverKindMask = getRiverKindMask(plot)
+			if (iRiverKindMask & iRiverKindNavNorth):
+				f.write("\tisNOfNavRiver\n")
 			if (plot.getRiverWEDirection() != CardinalDirectionTypes.NO_CARDINALDIRECTION):
 				f.write("\tRiverWEDirection=%d\n" %(int(plot.getRiverWEDirection()),) )
 			if (plot.isWOfRiver()):
 				f.write("\tisWOfRiver\n")
+			if (iRiverKindMask & iRiverKindNavWest):
+				f.write("\tisWOfNavRiver\n")
 			# extras
 			if (plot.isStartingPlot()):
 				f.write("\tStartingPlot\n")
@@ -1705,6 +1716,10 @@ class CvPlotDesc:
 				self.isNOfRiver = (true)
 				continue
 
+			if (parser.findTokenValue(toks, "isNOfNavRiver"))!=-1:
+				self.isNOfNavRiver = (true)
+				continue
+
 			v = parser.findTokenValue(toks, "RiverWEDirection")
 			if v!=-1:
 				self.riverWEDirection = (CardinalDirectionTypes(v))
@@ -1712,6 +1727,10 @@ class CvPlotDesc:
 
 			if (parser.findTokenValue(toks, "isWOfRiver"))!=-1:
 				self.isWOfRiver = (true)
+				continue
+
+			if (parser.findTokenValue(toks, "isWOfNavRiver"))!=-1:
+				self.isWOfNavRiver = (true)
 				continue
 
 			if (parser.findTokenValue(toks, "StartingPlot"))!=-1:
@@ -1795,11 +1814,27 @@ class CvPlotDesc:
 		return True
 		
 	def applyRivers(self):
+		# Fresol: a navigable river is an ordinary river as well, so its token
+		# alone brings the river, its graphics and everything a river does.
+		if self.isNOfNavRiver is not None:
+			self.plot.setNOfRiver(True, self.riverWEDirection)
+
+		if self.isWOfNavRiver is not None:
+			self.plot.setWOfRiver(True, self.riverNSDirection)
+
 		if self.isNOfRiver is not None:
 			self.plot.setNOfRiver(self.isNOfRiver, self.riverWEDirection)
-		
+
 		if self.isWOfRiver is not None:
 			self.plot.setWOfRiver(self.isWOfRiver, self.riverNSDirection)
+
+		if self.isNOfNavRiver is not None or self.isWOfNavRiver is not None:
+			iMask = getRiverKindMask(self.plot)
+			if self.isNOfNavRiver is not None:
+				iMask |= iRiverKindNavNorth
+			if self.isWOfNavRiver is not None:
+				iMask |= iRiverKindNavWest
+			setRiverKindMask(self.plot, iMask)
 	
 	def applyBonus(self):
 		if self.bonusType:

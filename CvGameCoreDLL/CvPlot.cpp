@@ -14,6 +14,35 @@
 // toolkit has no intrin.h, so the intrinsic is declared here by hand.
 extern "C" void* _ReturnAddress(void);
 #pragma intrinsic(_ReturnAddress)
+
+// Fresol: temporary. The engine reaches these through IAT slots, and knowing
+// which slot is which function is the whole point of the exercise, so every
+// candidate writes its caller down. Only calls from the engine are kept.
+void navRiverProbe(const char* szWho, void* pCaller)
+{
+	static int iProbeCalls = 0;
+	FILE* pProbeFile;
+
+	if (iProbeCalls >= 400)
+	{
+		return;
+	}
+
+	if (((unsigned)(size_t)pCaller) >= 0x00a00000)
+	{
+		return;
+	}
+
+	++iProbeCalls;
+
+	pProbeFile = fopen("navriver_probe.log", "a");
+
+	if (pProbeFile != NULL)
+	{
+		fprintf(pProbeFile, "%-16s caller=%p\n", szWho, pCaller);
+		fclose(pProbeFile);
+	}
+}
 #include "CvDLLSymbolIFaceBase.h"
 #include "CvDLLEntityIFaceBase.h"
 #include "CvDLLPlotBuilderIFaceBase.h"
@@ -1721,6 +1750,7 @@ bool CvPlot::isWithinTeamCityRadius(TeamTypes eTeam, PlayerTypes eIgnorePlayer) 
 
 bool CvPlot::isLake() const
 {
+	navRiverProbe("isLake", _ReturnAddress());
 	CvArea* pArea = area();
 
 	if (pArea != NULL)
@@ -1736,6 +1766,7 @@ bool CvPlot::isLake() const
 // XXX precalculate this???
 bool CvPlot::isFreshWater() const
 {
+	navRiverProbe("isFreshWater", _ReturnAddress());
 	CvPlot* pLoopPlot;
 	int iDX, iDY;
 
@@ -1855,6 +1886,7 @@ bool CvPlot::isIrrigationAvailable(bool bIgnoreSelf) const
 
 bool CvPlot::isRiverMask() const
 {
+	navRiverProbe("isRiverMask", _ReturnAddress());
 	CvPlot* pPlot;
 
 	if (isNOfRiver())
@@ -1919,6 +1951,7 @@ bool CvPlot::isRiverCrossingFlowClockwise(DirectionTypes eDirection) const
 
 bool CvPlot::isRiverSide() const
 {
+	navRiverProbe("isRiverSide", _ReturnAddress());
 	CvPlot* pLoopPlot;
 	int iI;
 
@@ -1941,6 +1974,7 @@ bool CvPlot::isRiverSide() const
 
 bool CvPlot::isRiver() const
 {
+	navRiverProbe("isRiver", _ReturnAddress());
 	return (getRiverCrossingCount() > 0);
 }
 
@@ -5073,6 +5107,7 @@ bool CvPlot::inStraitRiverBuild() const
 
 bool CvPlot::isNOfRiver() const
 {
+	navRiverProbe("isNOfRiver", _ReturnAddress());
 	// Fresol - start
 	// Only the edge that actually looks across a strait gets a river, so the trees are cut
 	// towards the strait and nowhere else.
@@ -5129,6 +5164,7 @@ void CvPlot::setNOfRiver(bool bNewValue, CardinalDirectionTypes eRiverDir)
 
 bool CvPlot::isWOfRiver() const
 {
+	navRiverProbe("isWOfRiver", _ReturnAddress());
 	// Fresol - start
 	if (!m_bWOfRiver && inStraitRiverBuild() && (isStrait() || neighbourIsStrait(DIRECTION_EAST)))
 	{
@@ -5872,6 +5908,7 @@ PlotTypes CvPlot::getPlotType() const
 
 bool CvPlot::isWater() const
 {
+	navRiverProbe("isWater", _ReturnAddress());
 	return (getPlotType() == PLOT_OCEAN);
 }
 
@@ -5884,12 +5921,14 @@ bool CvPlot::isFlatlands() const
 
 bool CvPlot::isHills() const
 {
+	navRiverProbe("isHills", _ReturnAddress());
 	return (getPlotType() == PLOT_HILLS);
 }
 
 
 bool CvPlot::isPeak() const
 {
+	navRiverProbe("isPeak", _ReturnAddress());
 	return (getPlotType() == PLOT_PEAK);
 }
 

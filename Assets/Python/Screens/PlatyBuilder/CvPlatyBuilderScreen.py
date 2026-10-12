@@ -771,10 +771,16 @@ class CvWorldBuilderScreen:
 				iMask |= iRiverKindNavWest
 			setRiverKindMask(pPlot, iMask)
 
+		# Fresol: only lay the edge down if it is not there yet. The direction we
+		# pass here is the one the painting direction implies, and overwriting an
+		# existing river's direction would turn its flow around -- marking a river
+		# as navigable must not change anything about the river itself.
 		if bNorth:
-			pPlot.setNOfRiver(True, eDirection)
+			if not pPlot.isNOfRiver():
+				pPlot.setNOfRiver(True, eDirection)
 		else:
-			pPlot.setWOfRiver(True, eDirection)
+			if not pPlot.isWOfRiver():
+				pPlot.setWOfRiver(True, eDirection)
 
 	def placeRiverNW ( self, bUseCurrent = True ):
 		if bUseCurrent:

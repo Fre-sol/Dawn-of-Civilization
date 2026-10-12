@@ -112,6 +112,7 @@ public:
 	};
 
 	int getNavRiverMask() const;
+	bool hasNavRiverArt() const;																															// a NavRiver edge takes part in this plot's symbol
 	bool hasNavKindEdge(DirectionTypes eIndex) const;
 	bool calculateNavRiverCrossing(DirectionTypes eIndex) const;
 	bool isNavRiverSide() const;																															// an extra kind touches the plot, corners included

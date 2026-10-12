@@ -1939,6 +1939,47 @@ bool CvPlot::isRiver() const
 }
 
 
+// Fresol - start
+int CvPlot::getNavRiverMask() const
+{
+	// Random map generation writes small non-negative river ids of its own; ours
+	// sit below -1, and -1 means "no extra kind".
+	return (m_iRiverID < -1) ? (-m_iRiverID - 1) : 0;
+}
+
+bool CvPlot::isNavRiverSide() const
+{
+	// A river edge is shared by the two plots it separates, but the flag for it
+	// is only kept on one of them, so both sides have to be looked at.
+	CvPlot* pPlot;
+
+	if (getNavRiverMask() & RIVER_KIND_NAV_NORTH)
+	{
+		return true;
+	}
+
+	if (getNavRiverMask() & RIVER_KIND_NAV_WEST)
+	{
+		return true;
+	}
+
+	pPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_NORTH);
+	if ((pPlot != NULL) && (pPlot->getNavRiverMask() & RIVER_KIND_NAV_NORTH))
+	{
+		return true;
+	}
+
+	pPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_WEST);
+	if ((pPlot != NULL) && (pPlot->getNavRiverMask() & RIVER_KIND_NAV_WEST))
+	{
+		return true;
+	}
+
+	return false;
+}
+// Fresol - end
+
+
 bool CvPlot::isRiverConnection(DirectionTypes eDirection) const
 {
 	if (eDirection == NO_DIRECTION)
@@ -7023,6 +7064,17 @@ int CvPlot::calculateNatureYield(YieldTypes eYield, TeamTypes eTeam, bool bIgnor
 	{
 		iYield += ((bIgnoreFeature || (getFeatureType() == NO_FEATURE)) ? GC.getTerrainInfo(getTerrainType()).getRiverYieldChange(eYield) : GC.getFeatureInfo(getFeatureType()).getRiverYieldChange(eYield));
 	}
+
+	// Fresol - start
+	// Trial only: a grassland tile that has a navigable river along one of its
+	// edges gains a commerce. This is meant to become a data driven river kind
+	// yield change once the kind can be painted and exported properly.
+	if ((eYield == YIELD_COMMERCE) && isNavRiverSide() && (getTerrainType() == TERRAIN_GRASS))
+	{
+		iYield += 1;
+	}
+	// Fresol - end
+
 
 	if (isHills())
 	{

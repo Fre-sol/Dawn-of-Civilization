@@ -103,6 +103,18 @@ public:
 	bool isRiver() const;																																				// Exposed to Python
 	bool isRiverConnection(DirectionTypes eDirection) const;																		// Exposed to Python
 
+	// Fresol - start: the mod's extra river kinds. They live in m_iRiverID, a field
+	// nothing else here writes; Core.py holds the matching Python side.
+	enum ExtraRiverKinds
+	{
+		RIVER_KIND_NAV_NORTH = 1,		// the edge this plot calls isNOfRiver, drawn on its south side
+		RIVER_KIND_NAV_WEST = 2,		// the edge this plot calls isWOfRiver, drawn on its east side
+	};
+
+	int getNavRiverMask() const;
+	bool isNavRiverSide() const;																															// a river on one of the plot's four edges
+	// Fresol - end
+
 	CvPlot* getNearestLandPlotInternal(int iDistance) const;
 	int getNearestLandArea() const;																															// Exposed to Python
 	CvPlot* getNearestLandPlot() const;																													// Exposed to Python

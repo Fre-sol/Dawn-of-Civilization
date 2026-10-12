@@ -112,7 +112,9 @@ public:
 	};
 
 	int getNavRiverMask() const;
-	bool isNavRiverSide() const;																															// a river on one of the plot's four edges
+	bool hasNavKindEdge(DirectionTypes eIndex) const;
+	bool calculateNavRiverCrossing(DirectionTypes eIndex) const;
+	bool isNavRiverSide() const;																															// an extra kind touches the plot, corners included
 	// Fresol - end
 
 	CvPlot* getNearestLandPlotInternal(int iDistance) const;

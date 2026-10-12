@@ -1947,32 +1947,180 @@ int CvPlot::getNavRiverMask() const
 	return (m_iRiverID < -1) ? (-m_iRiverID - 1) : 0;
 }
 
+bool CvPlot::hasNavKindEdge(DirectionTypes eIndex) const
+{
+	if (eIndex == DIRECTION_NORTH)
+	{
+		return ((getNavRiverMask() & RIVER_KIND_NAV_NORTH) != 0);
+	}
+
+	if (eIndex == DIRECTION_WEST)
+	{
+		return ((getNavRiverMask() & RIVER_KIND_NAV_WEST) != 0);
+	}
+
+	return false;
+}
+
+bool CvPlot::calculateNavRiverCrossing(DirectionTypes eIndex) const
+{
+	// The same rule CvPlot::updateRiverCrossing works out for ordinary rivers,
+	// run over the extra kinds instead. Keeping the two in step is what makes a
+	// plot count when only a corner of it is touched by a river, and it is why
+	// the shape of this function follows that one so closely.
+	const CvPlot* pNorthEastPlot;
+	const CvPlot* pSouthEastPlot;
+	const CvPlot* pSouthWestPlot;
+	const CvPlot* pNorthWestPlot;
+	const CvPlot* pCornerPlot;
+	const CvPlot* pPlot;
+	bool bValid;
+
+	pCornerPlot = NULL;
+	bValid = false;
+	pPlot = plotDirection(getX_INLINE(), getY_INLINE(), eIndex);
+
+	if ((NULL == pPlot || !pPlot->isWater()) && !isWater())
+	{
+		switch (eIndex)
+		{
+		case DIRECTION_NORTH:
+			if (pPlot != NULL)
+			{
+				bValid = pPlot->hasNavKindEdge(DIRECTION_NORTH);
+			}
+			break;
+
+		case DIRECTION_NORTHEAST:
+			pCornerPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_NORTH);
+			break;
+
+		case DIRECTION_EAST:
+			bValid = hasNavKindEdge(DIRECTION_WEST);
+			break;
+
+		case DIRECTION_SOUTHEAST:
+			pCornerPlot = this;
+			break;
+
+		case DIRECTION_SOUTH:
+			bValid = hasNavKindEdge(DIRECTION_NORTH);
+			break;
+
+		case DIRECTION_SOUTHWEST:
+			pCornerPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_WEST);
+			break;
+
+		case DIRECTION_WEST:
+			if (pPlot != NULL)
+			{
+				bValid = pPlot->hasNavKindEdge(DIRECTION_WEST);
+			}
+			break;
+
+		case DIRECTION_NORTHWEST:
+			pCornerPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_NORTHWEST);
+			break;
+
+		default:
+			FAssert(false);
+			break;
+		}
+
+		if (pCornerPlot != NULL)
+		{
+			pNorthEastPlot = plotDirection(pCornerPlot->getX_INLINE(), pCornerPlot->getY_INLINE(), DIRECTION_EAST);
+			pSouthEastPlot = plotDirection(pCornerPlot->getX_INLINE(), pCornerPlot->getY_INLINE(), DIRECTION_SOUTHEAST);
+			pSouthWestPlot = plotDirection(pCornerPlot->getX_INLINE(), pCornerPlot->getY_INLINE(), DIRECTION_SOUTH);
+			pNorthWestPlot = pCornerPlot;
+
+			if (pSouthWestPlot && pNorthWestPlot && pSouthEastPlot && pNorthEastPlot)
+			{
+				if (pSouthWestPlot->hasNavKindEdge(DIRECTION_WEST) && pNorthWestPlot->hasNavKindEdge(DIRECTION_WEST))
+				{
+					bValid = true;
+				}
+				else if (pNorthEastPlot->hasNavKindEdge(DIRECTION_NORTH) && pNorthWestPlot->hasNavKindEdge(DIRECTION_NORTH))
+				{
+					bValid = true;
+				}
+				else if ((eIndex == DIRECTION_NORTHEAST) || (eIndex == DIRECTION_SOUTHWEST))
+				{
+					if (pNorthEastPlot->hasNavKindEdge(DIRECTION_NORTH) && (pNorthWestPlot->hasNavKindEdge(DIRECTION_WEST) || pNorthWestPlot->isWater()))
+					{
+						bValid = true;
+					}
+					else if ((pNorthEastPlot->hasNavKindEdge(DIRECTION_NORTH) || pSouthEastPlot->isWater()) && pNorthWestPlot->hasNavKindEdge(DIRECTION_WEST))
+					{
+						bValid = true;
+					}
+					else if (pSouthWestPlot->hasNavKindEdge(DIRECTION_WEST) && (pNorthWestPlot->hasNavKindEdge(DIRECTION_NORTH) || pNorthWestPlot->isWater()))
+					{
+						bValid = true;
+					}
+					else if ((pSouthWestPlot->hasNavKindEdge(DIRECTION_WEST) || pSouthEastPlot->isWater()) && pNorthWestPlot->hasNavKindEdge(DIRECTION_NORTH))
+					{
+						bValid = true;
+					}
+				}
+				else
+				{
+					FAssert((eIndex == DIRECTION_SOUTHEAST) || (eIndex == DIRECTION_NORTHWEST));
+
+					if (pNorthWestPlot->hasNavKindEdge(DIRECTION_NORTH) && (pNorthWestPlot->hasNavKindEdge(DIRECTION_WEST) || pNorthEastPlot->isWater()))
+					{
+						bValid = true;
+					}
+					else if ((pNorthWestPlot->hasNavKindEdge(DIRECTION_NORTH) || pSouthWestPlot->isWater()) && pNorthWestPlot->hasNavKindEdge(DIRECTION_WEST))
+					{
+						bValid = true;
+					}
+					else if (pNorthEastPlot->hasNavKindEdge(DIRECTION_NORTH) && (pSouthWestPlot->hasNavKindEdge(DIRECTION_WEST) || pSouthWestPlot->isWater()))
+					{
+						bValid = true;
+					}
+					else if ((pNorthEastPlot->hasNavKindEdge(DIRECTION_NORTH) || pNorthEastPlot->isWater()) && pSouthWestPlot->hasNavKindEdge(DIRECTION_WEST))
+					{
+						bValid = true;
+					}
+				}
+			}
+		}
+	}
+
+	return bValid;
+}
+
 bool CvPlot::isNavRiverSide() const
 {
-	// A river edge is shared by the two plots it separates, but the flag for it
-	// is only kept on one of them, so both sides have to be looked at.
 	CvPlot* pPlot;
+	int i;
 
-	if (getNavRiverMask() & RIVER_KIND_NAV_NORTH)
+	// Cheap way out: these kinds are rare, and the corner rule below only ever
+	// looks at the eight plots around this one, so nothing nearby means nothing.
+	if (getNavRiverMask() == 0)
 	{
-		return true;
+		for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+		{
+			pPlot = plotDirection(getX_INLINE(), getY_INLINE(), (DirectionTypes)i);
+			if ((pPlot != NULL) && (pPlot->getNavRiverMask() != 0))
+			{
+				break;
+			}
+		}
+
+		if (i == NUM_DIRECTION_TYPES)
+		{
+			return false;
+		}
 	}
 
-	if (getNavRiverMask() & RIVER_KIND_NAV_WEST)
+	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
 	{
-		return true;
-	}
-
-	pPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_NORTH);
-	if ((pPlot != NULL) && (pPlot->getNavRiverMask() & RIVER_KIND_NAV_NORTH))
-	{
-		return true;
-	}
-
-	pPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_WEST);
-	if ((pPlot != NULL) && (pPlot->getNavRiverMask() & RIVER_KIND_NAV_WEST))
-	{
-		return true;
+		if (calculateNavRiverCrossing((DirectionTypes)i))
+		{
+			return true;
+		}
 	}
 
 	return false;
@@ -7068,8 +7216,10 @@ int CvPlot::calculateNatureYield(YieldTypes eYield, TeamTypes eTeam, bool bIgnor
 	// Fresol - start
 	// Trial only: a grassland tile that has a navigable river along one of its
 	// edges gains a commerce. This is meant to become a data driven river kind
-	// yield change once the kind can be painted and exported properly.
-	if ((eYield == YIELD_COMMERCE) && isNavRiverSide() && (getTerrainType() == TERRAIN_GRASS))
+	// yield change once the kind can be painted and exported properly. The two
+	// cheap tests come first on purpose: yielding is called far too often to
+	// look at the neighbours of every plot on every call.
+	if ((eYield == YIELD_COMMERCE) && (getTerrainType() == TERRAIN_GRASS) && isNavRiverSide())
 	{
 		iYield += 1;
 	}

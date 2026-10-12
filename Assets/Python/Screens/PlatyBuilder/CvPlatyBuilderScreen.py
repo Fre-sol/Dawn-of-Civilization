@@ -55,6 +55,12 @@ lRevealModes = [iModeRevealPlot, iModeInvisibleSubmarine, iModeInvisibleStealth,
 lAreaExportModes = [iModeAreaExporter1, iModeAreaExporter2, iModeAreaExporter3]
 lMoveMapModes = [iModeMoveMap, iModeMoveMap2]
 
+# Fresol: the buttons that pick a river kind in the map tab. They are told apart
+# by name, and the names carry no digits: this screen's table cells cannot pass
+# their own data along, and a widget name's trailing digits do not survive
+# either. Pairs up with lRiverKinds in Core.
+lRiverKindButtons = ["RiverKindRiverButton", "RiverKindNavButton"]
+
 class CvWorldBuilderScreen:
 
 	def __init__ (self) :
@@ -1238,8 +1244,8 @@ class CvWorldBuilderScreen:
 			screen.deleteWidget("AddRouteButton")
 			screen.deleteWidget("AddFeatureButton")
 			screen.deleteWidget("AddRiverButton")
-			screen.deleteWidget("RiverKindButton0")
-			screen.deleteWidget("RiverKindButton1")
+			for sButton in lRiverKindButtons:
+				screen.deleteWidget(sButton)
 			screen.deleteWidget("RiverKindName0")
 			screen.deleteWidget("RiverKindName1")
 			screen.deleteWidget("WBCurrentItem")
@@ -1649,8 +1655,8 @@ class CvWorldBuilderScreen:
 		screen.setState("EditPlotData", self.iPlayerAddMode == iModePlotData)
 		screen.setState("EditEvents", self.iPlayerAddMode == iModeEvents)
 		screen.setState("AddRiverButton", self.iPlayerAddMode == iModeRiver)
-		screen.setState("RiverKindButton0", self.iPlayerAddMode == iModeRiver and self.iSelection == 0)
-		screen.setState("RiverKindButton1", self.iPlayerAddMode == iModeRiver and self.iSelection == 1)
+		for i in xrange(len(lRiverKindButtons)):
+			screen.setState(lRiverKindButtons[i], self.iPlayerAddMode == iModeRiver and self.iSelection == i)
 		screen.setState("AddImprovementButton", self.iPlayerAddMode == iModeImprovements)
 		screen.setState("AddBonusButton", self.iPlayerAddMode == iModeBonus)
 		screen.setState("AddBonusVarietyButton", self.iPlayerAddMode == iModeBonusVariety)
@@ -1794,7 +1800,7 @@ class CvWorldBuilderScreen:
 			lIcons = ["WORLDBUILDER_RIVER_PLACEMENT", "WORLDBUILDER_PLOT_TYPE_OCEAN"]
 			for i, sName in enumerate(lRiverKinds):
 				iX = 8 + i * 130
-				screen.addCheckBoxGFC("RiverKindButton%d" % i, CyArtFileMgr().getInterfaceArtInfo(lIcons[i]).getPath(), CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
+				screen.addCheckBoxGFC(lRiverKindButtons[i], CyArtFileMgr().getInterfaceArtInfo(lIcons[i]).getPath(), CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
 					iX, 25, 24, 24, WidgetTypes.WIDGET_PYTHON, 1029, 62 + i, ButtonStyles.BUTTON_STYLE_LABEL)
 				screen.setLabel("RiverKindName%d" % i, "Background", "<font=3>" + sName + "</font>", CvUtil.FONT_LEFT_JUSTIFY, iX + 28, 30, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
@@ -2863,18 +2869,21 @@ class CvWorldBuilderScreen:
 
 		elif inputClass.getFunctionName() == "WBSelectItem":
 			bDeleteOverlay = False		# Fresol: keep the overlay of the current mode
+			CvUtil.pyPrint("FresolDBG table pick: mode=%d notify=%d data1=%d data2=%d" % (self.iPlayerAddMode, inputClass.getNotifyCode(), inputClass.getData1(), inputClass.getData2()))
 			self.iSelection = inputClass.getData2()
 			self.iSelectClass = 0
 			self.refreshSelection()
 			self.updateOverlay()
 
-		# Fresol: the river kind buttons are told apart by their names, because a
-		# table cell cannot pass its own data to this screen; see setSelectionTable.
-		elif inputClass.getFunctionName()[:15] == "RiverKindButton":
-			bDeleteOverlay = False
-			self.iSelection = int(inputClass.getFunctionName()[15:])
-			self.refreshSideMenu()
-			self.updateOverlay()
+		# Fresol: the river kind buttons are told apart by name. They only act on a
+		# real click: a mouse-over fires this too, and it carries no data, which
+		# would otherwise put the choice back to the default.
+		elif inputClass.getFunctionName() in lRiverKindButtons:
+			if inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED:
+				bDeleteOverlay = False
+				self.iSelection = lRiverKindButtons.index(inputClass.getFunctionName())
+				self.refreshSideMenu()
+				self.updateOverlay()
 
 		elif inputClass.getFunctionName() == "RevealMode":
 			self.iPlayerAddMode = lRevealModes[screen.getPullDownData("RevealMode", screen.getSelectedPullDownID("RevealMode"))]

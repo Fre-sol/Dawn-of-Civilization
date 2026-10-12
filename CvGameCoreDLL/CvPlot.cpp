@@ -54,7 +54,9 @@ void navRiverProbe(const char* szWho, void* pCaller)
 		return;
 	}
 
-	if (((unsigned)(size_t)pCaller) >= 0x00a00000)
+	// Fresol: only calls from the engine's river art code are interesting, so
+	// everything else is dropped and the file stays readable.
+	if (((unsigned)(size_t)pCaller) < 0x00605000 || ((unsigned)(size_t)pCaller) >= 0x00607000)
 	{
 		return;
 	}
@@ -1676,6 +1678,7 @@ bool CvPlot::shareAdjacentArea(const CvPlot* pPlot) const
 
 bool CvPlot::isAdjacentToLand() const
 {
+	navRiverProbe("isAdjacentToLand", _ReturnAddress());
 	PROFILE_FUNC();
 
 	CvPlot* pAdjacentPlot;
@@ -1842,6 +1845,7 @@ bool CvPlot::isFreshWater() const
 
 bool CvPlot::isPotentialIrrigation() const
 {
+	navRiverProbe("isPotentialIrrigation", _ReturnAddress());
 	if ((isCity() && !isHills()) || ((getImprovementType() != NO_IMPROVEMENT) && (GC.getImprovementInfo(getImprovementType()).isCarriesIrrigation())))
 	{
 		if ((getTeam() != NO_TEAM) && GET_TEAM(getTeam()).isIrrigation())
@@ -1856,6 +1860,7 @@ bool CvPlot::isPotentialIrrigation() const
 
 bool CvPlot::canHavePotentialIrrigation() const
 {
+	navRiverProbe("canHavePotentialIrrigation", _ReturnAddress());
 	int iI;
 
 	if (isCity() && !isHills())
@@ -3594,6 +3599,7 @@ void CvPlot::changeExtraMovePathCost(int iChange)
 
 bool CvPlot::isAdjacentOwned() const
 {
+	navRiverProbe("isAdjacentOwned", _ReturnAddress());
 	CvPlot* pAdjacentPlot;
 	int iI;
 
@@ -3961,6 +3967,7 @@ CvUnit* CvPlot::plotCheck(ConstPlotUnitFunc funcA, int iData1A, int iData2A, Pla
 
 bool CvPlot::isOwned() const
 {
+	navRiverProbe("isOwned", _ReturnAddress());
 	return (getOwnerINLINE() != NO_PLAYER);
 }
 
@@ -4207,6 +4214,7 @@ bool CvPlot::isEnemyCity(const CvUnit& kUnit) const
 
 bool CvPlot::isOccupation() const
 {
+	navRiverProbe("isOccupation", _ReturnAddress());
 	CvCity* pCity;
 
 	pCity = getPlotCity();
@@ -4222,6 +4230,7 @@ bool CvPlot::isOccupation() const
 
 bool CvPlot::isBeingWorked() const
 {
+	navRiverProbe("isBeingWorked", _ReturnAddress());
 	CvCity* pWorkingCity;
 
 	pWorkingCity = getWorkingCity();
@@ -4237,6 +4246,7 @@ bool CvPlot::isBeingWorked() const
 
 bool CvPlot::isUnit() const
 {
+	navRiverProbe("isUnit", _ReturnAddress());
 	return (getNumUnits() > 0);
 }
 
@@ -4301,6 +4311,7 @@ bool CvPlot::isVisibleOtherUnit(PlayerTypes ePlayer) const
 
 bool CvPlot::isFighting() const
 {
+	navRiverProbe("isFighting", _ReturnAddress());
 	return (plotCheck(PUF_isFighting) != NULL);
 }
 
@@ -4379,6 +4390,7 @@ bool CvPlot::canHaveFeature(FeatureTypes eFeature) const
 
 bool CvPlot::isRoute() const
 {
+	navRiverProbe("isRoute", _ReturnAddress());
 	return (getRouteType() != NO_ROUTE);
 }
 
@@ -4632,6 +4644,7 @@ bool CvPlot::isValidDomainForAction(const CvUnit& unit) const
 
 bool CvPlot::isImpassable() const
 {
+	navRiverProbe("isImpassable", _ReturnAddress());
 	if (isPeak())
 	{
 		return true;
@@ -5322,6 +5335,7 @@ CvPlot* CvPlot::getInlandCorner() const
 
 bool CvPlot::hasCoastAtSECorner() const
 {
+	navRiverProbe("hasCoastAtSECorner", _ReturnAddress());
 	CvPlot* pAdjacentPlot;
 
 	if (isWater())
@@ -5353,6 +5367,7 @@ bool CvPlot::hasCoastAtSECorner() const
 
 bool CvPlot::isIrrigated() const
 {
+	navRiverProbe("isIrrigated", _ReturnAddress());
 	return m_bIrrigated;
 }
 
@@ -5447,6 +5462,7 @@ void CvPlot::updateIrrigated()
 
 bool CvPlot::isPotentialCityWork() const
 {
+	navRiverProbe("isPotentialCityWork", _ReturnAddress());
 	return m_bPotentialCityWork;
 }
 
@@ -5941,6 +5957,7 @@ bool CvPlot::isWater() const
 
 bool CvPlot::isFlatlands() const
 {
+	navRiverProbe("isFlatlands", _ReturnAddress());
 	return (getPlotType() == PLOT_LAND);
 }
 

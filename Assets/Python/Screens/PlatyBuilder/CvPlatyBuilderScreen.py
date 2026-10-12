@@ -143,6 +143,7 @@ class CvWorldBuilderScreen:
 		CyEngine().clearAreaBorderPlots(AreaBorderLayers.AREA_BORDER_LAYER_REVEALED_PLOTS)
 		CyEngine().clearAreaBorderPlots(AreaBorderLayers.AREA_BORDER_LAYER_WORLD_BUILDER)
 		CyEngine().clearAreaBorderPlots(AreaBorderLayers.AREA_BORDER_LAYER_HIGHLIGHT_PLOT)
+		CyEngine().clearAreaBorderPlots(iRiverKindOverlayID)	# Fresol: the river kind overlay
 
 	def mouseOverPlot (self, argsList):
 		screen = CyGInterfaceScreen( "WorldBuilderScreen", CvScreenEnums.WORLDBUILDER_SCREEN )
@@ -762,7 +763,6 @@ class CvWorldBuilderScreen:
 	def setRiver ( self, pPlot, bNorth, eDirection ):
 		# Fresol: lay down the kind of river picked in the selection table. Every
 		# kind is an ordinary river as well, so only the extra kind is marked.
-		CvUtil.pyPrint("FresolDBG place river: selection=%d north=%d" % (self.iSelection, bNorth))
 		if self.iSelection == iRiverKindNavIndex:
 			iMask = getRiverKindMask(pPlot)
 			if bNorth:
@@ -2298,10 +2298,10 @@ class CvWorldBuilderScreen:
 	def showRiverKindOverlay(self):
 		# Fresol: mark the tiles that carry a river of an extra kind. Those draw
 		# exactly like an ordinary river, so this is the only way to tell them apart.
-		removeStabilityOverlay()
+		CyEngine().clearAreaBorderPlots(iRiverKindOverlayID)
 		for pPlot in plots.all():
 			if getRiverKindMask(pPlot) & iRiverKindNavMask:
-				CyEngine().fillAreaBorderPlotAlt(pPlot.getX(), pPlot.getY(), 1000, "COLOR_CYAN", 0.7)
+				CyEngine().fillAreaBorderPlotAlt(pPlot.getX(), pPlot.getY(), iRiverKindOverlayID, "COLOR_CYAN", 0.7)
 
 	def setRiverHighlights(self):
 		CyEngine().clearColoredPlots(PlotLandscapeLayers.PLOT_LANDSCAPE_LAYER_REVEALED_PLOTS)
@@ -2869,7 +2869,6 @@ class CvWorldBuilderScreen:
 
 		elif inputClass.getFunctionName() == "WBSelectItem":
 			bDeleteOverlay = False		# Fresol: keep the overlay of the current mode
-			CvUtil.pyPrint("FresolDBG table pick: mode=%d notify=%d data1=%d data2=%d" % (self.iPlayerAddMode, inputClass.getNotifyCode(), inputClass.getData1(), inputClass.getData2()))
 			self.iSelection = inputClass.getData2()
 			self.iSelectClass = 0
 			self.refreshSelection()
@@ -2969,5 +2968,9 @@ class CvWorldBuilderScreen:
 
 		if bDeleteOverlay and inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED:
 			removeStabilityOverlay()
+			# Fresol: our own overlay outlives that one, so drop it once the river
+			# tool is no longer the tool in use.
+			if self.iPlayerAddMode != iModeRiver:
+				CyEngine().clearAreaBorderPlots(iRiverKindOverlayID)
 
 		return 1

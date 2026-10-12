@@ -2494,6 +2494,11 @@ iRiverKindNavNorth = 1
 iRiverKindNavWest = 2
 iRiverKindNavMask = iRiverKindNavNorth | iRiverKindNavWest
 
+# The area border id the WorldBuilder draws the extra kinds with. It has to stay
+# clear of 1000..1049: the shared stability overlay clears those on every click,
+# which would wipe this one right after a river is drawn.
+iRiverKindOverlayID = 1100
+
 # What the WorldBuilder's river tool offers, in the order of its selection table.
 lRiverKinds = ["River", "NavRiver"]
 iRiverKindNavIndex = 1

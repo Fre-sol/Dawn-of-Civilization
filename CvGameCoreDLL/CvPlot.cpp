@@ -15,62 +15,6 @@
 extern "C" void* _ReturnAddress(void);
 #pragma intrinsic(_ReturnAddress)
 
-// Fresol: temporary. The engine reaches these through IAT slots, and knowing
-// which slot is which function is the whole point of the exercise, so every
-// candidate writes its caller down. Only calls from the engine are kept.
-void navRiverProbe(const char* szWho, void* pCaller)
-{
-	static int iProbeCalls = 0;
-	static int iSlotDumps = 0;
-	FILE* pProbeFile;
-
-	// Fresol: these slots are lazy import thunks - they hold the thunk address
-	// until the first call through them replaces it with the real one. So the
-	// dump is taken a few times rather than once, and the last one is the real
-	// addresses, which this DLL's own .map file can name.
-	if (iSlotDumps < 5)
-	{
-		++iSlotDumps;
-
-		pProbeFile = fopen("navriver_probe.log", "a");
-
-		if (pProbeFile != NULL)
-		{
-			fprintf(pProbeFile, "self=%p\n", (void*)&navRiverProbe);
-			fprintf(pProbeFile, "slot bc1fe4 -> %p\n", *(void**)0x00bc1fe4);
-			fprintf(pProbeFile, "slot bc2a34 -> %p\n", *(void**)0x00bc2a34);
-			fprintf(pProbeFile, "slot bc2a38 -> %p\n", *(void**)0x00bc2a38);
-			fprintf(pProbeFile, "slot bc2aac -> %p\n", *(void**)0x00bc2aac);
-			fprintf(pProbeFile, "slot bc2ab0 -> %p\n", *(void**)0x00bc2ab0);
-			fprintf(pProbeFile, "slot bc1b54 -> %p\n", *(void**)0x00bc1b54);
-			fprintf(pProbeFile, "slot bc1b60 -> %p\n", *(void**)0x00bc1b60);
-			fprintf(pProbeFile, "slot bc195c -> %p\n", *(void**)0x00bc195c);
-			fclose(pProbeFile);
-		}
-	}
-
-	if (iProbeCalls >= 400)
-	{
-		return;
-	}
-
-	// Fresol: only calls from the engine's river art code are interesting, so
-	// everything else is dropped and the file stays readable.
-	if (((unsigned)(size_t)pCaller) < 0x00605000 || ((unsigned)(size_t)pCaller) >= 0x00607000)
-	{
-		return;
-	}
-
-	++iProbeCalls;
-
-	pProbeFile = fopen("navriver_probe.log", "a");
-
-	if (pProbeFile != NULL)
-	{
-		fprintf(pProbeFile, "%-16s caller=%p\n", szWho, pCaller);
-		fclose(pProbeFile);
-	}
-}
 #include "CvDLLSymbolIFaceBase.h"
 #include "CvDLLEntityIFaceBase.h"
 #include "CvDLLPlotBuilderIFaceBase.h"
@@ -1678,7 +1622,6 @@ bool CvPlot::shareAdjacentArea(const CvPlot* pPlot) const
 
 bool CvPlot::isAdjacentToLand() const
 {
-	navRiverProbe("isAdjacentToLand", _ReturnAddress());
 	PROFILE_FUNC();
 
 	CvPlot* pAdjacentPlot;
@@ -1779,7 +1722,6 @@ bool CvPlot::isWithinTeamCityRadius(TeamTypes eTeam, PlayerTypes eIgnorePlayer) 
 
 bool CvPlot::isLake() const
 {
-	navRiverProbe("isLake", _ReturnAddress());
 	CvArea* pArea = area();
 
 	if (pArea != NULL)
@@ -1795,7 +1737,6 @@ bool CvPlot::isLake() const
 // XXX precalculate this???
 bool CvPlot::isFreshWater() const
 {
-	navRiverProbe("isFreshWater", _ReturnAddress());
 	CvPlot* pLoopPlot;
 	int iDX, iDY;
 
@@ -1845,7 +1786,6 @@ bool CvPlot::isFreshWater() const
 
 bool CvPlot::isPotentialIrrigation() const
 {
-	navRiverProbe("isPotentialIrrigation", _ReturnAddress());
 	if ((isCity() && !isHills()) || ((getImprovementType() != NO_IMPROVEMENT) && (GC.getImprovementInfo(getImprovementType()).isCarriesIrrigation())))
 	{
 		if ((getTeam() != NO_TEAM) && GET_TEAM(getTeam()).isIrrigation())
@@ -1860,7 +1800,6 @@ bool CvPlot::isPotentialIrrigation() const
 
 bool CvPlot::canHavePotentialIrrigation() const
 {
-	navRiverProbe("canHavePotentialIrrigation", _ReturnAddress());
 	int iI;
 
 	if (isCity() && !isHills())
@@ -1917,7 +1856,6 @@ bool CvPlot::isIrrigationAvailable(bool bIgnoreSelf) const
 
 bool CvPlot::isRiverMask() const
 {
-	navRiverProbe("isRiverMask", _ReturnAddress());
 	CvPlot* pPlot;
 
 	if (isNOfRiver())
@@ -1982,7 +1920,6 @@ bool CvPlot::isRiverCrossingFlowClockwise(DirectionTypes eDirection) const
 
 bool CvPlot::isRiverSide() const
 {
-	navRiverProbe("isRiverSide", _ReturnAddress());
 	CvPlot* pLoopPlot;
 	int iI;
 
@@ -2005,7 +1942,6 @@ bool CvPlot::isRiverSide() const
 
 bool CvPlot::isRiver() const
 {
-	navRiverProbe("isRiver", _ReturnAddress());
 	return (getRiverCrossingCount() > 0);
 }
 
@@ -3599,7 +3535,6 @@ void CvPlot::changeExtraMovePathCost(int iChange)
 
 bool CvPlot::isAdjacentOwned() const
 {
-	navRiverProbe("isAdjacentOwned", _ReturnAddress());
 	CvPlot* pAdjacentPlot;
 	int iI;
 
@@ -3967,7 +3902,6 @@ CvUnit* CvPlot::plotCheck(ConstPlotUnitFunc funcA, int iData1A, int iData2A, Pla
 
 bool CvPlot::isOwned() const
 {
-	navRiverProbe("isOwned", _ReturnAddress());
 	return (getOwnerINLINE() != NO_PLAYER);
 }
 
@@ -4214,7 +4148,6 @@ bool CvPlot::isEnemyCity(const CvUnit& kUnit) const
 
 bool CvPlot::isOccupation() const
 {
-	navRiverProbe("isOccupation", _ReturnAddress());
 	CvCity* pCity;
 
 	pCity = getPlotCity();
@@ -4230,7 +4163,6 @@ bool CvPlot::isOccupation() const
 
 bool CvPlot::isBeingWorked() const
 {
-	navRiverProbe("isBeingWorked", _ReturnAddress());
 	CvCity* pWorkingCity;
 
 	pWorkingCity = getWorkingCity();
@@ -4246,7 +4178,6 @@ bool CvPlot::isBeingWorked() const
 
 bool CvPlot::isUnit() const
 {
-	navRiverProbe("isUnit", _ReturnAddress());
 	return (getNumUnits() > 0);
 }
 
@@ -4311,7 +4242,6 @@ bool CvPlot::isVisibleOtherUnit(PlayerTypes ePlayer) const
 
 bool CvPlot::isFighting() const
 {
-	navRiverProbe("isFighting", _ReturnAddress());
 	return (plotCheck(PUF_isFighting) != NULL);
 }
 
@@ -4390,7 +4320,6 @@ bool CvPlot::canHaveFeature(FeatureTypes eFeature) const
 
 bool CvPlot::isRoute() const
 {
-	navRiverProbe("isRoute", _ReturnAddress());
 	return (getRouteType() != NO_ROUTE);
 }
 
@@ -4644,7 +4573,6 @@ bool CvPlot::isValidDomainForAction(const CvUnit& unit) const
 
 bool CvPlot::isImpassable() const
 {
-	navRiverProbe("isImpassable", _ReturnAddress());
 	if (isPeak())
 	{
 		return true;
@@ -5146,7 +5074,6 @@ bool CvPlot::inStraitRiverBuild() const
 
 bool CvPlot::isNOfRiver() const
 {
-	navRiverProbe("isNOfRiver", _ReturnAddress());
 	// Fresol - start
 	// Only the edge that actually looks across a strait gets a river, so the trees are cut
 	// towards the strait and nowhere else.
@@ -5203,7 +5130,6 @@ void CvPlot::setNOfRiver(bool bNewValue, CardinalDirectionTypes eRiverDir)
 
 bool CvPlot::isWOfRiver() const
 {
-	navRiverProbe("isWOfRiver", _ReturnAddress());
 	// Fresol - start
 	if (!m_bWOfRiver && inStraitRiverBuild() && (isStrait() || neighbourIsStrait(DIRECTION_EAST)))
 	{
@@ -5259,29 +5185,43 @@ void CvPlot::setWOfRiver(bool bNewValue, CardinalDirectionTypes eRiverDir)
 CardinalDirectionTypes CvPlot::getRiverNSDirection() const
 {
 	// Fresol - start
-	// Temporary probe. The engine builds each river piece from a plot's flags and
-	// bend directions, so whoever asks this is the piece building code, and the
-	// model it picks lives right there. Only calls coming from the engine's own
-	// code are logged, which keeps the DLL's own hundred uses out of the file.
+	// Temporary. The engine works a river piece's shape out into one byte and
+	// looks that byte up in a 256 entry table to pick the model. Rather than
+	// copying that arithmetic out of the disassembly and hoping it is right,
+	// borrow the engine's own routine: it is a plain thiscall CvPlot method in
+	// the exe, and the exe sits at its preferred base, so the address holds.
 	{
-		static int iProbeCalls = 0;
+		static bool bInDescriptorProbe = false;
+		static int iDescriptorDumps = 0;
 
-		if (iProbeCalls < 60)
+		if (!bInDescriptorProbe && iDescriptorDumps < 80)
 		{
-			void* pProbeCaller = _ReturnAddress();
+			FILE* pProbeFile;
+			int iDescriptor;
+			const void* pDescriptorThis = this;
 
-			if (((unsigned)(size_t)pProbeCaller) < 0x00a00000)
+			bInDescriptorProbe = true;
+			++iDescriptorDumps;
+
+			// the engine's routine takes the plot in ecx and returns the byte in eax
+			__asm
 			{
-				FILE* pProbeFile = fopen("navriver_probe.log", "a");
-
-				++iProbeCalls;
-
-				if (pProbeFile != NULL)
-				{
-					fprintf(pProbeFile, "NSDirection caller=%p plot=%d,%d\n", pProbeCaller, getX_INLINE(), getY_INLINE());
-					fclose(pProbeFile);
-				}
+				mov ecx, pDescriptorThis
+				mov eax, 0x006062D0
+				call eax
+				mov iDescriptor, eax
 			}
+
+			pProbeFile = fopen("navriver_probe.log", "a");
+
+			if (pProbeFile != NULL)
+			{
+				fprintf(pProbeFile, "DESC plot=%d,%d NS=%d WE=%d desc=%d\n", getX_INLINE(), getY_INLINE(),
+						(int)m_eRiverNSDirection, (int)m_eRiverWEDirection, iDescriptor);
+				fclose(pProbeFile);
+			}
+
+			bInDescriptorProbe = false;
 		}
 	}
 	// Fresol - end
@@ -5335,7 +5275,6 @@ CvPlot* CvPlot::getInlandCorner() const
 
 bool CvPlot::hasCoastAtSECorner() const
 {
-	navRiverProbe("hasCoastAtSECorner", _ReturnAddress());
 	CvPlot* pAdjacentPlot;
 
 	if (isWater())
@@ -5367,7 +5306,6 @@ bool CvPlot::hasCoastAtSECorner() const
 
 bool CvPlot::isIrrigated() const
 {
-	navRiverProbe("isIrrigated", _ReturnAddress());
 	return m_bIrrigated;
 }
 
@@ -5462,7 +5400,6 @@ void CvPlot::updateIrrigated()
 
 bool CvPlot::isPotentialCityWork() const
 {
-	navRiverProbe("isPotentialCityWork", _ReturnAddress());
 	return m_bPotentialCityWork;
 }
 
@@ -5950,28 +5887,24 @@ PlotTypes CvPlot::getPlotType() const
 
 bool CvPlot::isWater() const
 {
-	navRiverProbe("isWater", _ReturnAddress());
 	return (getPlotType() == PLOT_OCEAN);
 }
 
 
 bool CvPlot::isFlatlands() const
 {
-	navRiverProbe("isFlatlands", _ReturnAddress());
 	return (getPlotType() == PLOT_LAND);
 }
 
 
 bool CvPlot::isHills() const
 {
-	navRiverProbe("isHills", _ReturnAddress());
 	return (getPlotType() == PLOT_HILLS);
 }
 
 
 bool CvPlot::isPeak() const
 {
-	navRiverProbe("isPeak", _ReturnAddress());
 	return (getPlotType() == PLOT_PEAK);
 }
 

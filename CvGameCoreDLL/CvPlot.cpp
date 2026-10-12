@@ -206,7 +206,6 @@ void CvPlot::reset(int iX, int iY, bool bConstructorCall)
 	m_iForceUnownedTimer = 0;
 	m_iCityRadiusCount = 0;
 	m_iRiverID = -1;
-	m_iNavRiverCrossing = -1;
 	m_iMinOriginalStartDist = -1;
 	m_iReconCount = 0;
 	m_iRiverCrossingCount = 0;
@@ -2102,27 +2101,18 @@ bool CvPlot::isNavRiverSide() const
 {
 	int i;
 
-	if (m_iNavRiverCrossing < 0)
+	// Worked out on the spot. A cache would be quicker and CvPlot has no room
+	// for one without shifting every member after it, which the engine reads by
+	// fixed offset. The yield code is the hot caller; make it a side table then.
+	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
 	{
-		// Worked out once and kept: the yield code asks this far too often to
-		// walk the neighbourhood on every call. setRiverID() clears the cache
-		// here and next door whenever one of the extra kinds changes, and a
-		// freshly read plot starts out cleared.
-		int iCrossing = 0;
-
-		for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+		if (calculateNavRiverCrossing((DirectionTypes)i))
 		{
-			if (calculateNavRiverCrossing((DirectionTypes)i))
-			{
-				iCrossing = 1;
-				break;
-			}
+			return true;
 		}
-
-		m_iNavRiverCrossing = (short)iCrossing;
 	}
 
-	return (m_iNavRiverCrossing > 0);
+	return false;
 }
 // Fresol - end
 
@@ -7129,25 +7119,7 @@ int CvPlot::getRiverID() const
 
 void CvPlot::setRiverID(int iNewValue)
 {
-	CvPlot* pLoopPlot;
-	int i;
-
 	m_iRiverID = iNewValue;
-
-	// Fresol: work out what the extra river kinds touch again, here and next
-	// door, because the corner rule reads the eight plots around this one, so a
-	// change here can flip a neighbour's answer as well.
-	m_iNavRiverCrossing = -1;
-
-	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
-	{
-		pLoopPlot = plotDirection(getX_INLINE(), getY_INLINE(), (DirectionTypes)i);
-
-		if (pLoopPlot != NULL)
-		{
-			pLoopPlot->m_iNavRiverCrossing = -1;
-		}
-	}
 }
 
 
@@ -10467,7 +10439,6 @@ void CvPlot::read(FDataStreamBase* pStream)
 	pStream->Read(&m_iForceUnownedTimer);
 	pStream->Read(&m_iCityRadiusCount);
 	pStream->Read(&m_iRiverID);
-	m_iNavRiverCrossing = -1;	// Fresol: worked out again on demand, see isNavRiverSide
 	pStream->Read(&m_iMinOriginalStartDist);
 	pStream->Read(&m_iReconCount);
 	pStream->Read(&m_iRiverCrossingCount);

@@ -2,7 +2,7 @@ from Civilizations import *
 from Civilizations import dNeverTrain
 from Core import *
 
-from Events import events, handler
+from Events import events
 from Popups import popup
 
 import BugCore
@@ -885,20 +885,6 @@ def toggleStabilityOverlay(iPlayer = -1):
 				engine.fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1000 + iPlotType, szColor, 0.7)
 
 				
-# Fresol: the map editor marks the extra river kinds itself, so this one is only
-# for the game proper. Its colour stands in for the art those kinds do not have.
-@handler("GameStart")
-def markNavigableRivers():
-	if not CyGame().GetWorldBuilderMode():
-		drawNavRiverMarker()
-
-
-@handler("OnLoad")
-def markNavigableRiversOnLoad():
-	if not CyGame().GetWorldBuilderMode():
-		drawNavRiverMarker()
-
-
 # used: CvScreensInterface, RFCUtils, CvPlatyBuilderScreen
 def removeStabilityOverlay():
 	global bStabilityOverlay

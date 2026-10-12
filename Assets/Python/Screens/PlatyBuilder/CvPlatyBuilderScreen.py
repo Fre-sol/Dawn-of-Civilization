@@ -120,9 +120,6 @@ class CvWorldBuilderScreen:
 
 	def interfaceScreen (self):
 		screen = CyGInterfaceScreen( "WorldBuilderScreen", CvScreenEnums.WORLDBUILDER_SCREEN )
-		# Fresol: the map editor marks the extra river kinds itself, in its own
-		# colour, so the one the game proper draws has to go.
-		CyEngine().clearAreaBorderPlots(iNavRiverMarkerID)
 		self.__init__()
 		self.m_iCurrentPlayer = active()
 		self.m_iCurrentTeam = gc.getPlayer(self.m_iCurrentPlayer).getTeam()
@@ -147,7 +144,6 @@ class CvWorldBuilderScreen:
 		CyEngine().clearAreaBorderPlots(AreaBorderLayers.AREA_BORDER_LAYER_WORLD_BUILDER)
 		CyEngine().clearAreaBorderPlots(AreaBorderLayers.AREA_BORDER_LAYER_HIGHLIGHT_PLOT)
 		CyEngine().clearAreaBorderPlots(iRiverKindOverlayID)	# Fresol: the river kind overlay
-		drawNavRiverMarker()	# Fresol: back to the colour the game proper draws
 
 	def mouseOverPlot (self, argsList):
 		screen = CyGInterfaceScreen( "WorldBuilderScreen", CvScreenEnums.WORLDBUILDER_SCREEN )

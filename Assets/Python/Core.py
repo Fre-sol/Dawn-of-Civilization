@@ -2499,6 +2499,19 @@ iRiverKindNavMask = iRiverKindNavNorth | iRiverKindNavWest
 # which would wipe this one right after a river is drawn.
 iRiverKindOverlayID = 1100
 
+# The one used outside the map editor, kept apart so the two never fight.
+iNavRiverMarkerID = 1101
+
+
+def drawNavRiverMarker():
+	"""Fresol: the extra river kinds draw exactly like an ordinary river, so mark
+	the tiles that carry one until they get art of their own. This is client side
+	only, so it has to be drawn again whenever a game is opened."""
+	CyEngine().clearAreaBorderPlots(iNavRiverMarkerID)
+	for pPlot in plots.all():
+		if getRiverKindMask(pPlot) & iRiverKindNavMask:
+			CyEngine().fillAreaBorderPlotAlt(pPlot.getX(), pPlot.getY(), iNavRiverMarkerID, "COLOR_RED", 0.7)
+
 # What the WorldBuilder's river tool offers, in the order of its selection table.
 lRiverKinds = ["River", "NavRiver"]
 iRiverKindNavIndex = 1

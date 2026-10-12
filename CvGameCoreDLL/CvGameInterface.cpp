@@ -41,39 +41,6 @@ void CvGame::updateColoredPlots()
 	gDLL->getEngineIFace()->clearAreaBorderPlots(AREA_BORDER_LAYER_RANGED);
 	gDLL->getEngineIFace()->clearAreaBorderPlots(AREA_BORDER_LAYER_BLOCKADING);
 
-	// Fresol - start
-	// The extra river kinds have no art of their own, so mark the edge each one
-	// was painted on. The engine's own river shapes are used so that the mark
-	// follows the river instead of sitting on the tile. It goes on the base
-	// layer, which was cleared just above, so it is rebuilt every time this runs
-	// and cannot go stale the way the Python overlay did.
-	{
-		NiColorA colorNavRiver(1.0f, 0.0f, 0.0f, 0.8f);
-
-		for (int iNavPlotLoop = 0; iNavPlotLoop < GC.getMap().numPlots(); iNavPlotLoop++)
-		{
-			CvPlot* pNavPlot = GC.getMap().plotByIndex(iNavPlotLoop);
-
-			if (pNavPlot == NULL)
-			{
-				continue;
-			}
-
-			int iNavMask = pNavPlot->getNavRiverMask();
-
-			if (iNavMask & CvPlot::RIVER_KIND_NAV_NORTH)
-			{
-				gDLL->getEngineIFace()->addColoredPlot(pNavPlot->getX_INLINE(), pNavPlot->getY_INLINE(), colorNavRiver, PLOT_STYLE_RIVER_SOUTH, PLOT_LANDSCAPE_LAYER_BASE);
-			}
-
-			if (iNavMask & CvPlot::RIVER_KIND_NAV_WEST)
-			{
-				gDLL->getEngineIFace()->addColoredPlot(pNavPlot->getX_INLINE(), pNavPlot->getY_INLINE(), colorNavRiver, PLOT_STYLE_RIVER_EAST, PLOT_LANDSCAPE_LAYER_BASE);
-			}
-		}
-	}
-	// Fresol - end
-
 	if (!gDLL->GetWorldBuilderMode() || gDLL->getInterfaceIFace()->isInAdvancedStart())
 	{
 		gDLL->getEngineIFace()->clearColoredPlots(PLOT_LANDSCAPE_LAYER_RECOMMENDED_PLOTS);

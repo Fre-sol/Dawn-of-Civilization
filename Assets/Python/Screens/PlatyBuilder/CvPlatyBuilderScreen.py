@@ -1238,6 +1238,10 @@ class CvWorldBuilderScreen:
 			screen.deleteWidget("AddRouteButton")
 			screen.deleteWidget("AddFeatureButton")
 			screen.deleteWidget("AddRiverButton")
+			screen.deleteWidget("RiverKindButton0")
+			screen.deleteWidget("RiverKindButton1")
+			screen.deleteWidget("RiverKindName0")
+			screen.deleteWidget("RiverKindName1")
 			screen.deleteWidget("WBCurrentItem")
 			screen.deleteWidget("WBSelectClass")
 			screen.deleteWidget("WBSelectItem")
@@ -1645,6 +1649,8 @@ class CvWorldBuilderScreen:
 		screen.setState("EditPlotData", self.iPlayerAddMode == iModePlotData)
 		screen.setState("EditEvents", self.iPlayerAddMode == iModeEvents)
 		screen.setState("AddRiverButton", self.iPlayerAddMode == iModeRiver)
+		screen.setState("RiverKindButton0", self.iPlayerAddMode == iModeRiver and self.iSelection == 0)
+		screen.setState("RiverKindButton1", self.iPlayerAddMode == iModeRiver and self.iSelection == 1)
 		screen.setState("AddImprovementButton", self.iPlayerAddMode == iModeImprovements)
 		screen.setState("AddBonusButton", self.iPlayerAddMode == iModeBonus)
 		screen.setState("AddBonusVarietyButton", self.iPlayerAddMode == iModeBonusVariety)
@@ -1783,17 +1789,14 @@ class CvWorldBuilderScreen:
 		elif self.iPlayerAddMode == iModeRiver:
 			# Fresol: pick which kind of river the placement tool lays down. Every
 			# kind draws and behaves like a river; the extra kind is marked on top.
-			iY = 25
-			lItems = [(sName, i) for i, sName in enumerate(lRiverKinds)]
-			iHeight = min(len(lItems) * 24 + 2, screen.getYResolution() - iY)
-			screen.addTableControlGFC("WBSelectItem", 1, 0, iY, iWidth, iHeight, False, False, 24, 24, TableStyles.TABLE_STYLE_EMPTY)
-			screen.setTableColumnHeader("WBSelectItem", 0, "", iWidth)
-			for item in lItems:
-				iRow = screen.appendTableRow("WBSelectItem")
-				sButton = CyArtFileMgr().getInterfaceArtInfo("WORLDBUILDER_RIVER_PLACEMENT").getPath()
-				if item[1] == 1:
-					sButton = CyArtFileMgr().getInterfaceArtInfo("WORLDBUILDER_PLOT_TYPE_OCEAN").getPath()
-				screen.setTableText("WBSelectItem", 0, iRow, "<font=3>" + item[0] + "</font>", sButton, WidgetTypes.WIDGET_PYTHON, 7890, item[1], CvUtil.FONT_LEFT_JUSTIFY)
+			# Buttons rather than a table: a table cell's own data never reaches
+			# handleInput on this screen, so it cannot tell the rows apart.
+			lIcons = ["WORLDBUILDER_RIVER_PLACEMENT", "WORLDBUILDER_PLOT_TYPE_OCEAN"]
+			for i, sName in enumerate(lRiverKinds):
+				iX = 8 + i * 130
+				screen.addCheckBoxGFC("RiverKindButton%d" % i, CyArtFileMgr().getInterfaceArtInfo(lIcons[i]).getPath(), CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
+					iX, 25, 24, 24, WidgetTypes.WIDGET_PYTHON, 1029, 62 + i, ButtonStyles.BUTTON_STYLE_LABEL)
+				screen.setLabel("RiverKindName%d" % i, "Background", "<font=3>" + sName + "</font>", CvUtil.FONT_LEFT_JUSTIFY, iX + 28, 30, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 		elif self.iPlayerAddMode == iModeBonus:
 			iY = 25
@@ -1942,12 +1945,6 @@ class CvWorldBuilderScreen:
 			ItemInfo = gc.getTerrainInfo(self.iSelection)
 			sText = "<font=3>" + CyTranslator().getText("[COLOR_HIGHLIGHT_TEXT]", ()) + ItemInfo.getDescription() + "</color></font>"
 			screen.setTableText("WBCurrentItem", 0, 0 , sText, ItemInfo.getButton(), WidgetTypes.WIDGET_PYTHON, 7875, self.iSelection, CvUtil.FONT_LEFT_JUSTIFY)
-		elif self.iPlayerAddMode == iModeRiver:
-			sText = "<font=3>" + CyTranslator().getText("[COLOR_HIGHLIGHT_TEXT]", ()) + lRiverKinds[self.iSelection] + "</color></font>"
-			sButton = CyArtFileMgr().getInterfaceArtInfo("WORLDBUILDER_RIVER_PLACEMENT").getPath()
-			if self.iSelection == iRiverKindNavIndex:
-				sButton = CyArtFileMgr().getInterfaceArtInfo("WORLDBUILDER_PLOT_TYPE_OCEAN").getPath()
-			screen.setTableText("WBCurrentItem", 0, 0, sText, sButton, WidgetTypes.WIDGET_PYTHON, 7890, self.iSelection, CvUtil.FONT_LEFT_JUSTIFY)
 		else:
 			screen.hide("WBCurrentItem")
 
@@ -2868,8 +2865,15 @@ class CvWorldBuilderScreen:
 			bDeleteOverlay = False		# Fresol: keep the overlay of the current mode
 			self.iSelection = inputClass.getData2()
 			self.iSelectClass = 0
-			CvUtil.pyPrint("FresolDBG picked item: mode=%d selection=%d notify=%d" % (self.iPlayerAddMode, self.iSelection, inputClass.getNotifyCode()))
 			self.refreshSelection()
+			self.updateOverlay()
+
+		# Fresol: the river kind buttons are told apart by their names, because a
+		# table cell cannot pass its own data to this screen; see setSelectionTable.
+		elif inputClass.getFunctionName()[:15] == "RiverKindButton":
+			bDeleteOverlay = False
+			self.iSelection = int(inputClass.getFunctionName()[15:])
+			self.refreshSideMenu()
 			self.updateOverlay()
 
 		elif inputClass.getFunctionName() == "RevealMode":

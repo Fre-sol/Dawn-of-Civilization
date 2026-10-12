@@ -1,4 +1,5 @@
 #include "CvGameCoreDLL.h"
+#include <stdio.h>	// Fresol: the river model table probe below writes a small log
 #include "CvGame.h"
 #include "CvInitCore.h"
 #include "CyPlot.h"
@@ -18,6 +19,46 @@
 void CvGame::updateColoredPlots()
 {
 	PROFILE_FUNC();
+
+	// Fresol - start
+	// Temporary. The engine files each river shape in a 256 entry table and the
+	// table holds pointers to models that belong to this DLL, so it can simply be
+	// read: every occupied slot says which shape the engine filed under that key.
+	// Reading is all this does, so unlike calling into the engine it cannot go
+	// wrong. It waits for the table to exist, since the engine builds it lazily.
+	{
+		static bool bTableDumped = false;
+
+		if (!bTableDumped)
+		{
+			CvRiverModelInfo** ppRiverTable = *(CvRiverModelInfo***)0x00c8a5f8;
+
+			if (ppRiverTable != NULL)
+			{
+				FILE* pProbeFile = fopen("navriver_probe.log", "a");
+				int iKey;
+
+				bTableDumped = true;
+
+				if (pProbeFile != NULL)
+				{
+					for (iKey = 0; iKey < 256; ++iKey)
+					{
+						CvRiverModelInfo* pModel = ppRiverTable[iKey];
+
+						if (pModel != NULL)
+						{
+							fprintf(pProbeFile, "KEY %3d -> \"%s\"  model=%s\n", iKey,
+									pModel->getConnectString(), pModel->getModelFile());
+						}
+					}
+
+					fclose(pProbeFile);
+				}
+			}
+		}
+	}
+	// Fresol - end
 
 	CLLNode<IDInfo>* pSelectedCityNode;
 	CLLNode<IDInfo>* pSelectedUnitNode;

@@ -6,6 +6,7 @@ from Resources import dConquerorPlotTypesDict
 import BugPath as path
 
 import Setup
+from Files import FileMap, getPath
 import os
 
 EXPORT_MAPS_PATH = "Assets/Maps"
@@ -106,14 +107,25 @@ def getWarValue(plot, *args, **kwargs):
 	return 0
 
 
-#TODO: use export to csv function in map branch when merged
+## Fresol - start: write Assets/Maps/Regions.csv, the file RegionMap.py loads.
+# The old version wrote Export/other/RegionMap.txt, a python literal nothing
+# reads any more, so the button was a dead end (the TODO it replaced said as
+# much).  Size comes from the map itself, so it cannot drift from Consts.py.
 def exportRegionMap():
-	sLocation = "other"
-	sName = "RegionMap"
-	valueFunction = getRegionValue
-	writeMapFile(sLocation, sName, valueFunction, sMapName = "tRegionMap")
+	iW = CyMap().getGridWidth()
+	iH = CyMap().getGridHeight()
 	
-	show("Regionmap exported")
+	rows = []
+	for y in range(iH):
+		rows.append([str(plot_(x, y).getRegionID()) for x in range(iW)])
+	
+	# Fresol: export *beside* the loaded file -- renaming it over
+	# Regions.csv stays a deliberate step (same rule as the settler and
+	# war exporters, 2026-10-13)
+	FileMap.write(rows, "Regions_export.csv")
+	
+	show("Regionmap exported to %s" % getPath("Regions_export.csv"))
+## Fresol - end
 	
 def getRegionValue(plot, *args, **kwargs):
 

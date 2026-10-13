@@ -117,6 +117,7 @@ class CvWorldBuilderScreen:
 		self.bPeaksException = False
 		self.bAllRegions = False
 		self.dRegionColors = {}
+		self.lRegionOverlayLayers = []
 
 	def interfaceScreen (self):
 		screen = CyGInterfaceScreen( "WorldBuilderScreen", CvScreenEnums.WORLDBUILDER_SCREEN )
@@ -2110,34 +2111,50 @@ class CvWorldBuilderScreen:
 
 	def showRegionOverlay(self):
 		removeStabilityOverlay()
-		for plot in plots.all().land().where(lambda p: p.getRegionID() != -1):
+		# Fresol: land only, one layer per region (the engine caches one area
+		# and one colour per layer).  Water regions are drawn at 1100+ and can
+		# be *filled* there, but clearing those layers takes the whole overlay
+		# down, so they are left out; select one with m_iRegionMapID to see it.
+		for plot in plots.all().land():
 			iRegion = plot.getRegionID()
 			if iRegion == self.m_iRegionMapID:
 				CyEngine().fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1000, "COLOR_BLUE", 0.7)
-			elif self.bAllRegions:
-				CyEngine().fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1000+iRegion, self.dRegionColors[iRegion], 0.7)
+			elif self.bAllRegions and iRegion < 85:
+				CyEngine().fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1000+iRegion, self.dRegionColors.get(iRegion) or "COLOR_LIGHT_GREY", 0.7)
 			
 	def determineRegionColors(self):
 		lColors = ["COLOR_PLAYER_LIGHT_PURPLE", "COLOR_PLAYER_LIGHT_YELLOW", "COLOR_PLAYER_LIGHT_ORANGE", "COLOR_SILVER"]
 		
-		dNeighbourRegions = dict([(i, []) for i in range(iNumRegions)])
-		dRegionColors = dict([(i, "") for i in range(iNumRegions)])
+		# Fresol: seed every valid region (land AND water) and tolerate anything
+		# else; the old code only had 0..84 and indexed it with a land plot's
+		# region, so one water id on land was a KeyError -- and it left
+		# self.dRegionColors empty, killing the button for the whole session.
+		dNeighbourRegions = {}
+		dRegionColors = {}
+		for iRegion in list(range(iNumRegions)) + list(range(100, 100 + iNumWaterRegions)):
+			dNeighbourRegions[iRegion] = []
+			dRegionColors[iRegion] = ""
 		
-		for plot in plots.all().land().where(lambda p: p.getRegionID() != -1):
+		for plot in plots.all():
 			iRegion = plot.getRegionID()
-			for surroundingPlot in plots.surrounding(plot).where(lambda p: p.getRegionID() not in [-1, iRegion]):
+			dNeighbourRegions.setdefault(iRegion, [])
+			for surroundingPlot in plots.surrounding(plot).where(lambda p: p.getRegionID() != iRegion):
 				iNeighbourRegion = surroundingPlot.getRegionID()
 				if iNeighbourRegion not in dNeighbourRegions[iRegion]:
 					dNeighbourRegions[iRegion].append(iNeighbourRegion)
 
-		for iRegion in range(iNumRegions):
+		for iRegion in dNeighbourRegions:
 			for color in lColors:
 				for iNeighbourRegion in dNeighbourRegions[iRegion]:
-					if dRegionColors[iNeighbourRegion] == color:
+					if dRegionColors.get(iNeighbourRegion, "") == color:
 						break
 				else:
 					dRegionColors[iRegion] = color
 					break
+			if not dRegionColors.get(iRegion):
+				# Fresol: all four colours taken by neighbours -> the loop left it
+				# empty, and an empty colour name makes the engine throw (line 2118).
+				dRegionColors[iRegion] = lColors[iRegion % len(lColors)]
 		self.dRegionColors = dRegionColors
 
 	def showVictoryOverlay(self):

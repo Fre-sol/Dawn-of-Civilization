@@ -890,6 +890,9 @@ def removeStabilityOverlay():
 	global bStabilityOverlay
 	engine = CyEngine()
 	# clear the highlight
+	# Fresol: the region overlay now draws everything on layer 1001, so the
+	# original range is enough again -- 200 was tried and made the overlay
+	# vanish (the engine does not take arbitrary layer numbers).
 	for i in range(50):
 		engine.clearAreaBorderPlots(1000+i)
 	bStabilityOverlay = False

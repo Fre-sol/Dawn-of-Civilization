@@ -93,4 +93,22 @@
 		<Italian>Strait</Italian>
 		<Spanish>Strait</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_LAKE</Tag>
+		<English>Lake</English>
+		<French>
+			<Text>Lac</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</French>
+		<German>
+			<Text>See</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</German>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_LAKE_PEDIA</Tag>
+		<English>Fresh water on land.  A city may be founded on a lake, and it counts as a water source for the city and for its neighbours.</English>
+	</TEXT>
 </Civ4GameText>

@@ -1502,8 +1502,8 @@ void CvMap::calculateAreas()
 	CvArea* scandinavia = addArea();
 	CvArea* denmark = addArea();
 
-	int asiaID = plot(121, 52)->getArea(); // Chang'an
-	int americaID = plot(29, 54)->getArea(); // Washington
+	int asiaID = plot(60, 78)->getArea(); // Chang'an
+	int americaID = plot(157, 81)->getArea(); // Washington
 
 	int europeID = europe->getID();
 	int africaID = africa->getID();
@@ -1565,7 +1565,7 @@ void CvMap::calculateAreas()
 				case REGION_SCANDINAVIA:
 					if (plot->getArea() == europeID)
 					{
-						if (iX >= 66 && iX <= 68 && iY >= 66 && iY <= 69)
+						if (iX >= 10 && iX <= 13 && iY >= 95 && iY <= 97)
 						{
 							plot->setArea(denmarkID);
 						}

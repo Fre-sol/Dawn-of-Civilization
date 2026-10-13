@@ -6,8 +6,10 @@ using namespace std;
 typedef list<char*> LISTCHAR;
 
 // rhyes.h
-#define EARTH_X					(150)
-#define EARTH_Y					(80)
+// Fresol: the map is 200x100 on this branch. The code below no longer reads
+// these -- it asks the map -- but keep them honest for whoever looks next.
+#define EARTH_X					(200)
+#define EARTH_Y					(100)
 
 #define MAX_COM_SHRINE			(20)
 

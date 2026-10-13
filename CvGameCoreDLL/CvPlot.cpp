@@ -6866,9 +6866,9 @@ void CvPlot::updateCityRoute(bool bUpdatePlotGroup)
 		eCityRoute = GET_PLAYER(getOwnerINLINE()).getBestRoute();
 
 		bool bRomanRoadAround = false;
-		for (int iI = std::max(0, getX_INLINE()-1); iI < std::min(getX_INLINE()+1, EARTH_X)+1; iI++)
+		for (int iI = std::max(0, getX_INLINE()-1); iI < std::min(getX_INLINE()+1, GC.getMapINLINE().getGridWidthINLINE())+1; iI++)
 		{
-			for (int iJ = std::max(0, getY_INLINE()-1); iJ < std::min(getY_INLINE()+1, EARTH_X)+1; iJ++)
+			for (int iJ = std::max(0, getY_INLINE()-1); iJ < std::min(getY_INLINE()+1, GC.getMapINLINE().getGridHeightINLINE())+1; iJ++)
 			{
 				if (GC.getMap().plot(iI, iJ)->getRouteType() == (RouteTypes)GC.getInfoTypeForString("ROUTE_ROMAN_ROAD"))
 				{

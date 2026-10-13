@@ -6598,11 +6598,11 @@ bool CvPlayer::canCreate(ProjectTypes eProject, bool bContinue, bool bTestVisibl
 		
 		if (eProject == PROJECT_SUEZ_CANAL)
 		{
-			pPlot = GC.getMap().plot(82, 44);
+			pPlot = GC.getMap().plot(18, 75);
 		}
 		else
 		{
-			pPlot = GC.getMap().plot(27, 37);
+			pPlot = GC.getMap().plot(155, 57);
 		}
 
 		if (pPlot->isCity())

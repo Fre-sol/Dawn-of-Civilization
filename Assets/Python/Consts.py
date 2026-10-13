@@ -7,8 +7,8 @@ from CoreTypes import *
 
 gc = CyGlobalContext()
 
-iWorldX = 150
-iWorldY = 80
+iWorldX = 200
+iWorldY = 100
 
 iNumPlayers = gc.getMAX_PLAYERS()
 

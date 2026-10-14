@@ -157,4 +157,36 @@
 		<Italian>Canal</Italian>
 		<Spanish>Canal</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_CITY_COTTAGE</Tag>
+		<English>Cottage(City)</English>
+		<French>Cottage(City)</French>
+		<German>Cottage(City)</German>
+		<Italian>Cottage(City)</Italian>
+		<Spanish>Cottage(City)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_CITY_HAMLET</Tag>
+		<English>Hamlet(City)</English>
+		<French>Hamlet(City)</French>
+		<German>Hamlet(City)</German>
+		<Italian>Hamlet(City)</Italian>
+		<Spanish>Hamlet(City)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_CITY_VILLAGE</Tag>
+		<English>Village(City)</English>
+		<French>Village(City)</French>
+		<German>Village(City)</German>
+		<Italian>Village(City)</Italian>
+		<Spanish>Village(City)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_CITY_TOWN</Tag>
+		<English>Town(City)</English>
+		<French>Town(City)</French>
+		<German>Town(City)</German>
+		<Italian>Town(City)</Italian>
+		<Spanish>Town(City)</Spanish>
+	</TEXT>
 </Civ4GameText>

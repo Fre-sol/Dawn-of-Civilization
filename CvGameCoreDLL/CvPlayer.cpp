@@ -20978,7 +20978,38 @@ void CvPlayer::applyEvent(EventTypes eEvent, int iEventTriggeredId, bool bUpdate
 						{
 							CvWString szBuffer = gDLL->getText("TXT_KEY_EVENT_CITY_IMPROVEMENT_DESTROYED", GC.getImprovementInfo(pPlot->getImprovementType()).getTextKeyWide());
 							gDLL->getInterfaceIFace()->addMessage(getID(), false, GC.getEVENT_MESSAGE_TIME(), szBuffer, "AS2D_PILLAGED", MESSAGE_TYPE_INFO, GC.getImprovementInfo(pPlot->getImprovementType()).getButton(), (ColorTypes)GC.getInfoTypeForString("COLOR_RED"), pPlot->getX_INLINE(), pPlot->getY_INLINE(), true, true);
-							pPlot->setImprovementType(NO_IMPROVEMENT);
+							// Fresol: a city's own cottage goes down one step, and never away
+							{
+								static ImprovementTypes aeCityCottages[4] = {NO_IMPROVEMENT, NO_IMPROVEMENT, NO_IMPROVEMENT, NO_IMPROVEMENT};
+								bool bDowngraded = false;
+
+								if (aeCityCottages[0] == NO_IMPROVEMENT)
+								{
+									aeCityCottages[0] = (ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CITY_COTTAGE");
+									aeCityCottages[1] = (ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CITY_HAMLET");
+									aeCityCottages[2] = (ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CITY_VILLAGE");
+									aeCityCottages[3] = (ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CITY_TOWN");
+								}
+
+								for (int iK = 0; iK < 4; ++iK)
+								{
+									if (pPlot->getImprovementType() == aeCityCottages[iK])
+									{
+										if (iK > 0)
+										{
+											pPlot->setImprovementType(aeCityCottages[iK - 1]);
+										}
+
+										bDowngraded = true;
+									}
+								}
+
+								if (!bDowngraded)
+								{
+									pPlot->setImprovementType(NO_IMPROVEMENT);
+								}
+							}
+
 							++iNumPillaged;
 							break;
 						}

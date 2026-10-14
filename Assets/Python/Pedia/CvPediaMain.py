@@ -1233,6 +1233,14 @@ class CvPediaMain(CvPediaScreen.CvPediaScreen):
 					list.pop(j)
 				if gc.getImprovementInfo(j).getDescription() == gc.getImprovementInfo(gc.getInfoTypeForString("IMPROVEMENT_TRIBAL_VILLAGE")).getDescription():
 					list.pop(j)
+				if j == gc.getInfoTypeForString("IMPROVEMENT_CITY_COTTAGE"):
+					list.pop(j)
+				if j == gc.getInfoTypeForString("IMPROVEMENT_CITY_HAMLET"):
+					list.pop(j)
+				if j == gc.getInfoTypeForString("IMPROVEMENT_CITY_VILLAGE"):
+					list.pop(j)
+				if j == gc.getInfoTypeForString("IMPROVEMENT_CITY_TOWN"):
+					list.pop(j)
 	# END Filters
 
 		if not noSort:

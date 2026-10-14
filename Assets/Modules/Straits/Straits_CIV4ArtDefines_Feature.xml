@@ -551,12 +551,12 @@
 			</FeatureVariety>
 		</FeatureArtInfo>
 		<FeatureArtInfo>
-			<Type>ART_DEF_FEATURE_STRAIT_WIDE</Type>
+			<Type>ART_DEF_FEATURE_WIDE_STRAIT</Type>
 			<bAnimated>0</bAnimated>
 			<bRiverArt>0</bRiverArt>
 			<TileArtType>TILE_ART_TYPE_NONE</TileArtType>
 			<LightType>LIGHT_TYPE_SUN</LightType>
-			<fScale>1.2</fScale>
+			<fScale>1.0</fScale>
 			<fInterfaceScale>1.0</fInterfaceScale>
 			<Button></Button>
 			<FeatureVariety>
@@ -573,7 +573,7 @@
 			<FeatureVariety>
 				<FeatureArtPieces>
 					<FeatureArtPiece>
-						<ModelFile>Art/Terrain/Features/Straits/Strait_Refined_1.nif</ModelFile>
+						<ModelFile>Art/Terrain/Features/Straits/Wide_Strait_Refined_1.nif</ModelFile>
 						<Connections></Connections>
 					</FeatureArtPiece>
 				</FeatureArtPieces>
@@ -584,7 +584,7 @@
 			<FeatureVariety>
 				<FeatureArtPieces>
 					<FeatureArtPiece>
-						<ModelFile>Art/Terrain/Features/Straits/Strait_Refined_2.nif</ModelFile>
+						<ModelFile>Art/Terrain/Features/Straits/Wide_Strait_Refined_2.nif</ModelFile>
 						<Connections></Connections>
 					</FeatureArtPiece>
 				</FeatureArtPieces>
@@ -595,7 +595,7 @@
 			<FeatureVariety>
 				<FeatureArtPieces>
 					<FeatureArtPiece>
-						<ModelFile>Art/Terrain/Features/Straits/Strait_Refined_3.nif</ModelFile>
+						<ModelFile>Art/Terrain/Features/Straits/Wide_Strait_Refined_3.nif</ModelFile>
 						<Connections></Connections>
 					</FeatureArtPiece>
 				</FeatureArtPieces>
@@ -816,6 +816,280 @@
 				<FeatureArtPieces>
 					<FeatureArtPiece>
 						<ModelFile>Art/Terrain/Features/Straits/Strait_MuddyMeandering_3.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+		</FeatureArtInfo>
+<FeatureArtInfo>
+			<Type>ART_DEF_FEATURE_ISLANDS_WIDE_STRAIT</Type>
+			<bAnimated>0</bAnimated>
+			<bRiverArt>0</bRiverArt>
+			<TileArtType>TILE_ART_TYPE_NONE</TileArtType>
+			<LightType>LIGHT_TYPE_SUN</LightType>
+			<fScale>1.0</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<Button></Button>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_0.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/Wide_StraitIslands_1.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/Wide_StraitIslands_2.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/Wide_StraitIslands_3.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_SandyMeandering_0.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_4.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_5.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_6.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_RockyStraight_0.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_RockyStraight_1.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_RockyStraight_2.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_RockyStraight_3.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_RockyMeandering_0.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_7.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_8.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_9.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_MuddyStraight_0.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_Muddy_1.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_Muddy_2.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_Muddy_3.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_MuddyMeandering_0.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_MuddyMeandering_1.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_MuddyMeandering_2.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/StraitIslands_MuddyMeandering_3.nif</ModelFile>
 						<Connections></Connections>
 					</FeatureArtPiece>
 				</FeatureArtPieces>

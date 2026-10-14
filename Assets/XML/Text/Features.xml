@@ -94,7 +94,39 @@
 		<Spanish>Strait</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_FEATURE_STRAIT_WIDE</Tag>
+		<Tag>TXT_KEY_FEATURE_ISLANDS_STRAIT</Tag>
+		<English>Strait/Islands</English>
+		<French>Strait/Islands</French>
+		<German>Strait/Islands</German>
+		<Italian>Strait/Islands</Italian>
+		<Spanish>Strait/Islands</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_ISLANDS_STRAIT_PEDIA</Tag>
+		<English>A strait running between islands, narrow enough for land units to cross.</English>
+		<French>A strait running between islands, narrow enough for land units to cross.</French>
+		<German>A strait running between islands, narrow enough for land units to cross.</German>
+		<Italian>A strait running between islands, narrow enough for land units to cross.</Italian>
+		<Spanish>A strait running between islands, narrow enough for land units to cross.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_ISLANDS_WIDE_STRAIT</Tag>
+		<English>Wide Strait/Islands</English>
+		<French>Wide Strait/Islands</French>
+		<German>Wide Strait/Islands</German>
+		<Italian>Wide Strait/Islands</Italian>
+		<Spanish>Wide Strait/Islands</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_ISLANDS_WIDE_STRAIT_PEDIA</Tag>
+		<English>A wide strait dotted with islands. Land units cannot cross it at all; ships pass through it as they do through any strait.</English>
+		<French>A wide strait dotted with islands. Land units cannot cross it at all; ships pass through it as they do through any strait.</French>
+		<German>A wide strait dotted with islands. Land units cannot cross it at all; ships pass through it as they do through any strait.</German>
+		<Italian>A wide strait dotted with islands. Land units cannot cross it at all; ships pass through it as they do through any strait.</Italian>
+		<Spanish>A wide strait dotted with islands. Land units cannot cross it at all; ships pass through it as they do through any strait.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_WIDE_STRAIT</Tag>
 		<English>Wide Strait</English>
 		<French>Wide Strait</French>
 		<German>Wide Strait</German>
@@ -102,7 +134,7 @@
 		<Spanish>Wide Strait</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_FEATURE_STRAIT_WIDE_PEDIA</Tag>
+		<Tag>TXT_KEY_FEATURE_WIDE_STRAIT_PEDIA</Tag>
 		<English>A wide strait. Land units cannot cross it at all, but ships pass through it as they do through any strait.</English>
 		<French>A wide strait. Land units cannot cross it at all, but ships pass through it as they do through any strait.</French>
 		<German>A wide strait. Land units cannot cross it at all, but ships pass through it as they do through any strait.</German>

@@ -1444,8 +1444,8 @@
 		</FeatureInfo>
 		<FeatureInfo>
 			<Type>FEATURE_ISLANDS_STRAIT</Type>
-			<Description>TXT_KEY_FEATURE_ISLANDS</Description>
-			<Civilopedia>TXT_KEY_FEATURE_ISLANDS_PEDIA</Civilopedia>
+			<Description>TXT_KEY_FEATURE_ISLANDS_STRAIT</Description>
+			<Civilopedia>TXT_KEY_FEATURE_ISLANDS_STRAIT_PEDIA</Civilopedia>
 			<ArtDefineTag>ART_DEF_FEATURE_ISLANDS</ArtDefineTag>
 			<YieldChanges>
 				<iYieldChange>0</iYieldChange>

@@ -6223,7 +6223,7 @@ int CvPlot::determineVariety(FeatureTypes eFeature) const
 	}
 
 	// MacAurther: Straits
-	if (eFeature == FEATURE_STRAIT || eFeature == FEATURE_ISLANDS_STRAIT || eFeature == FEATURE_STRAIT_WIDE)
+	if (eFeature == FEATURE_STRAIT || eFeature == FEATURE_ISLANDS_STRAIT || eFeature == FEATURE_WIDE_STRAIT || eFeature == FEATURE_ISLANDS_WIDE_STRAIT)
 	{
 		if (!isWater())
 		{
@@ -6426,7 +6426,7 @@ void CvPlot::setFeatureType(FeatureTypes eNewValue, int iVariety)
 	if (eOldFeature != eNewValue)
 	{
 		// MacAurther: Straits
-		if (eOldFeature == FEATURE_STRAIT || eOldFeature == FEATURE_ISLANDS_STRAIT || eOldFeature == FEATURE_STRAIT_WIDE || isStrait())
+		if (eOldFeature == FEATURE_STRAIT || eOldFeature == FEATURE_ISLANDS_STRAIT || eOldFeature == FEATURE_WIDE_STRAIT || eOldFeature == FEATURE_ISLANDS_WIDE_STRAIT || isStrait())
 		{
 			for (int i = 0; i < NUM_DIRECTION_TYPES; ++i)
 			{
@@ -12884,7 +12884,7 @@ bool CvPlot::isStrait() const
 
 bool CvPlot::isWideStrait() const
 {
-	return getFeatureType() == FEATURE_STRAIT_WIDE;
+	return getFeatureType() == FEATURE_WIDE_STRAIT || getFeatureType() == FEATURE_ISLANDS_WIDE_STRAIT;
 }
 
 

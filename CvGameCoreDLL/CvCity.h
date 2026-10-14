@@ -180,7 +180,6 @@ public:
 	bool isCapital() const;																				// Exposed to Python
 	bool isCoastal(int iMinWaterSize) const;																									// Exposed to Python
 	bool isCoastalOld() const;
-	bool hasWaterInRadius() const;	// Fresol		//Rhye																						// Exposed to Python
 	bool isDisorder() const;																			// Exposed to Python				 
 	bool isHolyCity(ReligionTypes eIndex) const;									// Exposed to Python				
 	bool isHolyCity() const;																			// Exposed to Python				

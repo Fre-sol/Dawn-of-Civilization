@@ -1250,7 +1250,7 @@
 			<ArtDefineTag>ART_DEF_BUILDING_HARBOR</ArtDefineTag>
 			<FreeStartEra>ERA_RENAISSANCE</FreeStartEra>
 			<PrereqTech>TECH_SHIPBUILDING</PrereqTech>
-			<bWater>0</bWater>
+			<bWater>1</bWater>
 			<iCost>60</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMinAreaSize>1</iMinAreaSize>
@@ -1276,40 +1276,10 @@
 				</BonusHealthChange>
 			</BonusHealthChanges>
 			<YieldChanges>
+				<iYield>0</iYield>
+				<iYield>0</iYield>
 				<iYield>1</iYield>
 			</YieldChanges>
-			<BonusYieldChanges>
-				<BonusYieldChange>
-					<BonusType>BONUS_CLAM</BonusType>
-					<YieldChanges>
-						<iYield>1</iYield>
-					</YieldChanges>
-				</BonusYieldChange>
-				<BonusYieldChange>
-					<BonusType>BONUS_CRAB</BonusType>
-					<YieldChanges>
-						<iYield>1</iYield>
-					</YieldChanges>
-				</BonusYieldChange>
-				<BonusYieldChange>
-					<BonusType>BONUS_FISH</BonusType>
-					<YieldChanges>
-						<iYield>1</iYield>
-					</YieldChanges>
-				</BonusYieldChange>
-				<BonusYieldChange>
-					<BonusType>BONUS_PEARL</BonusType>
-					<YieldChanges>
-						<iYield>1</iYield>
-					</YieldChanges>
-				</BonusYieldChange>
-				<BonusYieldChange>
-					<BonusType>BONUS_WHALE</BonusType>
-					<YieldChanges>
-						<iYield>1</iYield>
-					</YieldChanges>
-				</BonusYieldChange>
-			</BonusYieldChanges>
 			<ConstructSound>AS2D_BUILD_DRYDOCK</ConstructSound>
 			<Flavors>
 				<Flavor>

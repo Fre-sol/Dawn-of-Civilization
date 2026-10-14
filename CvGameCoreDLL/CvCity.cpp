@@ -2430,18 +2430,6 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 		if (iNumWaterTiles < 20) return false;
 	}
 
-	// Fresol - start: the harbor asks for water anywhere in its radius, not on its doorstep
-	{
-		static BuildingTypes eHarbor = NO_BUILDING;
-		if (eHarbor == NO_BUILDING) eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
-
-		if (eBuilding == eHarbor)
-		{
-			if (!hasWaterInRadius()) return false;
-		}
-	}
-	// Fresol - end
-
 	// Leoreth: Guadalupe Basilica needs to be on different continent than Catholic holy city
 	if (eBuilding == GUADALUPE_BASILICA)
 	{
@@ -5529,19 +5517,6 @@ bool CvCity::isCoastalOld() const
 	return plot()->isCoastalLand(0);
 }
 //Rhye - end
-
-// Fresol - start: is there water anywhere among the city's twenty-one tiles?
-bool CvCity::hasWaterInRadius() const
-{
-	for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
-	{
-		CvPlot* pLoopPlot = getCityIndexPlot(iI);
-		if (pLoopPlot != NULL && pLoopPlot->isWater()) return true;
-	}
-
-	return false;
-}
-// Fresol - end
 
 
 bool CvCity::isDisorder() const

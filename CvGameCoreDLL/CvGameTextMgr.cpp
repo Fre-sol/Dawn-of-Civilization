@@ -10591,6 +10591,23 @@ void CvGameTextMgr::setBuildingHelpActual(CvWStringBuffer &szBuffer, BuildingTyp
 				{
 					aiYields[iI] += kBuilding.getBonusYieldChange(iJ, iI) * pCity->countNumBonusPlots((BonusTypes)iJ);
 				}
+
+				// Fresol: the harbor pays one food for the fishing the city works
+				{
+					static BuildingTypes eHarbor = NO_BUILDING;
+
+					if (eHarbor == NO_BUILDING)
+					{
+						eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
+					}
+
+					if (iI == YIELD_FOOD && eBuilding == eHarbor)
+					{
+						aiYields[iI] += (pCity->countNumImprovedPlots(IMPROVEMENT_FISHING_BOATS)
+							+ pCity->countNumImprovedPlots(IMPROVEMENT_OCEAN_FISHERY)
+							+ pCity->countNumImprovedPlots(IMPROVEMENT_WHALING_BOATS));
+					}
+				}
 			}
 		}
 		setYieldChangeHelp(szBuffer, L", ", L"", L"", aiYields, false, false);
@@ -11358,6 +11375,23 @@ void CvGameTextMgr::setBuildingHelpActual(CvWStringBuffer &szBuffer, BuildingTyp
 		{
 			szBuffer.append(NEWLINE);
 			szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_IMPROVED_RESOURCE_YIELDS", szTempBuffer.c_str(), GC.getBonusInfo((BonusTypes)iI).getText()));
+		}
+	}
+
+	// Fresol: the harbor pays one food for the fishing the city works
+	{
+		static BuildingTypes eHarbor = NO_BUILDING;
+
+		if (eHarbor == NO_BUILDING)
+		{
+			eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
+		}
+
+		if (eBuilding == eHarbor)
+		{
+			szTempBuffer.Format(L"+1%c", GC.getYieldInfo(YIELD_FOOD).getChar());
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_FISHING_IMPROVEMENT_YIELDS", szTempBuffer.c_str()));
 		}
 	}
 
@@ -12436,22 +12470,6 @@ void CvGameTextMgr::buildBuildingRequiresString(CvWStringBuffer& szBuffer, Build
 				szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_REQUIRES_WATER"));
 			}
 		}
-
-		// Fresol - start: the harbor asks for water anywhere in its radius, not on its doorstep
-		{
-			static BuildingTypes eHarbor = NO_BUILDING;
-			if (eHarbor == NO_BUILDING) eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
-
-			if (eBuilding == eHarbor)
-			{
-				if (NULL == pCity || NO_PLAYER == ePlayer || !pCity->hasWaterInRadius())
-				{
-					szBuffer.append(NEWLINE);
-					szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_REQUIRES_WATER_RADIUS"));
-				}
-			}
-		}
-		// Fresol - end
 
 		if (kBuilding.isRiver())
 		{

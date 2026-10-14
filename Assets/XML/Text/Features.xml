@@ -93,4 +93,20 @@
 		<Italian>Strait</Italian>
 		<Spanish>Strait</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_WIDE</Tag>
+		<English>Wide Strait</English>
+		<French>Wide Strait</French>
+		<German>Wide Strait</German>
+		<Italian>Wide Strait</Italian>
+		<Spanish>Wide Strait</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_WIDE_PEDIA</Tag>
+		<English>A wide strait. Land units cannot cross it at all, but ships pass through it as they do through any strait.</English>
+		<French>A wide strait. Land units cannot cross it at all, but ships pass through it as they do through any strait.</French>
+		<German>A wide strait. Land units cannot cross it at all, but ships pass through it as they do through any strait.</German>
+		<Italian>A wide strait. Land units cannot cross it at all, but ships pass through it as they do through any strait.</Italian>
+		<Spanish>A wide strait. Land units cannot cross it at all, but ships pass through it as they do through any strait.</Spanish>
+	</TEXT>
 </Civ4GameText>

@@ -2665,6 +2665,13 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 		return false;
 	}
 
+	// Fresol: a wide strait cannot be crossed by land at all. The pathfinder refuses the step,
+	// but a one tile order and an attack do not go through it, so the rule lives here too.
+	if (getDomainType() == DOMAIN_LAND && plot() != NULL && plot()->isWideStraitCrossing(pPlot))
+	{
+		return false;
+	}
+
 	if (pPlot->isImpassable())
 	{
 		if (!canMoveImpassable())

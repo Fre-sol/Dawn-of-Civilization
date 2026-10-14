@@ -4874,9 +4874,10 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
 		}
 
 		// Leoreth: general strait effect
+		// Fresol: name the plot's own strait, so a wide strait does not read as a plain one
 		if (pPlot->isStrait())
 		{
-			szString.append(GC.getFeatureInfo(FEATURE_STRAIT).getDescription());
+			szString.append(GC.getFeatureInfo(pPlot->getFeatureType()).getDescription());
 			szString.append(NEWLINE);
 		}
 
@@ -4899,7 +4900,7 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
 					szString.append(gDLL->getText("TXT_KEY_PLOT_HILLS"));
 				}
 
-				if (pPlot->getFeatureType() != NO_FEATURE && pPlot->getFeatureType() != FEATURE_STRAIT)
+				if (pPlot->getFeatureType() != NO_FEATURE && !pPlot->isStrait())
 				{
 					szTempBuffer.Format(L"%s/", GC.getFeatureInfo(pPlot->getFeatureType()).getDescription());
 					szString.append(szTempBuffer);

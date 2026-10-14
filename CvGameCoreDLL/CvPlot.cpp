@@ -6223,7 +6223,7 @@ int CvPlot::determineVariety(FeatureTypes eFeature) const
 	}
 
 	// MacAurther: Straits
-	if (eFeature == FEATURE_STRAIT || eFeature == FEATURE_ISLANDS_STRAIT)
+	if (eFeature == FEATURE_STRAIT || eFeature == FEATURE_ISLANDS_STRAIT || eFeature == FEATURE_STRAIT_WIDE)
 	{
 		if (!isWater())
 		{
@@ -6426,7 +6426,7 @@ void CvPlot::setFeatureType(FeatureTypes eNewValue, int iVariety)
 	if (eOldFeature != eNewValue)
 	{
 		// MacAurther: Straits
-		if (eOldFeature == FEATURE_STRAIT || eOldFeature == FEATURE_ISLANDS_STRAIT || isStrait())
+		if (eOldFeature == FEATURE_STRAIT || eOldFeature == FEATURE_ISLANDS_STRAIT || eOldFeature == FEATURE_STRAIT_WIDE || isStrait())
 		{
 			for (int i = 0; i < NUM_DIRECTION_TYPES; ++i)
 			{
@@ -12814,7 +12814,7 @@ bool CvPlot::isStraitCrossing(const CvPlot* pToPlot) const
 		return false;
 	}
 
-	return pSidePlot1->isStrait() && pSidePlot2->isStrait();
+	return pSidePlot1->isNarrowStrait() && pSidePlot2->isNarrowStrait();
 }
 
 
@@ -12842,13 +12842,55 @@ bool CvPlot::isLakeStraitCrossing(const CvPlot* pToPlot) const
 		return false;
 	}
 
-	return pSidePlot1->isStrait() && pSidePlot1->isLake() && pSidePlot2->isStrait() && pSidePlot2->isLake();
+	return pSidePlot1->isNarrowStrait() && pSidePlot1->isLake() && pSidePlot2->isNarrowStrait() && pSidePlot2->isLake();
 }
 
 
+// Fresol: the crossing a wide strait forbids. Same geometry as isStraitCrossing, but both side
+// plots are wide straits, so a land unit may not make the move at all - neither by walking nor
+// by attacking, which is why canMoveInto checks this too and not just the pathfinder.
+bool CvPlot::isWideStraitCrossing(const CvPlot* pToPlot) const
+{
+	if (pToPlot == NULL || pToPlot == this)
+	{
+		return false;
+	}
+
+	if (xDistance(getX_INLINE(), pToPlot->getX_INLINE()) != 1 || yDistance(getY_INLINE(), pToPlot->getY_INLINE()) != 1)
+	{
+		return false;
+	}
+
+	CvPlot* pSidePlot1 = GC.getMapINLINE().plotINLINE(pToPlot->getX_INLINE(), getY_INLINE());
+	CvPlot* pSidePlot2 = GC.getMapINLINE().plotINLINE(getX_INLINE(), pToPlot->getY_INLINE());
+
+	if (pSidePlot1 == NULL || pSidePlot2 == NULL)
+	{
+		return false;
+	}
+
+	return pSidePlot1->isWideStrait() && pSidePlot2->isWideStrait();
+}
+
+
+// Fresol: a wide strait counts as a strait for everything that looks at the water - ship
+// movement, art, the tree cutting river symbols - but not for the land crossing, which is what
+// isNarrowStrait() is for.
 bool CvPlot::isStrait() const
 {
-	return getFeatureType() == FEATURE_STRAIT || getFeatureType() == FEATURE_ISLANDS_STRAIT;
+	return getFeatureType() == FEATURE_STRAIT || getFeatureType() == FEATURE_ISLANDS_STRAIT || isWideStrait();
+}
+
+
+bool CvPlot::isWideStrait() const
+{
+	return getFeatureType() == FEATURE_STRAIT_WIDE;
+}
+
+
+bool CvPlot::isNarrowStrait() const
+{
+	return isStrait() && !isWideStrait();
 }
 
 

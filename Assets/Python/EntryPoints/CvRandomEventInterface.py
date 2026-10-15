@@ -825,6 +825,11 @@ def applyVolcano1(argsList):
 	
 	iRuins = CvUtil.findInfoTypeNum(gc.getImprovementInfo,gc.getNumImprovementInfos(),'IMPROVEMENT_CITY_RUINS')
 
+	lCityCottages = [CvUtil.findInfoTypeNum(gc.getImprovementInfo,gc.getNumImprovementInfos(),'IMPROVEMENT_CITY_COTTAGE'),
+		CvUtil.findInfoTypeNum(gc.getImprovementInfo,gc.getNumImprovementInfos(),'IMPROVEMENT_CITY_HAMLET'),
+		CvUtil.findInfoTypeNum(gc.getImprovementInfo,gc.getNumImprovementInfos(),'IMPROVEMENT_CITY_VILLAGE'),
+		CvUtil.findInfoTypeNum(gc.getImprovementInfo,gc.getNumImprovementInfos(),'IMPROVEMENT_CITY_TOWN')]
+
 	for i in range(3):
 		if len(listPlots) > 0:
 			plot = listPlots[gc.getGame().getSorenRandNum(len(listPlots), "Volcano event improvement destroyed")]
@@ -833,6 +838,10 @@ def applyVolcano1(argsList):
 			CyInterface().addMessage(kTriggeredData.ePlayer, false, gc.getEVENT_MESSAGE_TIME(), szBuffer, "AS2D_BOMBARDED", InterfaceMessageTypes.MESSAGE_TYPE_INFO, gc.getImprovementInfo(iImprovement).getButton(), gc.getInfoTypeForString("COLOR_RED"), plot.getX(), plot.getY(), true, true)
 			if iImprovement in listRuins:
 				plot.setImprovementType(iRuins)
+			elif iImprovement in lCityCottages:
+				iCityIndex = lCityCottages.index(iImprovement)
+				if iCityIndex > 0:
+					plot.setImprovementType(lCityCottages[iCityIndex - 1])
 			else:
 				plot.setImprovementType(-1)
 			listPlots.remove(plot)

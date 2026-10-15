@@ -313,6 +313,15 @@
 			<FontButtonIndex>32</FontButtonIndex>
 		</BonusArtInfo>
 		<BonusArtInfo>
+			<Type>ART_DEF_BONUS_TRADE_NODE</Type>
+			<fScale>0.0</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<NIF>Art/Terrain/Resources/Wheat/Wheat.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Actions/Trade.dds,Art/Interface/Buttons/Actions_Builds_LeaderHeads_Specialists_Atlas.dds,3,3</Button>
+			<FontButtonIndex>54</FontButtonIndex>
+		</BonusArtInfo>
+		<BonusArtInfo>
 			<Type>ART_DEF_BONUS_HIT_SINGLES</Type>
 			<fScale>1.0</fScale>
 			<fInterfaceScale>1.0</fInterfaceScale>

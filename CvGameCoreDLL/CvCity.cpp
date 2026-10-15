@@ -278,6 +278,23 @@ void CvCity::init(int iID, PlayerTypes eOwner, int iX, int iY, bool bBumpUnits, 
 	}
 
 	pPlot->setImprovementType(NO_IMPROVEMENT);
+
+	// Fresol: the city seeds a cottage on its own tile, so it grows with the city.
+	// Taking the city builds a new city object, which puts it back to a cottage.
+	{
+		static ImprovementTypes eCityCottage = NO_IMPROVEMENT;
+
+		if (eCityCottage == NO_IMPROVEMENT)
+		{
+			eCityCottage = (ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CITY_COTTAGE");
+		}
+
+		if (eCityCottage != NO_IMPROVEMENT)
+		{
+			pPlot->setImprovementType(eCityCottage);
+		}
+	}
+
 	pPlot->updateCityRoute(false);
 
 	for (iI = 0; iI < MAX_TEAMS; iI++)
@@ -1265,6 +1282,33 @@ void CvCity::doTurn()
 	doMeltdown();
 
 	updateEspionageVisibility(true);
+
+	// Fresol: whatever takes the city tile's own cottage away, it starts over at the first step
+	{
+		static ImprovementTypes aeCityCottages[4] = {NO_IMPROVEMENT, NO_IMPROVEMENT, NO_IMPROVEMENT, NO_IMPROVEMENT};
+		bool bHasCityCottage = false;
+
+		if (aeCityCottages[0] == NO_IMPROVEMENT)
+		{
+			aeCityCottages[0] = (ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CITY_COTTAGE");
+			aeCityCottages[1] = (ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CITY_HAMLET");
+			aeCityCottages[2] = (ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CITY_VILLAGE");
+			aeCityCottages[3] = (ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CITY_TOWN");
+		}
+
+		for (iI = 0; iI < 4; ++iI)
+		{
+			if (plot()->getImprovementType() == aeCityCottages[iI])
+			{
+				bHasCityCottage = true;
+			}
+		}
+
+		if (!bHasCityCottage && aeCityCottages[0] != NO_IMPROVEMENT)
+		{
+			plot()->setImprovementType(aeCityCottages[0]);
+		}
+	}
 
 	if (!isDisorder())
 	{
@@ -2429,18 +2473,6 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 
 		if (iNumWaterTiles < 20) return false;
 	}
-
-	// Fresol - start: the harbor asks for water anywhere in its radius, not on its doorstep
-	{
-		static BuildingTypes eHarbor = NO_BUILDING;
-		if (eHarbor == NO_BUILDING) eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
-
-		if (eBuilding == eHarbor)
-		{
-			if (!hasWaterInRadius()) return false;
-		}
-	}
-	// Fresol - end
 
 	// Leoreth: Guadalupe Basilica needs to be on different continent than Catholic holy city
 	if (eBuilding == GUADALUPE_BASILICA)
@@ -5529,19 +5561,6 @@ bool CvCity::isCoastalOld() const
 	return plot()->isCoastalLand(0);
 }
 //Rhye - end
-
-// Fresol - start: is there water anywhere among the city's twenty-one tiles?
-bool CvCity::hasWaterInRadius() const
-{
-	for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
-	{
-		CvPlot* pLoopPlot = getCityIndexPlot(iI);
-		if (pLoopPlot != NULL && pLoopPlot->isWater()) return true;
-	}
-
-	return false;
-}
-// Fresol - end
 
 
 bool CvCity::isDisorder() const
@@ -14699,6 +14718,21 @@ int CvCity::getTradeRoutes() const
 		iTradeRoutes += GET_PLAYER(getOwnerINLINE()).getCoastalTradeRoutes();
 	}
 	iTradeRoutes += getExtraTradeRoutes();
+
+	// Fresol: a city founded on a trade node keeps one more trade route
+	{
+		static BonusTypes eTradeNode = NO_BONUS;
+
+		if (eTradeNode == NO_BONUS)
+		{
+			eTradeNode = (BonusTypes)GC.getInfoTypeForString("BONUS_TRADE_NODE");
+		}
+
+		if (eTradeNode != NO_BONUS && plot()->getBonusType() == eTradeNode)
+		{
+			iTradeRoutes += 1;
+		}
+	}
 
 	// Portuguese UP: +1 trade routes in colonies before the Industrial era
 	if (getCivilizationType() == PORTUGAL && isColony() && GET_PLAYER(getOwnerINLINE()).getCurrentEra() <= ERA_RENAISSANCE)

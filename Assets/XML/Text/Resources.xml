@@ -248,6 +248,14 @@
 		<Spanish>Amber</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BONUS_TRADE_NODE</Tag>
+		<English>Trade Node</English>
+		<French>Trade Node</French>
+		<German>Trade Node</German>
+		<Italian>Trade Node</Italian>
+		<Spanish>Trade Node</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BONUS_MILLET</Tag>
 		<English>Millet</English>
 		<French>Millet</French>

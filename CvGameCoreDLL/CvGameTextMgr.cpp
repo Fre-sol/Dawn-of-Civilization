@@ -4874,9 +4874,10 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
 		}
 
 		// Leoreth: general strait effect
+		// Fresol: name the plot's own strait, so a wide strait does not read as a plain one
 		if (pPlot->isStrait())
 		{
-			szString.append(GC.getFeatureInfo(FEATURE_STRAIT).getDescription());
+			szString.append(GC.getFeatureInfo(pPlot->getFeatureType()).getDescription());
 			szString.append(NEWLINE);
 		}
 
@@ -4899,7 +4900,7 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
 					szString.append(gDLL->getText("TXT_KEY_PLOT_HILLS"));
 				}
 
-				if (pPlot->getFeatureType() != NO_FEATURE && pPlot->getFeatureType() != FEATURE_STRAIT)
+				if (pPlot->getFeatureType() != NO_FEATURE && !pPlot->isStrait())
 				{
 					szTempBuffer.Format(L"%s/", GC.getFeatureInfo(pPlot->getFeatureType()).getDescription());
 					szString.append(szTempBuffer);
@@ -10590,6 +10591,23 @@ void CvGameTextMgr::setBuildingHelpActual(CvWStringBuffer &szBuffer, BuildingTyp
 				{
 					aiYields[iI] += kBuilding.getBonusYieldChange(iJ, iI) * pCity->countNumBonusPlots((BonusTypes)iJ);
 				}
+
+				// Fresol: the harbor pays one food for the fishing the city works
+				{
+					static BuildingTypes eHarbor = NO_BUILDING;
+
+					if (eHarbor == NO_BUILDING)
+					{
+						eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
+					}
+
+					if (iI == YIELD_FOOD && eBuilding == eHarbor)
+					{
+						aiYields[iI] += (pCity->countNumImprovedPlots(IMPROVEMENT_FISHING_BOATS)
+							+ pCity->countNumImprovedPlots(IMPROVEMENT_OCEAN_FISHERY)
+							+ pCity->countNumImprovedPlots(IMPROVEMENT_WHALING_BOATS));
+					}
+				}
 			}
 		}
 		setYieldChangeHelp(szBuffer, L", ", L"", L"", aiYields, false, false);
@@ -11357,6 +11375,23 @@ void CvGameTextMgr::setBuildingHelpActual(CvWStringBuffer &szBuffer, BuildingTyp
 		{
 			szBuffer.append(NEWLINE);
 			szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_IMPROVED_RESOURCE_YIELDS", szTempBuffer.c_str(), GC.getBonusInfo((BonusTypes)iI).getText()));
+		}
+	}
+
+	// Fresol: the harbor pays one food for the fishing the city works
+	{
+		static BuildingTypes eHarbor = NO_BUILDING;
+
+		if (eHarbor == NO_BUILDING)
+		{
+			eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
+		}
+
+		if (eBuilding == eHarbor)
+		{
+			szTempBuffer.Format(L"+1%c", GC.getYieldInfo(YIELD_FOOD).getChar());
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_FISHING_IMPROVEMENT_YIELDS", szTempBuffer.c_str()));
 		}
 	}
 
@@ -12435,22 +12470,6 @@ void CvGameTextMgr::buildBuildingRequiresString(CvWStringBuffer& szBuffer, Build
 				szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_REQUIRES_WATER"));
 			}
 		}
-
-		// Fresol - start: the harbor asks for water anywhere in its radius, not on its doorstep
-		{
-			static BuildingTypes eHarbor = NO_BUILDING;
-			if (eHarbor == NO_BUILDING) eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
-
-			if (eBuilding == eHarbor)
-			{
-				if (NULL == pCity || NO_PLAYER == ePlayer || !pCity->hasWaterInRadius())
-				{
-					szBuffer.append(NEWLINE);
-					szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_REQUIRES_WATER_RADIUS"));
-				}
-			}
-		}
-		// Fresol - end
 
 		if (kBuilding.isRiver())
 		{

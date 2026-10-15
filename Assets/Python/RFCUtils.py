@@ -1220,7 +1220,15 @@ def downgradeAreaCottages(iPlayer, area):
 			plot.setImprovementType(iCottage)
 		elif iImprovement == iCottage:
 			plot.setImprovementType(-1)
-		
+		elif iImprovement == iCityTown:
+			plot.setImprovementType(iCityVillage)
+		elif iImprovement == iCityVillage:
+			plot.setImprovementType(iCityHamlet)
+		elif iImprovement == iCityHamlet:
+			plot.setImprovementType(iCityCottage)
+		elif iImprovement == iCityCottage:
+			pass
+
 		plot.setUpgradeProgress(0)
 
 
@@ -1239,7 +1247,15 @@ def downgradeCityCottages(city):
 					plot.setImprovementType(iCottage)
 				elif iImprovement == iCottage:
 					plot.setImprovementType(-1)
-				
+				elif iImprovement == iCityTown:
+					plot.setImprovementType(iCityVillage)
+				elif iImprovement == iCityVillage:
+					plot.setImprovementType(iCityHamlet)
+				elif iImprovement == iCityHamlet:
+					plot.setImprovementType(iCityCottage)
+				elif iImprovement == iCityCottage:
+					pass
+
 				plot.setUpgradeProgress(0)
 
 

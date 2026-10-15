@@ -135,7 +135,7 @@ class WBPlotScreen:
 			for j in xrange(ItemInfo.getNumVarieties()):
 				sText = ItemInfo.getDescription()
 				# MacAurther: Strait graphics
-				if ItemInfo.getType() in ("FEATURE_STRAIT", "FEATURE_ISLANDS_STRAIT"):
+				if ItemInfo.getType() in ("FEATURE_STRAIT", "FEATURE_ISLANDS_STRAIT", "FEATURE_WIDE_STRAIT", "FEATURE_ISLANDS_WIDE_STRAIT"):
 					if j % 4 != 0: continue
 					sKey = ("SANDY_STRAIGHT", "SANDY_MEANDERING", "ROCKY_STRAIGHT", "ROCKY_MEANDERING", "MUDDY_STRAIGHT", "MUDDY_MEANDERING")[j // 4]
 					sText += " (" + CyTranslator().getText("TXT_KEY_WB_STRAIT_" + sKey, ()) + ")"
@@ -327,7 +327,7 @@ class WBPlotScreen:
 		iFeature = pPlot.getFeatureType()
 		iVariety = pPlot.getFeatureVariety()
 		# MacAurther: Strait Graphics
-		if iFeature > -1 and gc.getFeatureInfo(iFeature).getType() in ("FEATURE_STRAIT", "FEATURE_ISLANDS_STRAIT"):
+		if iFeature > -1 and gc.getFeatureInfo(iFeature).getType() in ("FEATURE_STRAIT", "FEATURE_ISLANDS_STRAIT", "FEATURE_WIDE_STRAIT", "FEATURE_ISLANDS_WIDE_STRAIT"):
 			iVariety = (iVariety // 4) * 4
 		sText = CyTranslator().getText("TXT_KEY_CULTURELEVEL_NONE", ())
 		sColor = CyTranslator().getText("[COLOR_POSITIVE_TEXT]", ())

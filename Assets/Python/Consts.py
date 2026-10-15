@@ -1071,13 +1071,13 @@ iSteppeAdaptation = 83
 iVolunteer = 84
 
 
-iNumBonuses = 54
+iNumBonuses = 55
 (iAluminium, iAmber, iCamel, iCitrus, iCoal, iCopper, iDates, iHorse, iIron, iMarble,
 iOil, iStone, iUranium, iBanana, iClam, iCorn, iCow, iCrab, iDeer, iFish,
 iPig, iPotato, iRice, iSheep, iWheat, iCocoa, iCoffee, iCotton, iDye, iFur,
 iGems, iGold, iIncense, iIvory, iJade, iMillet, iObsidian, iOlives, iOpium, iPearls,
 iRareEarths, iRubber, iSalt, iSilk, iSilver, iSpices, iSugar, iTea, iTobacco, iWine,
-iWhales, iSoccer, iSongs, iMovies) = range(iNumBonuses)
+iWhales, iSoccer, iSongs, iMovies, iTradeNode) = range(iNumBonuses)
 
 iNumBonusVarieties = 19
 (iDyeCochineal, iDyeMurex, iDyeHenna, iSpicesCinnamon, iSpicesNutmeg, iSpicesSaffron, iSpicesVanilla, iGemsTurquoise, iGemsDiamonds, iGemsRuby, iGemsSapphire, 
@@ -1266,20 +1266,21 @@ iNumCultureLevels = 9
 
 #Improvements
 
-iNumImprovements = 33
+iNumImprovements = 37
 (iLandWorked, iWaterWorked, iCityRuins, iHut, iFarm, iPaddyField, iFishingBoats, iHarvestBoats, iOceanFishery, iWhalingBoats, 
 iMine, iSlaveMine, iWorkshop, iLumbermill, iWindmill, iWatermill, iPlantation, iSlavePlantation, iQuarry, iPasture, 
 iCamp, iWell, iOffshorePlatform, iOrchard, iCottage, iHamlet, iVillage, iTown, iFort, iForestPreserve, 
-iMarinePreserve, iSolarCollector, iCanal) = range(iNumImprovements)
+iMarinePreserve, iSolarCollector, iCanal,
+iCityCottage, iCityHamlet, iCityVillage, iCityTown) = range(iNumImprovements)
 
 iNumRoutes = 4
 (iRouteRoad, iRouteRailroad, iRouteRomanRoad, iRouteHighway) = range(iNumRoutes)
 
 #feature & terrain
 
-iNumFeatures = 15
-(iSeaIce, iJungle, iOasis, iFloodPlains, iForest, iMud, iCape, iIslands, iRainforest, iFallout, 
-iTaiga, iSavanna, iStrait, iIslandsStrait, iLake) = range(iNumFeatures)
+iNumFeatures = 17
+(iSeaIce, iJungle, iOasis, iFloodPlains, iForest, iMud, iCape, iIslands, iRainforest, iFallout,
+iTaiga, iSavanna, iStrait, iIslandsStrait, iLake, iWideStrait, iIslandsWideStrait) = range(iNumFeatures)
 
 iNumTerrains = 19
 (iGrass, iPlains, iDesert, iTundra, iSnow, iCoast, iOcean, iTerrainPeak, iTerrainHill, iMarsh, 

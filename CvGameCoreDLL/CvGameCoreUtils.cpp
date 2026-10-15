@@ -1866,6 +1866,19 @@ int pathValid(FAStarNode* parent, FAStarNode* node, int data, const void* pointe
 		}
 	}
 
+	// Fresol: and the mirror image for land: a wide strait is a corner no land unit may cut,
+	// so there is no penalty to apply - the move simply does not exist.
+	if (pSelectionGroup->getDomainType() == DOMAIN_LAND)
+	{
+		if (!(pFromPlot->isWater()) && !(pToPlot->isWater()))
+		{
+			if (GC.getMapINLINE().plotINLINE(parent->m_iX, node->m_iY)->isWideStrait() && GC.getMapINLINE().plotINLINE(node->m_iX, parent->m_iY)->isWideStrait())
+			{
+				return FALSE;
+			}
+		}
+	}
+
 	if (pSelectionGroup->atPlot(pFromPlot))
 	{
 		return TRUE;

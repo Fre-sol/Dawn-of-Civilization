@@ -248,25 +248,25 @@ class CvPediaMain(CvPediaScreen.CvPediaScreen):
 			["SPECIALISTS",		self.szCategorySpecialists],
 			["TECHS",		self.szCategoryTechs],
 			["CULTURE",		self.szCategoryCultureLevels],
-			["UNITS",		self.szCategoryUnits],
-			["UNITS",		self.szCategoryMilitaryUnits],
-			["UNITS",		self.szCategoryUniqueUnits],
+			["UNITLIST",		self.szCategoryUnits],
+			["MILITARYUNITS",	self.szCategoryMilitaryUnits],
+			["UNIQUEUNITS",		self.szCategoryUniqueUnits],
 			["UNITS",		self.szCategoryUnitCategories],
 			["UNITS",		self.szCategoryUnitUpgrades],
 			["PROMOTIONS",		self.szCategoryPromotions],
 			["PROMOTIONS",		self.szCategoryPromotionTree],
 			["BUILDINGS",		self.szCategoryBuildings],
-			["BUILDINGS",		self.szCategoryReligiousBuildings],
-			["BUILDINGS",		self.szCategoryUniqueBuildings],
-			["BUILDINGS",		self.szCategoryGreatPeopleBuildings],
+			["RELIGIONBUILDINGS",	self.szCategoryReligiousBuildings],
+			["UNIQUEBUILDINGS",	self.szCategoryUniqueBuildings],
+			["GREATBUILDINGS",	self.szCategoryGreatPeopleBuildings],
 			["BUILDINGS",		self.szCategoryNationalWonders],
 			["BUILDINGS",		self.szCategoryGreatWonders],
 			["BUILDINGS",		self.szCategoryProjects],
-			["TERRAINS",		self.szCategoryTerrains],
-			["TERRAINS",		self.szCategoryFeatures],
-			["TERRAINS",		self.szCategoryBonuses],
-			["TERRAINS",		self.szCategoryImprovements],
-			["TERRAINS",		self.szCategoryRoutes],
+			["BASETERRAIN",		self.szCategoryTerrains],
+			["FEATURES",		self.szCategoryFeatures],
+			["BONUSES",		self.szCategoryBonuses],
+			["IMPROVEMENTS",	self.szCategoryImprovements],
+			["ROUTES",		self.szCategoryRoutes],
 			["HINTS",		self.szCategoryConcepts],
 			["HINTS",		self.szCategoryHints],
 			["HINTS",		self.szCategoryShortcuts],
@@ -274,17 +274,33 @@ class CvPediaMain(CvPediaScreen.CvPediaScreen):
 
 		self.categoryGraphics = {
 			"CIVS"		: u"%c  " % CyGame().getSymbolID(FontSymbols.MAP_CHAR),
-			"CIVICS"	: u"%c  " % CyGame().getSymbolID(FontSymbols.GOLDEN_AGE_CHAR),
+			"CIVICS"	: u"%c  " % CyGame().getSymbolID(FontSymbols.SCALES_CHAR),
 			"RELIGIONS"	: u"%c  " % CyGame().getSymbolID(FontSymbols.RELIGION_CHAR),
 			"PAGAN_RELIGIONS" : u"%c  " % CyGame().getSymbolID(FontSymbols.RELIGION_CHAR),
-			"CORPORATIONS"	: u"%c  " % gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar(),
-			"SPECIALISTS"	: u"%c  " % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR),
+			"CORPORATIONS"	: u"%c  " % gc.getCorporationInfo(gc.getInfoTypeForString("CORPORATION_TRADING_COMPANY")).getChar(),
+			"SPECIALISTS"	: u"%c  " % CyGame().getSymbolID(23),	# CITIZEN_CHAR (=23) is not exposed to Python
 			"TECHS"		: u"%c  " % gc.getCommerceInfo(CommerceTypes.COMMERCE_RESEARCH).getChar(),
 			"CULTURE"	: u"%c  " % gc.getCommerceInfo(CommerceTypes.COMMERCE_CULTURE).getChar(),
 			"UNITS"		: u"%c  " % CyGame().getSymbolID(FontSymbols.STRENGTH_CHAR),
 			"PROMOTIONS"	: u"%c  " % CyGame().getSymbolID(FontSymbols.SILVER_STAR_CHAR),
 			"BUILDINGS"	: u"%c  " % gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar(),
-			"TERRAINS"	: u"%c  " % gc.getYieldInfo(YieldTypes.YIELD_FOOD).getChar(),
+			# Fresol - start
+			# Headings that borrow an existing glyph.  The font atlas has nothing of its own
+			# for terrain, features, improvements or routes, so those four share the map
+			# globe for now; the rest point at the symbol that suits them.  One key per
+			# heading so they can be told apart later.  Nothing new is drawn into the atlas.
+			"BASETERRAIN"	: u"%c  " % CyGame().getSymbolID(FontSymbols.MAP_CHAR),
+			"FEATURES"	: u"%c  " % CyGame().getSymbolID(FontSymbols.MAP_CHAR),
+			"IMPROVEMENTS"	: u"%c  " % CyGame().getSymbolID(FontSymbols.MAP_CHAR),
+			"ROUTES"	: u"%c  " % CyGame().getSymbolID(FontSymbols.MAP_CHAR),
+			"UNITLIST"	: u"%c  " % CyGame().getSymbolID(FontSymbols.MOVES_CHAR),
+			"MILITARYUNITS"	: u"%c  " % CyGame().getSymbolID(47),	# MILITARY_CHAR (=47) is not exposed to Python
+			"UNIQUEUNITS"	: u"%c  " % CyGame().getSymbolID(FontSymbols.STAR_CHAR),
+			"RELIGIONBUILDINGS" : u"%c  " % CyGame().getSymbolID(FontSymbols.RELIGION_CHAR),
+			"UNIQUEBUILDINGS" : u"%c  " % CyGame().getSymbolID(FontSymbols.STAR_CHAR),
+			"GREATBUILDINGS" : u"%c  " % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR),
+			# Fresol - end
+			"BONUSES"	: u"%c  " % gc.getBonusInfo(gc.getInfoTypeForString("BONUS_GOLD")).getChar(),
 			"HINTS"		: u"%c  " % gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar(),
 			}
 
@@ -1232,6 +1248,14 @@ class CvPediaMain(CvPediaScreen.CvPediaScreen):
 				if gc.getImprovementInfo(j).getDescription() == gc.getImprovementInfo(gc.getInfoTypeForString("IMPROVEMENT_CITY_RUINS")).getDescription():
 					list.pop(j)
 				if gc.getImprovementInfo(j).getDescription() == gc.getImprovementInfo(gc.getInfoTypeForString("IMPROVEMENT_TRIBAL_VILLAGE")).getDescription():
+					list.pop(j)
+				if j == gc.getInfoTypeForString("IMPROVEMENT_CITY_COTTAGE"):
+					list.pop(j)
+				if j == gc.getInfoTypeForString("IMPROVEMENT_CITY_HAMLET"):
+					list.pop(j)
+				if j == gc.getInfoTypeForString("IMPROVEMENT_CITY_VILLAGE"):
+					list.pop(j)
+				if j == gc.getInfoTypeForString("IMPROVEMENT_CITY_TOWN"):
 					list.pop(j)
 	# END Filters
 

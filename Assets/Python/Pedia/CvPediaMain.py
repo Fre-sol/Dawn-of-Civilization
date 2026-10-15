@@ -264,7 +264,7 @@ class CvPediaMain(CvPediaScreen.CvPediaScreen):
 			["BUILDINGS",		self.szCategoryProjects],
 			["TERRAINS",		self.szCategoryTerrains],
 			["TERRAINS",		self.szCategoryFeatures],
-			["TERRAINS",		self.szCategoryBonuses],
+			["BONUSES",		self.szCategoryBonuses],
 			["TERRAINS",		self.szCategoryImprovements],
 			["TERRAINS",		self.szCategoryRoutes],
 			["HINTS",		self.szCategoryConcepts],
@@ -285,6 +285,7 @@ class CvPediaMain(CvPediaScreen.CvPediaScreen):
 			"PROMOTIONS"	: u"%c  " % CyGame().getSymbolID(FontSymbols.SILVER_STAR_CHAR),
 			"BUILDINGS"	: u"%c  " % gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar(),
 			"TERRAINS"	: u"%c  " % gc.getYieldInfo(YieldTypes.YIELD_FOOD).getChar(),
+			"BONUSES"	: u"%c  " % gc.getBonusInfo(gc.getInfoTypeForString("BONUS_GOLD")).getChar(),
 			"HINTS"		: u"%c  " % gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar(),
 			}
 

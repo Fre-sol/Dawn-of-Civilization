@@ -6880,6 +6880,14 @@ Your stability level can change during a stability check. As long it is higher t
 		<Spanish>Needs to be written.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BONUS_TRADE_NODE_PEDIA</Tag>
+		<English>[TAB]A trade node marks a place where the routes of the world meet: a strait, a river mouth, a caravan crossroads or a good harbour on the way to somewhere else. Whoever holds the ground under it holds the traffic that passes over it.[PARAGRAPH:2]A city founded on a trade node keeps one more trade route than it otherwise would. The node itself grows nothing and can never be improved, so the only way to make use of one is to build a city on it.[PARAGRAPH:2]Trade nodes are placed by hand rather than by the map generator, and they cannot be traded between civilizations.</English>
+		<French>No Translation</French>
+		<German>No Translation</German>
+		<Italian>No Translation</Italian>
+		<Spanish>No Translation</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BONUS_AMBER_PEDIA</Tag>
 		<English>[TAB]Amber is the petrified remnant of ancient tree resins, mostly dating back to the Cretaceous period or later; before that time, evergreen trees did not exist. Amber is rare and prized for its distinctive translucent, typically yellow color, and also for the relative ease with which it can be carved and worked compared to other gem and gem-like materials. It is in effect a semi-precious stone.[PARAGRAPH:2]Amber is found in a variety of sources, although large deposits of this semi-precious stone are rare. Trade in amber flourished in the Baltic sea, chiefly in what is currently the Kaliningrad Oblast of Russia (which still contains 90% of known amber reserves). Certain other deposits exist elsewhere in the world, such as the exotic blue amber of the Dominican Republic.[PARAGRAPH:2]One interesting scientific feature of amber is that, being the fossilized remnant of a sticky organic resin, it can entrap things. There were many cases in the prehistoric past of insects and plant material becoming stuck and "included" inside the resin as it petrified into amber. This has resulted in very well-preserved specimens of flies, mosquitos, and other biological remnants, trapped inside the translucent amber.</English>
 		<French>No Translation</French>

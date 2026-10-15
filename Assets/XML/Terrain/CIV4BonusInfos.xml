@@ -2299,6 +2299,32 @@
 			</Rands>
 		</BonusInfo>
 		<BonusInfo>
+			<Type>BONUS_TRADE_NODE</Type>
+			<Description>TXT_KEY_BONUS_TRADE_NODE</Description>
+			<Civilopedia>TXT_KEY_BONUS_TRADE_NODE_PEDIA</Civilopedia>
+			<BonusClassType>BONUSCLASS_GENERAL</BonusClassType>
+			<ArtDefineTag>ART_DEF_BONUS_TRADE_NODE</ArtDefineTag>
+			<YieldChanges>
+				<iYieldChange>0</iYieldChange>
+				<iYieldChange>0</iYieldChange>
+				<iYieldChange>1</iYieldChange>
+			</YieldChanges>
+			<iHappiness>0</iHappiness>
+			<iAffectedCities>0</iAffectedCities>
+			<iPlacementOrder>-1</iPlacementOrder>
+			<iConstAppearance>0</iConstAppearance>
+			<iMinAreaSize>-1</iMinAreaSize>
+			<iMinLatitude>0</iMinLatitude>
+			<iMaxLatitude>90</iMaxLatitude>
+			<Rands>
+				<iRandApp1>0</iRandApp1>
+				<iRandApp2>0</iRandApp2>
+				<iRandApp3>0</iRandApp3>
+				<iRandApp4>0</iRandApp4>
+			</Rands>
+			<bNormalize>0</bNormalize>
+		</BonusInfo>
+		<BonusInfo>
 			<Type>BONUS_DYE_COCHINEAL</Type>
 			<Description>TXT_KEY_BONUS_DYE_COCHINEAL</Description>
 			<Civilopedia>TXT_KEY_BONUS_DYE_COCHINEAL_PEDIA</Civilopedia>

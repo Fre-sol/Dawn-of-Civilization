@@ -14719,6 +14719,21 @@ int CvCity::getTradeRoutes() const
 	}
 	iTradeRoutes += getExtraTradeRoutes();
 
+	// Fresol: a city founded on a trade node keeps one more trade route
+	{
+		static BonusTypes eTradeNode = NO_BONUS;
+
+		if (eTradeNode == NO_BONUS)
+		{
+			eTradeNode = (BonusTypes)GC.getInfoTypeForString("BONUS_TRADE_NODE");
+		}
+
+		if (eTradeNode != NO_BONUS && plot()->getBonusType() == eTradeNode)
+		{
+			iTradeRoutes += 1;
+		}
+	}
+
 	// Portuguese UP: +1 trade routes in colonies before the Industrial era
 	if (getCivilizationType() == PORTUGAL && isColony() && GET_PLAYER(getOwnerINLINE()).getCurrentEra() <= ERA_RENAISSANCE)
 	{

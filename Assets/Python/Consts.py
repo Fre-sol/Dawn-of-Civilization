@@ -1071,13 +1071,13 @@ iSteppeAdaptation = 83
 iVolunteer = 84
 
 
-iNumBonuses = 54
+iNumBonuses = 55
 (iAluminium, iAmber, iCamel, iCitrus, iCoal, iCopper, iDates, iHorse, iIron, iMarble,
 iOil, iStone, iUranium, iBanana, iClam, iCorn, iCow, iCrab, iDeer, iFish,
 iPig, iPotato, iRice, iSheep, iWheat, iCocoa, iCoffee, iCotton, iDye, iFur,
 iGems, iGold, iIncense, iIvory, iJade, iMillet, iObsidian, iOlives, iOpium, iPearls,
 iRareEarths, iRubber, iSalt, iSilk, iSilver, iSpices, iSugar, iTea, iTobacco, iWine,
-iWhales, iSoccer, iSongs, iMovies) = range(iNumBonuses)
+iWhales, iSoccer, iSongs, iMovies, iTradeNode) = range(iNumBonuses)
 
 iNumBonusVarieties = 19
 (iDyeCochineal, iDyeMurex, iDyeHenna, iSpicesCinnamon, iSpicesNutmeg, iSpicesSaffron, iSpicesVanilla, iGemsTurquoise, iGemsDiamonds, iGemsRuby, iGemsSapphire, 

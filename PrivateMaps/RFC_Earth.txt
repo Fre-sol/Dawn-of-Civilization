@@ -82171,7 +82171,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=106,y=81
-	TerrainType=TERRAIN_GRASS
+	FeatureType=FEATURE_INLAND_STRAIT_NS, FeatureVariety=0
+	TerrainType=TERRAIN_ISLAND
 	PlotType=2
 EndPlot
 BeginPlot

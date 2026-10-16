@@ -2679,9 +2679,13 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 		return false;
 	}
 
-	// Fresol: a wide strait cannot be crossed by land at all. The pathfinder refuses the step,
-	// but a one tile order and an attack do not go through it, so the rule lives here too.
-	if (getDomainType() == DOMAIN_LAND && plot() != NULL && plot()->isWideStraitCrossing(pPlot))
+	// Fresol: a wide strait cannot be crossed by land at all. The pathfinder refuses the step, but
+	// a one tile order and an attack do not go through it, so the rule lives here too.  bIgnoreLoad
+	// marks the hypothetical questions - canMoveThrough asks whether a plot may be occupied at all,
+	// not whether this step may be taken - and answering those with the unit's real plot turns the
+	// land on the far side of the crossing into a dead end, which is exactly what happened to the
+	// inland straits before it was written this way.
+	if (getDomainType() == DOMAIN_LAND && !bIgnoreLoad && plot() != NULL && plot()->isWideStraitCrossing(pPlot))
 	{
 		return false;
 	}

@@ -1677,13 +1677,18 @@ int pathDestValid(int iToX, int iToY, const void* pointer, FAStar* finder)
 		{
 			if (!(pSelectionGroup->canMoveOrAttackInto(pToPlot, (pSelectionGroup->AI_isDeclareWar(pToPlot) || (gDLL->getFAStarIFace()->GetInfo(finder) & MOVE_DECLARE_WAR)))))
 			{
-				// Fresol: a destination one step away over a closed inland strait edge is refused
-				// here only because that step is illegal - the plot itself is ordinary ground and is
-				// still reachable the long way round, which the pathfinder finds only if it is
-				// allowed to look.  The test cannot fire for any plot further off (an edge has no
-				// direction at that distance), so every other refusal still stands.
-				if (pSelectionGroup->getDomainType() != DOMAIN_LAND
-				 || !CvPlot::isInlandStraitEdgeForbids(pSelectionGroup->plot(), pToPlot))
+				// Fresol: a destination one step away over an edge that forbids the step itself - an
+				// inland strait or a wide strait - is refused here only because that step is illegal.
+				// The plot is ordinary ground and is still reachable the long way round, which the
+				// pathfinder finds only if it is allowed to look.  Neither test can fire for a plot
+				// further off (an edge has no direction at that distance), so every other refusal
+				// still stands.
+				CvPlot* pGroupPlot = pSelectionGroup->plot();
+
+				if (pGroupPlot == NULL
+				 || pSelectionGroup->getDomainType() != DOMAIN_LAND
+				 || (!CvPlot::isInlandStraitEdgeForbids(pGroupPlot, pToPlot)
+				  && !pGroupPlot->isWideStraitCrossing(pToPlot)))
 				{
 					return FALSE;
 				}

@@ -3466,6 +3466,19 @@ int CvPlot::movementCost(const CvUnit* pUnit, const CvPlot* pFromPlot) const
 		}
 	}
 
+	// Fresol: a ship crossing an inland strait pays what the feature says, not the single point this
+	// branch would charge for a plot it may not act on.  The pathfinder has to price a crossing the
+	// way the crossing itself does (CvUnit::move), or the stops and detours it plans are wrong.
+	if (pUnit->getDomainType() == DOMAIN_SEA && isInlandStraitPassage())
+	{
+		int iCrossingCost = inlandStraitCrossingCost(getFeatureType());
+
+		if (iCrossingCost >= 0)
+		{
+			return iCrossingCost * GC.getMOVE_DENOMINATOR();
+		}
+	}
+
 	if (!isValidDomainForAction(*pUnit))
 	{
 		return GC.getMOVE_DENOMINATOR();
@@ -12994,15 +13007,25 @@ static bool inlandStraitSides(FeatureTypes eFeature, InlandStraitSide* pSides)
 	switch (eFeature)
 	{
 	case FEATURE_INLAND_STRAIT_NS:
-		// Fresol: Copenhagen stands on an island the map had to attach to its neighbours, so ships
-		// cross it from north to south and every land move in or out of it is a landing - city or
-		// no city.
-		pSides[DIRECTION_NORTH].bSeaPassage = true;
-		pSides[DIRECTION_SOUTH].bSeaPassage = true;
+		// Fresol: Copenhagen stands on an island the map had to attach to its neighbours.  Land
+		// crosses it only east and west - the two edges the art lays its dashed lines along - and
+		// even there the move is a landing.  Every other edge is closed for good, with a city or
+		// without one, because the water that makes the tile an island is on those sides.
+		//
+		// Ships are not held to two directions: every side is offered and getInlandStraitExit picks
+		// the end that crosses something, so a map that puts water on three sides of the island gets
+		// all three.  Which sides are water is a question for the map, so the water check does it.
+		pSides[DIRECTION_WEST].bLandPenalty = true;
+		pSides[DIRECTION_EAST].bLandPenalty = true;
 
 		for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
 		{
-			pSides[i].bLandPenalty = true;
+			pSides[i].bSeaPassage = true;
+
+			if (i != DIRECTION_WEST && i != DIRECTION_EAST)
+			{
+				pSides[i].bLandPassage = false;
+			}
 		}
 		return true;
 
@@ -13101,14 +13124,21 @@ bool CvPlot::isInlandStraitEntryFrom(const CvPlot* pFrom) const
 }
 
 
-// The far end seen from pFrom, or NULL when pFrom is not an end, when the feature declares no
-// single far end, or when that end is not water - so a passage whose ends have been turned back
-// into land simply cannot be entered.
+// Fresol: the end a ship coming from pFrom is thrown out at, or NULL when pFrom is no end of the
+// passage or when no other end is water - so a passage whose ends have been turned back into land
+// simply cannot be entered.  A passage with two ends has one answer; one that declares every side
+// - which is how a feature says "any water will do, the map decides" - has to choose, and it goes
+// to the end that actually crosses something: another CvArea first, then the end furthest from the
+// ship, then the first in direction order, so the same question always gets the same answer.
 CvPlot* CvPlot::getInlandStraitExit(const CvPlot* pFrom) const
 {
 	CvPlot* apEnds[NUM_DIRECTION_TYPES];
 	InlandStraitSide aSides[NUM_DIRECTION_TYPES];
 	CvPlot* pExit = NULL;
+	CvPlot* pEnd;
+	bool bFromIsEnd = false;
+	int iBestScore = 0;
+	int iScore;
 	int iCount;
 	int i;
 
@@ -13118,20 +13148,33 @@ CvPlot* CvPlot::getInlandStraitExit(const CvPlot* pFrom) const
 	}
 
 	iCount = inlandStraitSeaEnds(this, aSides, apEnds);
-	if (iCount != 2)
-	{
-		return NULL;
-	}
 
 	for (i = 0; i < iCount; ++i)
 	{
-		if (apEnds[i] == pFrom)
+		pEnd = apEnds[i];
+
+		if (pEnd == pFrom)
 		{
-			pExit = apEnds[1 - i];
+			bFromIsEnd = true;
+			continue;
+		}
+
+		if (pEnd == NULL || !pEnd->isWater())
+		{
+			continue;
+		}
+
+		iScore = ((pEnd->getArea() != pFrom->getArea()) ? 1000 : 0)
+		       + plotDistance(pFrom->getX_INLINE(), pFrom->getY_INLINE(), pEnd->getX_INLINE(), pEnd->getY_INLINE());
+
+		if (pExit == NULL || iScore > iBestScore)
+		{
+			pExit = pEnd;
+			iBestScore = iScore;
 		}
 	}
 
-	return (pExit != NULL && pExit->isWater()) ? pExit : NULL;
+	return bFromIsEnd ? pExit : NULL;
 }
 
 
@@ -13217,6 +13260,24 @@ bool CvPlot::isInlandStraitEdgePenalizes(const CvPlot* pFrom, const CvPlot* pTo)
 
 	return (inlandStraitSideFrom(pFrom, pTo, kSide) && kSide.bLandPenalty)
 	    || (inlandStraitSideFrom(pTo, pFrom, kSide) && kSide.bLandPenalty);
+}
+
+
+// Fresol: what crossing a passage costs a ship, in movement points, or -1 for the whole turn.  One
+// that stands in for a long way round - a tile the map had to leave land, so that the only other
+// route is a voyage - is priced by emptying the ship's movement, so it can do nothing else that
+// turn.  One that is simply the way through costs a few points and lets the ship sail on.  Anything
+// new gets the whole turn, which is the safer answer.
+int CvPlot::inlandStraitCrossingCost(FeatureTypes eFeature)
+{
+	switch (eFeature)
+	{
+	case FEATURE_INLAND_STRAIT_NS:
+		return 2;
+
+	default:
+		return -1;
+	}
 }
 // Fresol - end
 

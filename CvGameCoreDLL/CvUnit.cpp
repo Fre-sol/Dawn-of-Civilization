@@ -3238,13 +3238,21 @@ void CvUnit::move(CvPlot* pPlot, bool bShow)
 {
 	FAssert(canMoveOrAttackInto(pPlot) || isMadeAttack());
 
+	if (isCargo())
+	{
+	}
+
 	// Fresol - start: an inland strait is crossed by ships, never occupied - the ship comes out at
-	// the far end with its movement spent, so it can neither stop on the strait nor cross twice in a
-	// turn.  Land units are not carried anywhere: they may stand on the tile, at the cost of the
-	// whole turn that CvPlot::movementCost charges them.
+	// the far end instead of stopping on the tile, at whatever price the feature puts on a crossing
+	// (CvPlot::inlandStraitSpendsWholeTurn).  Land units may stand on the tile, at the cost of the
+	// whole turn that CvPlot::movementCost charges them, but one being carried does not walk there
+	// by itself: see the second block below.
 	if (getDomainType() == DOMAIN_SEA && pPlot->isInlandStraitPassage())
 	{
-		CvPlot* pExit = pPlot->getInlandStraitExit(plot());
+		CvPlot* pExit;
+
+
+		pExit = pPlot->getInlandStraitExit(plot());
 
 		if (pExit == NULL)
 		{
@@ -3255,8 +3263,55 @@ void CvUnit::move(CvPlot* pPlot, bool bShow)
 
 		if (pExit != NULL)
 		{
-			setMoves(maxMoves());
+			// Fresol: an exit held by a ship we can see is not sailed into.  The crossing is made as
+			// an attack on the exit instead, launched from where the ship stands, and the ordinary
+			// combat rules settle the rest: winning into an exit that is free advances the ship,
+			// since move() is what advancing calls; winning while the exit is still held leaves the
+			// ship on its own side, because canMoveInto refuses a plot with a visible enemy and the
+			// group therefore cannot walk it across; losing sinks it or sends it back, the way any
+			// beaten ship goes.  Nothing here is priced - the attack carries no crossing modifier.
+			if (pExit->isVisibleEnemyUnit(this))
+			{
+				attack(pExit, false);
+				return;
+			}
+
+			// Fresol: what the crossing costs.  A passage that stands in for a long way round is
+			// paid for with the whole turn; one that is simply the way through costs a few points
+			// and leaves the ship free to sail on.  CvPlot::inlandStraitCrossingCost says which,
+			// and CvPlot::movementCost asks it the same question, so the pathfinder agrees.
+			int iCrossingCost = CvPlot::inlandStraitCrossingCost(pPlot->getFeatureType());
+
+			if (iCrossingCost < 0)
+			{
+				setMoves(maxMoves());
+			}
+			else
+			{
+				changeMoves(iCrossingCost * GC.getMOVE_DENOMINATOR());
+			}
+
 			setXY(pExit->getX_INLINE(), pExit->getY_INLINE(), true, true, bShow && pExit->isVisibleToWatchingHuman(), bShow);
+			return;
+		}
+	}
+
+	// Fresol: a land unit being carried must not step onto a passage by itself.  Its transport has
+	// already been thrown to the far end, and a step onto the tile would unload it there, because
+	// setXY unloads a cargo unit whose transport is not on the plot it is moving to.  It goes where
+	// the transport went instead - usually it is already there, setXY carried it - and keeps its
+	// turn, so it can still leave the ship on the far side.
+	if (isCargo() && pPlot->isInlandStraitPassage())
+	{
+		CvUnit* pTransport = getTransportUnit();
+
+
+		if (pTransport != NULL && pTransport->plot() != NULL && !pTransport->plot()->isInlandStraitPassage())
+		{
+			if (!atPlot(pTransport->plot()))
+			{
+				setXY(pTransport->plot()->getX_INLINE(), pTransport->plot()->getY_INLINE(), true, true, false, true);
+			}
 			return;
 		}
 	}
@@ -3333,6 +3388,7 @@ bool CvUnit::jumpToNearestValidPlot()
 	FAssertMsg(!isAttacking(), "isAttacking did not return false as expected");
 	FAssertMsg(!isFighting(), "isFighting did not return false as expected");
 
+
 	pNearestCity = GC.getMapINLINE().findCity(getX_INLINE(), getY_INLINE(), getOwnerINLINE());
 
 	iBestValue = MAX_INT;
@@ -3392,6 +3448,7 @@ bool CvUnit::jumpToNearestValidPlot()
 	if (pBestPlot != NULL)
 	{
 		setXY(pBestPlot->getX_INLINE(), pBestPlot->getY_INLINE());
+
 	}
 	//Rhye - start comment
 	/*else
@@ -4679,7 +4736,6 @@ bool CvUnit::canRecon(const CvPlot* pPlot) const
 }
 
 
-
 bool CvUnit::canReconAt(const CvPlot* pPlot, int iX, int iY) const
 {
 	if (!canRecon(pPlot))
@@ -4754,7 +4810,6 @@ bool CvUnit::canParadrop(const CvPlot* pPlot) const
 
 	return true;
 }
-
 
 
 bool CvUnit::canParadropAt(const CvPlot* pPlot, int iX, int iY) const
@@ -12548,6 +12603,7 @@ void CvUnit::setTransportUnit(CvUnit* pTransportUnit)
 		}
 		else
 		{
+
 			m_transportUnit.reset();
 
 			getGroup()->setActivityType(ACTIVITY_AWAKE);

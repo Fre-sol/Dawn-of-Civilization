@@ -624,6 +624,7 @@ public:
 	CvPlot* getInlandStraitLanding(const CvUnit* pUnit) const; // Fresol: an end to put a stranded ship out at
 	static bool isInlandStraitEdgeForbids(const CvPlot* pFrom, const CvPlot* pTo); // Fresol: no land unit may use this edge
 	static bool isInlandStraitEdgePenalizes(const CvPlot* pFrom, const CvPlot* pTo); // Fresol: this edge is a landing
+	static int inlandStraitCrossingCost(FeatureTypes eFeature); // Fresol: movement points a crossing costs, or -1 for the whole turn
 	bool isStraitCrossing(const CvPlot* pToPlot) const; // Fresol
 	bool isLakeStraitCrossing(const CvPlot* pToPlot) const; // Fresol
 	bool isWideStraitCrossing(const CvPlot* pToPlot) const; // Fresol

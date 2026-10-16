@@ -12978,7 +12978,6 @@ static bool isInlandStraitFeature(FeatureTypes eFeature)
 	case FEATURE_INLAND_STRAIT_NS:
 	case FEATURE_STRAIT_BOSPHORUS:
 	case FEATURE_STRAIT_DARDANELLES:
-	case FEATURE_STRAIT_DARDANELLES_FAR:
 		return true;
 
 	default:
@@ -13031,23 +13030,23 @@ static bool inlandStraitSides(FeatureTypes eFeature, InlandStraitSide* pSides)
 
 	case FEATURE_STRAIT_BOSPHORUS:
 		// Fresol: the Bosphorus.  Ships cross it from the south-west to the east.  Its land is
-		// ordinary ground - the crossings over it are declared by the two banks below - which is
-		// what lets a city stand here and keep those crossings.
+		// ordinary ground on the European side; the two edges that leave it for Asia are not - the
+		// crossing to the south-east is a landing, and the edge south to the Dardanelles tile is
+		// closed outright.  Both are written here, on this tile, because they belong to the edges
+		// and never to a city: a city founded here leaves them exactly where they were.
 		pSides[DIRECTION_SOUTHWEST].bSeaPassage = true;
 		pSides[DIRECTION_EAST].bSeaPassage = true;
+		pSides[DIRECTION_SOUTHEAST].bLandPenalty = true;
+		pSides[DIRECTION_SOUTH].bLandPassage = false;
 		return true;
 
 	case FEATURE_STRAIT_DARDANELLES:
-		// Fresol: the European bank.  No land may pass north to the Bosphorus tile at all, and
-		// crossing to the north-west is a landing.
-		pSides[DIRECTION_NORTH].bLandPassage = false;
-		pSides[DIRECTION_NORTHWEST].bLandPenalty = true;
-		return true;
-
-	case FEATURE_STRAIT_DARDANELLES_FAR:
-		// Fresol: the far bank.  It is only here to declare the crossing it makes with the
-		// Bosphorus tile, which is why that penalty does not sit on the tile a city may stand on.
-		pSides[DIRECTION_NORTHWEST].bLandPenalty = true;
+		// Fresol: the Dardanelles, on the European bank.  Its one rule is the crossing it makes to
+		// the south-east, over to the Asian side, which is a landing; every other edge of this tile
+		// is ordinary ground.  (The edge between the Bosphorus tile and the Dardanelles tile is
+		// closed, but that edge is not an edge of this tile - it is the Bosphorus tile's own
+		// business, and the tile a city may stand on is the one that says so.)
+		pSides[DIRECTION_SOUTHEAST].bLandPenalty = true;
 		return true;
 	}
 
@@ -13272,7 +13271,8 @@ int CvPlot::inlandStraitCrossingCost(FeatureTypes eFeature)
 {
 	switch (eFeature)
 	{
-	case FEATURE_INLAND_STRAIT_NS:
+	case FEATURE_INLAND_STRAIT_NS:			// the Sound at Copenhagen
+	case FEATURE_STRAIT_BOSPHORUS:			// and the Bosphorus: both are sailed through
 		return 2;
 
 	default:

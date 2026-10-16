@@ -49,12 +49,4 @@
 		<Tag>TXT_KEY_FEATURE_STRAIT_DARDANELLES_PEDIA</Tag>
 		<English>The Dardanelles is the passage between the Aegean and the Sea of Marmara. The tile itself is land: no ship crosses it, and no land unit may cross it from the north, where the water is too wide to wade. Crossing to the north-west is a landing, so that move costs a whole turn and an attack made over it is at -50%.</English>
 	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_FEATURE_STRAIT_DARDANELLES_FAR</Tag>
-		<English>Dardanelles - Far Bank</English>
-	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_FEATURE_STRAIT_DARDANELLES_FAR_PEDIA</Tag>
-		<English>This tile carries no passage and no art of its own. It stands on the far bank of the Dardanelles, and its only purpose is to declare that the edge it makes with the Bosphorus tile to its north-west is a landing.</English>
-	</TEXT>
 </Civ4GameText>

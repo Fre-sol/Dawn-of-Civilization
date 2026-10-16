@@ -457,6 +457,10 @@
 					<bTerrain>1</bTerrain>
 				</TerrainBoolean>
 				<TerrainBoolean>
+					<TerrainType>TERRAIN_ISLAND</TerrainType>
+					<bTerrain>1</bTerrain>
+				</TerrainBoolean>
+				<TerrainBoolean>
 					<TerrainType>TERRAIN_ARCTIC_COAST</TerrainType>
 					<bTerrain>1</bTerrain>
 				</TerrainBoolean>
@@ -612,6 +616,10 @@
 				</TerrainBoolean>
 				<TerrainBoolean>
 					<TerrainType>TERRAIN_LAGOON</TerrainType>
+					<bTerrain>1</bTerrain>
+				</TerrainBoolean>
+				<TerrainBoolean>
+					<TerrainType>TERRAIN_ISLAND</TerrainType>
 					<bTerrain>1</bTerrain>
 				</TerrainBoolean>
 				<TerrainBoolean>
@@ -773,6 +781,10 @@
 					<bTerrain>1</bTerrain>
 				</TerrainBoolean>
 				<TerrainBoolean>
+					<TerrainType>TERRAIN_ISLAND</TerrainType>
+					<bTerrain>1</bTerrain>
+				</TerrainBoolean>
+				<TerrainBoolean>
 					<TerrainType>TERRAIN_ARCTIC_COAST</TerrainType>
 					<bTerrain>1</bTerrain>
 				</TerrainBoolean>
@@ -928,6 +940,10 @@
 				</TerrainBoolean>
 				<TerrainBoolean>
 					<TerrainType>TERRAIN_LAGOON</TerrainType>
+					<bTerrain>1</bTerrain>
+				</TerrainBoolean>
+				<TerrainBoolean>
+					<TerrainType>TERRAIN_ISLAND</TerrainType>
 					<bTerrain>1</bTerrain>
 				</TerrainBoolean>
 				<TerrainBoolean>

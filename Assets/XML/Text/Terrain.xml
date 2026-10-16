@@ -113,4 +113,12 @@
 		<Italian>Savanna</Italian>
 		<Spanish>Savanna</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_TERRAIN_ISLAND</Tag>
+		<English>Island</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_TERRAIN_ISLAND_PEDIA</Tag>
+		<English>An island tile is grassland in every way that matters: it yields what grassland yields, it is settled and walked on like grassland, and nothing in the rules separates it from it. Only the picture is different, drawn as water, because the coast it stands for is too narrow to have a tile of its own.</English>
+	</TEXT>
 </Civ4GameText>

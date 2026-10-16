@@ -2694,7 +2694,11 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 	// answered here: bIgnoreLoad marks the hypothetical ones, where the pathfinder asks whether a
 	// plot may be occupied at all rather than whether this step may be taken.  Answering those with
 	// the unit's real plot is what turned the tile into a dead end the last time, so it is skipped.
-	if (getDomainType() == DOMAIN_LAND && !bIgnoreLoad && plot() != NULL && CvPlot::isInlandStraitEdgeForbids(plot(), pPlot))
+	// Fresol: and the same guard as in the pathfinder - the closed edges are corridor moves between
+	// two land tiles, and a unit coming off a ship is landing on an island rather than walking a
+	// corridor, so the water it stands on is what tells the two apart.
+	if (getDomainType() == DOMAIN_LAND && !bIgnoreLoad && plot() != NULL
+	 && !plot()->isWater() && CvPlot::isInlandStraitEdgeForbids(plot(), pPlot))
 	{
 		return false;
 	}
@@ -3234,9 +3238,15 @@ void CvUnit::attackForDamage(CvUnit *pDefender, int attackerDamageChange, int de
 }
 
 
+// Each line is written and the file closed at once, so the last line survives a crash or a hang,
+// and the sequence number makes a loop obvious at a glance.  Delete it all with the other probes.
 void CvUnit::move(CvPlot* pPlot, bool bShow)
 {
 	FAssert(canMoveOrAttackInto(pPlot) || isMadeAttack());
+
+	if (isCargo())
+	{
+	}
 
 	if (isCargo())
 	{
@@ -3306,12 +3316,25 @@ void CvUnit::move(CvPlot* pPlot, bool bShow)
 		CvUnit* pTransport = getTransportUnit();
 
 
-		if (pTransport != NULL && pTransport->plot() != NULL && !pTransport->plot()->isInlandStraitPassage())
+		// Fresol: only a unit whose ship has already been thrown to the far end is swallowed here -
+		// the group walk would give it a step of its own onto the strait, where its transport no
+		// longer is, and leave it unloaded on the tile.  While the transport is still on this unit's
+		// plot, the player is plainly unloading it onto the passage on purpose, and that step goes
+		// through like any other move (the tile is land and the edge allows it).
+		if (pTransport != NULL && pTransport->plot() != NULL
+		 && !pTransport->plot()->isInlandStraitPassage() && !pTransport->atPlot(plot()))
 		{
 			if (!atPlot(pTransport->plot()))
 			{
 				setXY(pTransport->plot()->getX_INLINE(), pTransport->plot()->getY_INLINE(), true, true, false, true);
 			}
+
+			// Fresol: and the swallowed step has to be paid for.  Without this the unit keeps its
+			// movement, the group walk asks it to move again, this branch swallows it again, and the
+			// mission never ends because the unit never arrives - that is the hang, and the crash
+			// that follows it once the spinning has eaten enough.
+			finishMoves();
+
 			return;
 		}
 	}
@@ -10670,6 +10693,7 @@ void CvUnit::captureDefenselessUnits(CvPlot* pPlot)
 
 void CvUnit::setXY(int iX, int iY, bool bGroup, bool bUpdate, bool bShow, bool bCheckPlotVisible)
 {
+
 	CLLNode<IDInfo>* pUnitNode;
 	CvCity* pOldCity;
 	CvCity* pNewCity;

@@ -1906,7 +1906,10 @@ int pathValid(FAStarNode* parent, FAStarNode* node, int data, const void* pointe
 	// of the step; CvUnit::canMoveInto carries the same rule for the steps that never come this way.
 	if (pSelectionGroup->getDomainType() == DOMAIN_LAND)
 	{
-		if (CvPlot::isInlandStraitEdgeForbids(pFromPlot, pToPlot))
+		// Fresol: only a step between two land tiles is a corridor move.  A step out of water is a
+		// landing from a ship, and a closed edge says nothing about that - the tile is an island, and
+		// any ship beside it may put a unit ashore.  CvUnit::canMoveInto carries the same guard.
+		if (!pFromPlot->isWater() && CvPlot::isInlandStraitEdgeForbids(pFromPlot, pToPlot))
 		{
 			return FALSE;
 		}

@@ -3893,7 +3893,12 @@ bool CvSelectionGroup::isAmphibPlot(const CvPlot* pPlot) const
 		bFriendly = pPlot->isFriendlyCity(*pUnit, true);
 	}
 
-	return ((getDomainType() == DOMAIN_SEA) && pPlot->isCoastalLand() && !bFriendly);
+	// Fresol: an inland strait is coastal land, so without this the engine reads it as a beach: the
+	// ship's path has it as its next plot, groupAmphibMove lands the cargo on it and drops the ship's
+	// own mission, which is what left the cargo stranded on the near shore.  A passage is not a
+	// landing - the ship is meant to cross it - and a city on one is a canal, which
+	// isInlandStraitPassage() already stops covering.
+	return ((getDomainType() == DOMAIN_SEA) && pPlot->isCoastalLand() && !bFriendly && !pPlot->isInlandStraitPassage());
 }
 
 

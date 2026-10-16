@@ -25,4 +25,12 @@
 		<Tag>TXT_KEY_WB_STRAIT_MUDDY_MEANDERING</Tag>
 		<English>Muddy - Meandering</English>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_INLAND_STRAIT</Tag>
+		<English>Inland Strait</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_INLAND_STRAIT_PEDIA</Tag>
+		<English>An inland strait is a narrow passage of water cutting through a land tile. Ships sail through it from one end to the other, but they cannot stop on it: a ship entering is carried straight to the far end and ends its turn there. No land unit may enter the tile at all.[NEWLINE][NEWLINE]It is for passages that are real water but too narrow to deserve a tile of their own, such as the Sound at Copenhagen.</English>
+	</TEXT>
 </Civ4GameText>

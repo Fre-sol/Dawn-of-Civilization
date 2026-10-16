@@ -3479,6 +3479,13 @@ int CvPlot::movementCost(const CvUnit* pUnit, const CvPlot* pFromPlot) const
 		return pUnit->maxMoves();
 	}
 
+	// Fresol: an inland strait stands for an island the map had to attach to its neighbours, so a
+	// land unit entering or leaving it is landing - either end of the move takes the whole turn.
+	if (pUnit->getDomainType() == DOMAIN_LAND && (isInlandStrait() || pFromPlot->isInlandStrait()))
+	{
+		return pUnit->maxMoves();
+	}
+
 	FAssert(pUnit->getDomainType() != DOMAIN_IMMOBILE);
 
 	if (pUnit->ignoreTerrainCost())
@@ -4568,6 +4575,14 @@ bool CvPlot::isTradeNetworkConnected(const CvPlot* pPlot, TeamTypes eTeam) const
 bool CvPlot::isValidDomainForLocation(const CvUnit& unit) const
 {
 	if (isValidDomainForAction(unit))
+	{
+		return true;
+	}
+
+	// Fresol: a ship is allowed to be on an inland strait - it is carried straight across it - so a
+	// sea unit has to count it as a plot it can occupy.  Without this the pathfinder prices the way
+	// out of the strait at a whole turn per step (CvPlot::movementCost) and routes around it.
+	if (unit.getDomainType() == DOMAIN_SEA && isInlandStraitPassage())
 	{
 		return true;
 	}
@@ -12917,6 +12932,120 @@ bool CvPlot::isNarrowStrait() const
 {
 	return isStrait() && !isWideStrait();
 }
+
+
+// Fresol - start: inland straits
+// A land tile carrying this feature is a water passage: a ship may cross it from one end to the
+// other, but it may not stop on it, and no land unit may enter it at all.  The two ends are a
+// property of the feature (see inlandStraitEnds below) rather than something read off the map,
+// because a real coastline often leaves three or more water neighbours.
+static void inlandStraitEnds(FeatureTypes eFeature, int& iDX1, int& iDY1, int& iDX2, int& iDY2)
+{
+	switch (eFeature)
+	{
+	case FEATURE_INLAND_STRAIT_NS:
+		iDX1 = 0; iDY1 = 1; iDX2 = 0; iDY2 = -1; return;
+	default:
+		iDX1 = 0; iDY1 = 0; iDX2 = 0; iDY2 = 0; return;
+	}
+}
+
+
+bool CvPlot::isInlandStrait() const
+{
+	// Fresol: the tile carries the feature.  It stands for an island that the map had to attach to
+	// its neighbours, so every land move in or out of it is a landing - city or no city.
+	return getFeatureType() == FEATURE_INLAND_STRAIT_NS;
+}
+
+
+// Fresol: the water passage half.  A city founded here takes that over by itself (a coastal city
+// is a canal), so the ship rules stand down when there is one - the land rules do not.
+bool CvPlot::isInlandStraitPassage() const
+{
+	return isInlandStrait() && !isCity();
+}
+
+
+// True when pFrom is one of the two ends - that is, when a ship on pFrom may enter this plot.
+bool CvPlot::isInlandStraitEntryFrom(const CvPlot* pFrom) const
+{
+	int iDX1, iDY1, iDX2, iDY2;
+	inlandStraitEnds(getFeatureType(), iDX1, iDY1, iDX2, iDY2);
+	if (pFrom == NULL || (iDX1 == 0 && iDY1 == 0))
+	{
+		return false;
+	}
+	return pFrom == GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX1, getY_INLINE() + iDY1)
+	    || pFrom == GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX2, getY_INLINE() + iDY2);
+}
+
+
+// The far end seen from pFrom, or NULL when pFrom is not an end or the far end is not water (so a
+// strait whose ends have been turned back into land simply cannot be entered).
+CvPlot* CvPlot::getInlandStraitExit(const CvPlot* pFrom) const
+{
+	int iDX1, iDY1, iDX2, iDY2;
+	CvPlot* pExit;
+	inlandStraitEnds(getFeatureType(), iDX1, iDY1, iDX2, iDY2);
+	if (pFrom == NULL || (iDX1 == 0 && iDY1 == 0))
+	{
+		return NULL;
+	}
+	if (pFrom == GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX1, getY_INLINE() + iDY1))
+	{
+		pExit = GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX2, getY_INLINE() + iDY2);
+	}
+	else if (pFrom == GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX2, getY_INLINE() + iDY2))
+	{
+		pExit = GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX1, getY_INLINE() + iDY1);
+	}
+	else
+	{
+		return NULL;
+	}
+	return (pExit != NULL && pExit->isWater()) ? pExit : NULL;
+}
+
+
+// Fresol: an end to put a ship out at when the strait is not being crossed but entered some other
+// way (a teleport, the world builder).  Prefers an end that is water and free of a visible enemy,
+// falls back to one that is merely water, and returns NULL when there is no water end at all.
+CvPlot* CvPlot::getInlandStraitLanding(const CvUnit* pUnit) const
+{
+	int iDX1, iDY1, iDX2, iDY2;
+	CvPlot* apEnds[2];
+	CvPlot* pFirstWater = NULL;
+	int i;
+
+	inlandStraitEnds(getFeatureType(), iDX1, iDY1, iDX2, iDY2);
+	if (iDX1 == 0 && iDY1 == 0)
+	{
+		return NULL;
+	}
+
+	apEnds[0] = GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX1, getY_INLINE() + iDY1);
+	apEnds[1] = GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX2, getY_INLINE() + iDY2);
+
+	for (i = 0; i < 2; ++i)
+	{
+		if (apEnds[i] == NULL || !apEnds[i]->isWater())
+		{
+			continue;
+		}
+		if (pFirstWater == NULL)
+		{
+			pFirstWater = apEnds[i];
+		}
+		if (pUnit == NULL || !apEnds[i]->isVisibleEnemyUnit(pUnit))
+		{
+			return apEnds[i];
+		}
+	}
+
+	return pFirstWater;
+}
+// Fresol - end
 
 
 // Fresol - start

@@ -880,6 +880,20 @@ void CvUnit::doTurn()
 		}
 	}
 
+	// Fresol: a ship left on an inland strait by something other than a crossing (the world builder, a
+	// teleport, a map change) is put out at an end, so that it is never left sitting on a tile it is
+	// only meant to pass through.  A city on the strait makes it an ordinary canal city and is left
+	// alone - that is what isInlandStraitPassage() is for.
+	if (getDomainType() == DOMAIN_SEA && plot() != NULL && plot()->isInlandStraitPassage())
+	{
+		CvPlot* pLanding = plot()->getInlandStraitLanding(this);
+
+		if (pLanding != NULL)
+		{
+			setXY(pLanding->getX_INLINE(), pLanding->getY_INLINE(), true, true, false, true);
+		}
+	}
+
 	if (baseCombatStr() > 0)
 	{
 		FeatureTypes eFeature = plot()->getFeatureType();
@@ -2767,7 +2781,19 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 	case DOMAIN_SEA:
 		if (!pPlot->isWater() && !canMoveAllTerrain())
 		{
-			if (!pPlot->isFriendlyCity(*this, true) || !pPlot->isCoastalLand())
+			// Fresol: a ship may enter an inland strait, but only from one of its two ends, and
+			// only when it can come out at the far end.  v1: a held exit blocks the crossing.
+			if (pPlot->isInlandStraitPassage())
+			{
+				// Fresol: allow the strait itself, with no look at where this unit currently stands.
+				// canMoveInto is also asked hypothetical questions ("could I be on this plot at all?")
+				// by the engine's own path filters - CvSelectionGroup::canMoveThrough calls it for the
+				// plot being left - and answering those with the unit's real plot turned the strait
+				// into a dead end for every ship not already sitting on one of its ends.  Which end a
+				// ship may use is decided per edge in pathValid, which does know where it comes from,
+				// and every real move is a path, so the whitelist still holds.
+			}
+			else if (!pPlot->isFriendlyCity(*this, true) || !pPlot->isCoastalLand())
 			{
 				return false;
 			}
@@ -2804,6 +2830,10 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 		break;
 
 	case DOMAIN_LAND:
+		// Fresol: land units may enter and leave an inland strait - it stands for an island, and
+		// crossing to or from it is a landing: the whole-turn cost and the -50% live in
+		// CvPlot::movementCost and the combat modifier, not here.
+
 		if (pPlot->isWater() && !canMoveAllTerrain())
 		{
 			if (!pPlot->isCity() || 0 == GC.getDefineINT("LAND_UNITS_CAN_ATTACK_WATER_CITIES"))
@@ -3194,6 +3224,30 @@ void CvUnit::attackForDamage(CvUnit *pDefender, int attackerDamageChange, int de
 void CvUnit::move(CvPlot* pPlot, bool bShow)
 {
 	FAssert(canMoveOrAttackInto(pPlot) || isMadeAttack());
+
+	// Fresol - start: an inland strait is crossed by ships, never occupied - the ship comes out at
+	// the far end with its movement spent, so it can neither stop on the strait nor cross twice in a
+	// turn.  Land units are not carried anywhere: they may stand on the tile, at the cost of the
+	// whole turn that CvPlot::movementCost charges them.
+	if (getDomainType() == DOMAIN_SEA && pPlot->isInlandStraitPassage())
+	{
+		CvPlot* pExit = pPlot->getInlandStraitExit(plot());
+
+		if (pExit == NULL)
+		{
+			// Fresol: the ship did not come from an end - a teleport, the world builder, a map change.
+			// Put it out at an end rather than leave it sitting on the strait.
+			pExit = pPlot->getInlandStraitLanding(this);
+		}
+
+		if (pExit != NULL)
+		{
+			setMoves(maxMoves());
+			setXY(pExit->getX_INLINE(), pExit->getY_INLINE(), true, true, bShow && pExit->isVisibleToWatchingHuman(), bShow);
+			return;
+		}
+	}
+	// Fresol - end
 
 	int iMovementCost = pPlot->movementCost(this, plot());
 	changeMoves(iMovementCost);
@@ -9181,6 +9235,18 @@ int CvUnit::maxCombatStr(const CvPlot* pPlot, const CvUnit* pAttacker, CombatDet
 					{
 						pCombatDetails->iStraitAttackModifier = iExtraModifier;
 					}
+				}
+			}
+
+			// Fresol: entering or leaving an inland strait is a landing whichever bank the attacker
+			// stands on - the tile stands for an island the map had to attach to its neighbours.
+			if (pAttacker->plot()->isInlandStrait() || pAttackedPlot->isInlandStrait())
+			{
+				iExtraModifier = -GC.getAMPHIB_ATTACK_MODIFIER();
+				iTempModifier += iExtraModifier;
+				if (pCombatDetails != NULL)
+				{
+					pCombatDetails->iAmphibAttackModifier = iExtraModifier;
 				}
 			}
 		}

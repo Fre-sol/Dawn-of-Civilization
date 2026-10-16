@@ -617,6 +617,11 @@ public:
 	bool isStrait() const;
 	bool isWideStrait() const; // Fresol
 	bool isNarrowStrait() const; // Fresol
+	bool isInlandStrait() const; // Fresol: a land tile that is a water passage for ships
+	bool isInlandStraitPassage() const; // Fresol: the ship half of it - a city takes that over
+	bool isInlandStraitEntryFrom(const CvPlot* pFrom) const; // Fresol
+	CvPlot* getInlandStraitExit(const CvPlot* pFrom) const; // Fresol
+	CvPlot* getInlandStraitLanding(const CvUnit* pUnit) const; // Fresol: an end to put a stranded ship out at
 	bool isStraitCrossing(const CvPlot* pToPlot) const; // Fresol
 	bool isLakeStraitCrossing(const CvPlot* pToPlot) const; // Fresol
 	bool isWideStraitCrossing(const CvPlot* pToPlot) const; // Fresol

@@ -1098,5 +1098,26 @@
 				<VarietyButton></VarietyButton>
 			</FeatureVariety>
 		</FeatureArtInfo>
+		<FeatureArtInfo>
+			<Type>ART_DEF_FEATURE_INLAND_STRAIT_NS</Type>
+			<bAnimated>0</bAnimated>
+			<bRiverArt>0</bRiverArt>
+			<TileArtType>TILE_ART_TYPE_NONE</TileArtType>
+			<LightType>LIGHT_TYPE_SUN</LightType>
+			<fScale>1.0</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<Button></Button>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/Strait_Refined_1.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+		</FeatureArtInfo>
 	</FeatureArtInfos>
 </Civ4ArtDefines>

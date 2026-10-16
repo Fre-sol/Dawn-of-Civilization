@@ -970,6 +970,7 @@ enum FeatureTypes					// Exposed to Python
 	FEATURE_LAKE,
 	FEATURE_WIDE_STRAIT,
 	FEATURE_ISLANDS_WIDE_STRAIT,
+	FEATURE_INLAND_STRAIT_NS, // Fresol: a land tile a ship may pass through (N <-> S) but never stop on
 	NUM_FEATURES
 };
 

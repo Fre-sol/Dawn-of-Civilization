@@ -1866,6 +1866,29 @@ int pathValid(FAStarNode* parent, FAStarNode* node, int data, const void* pointe
 		}
 	}
 
+	// Fresol - start: inland straits.  A ship may enter one only from its two ends, and only when
+	// the far end is water; leaving it is fine.  No land unit may enter or leave it at all.
+	if (pSelectionGroup->getDomainType() == DOMAIN_SEA)
+	{
+		if (pToPlot->isInlandStraitPassage())
+		{
+			if (!pToPlot->isInlandStraitEntryFrom(pFromPlot) || pToPlot->getInlandStraitExit(pFromPlot) == NULL)
+			{
+				return FALSE;
+			}
+		}
+		else if (pFromPlot->isInlandStraitPassage())
+		{
+			if (!pToPlot->isWater())
+			{
+				return FALSE;
+			}
+		}
+	}
+	// Fresol: no land branch here on purpose - land units may cross an inland strait.  It costs them
+	// the whole turn per step (CvPlot::movementCost) and -50% when they attack across it (CvUnit).
+	// Fresol - end
+
 	// Fresol: and the mirror image for land: a wide strait is a corner no land unit may cut,
 	// so there is no penalty to apply - the move simply does not exist.
 	if (pSelectionGroup->getDomainType() == DOMAIN_LAND)

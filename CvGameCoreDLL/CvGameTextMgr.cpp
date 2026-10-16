@@ -3201,11 +3201,11 @@ It is fine for a human player mouse-over (which is what it is used for).
                         }
                     }
 
-                    // Fresol: attacking across a strait - or into or out of an inland strait, which is
-                    // a landing from either bank because that tile stands for an island
+                    // Fresol: attacking across a strait - or over an edge an inland strait calls a
+                    // landing, which is one from either bank
                     if (!(pAttacker->isAmphib()) && pAttacker->getDomainType() == DOMAIN_LAND
                      && (pAttacker->plot()->isStraitCrossing(pPlot)
-                      || pAttacker->plot()->isInlandStrait() || pPlot->isInlandStrait()))
+                      || CvPlot::isInlandStraitEdgePenalizes(pAttacker->plot(), pPlot)))
                     {
                         if (pAttacker->plot()->isLakeStraitCrossing(pPlot))
                         {
@@ -3807,11 +3807,11 @@ It is fine for a human player mouse-over (which is what it is used for).
 				}
 			}
 
-			// Fresol: attacking across a strait - or into or out of an inland strait, which is
-			// a landing from either bank because that tile stands for an island
+			// Fresol: attacking across a strait - or over an edge an inland strait calls a
+			// landing, which is one from either bank
 			if (!(pAttacker->isAmphib()) && pAttacker->getDomainType() == DOMAIN_LAND
 			 && (pAttacker->plot()->isStraitCrossing(pPlot)
-			  || pAttacker->plot()->isInlandStrait() || pPlot->isInlandStrait()))
+			  || CvPlot::isInlandStraitEdgePenalizes(pAttacker->plot(), pPlot)))
 			{
 				if (pAttacker->plot()->isLakeStraitCrossing(pPlot))
 				{

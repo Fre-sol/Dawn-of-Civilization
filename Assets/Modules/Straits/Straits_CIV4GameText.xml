@@ -31,6 +31,30 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_FEATURE_INLAND_STRAIT_PEDIA</Tag>
-		<English>An inland strait is a narrow passage of water cutting through a land tile. Ships sail through it from one end to the other, but they cannot stop on it: a ship entering is carried straight to the far end and ends its turn there. No land unit may enter the tile at all.[NEWLINE][NEWLINE]It is for passages that are real water but too narrow to deserve a tile of their own, such as the Sound at Copenhagen.</English>
+		<English>An inland strait is a narrow passage of water cutting through a land tile. Ships sail through it from one end to the other, but they cannot stop on it: a ship entering is carried straight to the far end and ends its turn there. A land unit may cross the tile, but entering or leaving it is a landing: the move costs a whole turn, and an attack made from or into it is at -50%.[NEWLINE][NEWLINE]It is for passages that are real water but too narrow to deserve a tile of their own, such as the Sound at Copenhagen.</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_BOSPHORUS</Tag>
+		<English>Bosphorus</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_BOSPHORUS_PEDIA</Tag>
+		<English>The Bosphorus is the passage between the Black Sea and the Mediterranean. Ships cross it from the south-west to the east, and no ship may stop on the tile.[NEWLINE][NEWLINE]The tile's land is ordinary ground, but the two edges that cross the water are landings: a move over one costs a whole turn, and an attack made over one is at -50%. A city founded here takes the passage over - a coastal city is a canal in all but name - and the strait returns if the city is ever razed.</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_DARDANELLES</Tag>
+		<English>Dardanelles</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_DARDANELLES_PEDIA</Tag>
+		<English>The Dardanelles is the passage between the Aegean and the Sea of Marmara. The tile itself is land: no ship crosses it, and no land unit may cross it from the north, where the water is too wide to wade. Crossing to the north-west is a landing, so that move costs a whole turn and an attack made over it is at -50%.</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_DARDANELLES_FAR</Tag>
+		<English>Dardanelles - Far Bank</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_DARDANELLES_FAR_PEDIA</Tag>
+		<English>This tile carries no passage and no art of its own. It stands on the far bank of the Dardanelles, and its only purpose is to declare that the edge it makes with the Bosphorus tile to its north-west is a landing.</English>
 	</TEXT>
 </Civ4GameText>

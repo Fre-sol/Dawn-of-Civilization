@@ -3479,9 +3479,9 @@ int CvPlot::movementCost(const CvUnit* pUnit, const CvPlot* pFromPlot) const
 		return pUnit->maxMoves();
 	}
 
-	// Fresol: an inland strait stands for an island the map had to attach to its neighbours, so a
-	// land unit entering or leaving it is landing - either end of the move takes the whole turn.
-	if (pUnit->getDomainType() == DOMAIN_LAND && (isInlandStrait() || pFromPlot->isInlandStrait()))
+	// Fresol: a land step over an edge an inland strait calls a landing takes the whole turn,
+	// whichever way round the step goes.
+	if (pUnit->getDomainType() == DOMAIN_LAND && isInlandStraitEdgePenalizes(pFromPlot, this))
 	{
 		return pUnit->maxMoves();
 	}
@@ -12935,27 +12935,127 @@ bool CvPlot::isNarrowStrait() const
 
 
 // Fresol - start: inland straits
-// A land tile carrying this feature is a water passage: a ship may cross it from one end to the
-// other, but it may not stop on it, and no land unit may enter it at all.  The two ends are a
-// property of the feature (see inlandStraitEnds below) rather than something read off the map,
-// because a real coastline often leaves three or more water neighbours.
-static void inlandStraitEnds(FeatureTypes eFeature, int& iDX1, int& iDY1, int& iDX2, int& iDY2)
+// A land tile carrying one of these features stands for ground the map could not cut open: a
+// passage a ship may cross but never stop on, a bank the land crosses as a landing, or both.  What
+// a tile declares is one row of a table, read from the tile that carries the feature and one column
+// per direction:
+//
+//   bSeaPassage   a ship may enter from this side - two of them make a crossing
+//   bLandPassage  land may use the edge on this side at all
+//   bLandPenalty  using that edge is a landing: the whole turn to move, -50% to attack
+//
+// The rules belong to the edge between two tiles rather than to either tile, so every question is
+// put to both ends and either end may answer it: a ban needs only one of them, and a penalty
+// declared on the far bank survives a city founded on the near one.  Whatever the table does not
+// mention falls back to "no ship passage, land may pass, no penalty".
+struct InlandStraitSide
+{
+	bool bSeaPassage;
+	bool bLandPassage;
+	bool bLandPenalty;
+};
+
+
+// Fresol: the features that carry inland strait rules.  Keep this in step with the table below:
+// this one is the cheap test the hot callers use, and it never builds the table.
+static bool isInlandStraitFeature(FeatureTypes eFeature)
 {
 	switch (eFeature)
 	{
 	case FEATURE_INLAND_STRAIT_NS:
-		iDX1 = 0; iDY1 = 1; iDX2 = 0; iDY2 = -1; return;
+	case FEATURE_STRAIT_BOSPHORUS:
+	case FEATURE_STRAIT_DARDANELLES:
+	case FEATURE_STRAIT_DARDANELLES_FAR:
+		return true;
+
 	default:
-		iDX1 = 0; iDY1 = 0; iDX2 = 0; iDY2 = 0; return;
+		return false;
 	}
+}
+
+
+// Fills every side of eFeature; returns false when eFeature is no inland strait at all.
+static bool inlandStraitSides(FeatureTypes eFeature, InlandStraitSide* pSides)
+{
+	int i;
+
+	if (!isInlandStraitFeature(eFeature))
+	{
+		return false;
+	}
+
+	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+	{
+		pSides[i].bSeaPassage = false;
+		pSides[i].bLandPassage = true;
+		pSides[i].bLandPenalty = false;
+	}
+
+	switch (eFeature)
+	{
+	case FEATURE_INLAND_STRAIT_NS:
+		// Fresol: Copenhagen stands on an island the map had to attach to its neighbours, so ships
+		// cross it from north to south and every land move in or out of it is a landing - city or
+		// no city.
+		pSides[DIRECTION_NORTH].bSeaPassage = true;
+		pSides[DIRECTION_SOUTH].bSeaPassage = true;
+
+		for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+		{
+			pSides[i].bLandPenalty = true;
+		}
+		return true;
+
+	case FEATURE_STRAIT_BOSPHORUS:
+		// Fresol: the Bosphorus.  Ships cross it from the south-west to the east.  Its land is
+		// ordinary ground - the crossings over it are declared by the two banks below - which is
+		// what lets a city stand here and keep those crossings.
+		pSides[DIRECTION_SOUTHWEST].bSeaPassage = true;
+		pSides[DIRECTION_EAST].bSeaPassage = true;
+		return true;
+
+	case FEATURE_STRAIT_DARDANELLES:
+		// Fresol: the European bank.  No land may pass north to the Bosphorus tile at all, and
+		// crossing to the north-west is a landing.
+		pSides[DIRECTION_NORTH].bLandPassage = false;
+		pSides[DIRECTION_NORTHWEST].bLandPenalty = true;
+		return true;
+
+	case FEATURE_STRAIT_DARDANELLES_FAR:
+		// Fresol: the far bank.  It is only here to declare the crossing it makes with the
+		// Bosphorus tile, which is why that penalty does not sit on the tile a city may stand on.
+		pSides[DIRECTION_NORTHWEST].bLandPenalty = true;
+		return true;
+	}
+
+	return true;
+}
+
+
+// Fresol: the ends the feature opens to ships, read off the table rather than off the map, because
+// a real coastline leaves three or more water neighbours and the ends cannot be told apart by
+// geometry.  Returns how many there are; apEnds holds up to NUM_DIRECTION_TYPES of them.
+static int inlandStraitSeaEnds(const CvPlot* pStrait, const InlandStraitSide* pSides, CvPlot** apEnds)
+{
+	int iCount = 0;
+	int i;
+
+	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+	{
+		if (pSides[i].bSeaPassage)
+		{
+			apEnds[iCount++] = GC.getMapINLINE().plotINLINE(pStrait->getX_INLINE() + GC.getPlotDirectionX()[i],
+			                                                pStrait->getY_INLINE() + GC.getPlotDirectionY()[i]);
+		}
+	}
+
+	return iCount;
 }
 
 
 bool CvPlot::isInlandStrait() const
 {
-	// Fresol: the tile carries the feature.  It stands for an island that the map had to attach to
-	// its neighbours, so every land move in or out of it is a landing - city or no city.
-	return getFeatureType() == FEATURE_INLAND_STRAIT_NS;
+	return isInlandStraitFeature(getFeatureType());
 }
 
 
@@ -12963,71 +13063,97 @@ bool CvPlot::isInlandStrait() const
 // is a canal), so the ship rules stand down when there is one - the land rules do not.
 bool CvPlot::isInlandStraitPassage() const
 {
-	return isInlandStrait() && !isCity();
-}
+	CvPlot* apEnds[NUM_DIRECTION_TYPES];
+	InlandStraitSide aSides[NUM_DIRECTION_TYPES];
 
-
-// True when pFrom is one of the two ends - that is, when a ship on pFrom may enter this plot.
-bool CvPlot::isInlandStraitEntryFrom(const CvPlot* pFrom) const
-{
-	int iDX1, iDY1, iDX2, iDY2;
-	inlandStraitEnds(getFeatureType(), iDX1, iDY1, iDX2, iDY2);
-	if (pFrom == NULL || (iDX1 == 0 && iDY1 == 0))
+	if (isCity() || !inlandStraitSides(getFeatureType(), aSides))
 	{
 		return false;
 	}
-	return pFrom == GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX1, getY_INLINE() + iDY1)
-	    || pFrom == GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX2, getY_INLINE() + iDY2);
+
+	return inlandStraitSeaEnds(this, aSides, apEnds) > 0;
 }
 
 
-// The far end seen from pFrom, or NULL when pFrom is not an end or the far end is not water (so a
-// strait whose ends have been turned back into land simply cannot be entered).
+// Fresol: true when pFrom is one of the ends, so a ship standing on pFrom may enter this plot.
+bool CvPlot::isInlandStraitEntryFrom(const CvPlot* pFrom) const
+{
+	CvPlot* apEnds[NUM_DIRECTION_TYPES];
+	InlandStraitSide aSides[NUM_DIRECTION_TYPES];
+	int iCount;
+	int i;
+
+	if (pFrom == NULL || !inlandStraitSides(getFeatureType(), aSides))
+	{
+		return false;
+	}
+
+	iCount = inlandStraitSeaEnds(this, aSides, apEnds);
+	for (i = 0; i < iCount; ++i)
+	{
+		if (apEnds[i] == pFrom)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+// The far end seen from pFrom, or NULL when pFrom is not an end, when the feature declares no
+// single far end, or when that end is not water - so a passage whose ends have been turned back
+// into land simply cannot be entered.
 CvPlot* CvPlot::getInlandStraitExit(const CvPlot* pFrom) const
 {
-	int iDX1, iDY1, iDX2, iDY2;
-	CvPlot* pExit;
-	inlandStraitEnds(getFeatureType(), iDX1, iDY1, iDX2, iDY2);
-	if (pFrom == NULL || (iDX1 == 0 && iDY1 == 0))
+	CvPlot* apEnds[NUM_DIRECTION_TYPES];
+	InlandStraitSide aSides[NUM_DIRECTION_TYPES];
+	CvPlot* pExit = NULL;
+	int iCount;
+	int i;
+
+	if (pFrom == NULL || !inlandStraitSides(getFeatureType(), aSides))
 	{
 		return NULL;
 	}
-	if (pFrom == GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX1, getY_INLINE() + iDY1))
-	{
-		pExit = GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX2, getY_INLINE() + iDY2);
-	}
-	else if (pFrom == GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX2, getY_INLINE() + iDY2))
-	{
-		pExit = GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX1, getY_INLINE() + iDY1);
-	}
-	else
+
+	iCount = inlandStraitSeaEnds(this, aSides, apEnds);
+	if (iCount != 2)
 	{
 		return NULL;
 	}
+
+	for (i = 0; i < iCount; ++i)
+	{
+		if (apEnds[i] == pFrom)
+		{
+			pExit = apEnds[1 - i];
+		}
+	}
+
 	return (pExit != NULL && pExit->isWater()) ? pExit : NULL;
 }
 
 
-// Fresol: an end to put a ship out at when the strait is not being crossed but entered some other
-// way (a teleport, the world builder).  Prefers an end that is water and free of a visible enemy,
-// falls back to one that is merely water, and returns NULL when there is no water end at all.
+// Fresol: an end to put a ship out at when the passage is not being crossed but entered some other
+// way (a teleport, the world builder, a map change).  Prefers an end that is water and free of a
+// visible enemy, falls back to one that is merely water, and returns NULL when no end is water.
 CvPlot* CvPlot::getInlandStraitLanding(const CvUnit* pUnit) const
 {
-	int iDX1, iDY1, iDX2, iDY2;
-	CvPlot* apEnds[2];
+	CvPlot* apEnds[NUM_DIRECTION_TYPES];
+	InlandStraitSide aSides[NUM_DIRECTION_TYPES];
 	CvPlot* pFirstWater = NULL;
+	int iCount;
 	int i;
 
-	inlandStraitEnds(getFeatureType(), iDX1, iDY1, iDX2, iDY2);
-	if (iDX1 == 0 && iDY1 == 0)
+	if (!inlandStraitSides(getFeatureType(), aSides))
 	{
 		return NULL;
 	}
 
-	apEnds[0] = GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX1, getY_INLINE() + iDY1);
-	apEnds[1] = GC.getMapINLINE().plotINLINE(getX_INLINE() + iDX2, getY_INLINE() + iDY2);
+	iCount = inlandStraitSeaEnds(this, aSides, apEnds);
 
-	for (i = 0; i < 2; ++i)
+	for (i = 0; i < iCount; ++i)
 	{
 		if (apEnds[i] == NULL || !apEnds[i]->isWater())
 		{
@@ -13044,6 +13170,53 @@ CvPlot* CvPlot::getInlandStraitLanding(const CvUnit* pUnit) const
 	}
 
 	return pFirstWater;
+}
+
+
+// Fresol: what a tile declares for the edge it makes with pTowards, when it carries an inland
+// strait at all.  Distance matters: a plot two or more tiles away has no direction, so nothing can
+// be read off it for such an edge, and the caller falls back to the defaults.
+static bool inlandStraitSideFrom(const CvPlot* pPlot, const CvPlot* pTowards, InlandStraitSide& kSide)
+{
+	InlandStraitSide aSides[NUM_DIRECTION_TYPES];
+	DirectionTypes eDirection;
+
+	if (pPlot == NULL || pTowards == NULL || !inlandStraitSides(pPlot->getFeatureType(), aSides))
+	{
+		return false;
+	}
+
+	eDirection = directionXY(pPlot, pTowards);
+	if (eDirection == NO_DIRECTION)
+	{
+		return false;
+	}
+
+	kSide = aSides[eDirection];
+	return true;
+}
+
+
+// Fresol: land may not use this edge when either end says so.  It is asked in the pathfinder, which
+// knows both ends of every step, and in CvUnit::canMoveInto, which has to catch the one tile orders
+// and the attacks that never reach the pathfinder.
+bool CvPlot::isInlandStraitEdgeForbids(const CvPlot* pFrom, const CvPlot* pTo)
+{
+	InlandStraitSide kSide = { false, true, false };
+
+	return (inlandStraitSideFrom(pFrom, pTo, kSide) && !kSide.bLandPassage)
+	    || (inlandStraitSideFrom(pTo, pFrom, kSide) && !kSide.bLandPassage);
+}
+
+
+// Fresol: this edge is a landing when either end says so - which is how a penalty declared on the
+// far bank keeps working with a city standing on the near one.
+bool CvPlot::isInlandStraitEdgePenalizes(const CvPlot* pFrom, const CvPlot* pTo)
+{
+	InlandStraitSide kSide = { false, true, false };
+
+	return (inlandStraitSideFrom(pFrom, pTo, kSide) && kSide.bLandPenalty)
+	    || (inlandStraitSideFrom(pTo, pFrom, kSide) && kSide.bLandPenalty);
 }
 // Fresol - end
 

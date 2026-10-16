@@ -70196,11 +70196,13 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=115,y=69
+	FeatureType=FEATURE_STRAIT_DARDANELLES, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=116,y=69
+	FeatureType=FEATURE_STRAIT_DARDANELLES_FAR, FeatureVariety=0
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -71197,6 +71199,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=115,y=70
+	FeatureType=FEATURE_STRAIT_BOSPHORUS, FeatureVariety=0
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot

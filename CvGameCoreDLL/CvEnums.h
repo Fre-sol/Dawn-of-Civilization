@@ -971,6 +971,9 @@ enum FeatureTypes					// Exposed to Python
 	FEATURE_WIDE_STRAIT,
 	FEATURE_ISLANDS_WIDE_STRAIT,
 	FEATURE_INLAND_STRAIT_NS, // Fresol: a land tile a ship may pass through (N <-> S) but never stop on
+	FEATURE_STRAIT_BOSPHORUS, // Fresol: the same, but the passage runs SW <-> E
+	FEATURE_STRAIT_DARDANELLES, // Fresol: no passage at all - land rules only
+	FEATURE_STRAIT_DARDANELLES_FAR, // Fresol: the far bank, which declares the landing over the Bosphorus
 	NUM_FEATURES
 };
 

@@ -2686,6 +2686,15 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 		return false;
 	}
 
+	// Fresol: and the same for an edge an inland strait has closed.  Only the real questions are
+	// answered here: bIgnoreLoad marks the hypothetical ones, where the pathfinder asks whether a
+	// plot may be occupied at all rather than whether this step may be taken.  Answering those with
+	// the unit's real plot is what turned the tile into a dead end the last time, so it is skipped.
+	if (getDomainType() == DOMAIN_LAND && !bIgnoreLoad && plot() != NULL && CvPlot::isInlandStraitEdgeForbids(plot(), pPlot))
+	{
+		return false;
+	}
+
 	if (pPlot->isImpassable())
 	{
 		if (!canMoveImpassable())
@@ -9238,9 +9247,9 @@ int CvUnit::maxCombatStr(const CvPlot* pPlot, const CvUnit* pAttacker, CombatDet
 				}
 			}
 
-			// Fresol: entering or leaving an inland strait is a landing whichever bank the attacker
-			// stands on - the tile stands for an island the map had to attach to its neighbours.
-			if (pAttacker->plot()->isInlandStrait() || pAttackedPlot->isInlandStrait())
+			// Fresol: attacking over an edge an inland strait calls a landing is a landing, whichever
+			// bank the attacker stands on - the feature declares the edge, not either tile.
+			if (CvPlot::isInlandStraitEdgePenalizes(pAttacker->plot(), pAttackedPlot))
 			{
 				iExtraModifier = -GC.getAMPHIB_ATTACK_MODIFIER();
 				iTempModifier += iExtraModifier;

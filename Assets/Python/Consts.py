@@ -1278,10 +1278,10 @@ iNumRoutes = 4
 
 #feature & terrain
 
-iNumFeatures = 18
+iNumFeatures = 21
 (iSeaIce, iJungle, iOasis, iFloodPlains, iForest, iMud, iCape, iIslands, iRainforest, iFallout,
 iTaiga, iSavanna, iStrait, iIslandsStrait, iLake, iWideStrait, iIslandsWideStrait,
-iInlandStraitNS) = range(iNumFeatures)
+iInlandStraitNS, iStraitBosphorus, iStraitDardanelles, iStraitDardanellesFar) = range(iNumFeatures)
 
 iNumTerrains = 19
 (iGrass, iPlains, iDesert, iTundra, iSnow, iCoast, iOcean, iTerrainPeak, iTerrainHill, iMarsh, 

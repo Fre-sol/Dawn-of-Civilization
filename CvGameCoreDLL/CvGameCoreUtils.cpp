@@ -1677,7 +1677,16 @@ int pathDestValid(int iToX, int iToY, const void* pointer, FAStar* finder)
 		{
 			if (!(pSelectionGroup->canMoveOrAttackInto(pToPlot, (pSelectionGroup->AI_isDeclareWar(pToPlot) || (gDLL->getFAStarIFace()->GetInfo(finder) & MOVE_DECLARE_WAR)))))
 			{
-				return FALSE;
+				// Fresol: a destination one step away over a closed inland strait edge is refused
+				// here only because that step is illegal - the plot itself is ordinary ground and is
+				// still reachable the long way round, which the pathfinder finds only if it is
+				// allowed to look.  The test cannot fire for any plot further off (an edge has no
+				// direction at that distance), so every other refusal still stands.
+				if (pSelectionGroup->getDomainType() != DOMAIN_LAND
+				 || !CvPlot::isInlandStraitEdgeForbids(pSelectionGroup->plot(), pToPlot))
+				{
+					return FALSE;
+				}
 			}
 		}
 	}
@@ -1866,8 +1875,8 @@ int pathValid(FAStarNode* parent, FAStarNode* node, int data, const void* pointe
 		}
 	}
 
-	// Fresol - start: inland straits.  A ship may enter one only from its two ends, and only when
-	// the far end is water; leaving it is fine.  No land unit may enter or leave it at all.
+	// Fresol - start: inland straits.  A ship may enter one only from the ends the feature declares,
+	// and only when the far end is water; leaving it is fine.
 	if (pSelectionGroup->getDomainType() == DOMAIN_SEA)
 	{
 		if (pToPlot->isInlandStraitPassage())
@@ -1885,8 +1894,18 @@ int pathValid(FAStarNode* parent, FAStarNode* node, int data, const void* pointe
 			}
 		}
 	}
-	// Fresol: no land branch here on purpose - land units may cross an inland strait.  It costs them
-	// the whole turn per step (CvPlot::movementCost) and -50% when they attack across it (CvUnit).
+
+	// Fresol: land is otherwise free to cross an inland strait - it pays the whole turn per step
+	// (CvPlot::movementCost) and -50% when it attacks across one (CvUnit) - except over an edge the
+	// feature has closed.  That ban is kept here because this is the only place that knows both ends
+	// of the step; CvUnit::canMoveInto carries the same rule for the steps that never come this way.
+	if (pSelectionGroup->getDomainType() == DOMAIN_LAND)
+	{
+		if (CvPlot::isInlandStraitEdgeForbids(pFromPlot, pToPlot))
+		{
+			return FALSE;
+		}
+	}
 	// Fresol - end
 
 	// Fresol: and the mirror image for land: a wide strait is a corner no land unit may cut,

@@ -17817,7 +17817,11 @@ bool CvUnitAI::AI_plotValid(CvPlot* pPlot)
 	switch (getDomainType())
 	{
 	case DOMAIN_SEA:
-		if (pPlot->isWater() || canMoveAllTerrain())
+		// Fresol: an inland strait stands in for the water the map could not open, and a ship is
+		// carried across it, so the AI has to count it as a plot a ship may be on - the same answer
+		// CvPlot::isValidDomainForLocation gives.  Without this the passage is invisible to every
+		// AI decision that walks the map looking for plots to use.
+		if (pPlot->isWater() || canMoveAllTerrain() || pPlot->isInlandStraitPassage())
 		{
 			return true;
 		}

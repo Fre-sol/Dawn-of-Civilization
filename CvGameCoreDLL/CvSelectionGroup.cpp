@@ -4256,24 +4256,53 @@ CvPlot* CvSelectionGroup::getPathFirstPlot() const
 }
 
 
+// Fresol: a ship that ends its turn on an inland strait does not stay there - CvUnit::move carries
+// it out at the far end and spends the rest of its movement - so the plot the group will really be
+// standing on is that far end.  Reporting the strait tile would have the AI plan around a plot it
+// can never occupy.  Returns NULL when the node is no such crossing.
+static CvPlot* inlandStraitEndTurnPlot(FAStarNode* pNode)
+{
+	CvPlot* pPlot;
+	CvPlot* pFromPlot;
+
+	if (pNode == NULL || pNode->m_pParent == NULL)
+	{
+		return NULL;
+	}
+
+	pPlot = GC.getMapINLINE().plotSorenINLINE(pNode->m_iX, pNode->m_iY);
+	pFromPlot = GC.getMapINLINE().plotSorenINLINE(pNode->m_pParent->m_iX, pNode->m_pParent->m_iY);
+
+	if (pPlot == NULL || pFromPlot == NULL || !pPlot->isInlandStraitPassage())
+	{
+		return NULL;
+	}
+
+	return pPlot->getInlandStraitExit(pFromPlot);
+}
+
+
 CvPlot* CvSelectionGroup::getPathEndTurnPlot() const
 {
 	FAStarNode* pNode;
 
 	pNode = getPathLastNode();
-
 	if (NULL != pNode)
 	{
 		if ((pNode->m_pParent == NULL) || (pNode->m_iData2 == 1))
 		{
-			return GC.getMapINLINE().plotSorenINLINE(pNode->m_iX, pNode->m_iY);
+			CvPlot* pStraitEnd = inlandStraitEndTurnPlot(pNode);
+
+			return (pStraitEnd != NULL) ? pStraitEnd : GC.getMapINLINE().plotSorenINLINE(pNode->m_iX, pNode->m_iY);
 		}
 
 		while (pNode->m_pParent != NULL)
 		{
 			if (pNode->m_pParent->m_iData2 == 1)
 			{
-				return GC.getMapINLINE().plotSorenINLINE(pNode->m_pParent->m_iX, pNode->m_pParent->m_iY);
+				CvPlot* pStraitEnd = inlandStraitEndTurnPlot(pNode->m_pParent);
+
+				return (pStraitEnd != NULL) ? pStraitEnd : GC.getMapINLINE().plotSorenINLINE(pNode->m_pParent->m_iX, pNode->m_pParent->m_iY);
 			}
 
 			pNode = pNode->m_pParent;

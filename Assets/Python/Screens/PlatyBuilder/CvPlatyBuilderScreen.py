@@ -149,7 +149,7 @@ class CvWorldBuilderScreen:
 	def mouseOverPlot (self, argsList):
 		screen = CyGInterfaceScreen( "WorldBuilderScreen", CvScreenEnums.WORLDBUILDER_SCREEN )
 		self.m_pCurrentPlot = CyInterface().getMouseOverPlot()
-		x, y = location(self.m_pCurrentPlot)
+		x, y = location(self.m_pCurrentPlot) or (-1, -1)	# Fresol: the mouse can outrun the tile, and then there is no plot to unpack
 		iPlayer = self.m_iCurrentPlayer
 		if not CyInterface().isInAdvancedStart() and (x, y) != (-1, -1):
 			sText = "<font=3b>%s, X: %d, Y: %d, City: %s, Region: %s</font>" %(CyTranslator().getText("TXT_KEY_WB_LATITUDE",(self.m_pCurrentPlot.getLatitude(),)), x, y, cn.getDisplayName(self.m_iCurrentPlayer, self.m_pCurrentPlot), self.m_pCurrentPlot.getRegionName())

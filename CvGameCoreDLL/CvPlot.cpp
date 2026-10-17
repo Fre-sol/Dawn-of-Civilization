@@ -12980,6 +12980,7 @@ static bool isInlandStraitFeature(FeatureTypes eFeature)
 	case FEATURE_STRAIT_DARDANELLES:
 	case FEATURE_STRAIT_QIONGZHOU:
 	case FEATURE_STRAIT_TSUGARU:
+	case FEATURE_STRAIT_MAGELLAN:
 		return true;
 
 	default:
@@ -13076,6 +13077,20 @@ static bool inlandStraitSides(FeatureTypes eFeature, InlandStraitSide* pSides)
 		pSides[DIRECTION_WEST].bSeaPassage = true;
 		pSides[DIRECTION_NORTHEAST].bSeaPassage = true;
 		pSides[DIRECTION_EAST].bSeaPassage = true;
+		pSides[DIRECTION_NORTH].bLandPassage = false;
+		return true;
+	case FEATURE_STRAIT_MAGELLAN:
+		// Fresol: the Strait of Magellan.  The tile stands with the southern shore: the
+		// edges west, north-west and north are wide straits - land may neither move nor
+		// attack across them, and the path goes the long way round instead.  South and
+		// south-east are ordinary ground.
+		// Ships come in from the south-west (the Pacific) and leave to the north-east or
+		// east (the Atlantic), and the mirror of that.
+		pSides[DIRECTION_SOUTHWEST].bSeaPassage = true;
+		pSides[DIRECTION_NORTHEAST].bSeaPassage = true;
+		pSides[DIRECTION_EAST].bSeaPassage = true;
+		pSides[DIRECTION_WEST].bLandPassage = false;
+		pSides[DIRECTION_NORTHWEST].bLandPassage = false;
 		pSides[DIRECTION_NORTH].bLandPassage = false;
 		return true;
 	}
@@ -13287,6 +13302,25 @@ static bool inlandStraitSideFrom(const CvPlot* pPlot, const CvPlot* pTowards, In
 }
 
 
+// Fresol: the diagonals a feature closes.  Eight bits, bit i answering for the corner between
+// the land edge in direction i and the one two quarters round from it.  Forbidding an edge does
+// not by itself forbid going round the corner of the tile, but where the two shores would
+// otherwise be joined diagonally the feature says so here.  The Magellan strait closes the
+// corner between south and west: the tile stands with the south shore, the west is a wide
+// strait, and a unit on the western shore must not slip from there to the southern one.
+static int inlandStraitCornerMask(FeatureTypes eFeature)
+{
+	switch (eFeature)
+	{
+	case FEATURE_STRAIT_MAGELLAN:
+		return 1 << DIRECTION_SOUTH;		// the corner between SOUTH and WEST
+
+	default:
+		return 0;
+	}
+}
+
+
 // Fresol: land may not use this edge when either end says so.  It is asked in the pathfinder, which
 // knows both ends of every step, and in CvUnit::canMoveInto, which has to catch the one tile orders
 // and the attacks that never reach the pathfinder.
@@ -13294,8 +13328,61 @@ bool CvPlot::isInlandStraitEdgeForbids(const CvPlot* pFrom, const CvPlot* pTo)
 {
 	InlandStraitSide kSide = { false, true, false };
 
-	return (inlandStraitSideFrom(pFrom, pTo, kSide) && !kSide.bLandPassage)
-	    || (inlandStraitSideFrom(pTo, pFrom, kSide) && !kSide.bLandPassage);
+	if ((inlandStraitSideFrom(pFrom, pTo, kSide) && !kSide.bLandPassage)
+	 || (inlandStraitSideFrom(pTo, pFrom, kSide) && !kSide.bLandPassage))
+	{
+		return true;
+	}
+
+	// Fresol: and a diagonal step may not slip round the corner of a strait.  The two plots
+	// share two corners; when one of them is an inland strait that has closed its edges
+	// towards both plots, the step goes round the tile rather than past it, and is refused.
+	// Only diagonal steps can do this - an orthogonal step has no corner between them - and
+	// the two plots are diagonal to each other, so the two edges asked about are never
+	// opposite ones, only neighbouring quarters of the tile.
+	if (pFrom != NULL && pTo != NULL
+	 && xDistance(pFrom->getX_INLINE(), pTo->getX_INLINE()) == 1
+	 && yDistance(pFrom->getY_INLINE(), pTo->getY_INLINE()) == 1)
+	{
+		CvPlot* aCorners[2];
+		aCorners[0] = GC.getMapINLINE().plotINLINE(pTo->getX_INLINE(), pFrom->getY_INLINE());
+		aCorners[1] = GC.getMapINLINE().plotINLINE(pFrom->getX_INLINE(), pTo->getY_INLINE());
+
+		for (int i = 0; i < 2; ++i)
+		{
+			if (aCorners[i] == NULL)
+			{
+				continue;
+			}
+
+			int iMask = inlandStraitCornerMask(aCorners[i]->getFeatureType());
+
+			if (iMask == 0)
+			{
+				continue;
+			}
+
+			DirectionTypes eToFrom = directionXY(aCorners[i], pFrom);
+			DirectionTypes eToTo = directionXY(aCorners[i], pTo);
+
+			if (eToFrom == NO_DIRECTION || eToTo == NO_DIRECTION)
+			{
+				continue;
+			}
+
+			if ((((int)eToFrom + 2) % NUM_DIRECTION_TYPES) == (int)eToTo && (iMask & (1 << (int)eToFrom)))
+			{
+				return true;
+			}
+
+			if ((((int)eToTo + 2) % NUM_DIRECTION_TYPES) == (int)eToFrom && (iMask & (1 << (int)eToTo)))
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
 }
 
 
@@ -13323,6 +13410,7 @@ int CvPlot::inlandStraitCrossingCost(FeatureTypes eFeature)
 	case FEATURE_STRAIT_BOSPHORUS:			// and the Bosphorus: both are sailed through
 	case FEATURE_STRAIT_QIONGZHOU:			// the Qiongzhou strait as well
 	case FEATURE_STRAIT_TSUGARU:			// and the Tsugaru strait
+	case FEATURE_STRAIT_MAGELLAN:			// and the Strait of Magellan
 		return 2;
 
 	default:

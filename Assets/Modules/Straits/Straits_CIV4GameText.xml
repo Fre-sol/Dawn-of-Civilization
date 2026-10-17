@@ -65,4 +65,12 @@
 		<Tag>TXT_KEY_FEATURE_STRAIT_TSUGARU_PEDIA</Tag>
 		<English>The Tsugaru Strait separates Honshu from Hokkaido. Ships cross it from the west (the Sea of Japan) to the east (the Pacific), and no ship may stop on the tile; a crossing costs two movement points.[NEWLINE][NEWLINE]The tile is Honshu's ground. Its northern edge, over to Hokkaido, is a wide strait: no land unit may cross it, by walking or by attacking, and the path goes the long way round instead. A city founded here takes the passage over, and the strait returns if the city is razed.</English>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_MAGELLAN</Tag>
+		<English>Strait of Magellan</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_MAGELLAN_PEDIA</Tag>
+		<English>The Strait of Magellan separates Tierra del Fuego from the mainland. Ships cross it from the south-west (the Pacific) to the north-east or east (the Atlantic), and no ship may stop on the tile; a crossing costs two movement points.[NEWLINE][NEWLINE]The tile is mainland ground. Its western, north-western and northern edges are wide straits: no land unit may cross them, by walking or by attacking, and the path goes the long way round instead. A city founded here takes the passage over, and the strait returns if the city is razed.</English>
+	</TEXT>
 </Civ4GameText>

@@ -12978,6 +12978,7 @@ static bool isInlandStraitFeature(FeatureTypes eFeature)
 	case FEATURE_INLAND_STRAIT_NS:
 	case FEATURE_STRAIT_BOSPHORUS:
 	case FEATURE_STRAIT_DARDANELLES:
+	case FEATURE_STRAIT_QIONGZHOU:
 		return true;
 
 	default:
@@ -13047,6 +13048,21 @@ static bool inlandStraitSides(FeatureTypes eFeature, InlandStraitSide* pSides)
 		// closed, but that edge is not an edge of this tile - it is the Bosphorus tile's own
 		// business, and the tile a city may stand on is the one that says so.)
 		pSides[DIRECTION_SOUTHEAST].bLandPenalty = true;
+		return true;
+	case FEATURE_STRAIT_QIONGZHOU:
+		// Fresol: the Qiongzhou strait.  The tile is the Leizhou peninsula's ground - northern
+		// mainland - so land crosses freely to its north-west, north and north-east sides.  Only
+		// the southern edge, the crossing over to Hainan, is a strait: a whole turn to move over
+		// and -50% to attack over, by the same rule the diagonal narrow strait uses.
+		// Ships come in from the west (west or south-west, the Gulf of Tonkin) and leave to the
+		// east (east or south-east, the South China Sea), and the mirror of that.  Four ends are
+		// declared because the map has two water tiles on each side; getInlandStraitExit takes
+		// the furthest one, which is always on the far side.
+		pSides[DIRECTION_WEST].bSeaPassage = true;
+		pSides[DIRECTION_SOUTHWEST].bSeaPassage = true;
+		pSides[DIRECTION_EAST].bSeaPassage = true;
+		pSides[DIRECTION_SOUTHEAST].bSeaPassage = true;
+		pSides[DIRECTION_SOUTH].bLandPenalty = true;
 		return true;
 	}
 
@@ -13163,8 +13179,26 @@ CvPlot* CvPlot::getInlandStraitExit(const CvPlot* pFrom) const
 			continue;
 		}
 
-		iScore = ((pEnd->getArea() != pFrom->getArea()) ? 1000 : 0)
-		       + plotDistance(pFrom->getX_INLINE(), pFrom->getY_INLINE(), pEnd->getX_INLINE(), pEnd->getY_INLINE());
+		// Fresol: the far SIDE first, distance only after it.  A passage may offer two ends on
+		// each side (the Qiongzhou strait does), and there two ends on opposite sides can be the
+		// same distance away - so distance alone would throw a ship out at the other end of the
+		// side it came from.  The end most nearly opposite the entry direction is the far one.
+		{
+			DirectionTypes eTo = directionXY(this, pEnd);
+			DirectionTypes eFrom = directionXY(this, pFrom);
+			int iDX = GC.getPlotDirectionX()[eTo];
+			int iDY = GC.getPlotDirectionY()[eTo];
+			int iEX = GC.getPlotDirectionX()[eFrom];
+			int iEY = GC.getPlotDirectionY()[eFrom];
+			int iDot = iDX * iEX + iDY * iEY;
+			int iLenEnd = ((iDX != 0 && iDY != 0) ? 1414 : 1000);
+			int iLenFrom = ((iEX != 0 && iEY != 0) ? 1414 : 1000);
+			int iOpposition = (-iDot * 2000000) / (iLenEnd * iLenFrom);
+
+			iScore = ((pEnd->getArea() != pFrom->getArea()) ? 100000000 : 0)
+			       + (iOpposition + 4000) * 1000
+			       + plotDistance(pFrom->getX_INLINE(), pFrom->getY_INLINE(), pEnd->getX_INLINE(), pEnd->getY_INLINE());
+		}
 
 		if (pExit == NULL || iScore > iBestScore)
 		{
@@ -13273,6 +13307,7 @@ int CvPlot::inlandStraitCrossingCost(FeatureTypes eFeature)
 	{
 	case FEATURE_INLAND_STRAIT_NS:			// the Sound at Copenhagen
 	case FEATURE_STRAIT_BOSPHORUS:			// and the Bosphorus: both are sailed through
+	case FEATURE_STRAIT_QIONGZHOU:			// the Qiongzhou strait as well
 		return 2;
 
 	default:

@@ -973,6 +973,7 @@ enum FeatureTypes					// Exposed to Python
 	FEATURE_INLAND_STRAIT_NS, // Fresol: a land tile a ship may pass through (N <-> S) but never stop on
 	FEATURE_STRAIT_BOSPHORUS, // Fresol: the same, but the passage runs SW <-> E
 	FEATURE_STRAIT_DARDANELLES, // Fresol: no passage at all - land rules only
+	FEATURE_STRAIT_QIONGZHOU, // Fresol: the Qiongzhou strait - ships W/SW <-> E/SE, land crosses to Hainan as a strait
 	NUM_FEATURES
 };
 

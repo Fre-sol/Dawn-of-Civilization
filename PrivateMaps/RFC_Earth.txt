@@ -58296,7 +58296,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=138,y=57
-	FeatureType=FEATURE_WIDE_STRAIT, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -58412,8 +58411,9 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=161,y=57
-	TerrainType=TERRAIN_COAST
-	PlotType=3
+	FeatureType=FEATURE_STRAIT_QIONGZHOU, FeatureVariety=0
+	TerrainType=TERRAIN_GRASS
+	PlotType=2
 EndPlot
 BeginPlot
 	x=162,y=57
@@ -59302,9 +59302,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=139,y=58
-	FeatureType=FEATURE_WIDE_STRAIT, FeatureVariety=0
-	TerrainType=TERRAIN_COAST
-	PlotType=3
+	TerrainType=TERRAIN_DESERT
+	PlotType=2
 EndPlot
 BeginPlot
 	x=140,y=58
@@ -74290,8 +74289,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=132,y=73
-	TerrainType=TERRAIN_DESERT
-	PlotType=2
+	TerrainType=TERRAIN_COAST
+	PlotType=3
 EndPlot
 BeginPlot
 	x=133,y=73
@@ -74330,8 +74329,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=140,y=73
-	TerrainType=TERRAIN_SAVANNA
-	PlotType=2
+	TerrainType=TERRAIN_COAST
+	PlotType=3
 EndPlot
 BeginPlot
 	x=141,y=73
@@ -75330,23 +75329,23 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=140,y=74
-	TerrainType=TERRAIN_DESERT
-	PlotType=2
+	TerrainType=TERRAIN_COAST
+	PlotType=3
 EndPlot
 BeginPlot
 	x=141,y=74
-	TerrainType=TERRAIN_SAVANNA
-	PlotType=2
+	TerrainType=TERRAIN_COAST
+	PlotType=3
 EndPlot
 BeginPlot
 	x=142,y=74
-	TerrainType=TERRAIN_SAVANNA
-	PlotType=2
+	TerrainType=TERRAIN_COAST
+	PlotType=3
 EndPlot
 BeginPlot
 	x=143,y=74
-	TerrainType=TERRAIN_SAVANNA
-	PlotType=2
+	TerrainType=TERRAIN_COAST
+	PlotType=3
 EndPlot
 BeginPlot
 	x=144,y=74

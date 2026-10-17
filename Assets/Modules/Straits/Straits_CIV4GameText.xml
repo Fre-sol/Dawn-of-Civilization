@@ -42,6 +42,14 @@
 		<English>The Bosphorus is the passage between the Black Sea and the Mediterranean. Ships cross it from the south-west to the east, and no ship may stop on the tile.[NEWLINE][NEWLINE]The tile's land is ordinary ground, but the two edges that cross the water are landings: a move over one costs a whole turn, and an attack made over one is at -50%. A city founded here takes the passage over - a coastal city is a canal in all but name - and the strait returns if the city is ever razed.</English>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_QIONGZHOU</Tag>
+		<English>Qiongzhou Strait</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_QIONGZHOU_PEDIA</Tag>
+		<English><English>The Qiongzhou Strait separates the Leizhou peninsula from Hainan. Ships cross it from the west (the Gulf of Tonkin) to the east (the South China Sea), and no ship may stop on the tile; a crossing costs two movement points.[NEWLINE][NEWLINE]The tile is mainland ground, and land crosses freely on its northern sides. The southern edge, over to Hainan, is a strait: a move over it costs a whole turn, and an attack made over it is at -50% unless the attacker has Amphibious. Siege weapons cannot bombard across it. A city founded here takes the passage over, and the strait returns if the city is razed.</English></English>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_FEATURE_STRAIT_DARDANELLES</Tag>
 		<English>Dardanelles</English>
 	</TEXT>

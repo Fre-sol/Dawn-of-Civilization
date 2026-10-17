@@ -1396,7 +1396,7 @@ void CvGame::normalizeRemoveBadFeatures()
 
 					if (pLoopPlot != NULL)
 					{
-						if (pLoopPlot->getFeatureType() != NO_FEATURE)
+						if (pLoopPlot->getFeatureType() != NO_FEATURE && !pLoopPlot->isStrait() && !pLoopPlot->isInlandStrait())
 						{
 							if ((GC.getFeatureInfo(pLoopPlot->getFeatureType()).getYieldChange(YIELD_FOOD) <= 0) &&
 								(GC.getFeatureInfo(pLoopPlot->getFeatureType()).getYieldChange(YIELD_PRODUCTION) <= 0))
@@ -1422,7 +1422,7 @@ void CvGame::normalizeRemoveBadFeatures()
 							int iDistance = plotDistance(pStartingPlot->getX_INLINE(), pStartingPlot->getY_INLINE(), pLoopPlot->getX_INLINE(), pLoopPlot->getY_INLINE());
 							if (iDistance <= iMaxRange)
 							{
-								if (pLoopPlot->getFeatureType() != NO_FEATURE)
+								if (pLoopPlot->getFeatureType() != NO_FEATURE && !pLoopPlot->isStrait() && !pLoopPlot->isInlandStrait())
 								{
 									if ((GC.getFeatureInfo(pLoopPlot->getFeatureType()).getYieldChange(YIELD_FOOD) <= 0) &&
 										(GC.getFeatureInfo(pLoopPlot->getFeatureType()).getYieldChange(YIELD_PRODUCTION) <= 0))
@@ -1935,7 +1935,7 @@ void CvGame::normalizeAddExtras()
 										if (bLandBias && !pLoopPlot->isWater() && pLoopPlot->getBonusType() == NO_BONUS)
 										{
 											if (((iFeatureCount > 4) && (pLoopPlot->getFeatureType() != NO_FEATURE))
-												&& ((iCoastFoodCount + iOceanFoodCount) > 2))
+												&& ((iCoastFoodCount + iOceanFoodCount) > 2) && !pLoopPlot->isStrait() && !pLoopPlot->isInlandStrait())
 											{
 												if (getSorenRandNum(2, "Clear feature to add bonus") == 0)
 												{
@@ -6463,7 +6463,7 @@ void CvGame::doGlobalWarming()
 					bool bChanged = false;
 
 #ifdef _MOD_GWARM
-					if (pPlot->getFeatureType() != NO_FEATURE)
+					if (pPlot->getFeatureType() != NO_FEATURE && !pPlot->isStrait() && !pPlot->isInlandStrait())
 					{
 						if (pPlot->getFeatureType() != GC.getDefineINT("NUKE_FEATURE"))
 						{
@@ -6542,7 +6542,7 @@ void CvGame::doGlobalWarming()
 
 					FeatureTypes eCurrentFeature = pPlot->getFeatureType();
 
-					if (eCurrentFeature != NO_FEATURE)
+					if (eCurrentFeature != NO_FEATURE && !pPlot->isStrait() && !pPlot->isInlandStrait())
 					{
 						if (eCurrentFeature != GC.getDefineINT("NUKE_FEATURE")) // should be nuke immune and also be part of elseif
 						{

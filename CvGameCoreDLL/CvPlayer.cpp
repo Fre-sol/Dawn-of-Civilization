@@ -16241,7 +16241,11 @@ bool CvPlayer::doEspionageMission(EspionageMissionTypes eMission, PlayerTypes eT
 			//SuperSpies: TSHEEP Add Radiation Effect
 			if (pSpyUnit->isAmphib())
 			{
-				pPlot->setFeatureType((FeatureTypes)(GC.getDefineINT("NUKE_FEATURE")));
+				// Fresol: a strait is never buried in fallout - the passage outlasts the bomb
+				if (!pPlot->isStrait() && !pPlot->isInlandStrait())
+				{
+					pPlot->setFeatureType((FeatureTypes)(GC.getDefineINT("NUKE_FEATURE")));
+				}
 				szBuffer.append(NEWLINE);
 				szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_USED_RADIATION").GetCString());
 			}
@@ -17228,7 +17232,7 @@ void CvPlayer::doAdvancedStartAction(AdvancedStartActionTypes eAction, int iX, i
 
 							if (eImprovement == eLoopImprovement)
 							{
-								if (GC.getBuildInfo((BuildTypes)iI).isFeatureRemove(pPlot->getFeatureType()) && (!pPlot->isOwned() || canBuild(pPlot, (BuildTypes)iI)))
+								if (GC.getBuildInfo((BuildTypes)iI).isFeatureRemove(pPlot->getFeatureType()) && !pPlot->isStrait() && !pPlot->isInlandStrait() && (!pPlot->isOwned() || canBuild(pPlot, (BuildTypes)iI)))
 								{
 									pPlot->setFeatureType(NO_FEATURE);
 									break;

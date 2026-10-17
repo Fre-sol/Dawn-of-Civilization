@@ -1121,7 +1121,7 @@
 		</FeatureArtInfo>
 <FeatureArtInfo>
 			<Type>ART_DEF_FEATURE_STRAIT_BOSPHORUS</Type>
-			<bAnimated>0</bAnimated>
+			<bAnimated>1</bAnimated>
 			<bRiverArt>0</bRiverArt>
 			<TileArtType>TILE_ART_TYPE_NONE</TileArtType>
 			<LightType>LIGHT_TYPE_SUN</LightType>

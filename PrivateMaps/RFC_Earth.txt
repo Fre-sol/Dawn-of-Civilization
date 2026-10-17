@@ -70500,7 +70500,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=176,y=69
-	TerrainType=TERRAIN_COAST
+	TerrainType=TERRAIN_OCEAN
 	PlotType=3
 EndPlot
 BeginPlot
@@ -70510,6 +70510,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=178,y=69
+	FeatureType=FEATURE_STRAIT_TSUGARU, FeatureVariety=0
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -71503,19 +71504,18 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=176,y=70
-	TerrainType=TERRAIN_COAST
+	TerrainType=TERRAIN_OCEAN
 	PlotType=3
 EndPlot
 BeginPlot
 	x=177,y=70
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_COAST
+	PlotType=3
 EndPlot
 BeginPlot
 	x=178,y=70
-	FeatureType=FEATURE_WIDE_STRAIT, FeatureVariety=0
-	TerrainType=TERRAIN_COAST
-	PlotType=3
+	TerrainType=TERRAIN_GRASS
+	PlotType=2
 EndPlot
 BeginPlot
 	x=179,y=70
@@ -72510,7 +72510,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=177,y=71
-	FeatureType=FEATURE_WIDE_STRAIT, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot

@@ -12979,6 +12979,7 @@ static bool isInlandStraitFeature(FeatureTypes eFeature)
 	case FEATURE_STRAIT_BOSPHORUS:
 	case FEATURE_STRAIT_DARDANELLES:
 	case FEATURE_STRAIT_QIONGZHOU:
+	case FEATURE_STRAIT_TSUGARU:
 		return true;
 
 	default:
@@ -13063,6 +13064,19 @@ static bool inlandStraitSides(FeatureTypes eFeature, InlandStraitSide* pSides)
 		pSides[DIRECTION_EAST].bSeaPassage = true;
 		pSides[DIRECTION_SOUTHEAST].bSeaPassage = true;
 		pSides[DIRECTION_SOUTH].bLandPenalty = true;
+		return true;
+	case FEATURE_STRAIT_TSUGARU:
+		// Fresol: the Tsugaru strait.  The tile stands with Honshu: every land edge but one is
+		// ordinary ground, and the edge north to Hokkaido is a wide strait - land may neither
+		// move nor attack across it, and the pathfinder goes the long way round instead.
+		// Ships come in from the north-west or west (the Sea of Japan) and leave to the
+		// north-east or east (the Pacific), and the mirror of that.  Two ends are offered on
+		// each side; getInlandStraitExit takes the far side.
+		pSides[DIRECTION_NORTHWEST].bSeaPassage = true;
+		pSides[DIRECTION_WEST].bSeaPassage = true;
+		pSides[DIRECTION_NORTHEAST].bSeaPassage = true;
+		pSides[DIRECTION_EAST].bSeaPassage = true;
+		pSides[DIRECTION_NORTH].bLandPassage = false;
 		return true;
 	}
 
@@ -13308,6 +13322,7 @@ int CvPlot::inlandStraitCrossingCost(FeatureTypes eFeature)
 	case FEATURE_INLAND_STRAIT_NS:			// the Sound at Copenhagen
 	case FEATURE_STRAIT_BOSPHORUS:			// and the Bosphorus: both are sailed through
 	case FEATURE_STRAIT_QIONGZHOU:			// the Qiongzhou strait as well
+	case FEATURE_STRAIT_TSUGARU:			// and the Tsugaru strait
 		return 2;
 
 	default:

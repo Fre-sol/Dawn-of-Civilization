@@ -47,7 +47,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_FEATURE_STRAIT_QIONGZHOU_PEDIA</Tag>
-		<English><English>The Qiongzhou Strait separates the Leizhou peninsula from Hainan. Ships cross it from the west (the Gulf of Tonkin) to the east (the South China Sea), and no ship may stop on the tile; a crossing costs two movement points.[NEWLINE][NEWLINE]The tile is mainland ground, and land crosses freely on its northern sides. The southern edge, over to Hainan, is a strait: a move over it costs a whole turn, and an attack made over it is at -50% unless the attacker has Amphibious. Siege weapons cannot bombard across it. A city founded here takes the passage over, and the strait returns if the city is razed.</English></English>
+		<English>The Qiongzhou Strait separates the Leizhou peninsula from Hainan. Ships cross it from the west (the Gulf of Tonkin) to the east (the South China Sea), and no ship may stop on the tile; a crossing costs two movement points.[NEWLINE][NEWLINE]The tile is mainland ground, and land crosses freely on its northern sides. The southern edge, over to Hainan, is a strait: a move over it costs a whole turn, and an attack made over it is at -50% unless the attacker has Amphibious. Siege weapons cannot bombard across it. A city founded here takes the passage over, and the strait returns if the city is razed.</English>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_FEATURE_STRAIT_DARDANELLES</Tag>
@@ -56,5 +56,13 @@
 	<TEXT>
 		<Tag>TXT_KEY_FEATURE_STRAIT_DARDANELLES_PEDIA</Tag>
 		<English>The Dardanelles is the passage between the Aegean and the Sea of Marmara. The tile itself is land: no ship crosses it, and no land unit may cross it from the north, where the water is too wide to wade. Crossing to the north-west is a landing, so that move costs a whole turn and an attack made over it is at -50%.</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_TSUGARU</Tag>
+		<English>Tsugaru Strait</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_TSUGARU_PEDIA</Tag>
+		<English>The Tsugaru Strait separates Honshu from Hokkaido. Ships cross it from the west (the Sea of Japan) to the east (the Pacific), and no ship may stop on the tile; a crossing costs two movement points.[NEWLINE][NEWLINE]The tile is Honshu's ground. Its northern edge, over to Hokkaido, is a wide strait: no land unit may cross it, by walking or by attacking, and the path goes the long way round instead. A city founded here takes the passage over, and the strait returns if the city is razed.</English>
 	</TEXT>
 </Civ4GameText>

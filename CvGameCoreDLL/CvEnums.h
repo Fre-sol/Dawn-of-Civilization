@@ -974,6 +974,7 @@ enum FeatureTypes					// Exposed to Python
 	FEATURE_STRAIT_BOSPHORUS, // Fresol: the same, but the passage runs SW <-> E
 	FEATURE_STRAIT_DARDANELLES, // Fresol: no passage at all - land rules only
 	FEATURE_STRAIT_QIONGZHOU, // Fresol: the Qiongzhou strait - ships W/SW <-> E/SE, land crosses to Hainan as a strait
+	FEATURE_STRAIT_TSUGARU, // Fresol: the Tsugaru strait - ships NW/W <-> NE/E, the edge north to Hokkaido is wide
 	NUM_FEATURES
 };
 

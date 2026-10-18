@@ -537,10 +537,12 @@ class CvWorldBuilderScreen:
 			pPlot.setTerrainType(self.iSelection, True, True)
 			
 		elif self.iPlayerAddMode == iModePlotType:
-			if self.iSelection == gc.getInfoTypeForString("TERRAIN_PEAK"):
-				pPlot.setPlotType(PlotTypes.PLOT_PEAK, True, True)
+			if self.iSelection >= 1000:
+				pPlot.setPlotType(PlotTypes(self.iSelection - 1000), True, True)
+			elif self.iSelection == gc.getInfoTypeForString("TERRAIN_PEAK"):
+				pPlot.setPlotType(PlotTypes.PLOT_MOUNTAIN, True, True)
 			elif self.iSelection == gc.getInfoTypeForString("TERRAIN_HILL"):
-				pPlot.setPlotType(PlotTypes.PLOT_HILLS, True, True)
+				pPlot.setPlotType(PlotTypes.PLOT_HIGHLAND, True, True)
 			elif self.iSelection == gc.getInfoTypeForString("TERRAIN_GRASS"):
 				pPlot.setPlotType(PlotTypes.PLOT_LAND, True, True)
 			elif self.iSelection == gc.getInfoTypeForString("TERRAIN_OCEAN"):
@@ -1255,6 +1257,8 @@ class CvWorldBuilderScreen:
 				screen.deleteWidget(sButton)
 			screen.deleteWidget("RiverKindName0")
 			screen.deleteWidget("RiverKindName1")
+			screen.deleteWidget("WBPlotTypeHighlandMountainButton")
+			screen.deleteWidget("WBPlotTypeHighlandMountainName")
 			screen.deleteWidget("WBCurrentItem")
 			screen.deleteWidget("WBSelectClass")
 			screen.deleteWidget("WBSelectItem")
@@ -1664,6 +1668,7 @@ class CvWorldBuilderScreen:
 		screen.setState("AddRiverButton", self.iPlayerAddMode == iModeRiver)
 		for i in xrange(len(lRiverKindButtons)):
 			screen.setState(lRiverKindButtons[i], self.iPlayerAddMode == iModeRiver and self.iSelection == i)
+		screen.setState("WBPlotTypeHighlandMountainButton", self.iPlayerAddMode == iModePlotType and self.iSelection >= 1000)
 		screen.setState("AddImprovementButton", self.iPlayerAddMode == iModeImprovements)
 		screen.setState("AddBonusButton", self.iPlayerAddMode == iModeBonus)
 		screen.setState("AddBonusVarietyButton", self.iPlayerAddMode == iModeBonusVariety)
@@ -1890,18 +1895,24 @@ class CvWorldBuilderScreen:
 			iHeight = 4 * 24 + 2
 			screen.addTableControlGFC("WBSelectItem", 1, 0, 25, iWidth, iHeight, False, False, 24, 24, TableStyles.TABLE_STYLE_EMPTY)
 			screen.setTableColumnHeader("WBSelectItem", 0, "", iWidth)
-			for i in xrange(PlotTypes.NUM_PLOT_TYPES):
+			for i in xrange(4):
 				screen.appendTableRow("WBSelectItem")
 			item = gc.getInfoTypeForString("TERRAIN_PEAK")
 			if self.iSelection == -1:
 				self.iSelection = item
-			screen.setTableText("WBSelectItem", 0, 0, "<font=3>" + gc.getTerrainInfo(item).getDescription() + "</font>", gc.getTerrainInfo(item).getButton(), WidgetTypes.WIDGET_PYTHON, 7875, item, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableText("WBSelectItem", 0, 0, "<font=3>Mountain</font>", gc.getTerrainInfo(item).getButton(), WidgetTypes.WIDGET_PYTHON, 7875, item, CvUtil.FONT_LEFT_JUSTIFY)
 			item = gc.getInfoTypeForString("TERRAIN_HILL")
-			screen.setTableText("WBSelectItem", 0, 1, "<font=3>" + gc.getTerrainInfo(item).getDescription() + "</font>", gc.getTerrainInfo(item).getButton(), WidgetTypes.WIDGET_PYTHON, 7875, item, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableText("WBSelectItem", 0, 1, "<font=3>Highland</font>", gc.getTerrainInfo(item).getButton(), WidgetTypes.WIDGET_PYTHON, 7875, item, CvUtil.FONT_LEFT_JUSTIFY)
 			item = gc.getInfoTypeForString("TERRAIN_GRASS")
 			screen.setTableText("WBSelectItem", 0, 2, "<font=3>" + gc.getTerrainInfo(item).getDescription() + "</font>", gc.getTerrainInfo(item).getButton(), WidgetTypes.WIDGET_PYTHON, 7875, item, CvUtil.FONT_LEFT_JUSTIFY)
 			item = gc.getInfoTypeForString("TERRAIN_OCEAN")
 			screen.setTableText("WBSelectItem", 0, 3, "<font=3>" + gc.getTerrainInfo(item).getDescription() + "</font>", gc.getTerrainInfo(item).getButton(), WidgetTypes.WIDGET_PYTHON, 7875, item, CvUtil.FONT_LEFT_JUSTIFY)
+			# Fresol: a table cell's own data does not reach handleInput for this extra row, so the
+			# highland mountain gets its own button, the way the river kinds do.
+			item = gc.getInfoTypeForString("TERRAIN_PEAK")
+			screen.addCheckBoxGFC("WBPlotTypeHighlandMountainButton", gc.getTerrainInfo(item).getButton(), CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
+				8, iY + iHeight + 8, 24, 24, WidgetTypes.WIDGET_PYTHON, 1029, 63, ButtonStyles.BUTTON_STYLE_LABEL)
+			screen.setLabel("WBPlotTypeHighlandMountainName", "Background", "<font=3>Highland Mountain</font>", CvUtil.FONT_LEFT_JUSTIFY, 8 + 28, iY + iHeight + 13, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 		self.refreshSelection()
 
 	def refreshSelection(self):
@@ -1955,8 +1966,18 @@ class CvWorldBuilderScreen:
 			sText = "<font=3>" + CyTranslator().getText("[COLOR_HIGHLIGHT_TEXT]", ()) + ItemInfo.getDescription() + "</color></font>"
 			screen.setTableText("WBCurrentItem", 0, 0 , sText, ItemInfo.getButton(), WidgetTypes.WIDGET_PYTHON, 6788, self.iSelection, CvUtil.FONT_LEFT_JUSTIFY)
 		elif self.iPlayerAddMode in [iModeTerrain, iModePlotType]:
-			ItemInfo = gc.getTerrainInfo(self.iSelection)
-			sText = "<font=3>" + CyTranslator().getText("[COLOR_HIGHLIGHT_TEXT]", ()) + ItemInfo.getDescription() + "</color></font>"
+			if self.iSelection >= 1000:
+				ItemInfo = gc.getTerrainInfo(gc.getInfoTypeForString("TERRAIN_PEAK"))
+				sText = "<font=3>" + CyTranslator().getText("[COLOR_HIGHLIGHT_TEXT]", ()) + "Highland Mountain" + "</color></font>"
+			elif self.iPlayerAddMode == iModePlotType and self.iSelection == gc.getInfoTypeForString("TERRAIN_PEAK"):
+				ItemInfo = gc.getTerrainInfo(self.iSelection)
+				sText = "<font=3>" + CyTranslator().getText("[COLOR_HIGHLIGHT_TEXT]", ()) + "Mountain" + "</color></font>"
+			elif self.iPlayerAddMode == iModePlotType and self.iSelection == gc.getInfoTypeForString("TERRAIN_HILL"):
+				ItemInfo = gc.getTerrainInfo(self.iSelection)
+				sText = "<font=3>" + CyTranslator().getText("[COLOR_HIGHLIGHT_TEXT]", ()) + "Highland" + "</color></font>"
+			else:
+				ItemInfo = gc.getTerrainInfo(self.iSelection)
+				sText = "<font=3>" + CyTranslator().getText("[COLOR_HIGHLIGHT_TEXT]", ()) + ItemInfo.getDescription() + "</color></font>"
 			screen.setTableText("WBCurrentItem", 0, 0 , sText, ItemInfo.getButton(), WidgetTypes.WIDGET_PYTHON, 7875, self.iSelection, CvUtil.FONT_LEFT_JUSTIFY)
 		else:
 			screen.hide("WBCurrentItem")
@@ -2896,6 +2917,13 @@ class CvWorldBuilderScreen:
 			self.iSelectClass = 0
 			self.refreshSelection()
 			self.updateOverlay()
+
+		elif inputClass.getFunctionName() == "WBPlotTypeHighlandMountainButton":
+			if inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED:
+				bDeleteOverlay = False
+				self.iSelection = 1000 + PlotTypes.PLOT_HIGHLAND_MOUNTAIN
+				self.refreshSelection()
+				self.updateOverlay()
 
 		# Fresol: the river kind buttons are told apart by name. They only act on a
 		# real click: a mouse-over fires this too, and it carries no data, which

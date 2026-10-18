@@ -476,6 +476,9 @@ def getWidgetHelp(argsList):
 			return CyGameTextMgr().getFeatureHelp(iFeature, False)
 ## Terrain Widget Text##
 		elif iData1 == 7875:
+			# Fresol: 1000 + plot type marks the highland mountain, which has no terrain info.
+			if iData2 >= 1000:
+				return ""
 			return CyGameTextMgr().getTerrainHelp(iData2, False)
 ## Leader Widget Text##
 		elif iData1 == 7876:

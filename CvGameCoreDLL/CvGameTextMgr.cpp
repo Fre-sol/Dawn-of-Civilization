@@ -4776,7 +4776,7 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
 		{
 			if (pHeadSelectedUnit->isFound())
 			{
-				if (!pPlot->isWater() && !pPlot->isPeak())
+				if (!pPlot->isWater() && !pPlot->isMountain())
 				{
 					CvWString szName;
 					CyArgsList argsList4;
@@ -4889,7 +4889,7 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
 
 		if (pPlot->getTerrainType() != NO_TERRAIN)
 		{
-			if (pPlot->isPeak())
+			if (pPlot->isMountain())
 			{
 				szString.append(gDLL->getText("TXT_KEY_PLOT_PEAK"));
 			}
@@ -4901,7 +4901,17 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
 					szString.append(szTempBuffer);
 				}
 
-				if (pPlot->isHills())
+				// Fresol: the plateau and the mountain are plot types of their own now, and
+				// they read like the hills line: label/feature/terrain.
+				if (pPlot->isPeak() && pPlot->isHills())
+				{
+					szString.append(gDLL->getText("TXT_KEY_PLOT_HIGHLAND_MOUNTAIN"));
+				}
+				else if (pPlot->isPeak())
+				{
+					szString.append(gDLL->getText("TXT_KEY_PLOT_MOUNTAIN"));
+				}
+				else if (pPlot->isHills())
 				{
 					szString.append(gDLL->getText("TXT_KEY_PLOT_HILLS"));
 				}

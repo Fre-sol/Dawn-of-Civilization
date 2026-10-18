@@ -2809,6 +2809,13 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 				// into a dead end for every ship not already sitting on one of its ends.  Which end a
 				// ship may use is decided per edge in pathValid, which does know where it comes from,
 				// and every real move is a path, so the whitelist still holds.
+
+				// Fresol: and the passage is only open while the shore that carries it is free -
+				// the Dardanelles have to be in friendly hands for the Bosphorus to be sailed.
+				if (!pPlot->inlandStraitGatesOpen(getOwnerINLINE()))
+				{
+					return false;
+				}
 			}
 			else if (!pPlot->isFriendlyCity(*this, true) || !pPlot->isCoastalLand())
 			{

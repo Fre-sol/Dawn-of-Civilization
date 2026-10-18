@@ -5763,6 +5763,14 @@ bool CvPlayer::canFound(int iX, int iY, bool bTestVisible) const
 		}
 	}
 
+	// Fresol: a mountain is not a place for a city.  The plot is passable now, but when it was
+	// the peak the engine laid the city art round the tile instead of on it, and that is not
+	// something the DLL can put right.
+	if (pPlot->isPeak())
+	{
+		return false;
+	}
+
 	if (pPlot->isImpassable())
 	{
 		return false;

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- Fresol: name and Civilopedia entry for the volcano, from DOCAmerica. -->
+<Civ4GameText>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_VOLCANO</Tag>
+		<English>Volcano</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_VOLCANO_PEDIA</Tag>
+		<English>An active volcanic mountain. Impassable to all units; no city or improvement may be built here.</English>
+	</TEXT>
+</Civ4GameText>

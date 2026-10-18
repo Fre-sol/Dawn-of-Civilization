@@ -2552,7 +2552,7 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 	{
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->isHills() || getCityIndexPlot(iI)->isPeak())
+			if (getCityIndexPlot(iI)->isHills() || getCityIndexPlot(iI)->isMountain())
 			{
 				return false;
 			}
@@ -2584,7 +2584,7 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 		bool bFound = false;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->isPeak())
+			if (getCityIndexPlot(iI)->isMountain())
 			{
 				bFound = true;
 				break;
@@ -4915,7 +4915,7 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bObsolet
 			int iNumPeaks = 0;
 			for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 			{
-				if (getCityIndexPlot(iI)->isPeak())
+				if (getCityIndexPlot(iI)->isMountain())
 				{
 					iNumPeaks++;
 				}
@@ -10253,7 +10253,7 @@ int CvCity::getAdditionalBaseYieldRateByBuilding(YieldTypes eIndex, BuildingType
 			{
 				for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 				{
-					if (getCityIndexPlot(iI)->isPeak())
+					if (getCityIndexPlot(iI)->isMountain())
 					{
 						iExtraRate += 2;
 					}
@@ -11495,7 +11495,7 @@ int CvCity::getAdditionalBaseCommerceRateByBuildingImpl(CommerceTypes eIndex, Bu
 			{
 				for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 				{
-					if (getCityIndexPlot(iI)->isPeak())
+					if (getCityIndexPlot(iI)->isMountain())
 					{
 						iExtraRate += 2;
 					}
@@ -19208,7 +19208,7 @@ int CvCity::calculateCultureCost(CvPlot* pPlot, bool bOrdering) const
 	}
 
 	// Leoreth: Inca UP
-	if (getCivilizationType() == INCA && (GET_PLAYER(getOwnerINLINE()).getPeriod() == NO_PERIOD || GET_PLAYER(getOwnerINLINE()).getPeriod() == PERIOD_LATE_INCA) && pPlot->isPeak())
+	if (getCivilizationType() == INCA && (GET_PLAYER(getOwnerINLINE()).getPeriod() == NO_PERIOD || GET_PLAYER(getOwnerINLINE()).getPeriod() == PERIOD_LATE_INCA) && pPlot->isMountain())
 	{
 		iExtraCost += GC.getDefineINT("CULTURE_COST_HILL") - GC.getDefineINT("CULTURE_COST_PEAK");
 	}

@@ -2250,7 +2250,12 @@ int CvPlot::seeFromLevel(TeamTypes eTeam) const
 
 	if (isPeak())
 	{
-		iLevel += GC.getPEAK_SEE_FROM_CHANGE();
+		iLevel += GC.getHILLS_SEE_FROM_CHANGE();
+	}
+
+	if (isMountain())
+	{
+		iLevel += GC.getPEAK_SEE_FROM_CHANGE() - GC.getHILLS_SEE_FROM_CHANGE();
 	}
 
 	if (isHills())
@@ -2287,7 +2292,12 @@ int CvPlot::seeThroughLevel() const
 
 	if (isPeak())
 	{
-		iLevel += GC.getPEAK_SEE_THROUGH_CHANGE();
+		iLevel += GC.getHILLS_SEE_THROUGH_CHANGE();
+	}
+
+	if (isMountain())
+	{
+		iLevel += GC.getPEAK_SEE_THROUGH_CHANGE() - GC.getHILLS_SEE_THROUGH_CHANGE();
 	}
 
 	if (isHills())
@@ -2677,7 +2687,7 @@ bool CvPlot::canHaveBonus(BonusTypes eBonus, bool bIgnoreLatitude) const
 		return false;
 	}
 
-	if (isPeak())
+	if (isMountain())
 	{
 		return false;
 	}
@@ -3381,6 +3391,12 @@ int CvPlot::defenseModifier(TeamTypes eDefender, bool bIgnoreBuilding, bool bHel
 	iModifier = ((getFeatureType() == NO_FEATURE || getImprovementType() != NO_IMPROVEMENT) ? GC.getTerrainInfo(getTerrainType()).getDefenseModifier() : GC.getFeatureInfo(getFeatureType()).getDefenseModifier());
 
 	if (isHills())
+	{
+		iModifier += GC.getHILLS_EXTRA_DEFENSE();
+	}
+
+	// Fresol: and so does a mountain - but only once, even when it stands on highland.
+	if (isPeak() && !isHills())
 	{
 		iModifier += GC.getHILLS_EXTRA_DEFENSE();
 	}
@@ -4314,7 +4330,7 @@ bool CvPlot::canHaveFeature(FeatureTypes eFeature) const
 		return false;
 	}
 
-	if (isPeak())
+	if (isMountain())
 	{
 		return false;
 	}
@@ -4632,10 +4648,6 @@ bool CvPlot::isValidDomainForAction(const CvUnit& unit) const
 
 bool CvPlot::isImpassable() const
 {
-	if (isPeak())
-	{
-		return true;
-	}
 
 	if (getTerrainType() == NO_TERRAIN)
 	{
@@ -5916,13 +5928,22 @@ bool CvPlot::isFlatlands() const
 
 bool CvPlot::isHills() const
 {
-	return (getPlotType() == PLOT_HILLS);
+	return (getPlotType() == PLOT_HIGHLAND || getPlotType() == PLOT_HIGHLAND_MOUNTAIN);
 }
 
 
 bool CvPlot::isPeak() const
 {
-	return (getPlotType() == PLOT_PEAK);
+	return (getPlotType() == PLOT_MOUNTAIN || getPlotType() == PLOT_HIGHLAND_MOUNTAIN);
+}
+
+
+// Fresol: PLOT_MOUNTAIN is a plateau now - ground a unit may walk on and a city may work.  What used
+// to be the impassable peak is carried by a feature instead, so everything that means "a mountain"
+// rather than "raised ground" asks this.
+bool CvPlot::isMountain() const
+{
+	return (getFeatureType() == FEATURE_VOLCANO);
 }
 
 
@@ -7213,7 +7234,7 @@ int CvPlot::calculateNatureYield(YieldTypes eYield, TeamTypes eTeam, bool bIgnor
 	int iYield;
 
 	//Rhye - start UP
-	if (isPeak())
+	if (isMountain())
 	{
 		if (eTeam != NO_TEAM && GET_PLAYER(GET_TEAM(eTeam).getLeaderID()).getCivilizationType() == INCA && (GET_PLAYER(GET_TEAM(eTeam).getLeaderID()).getPeriod() == NO_PERIOD || GET_PLAYER(GET_TEAM(eTeam).getLeaderID()).getPeriod() == PERIOD_LATE_INCA))
 		{
@@ -7247,7 +7268,7 @@ int CvPlot::calculateNatureYield(YieldTypes eYield, TeamTypes eTeam, bool bIgnor
 		iYield += GC.getYieldInfo(eYield).getHillsChange();
 	}
 
-	if (isPeak())
+	if (isMountain())
 	{
 		iYield += GC.getYieldInfo(eYield).getPeakChange();
 	}
@@ -7394,7 +7415,7 @@ int CvPlot::calculateImprovementYieldChange(ImprovementTypes eImprovement, Yield
 	{
 		iYield += GET_PLAYER(ePlayer).getImprovementYieldChange(eImprovement, eYield);
 		iYield += GET_TEAM(GET_PLAYER(ePlayer).getTeam()).getImprovementYieldChange(eImprovement, eYield);
-		if (!isWater() && !isPeak() && !isCity())
+		if (!isWater() && !isMountain() && !isCity())
 		{
 			iYield -= GET_PLAYER(ePlayer).getUnimprovedTileYield(eYield);
 		}
@@ -11404,7 +11425,7 @@ bool CvPlot::canTrigger(EventTriggerTypes eTrigger, PlayerTypes ePlayer) const
 		}
 
 		// Leoreth: exclude peaks unless specifically for peaks
-		if (kTrigger.getPlotType() != PLOT_PEAK && isPeak())
+		if (kTrigger.getPlotType() != PLOT_MOUNTAIN && isMountain())
 		{
 			return false;
 		}
@@ -12032,7 +12053,7 @@ float CvPlot::getAqueductSourceWeight() const
 		return fWeight;
 	}
 
-	if (isLake() || isPeak() || (getFeatureType() != NO_FEATURE && GC.getFeatureInfo(getFeatureType()).isAddsFreshWater()))
+	if (isLake() || isMountain() || (getFeatureType() != NO_FEATURE && GC.getFeatureInfo(getFeatureType()).isAddsFreshWater()))
 	{
 		fWeight = 1.0f;
 	}
@@ -12430,8 +12451,8 @@ int CvPlot::calculateCultureCost() const
 
 	iCost = std::max(0, iCost);
 
-	if (isHills()) iCost += GC.getDefineINT("CULTURE_COST_HILL");
-	if (isPeak()) iCost += GC.getDefineINT("CULTURE_COST_PEAK");
+	if (isMountain()) iCost += GC.getDefineINT("CULTURE_COST_PEAK");
+	else if (isPeak() || isHills()) iCost += GC.getDefineINT("CULTURE_COST_HILL");
 
 	return getTurns(iCost);
 }
@@ -12830,12 +12851,12 @@ bool CvPlot::isWaterPower(DirectionTypes eDirection) const
 {
 	CvPlot* pAdjacentPlot;
 
-	if (getPlotType() == PLOT_HILLS || getPlotType() == PLOT_PEAK)
+	if (getPlotType() == PLOT_HIGHLAND || getPlotType() == PLOT_MOUNTAIN)
 	{
 		if (isRiverCrossing(eDirection))
 		{
 			pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), eDirection);
-			if (pAdjacentPlot->getPlotType() == PLOT_HILLS || pAdjacentPlot->getPlotType() == PLOT_PEAK)
+			if (pAdjacentPlot->getPlotType() == PLOT_HIGHLAND || pAdjacentPlot->getPlotType() == PLOT_MOUNTAIN)
 			{
 				return true;
 			}
@@ -13143,6 +13164,76 @@ bool CvPlot::isInlandStraitPassage() const
 
 
 // Fresol: true when pFrom is one of the ends, so a ship standing on pFrom may enter this plot.
+// Fresol: a passage is only open while the shore that carries it is free.  The Bosphorus is not
+// a single tile in the world it stands for: a ship crossing it has to come through the
+// Dardanelles as well, so an enemy holding both of the tiles that flank the narrows shuts the
+// passage, as it did at Gallipoli.  Control is what counts and not a unit - the tile's owner is
+// the answer - and a tile nobody owns is open.
+// Fresol: whether these narrows are open to a given team.  The test is the engine's own - the
+// one that decides whether a ship may enter another's waters - with one difference: a shore
+// held by a team we are at war with stays shut.  In the world this tile stands for, control
+// of the shore is what opens or closes the passage - Gallipoli - and a belligerent does not
+// get to sail through because it could have invaded instead.
+static bool inlandStraitGateOpen(const CvPlot* pPlot, TeamTypes eTeam)
+{
+	TeamTypes eOwnerTeam;
+
+	if (pPlot == NULL)
+	{
+		return true;
+	}
+
+	eOwnerTeam = pPlot->getTeam();
+
+	if (eOwnerTeam == NO_TEAM)
+	{
+		return true;
+	}
+
+	if (GET_TEAM(eTeam).isAtWar(eOwnerTeam))
+	{
+		return false;
+	}
+
+	return GET_TEAM(eTeam).isFriendlyTerritory(eOwnerTeam)
+	    || GET_TEAM(eTeam).isOpenBorders(eOwnerTeam)
+	    || GET_TEAM(eOwnerTeam).isMinorCiv();
+}
+
+
+bool CvPlot::inlandStraitGatesOpen(PlayerTypes ePlayer) const
+{
+	CvPlot* pWest;
+	CvPlot* pSouth;
+
+	if (ePlayer == NO_PLAYER)
+	{
+		return true;
+	}
+
+	TeamTypes eTeam = GET_PLAYER(ePlayer).getTeam();
+
+	switch (getFeatureType())
+	{
+	case FEATURE_STRAIT_BOSPHORUS:
+		// The narrows themselves have to be open, and so does at least one of the two shores
+		// that flank them - the Dardanelles tile to the west, or the far bank to the south.
+		if (!inlandStraitGateOpen(this, eTeam))
+		{
+			return false;
+		}
+
+		pWest = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_WEST);
+		pSouth = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_SOUTH);
+
+		return inlandStraitGateOpen(pWest, eTeam) || inlandStraitGateOpen(pSouth, eTeam);
+
+	default:
+		return true;
+	}
+}
+
+
 bool CvPlot::isInlandStraitEntryFrom(const CvPlot* pFrom) const
 {
 	CvPlot* apEnds[NUM_DIRECTION_TYPES];

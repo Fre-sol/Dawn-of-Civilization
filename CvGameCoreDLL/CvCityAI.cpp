@@ -10696,7 +10696,7 @@ int CvCityAI::AI_buildingWeight(BuildingTypes eBuilding) const
 		int iPeakCount = 0;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->isPeak())
+			if (getCityIndexPlot(iI)->isMountain())
 			{
 				iPeakCount += 1;
 			}

@@ -512,10 +512,11 @@ void CyEnumsPythonInterface()
 
 	python::enum_<PlotTypes>("PlotTypes")
 		.value("NO_PLOT", NO_PLOT)
-		.value("PLOT_PEAK", PLOT_PEAK)
-		.value("PLOT_HILLS", PLOT_HILLS)
+		.value("PLOT_MOUNTAIN", PLOT_MOUNTAIN)
+		.value("PLOT_HIGHLAND", PLOT_HIGHLAND)
 		.value("PLOT_LAND", PLOT_LAND)
 		.value("PLOT_OCEAN", PLOT_OCEAN)
+		.value("PLOT_HIGHLAND_MOUNTAIN", PLOT_HIGHLAND_MOUNTAIN)
 		.value("NUM_PLOT_TYPES", NUM_PLOT_TYPES)
 		;
 

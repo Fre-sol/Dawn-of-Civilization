@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- Fresol: display names for the reworked plot types.  The tile help line in CvGameTextMgr
+     reads these keys; TXT_KEY_PLOT_PEAK stays "Peak" for the volcano feature. -->
+<Civ4GameText>
+	<TEXT>
+		<Tag>TXT_KEY_PLOT_HILLS</Tag>
+		<English>Highland/</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLOT_MOUNTAIN</Tag>
+		<English>Mountain/</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLOT_HIGHLAND_MOUNTAIN</Tag>
+		<English>Highland Mountain/</English>
+	</TEXT>
+</Civ4GameText>

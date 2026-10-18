@@ -464,19 +464,19 @@ class WBPlotScreen:
 		iTerrain = gc.getInfoTypeForString("TERRAIN_PEAK")
 		sColor = CyTranslator().getText("[COLOR_WARNING_TEXT]", ())
 		TerrainInfo = gc.getTerrainInfo(iTerrain)
-		if pPlot.getPlotType() == PlotTypes.PLOT_PEAK:
+		if pPlot.getPlotType() == PlotTypes.PLOT_MOUNTAIN:
 			sColor = CyTranslator().getText("[COLOR_POSITIVE_TEXT]", ())
 			sHeader = TerrainInfo.getDescription()
-		sText = "<font=3>" + sColor + TerrainInfo.getDescription() + "</font></color>"
+		sText = "<font=3>" + sColor + "Mountain" + "</font></color>"
 		screen.setTableText("WBPlotType", 0, 0, sText, TerrainInfo.getButton(), WidgetTypes.WIDGET_PYTHON, 7875, iTerrain, CvUtil.FONT_LEFT_JUSTIFY)
 
 		iTerrain = gc.getInfoTypeForString("TERRAIN_HILL")
 		sColor = CyTranslator().getText("[COLOR_WARNING_TEXT]", ())
 		TerrainInfo = gc.getTerrainInfo(iTerrain)
-		if pPlot.getPlotType() == PlotTypes.PLOT_HILLS:
+		if pPlot.getPlotType() == PlotTypes.PLOT_HIGHLAND:
 			sColor = CyTranslator().getText("[COLOR_POSITIVE_TEXT]", ())
 			sHeader = TerrainInfo.getDescription()
-		sText = "<font=3>" + sColor + TerrainInfo.getDescription() + "</font></color>"
+		sText = "<font=3>" + sColor + "Highland" + "</font></color>"
 		screen.setTableText("WBPlotType", 0, 1, sText, TerrainInfo.getButton(), WidgetTypes.WIDGET_PYTHON, 7875, iTerrain, CvUtil.FONT_LEFT_JUSTIFY)
 
 		iTerrain = gc.getInfoTypeForString("TERRAIN_GRASS")
@@ -496,6 +496,17 @@ class WBPlotScreen:
 			sHeader = TerrainInfo.getDescription()
 		sText = "<font=3>" + sColor + TerrainInfo.getDescription() + "</font></color>"
 		screen.setTableText("WBPlotType", 0, 3, sText, TerrainInfo.getButton(), WidgetTypes.WIDGET_PYTHON, 7875, iTerrain, CvUtil.FONT_LEFT_JUSTIFY)
+
+		# Fresol: the highland mountain has no terrain of its own; it rides in as 1000 + plot type,
+		# drawn with the peak's button.
+		iTerrain = gc.getInfoTypeForString("TERRAIN_PEAK")
+		sColor = CyTranslator().getText("[COLOR_WARNING_TEXT]", ())
+		TerrainInfo = gc.getTerrainInfo(iTerrain)
+		if pPlot.getPlotType() == PlotTypes.PLOT_HIGHLAND_MOUNTAIN:
+			sColor = CyTranslator().getText("[COLOR_POSITIVE_TEXT]", ())
+			sHeader = "Highland Mountain"
+		sText = "<font=3>" + sColor + "Highland Mountain" + "</font></color>"
+		screen.setTableText("WBPlotType", 0, 4, sText, TerrainInfo.getButton(), WidgetTypes.WIDGET_PYTHON, 7889, PlotTypes.PLOT_HIGHLAND_MOUNTAIN, CvUtil.FONT_LEFT_JUSTIFY)
 
 	def handleInput(self, inputClass):
 		screen = CyGInterfaceScreen("WBPlotScreen", CvScreenEnums.WB_PLOT)
@@ -636,16 +647,22 @@ class WBPlotScreen:
 			self.interfaceScreen(pPlot)
 
 		elif inputClass.getFunctionName() == "WBPlotType":
+			# Fresol: the highland mountain rides in as 1000 + plot type; peel the sentinel off first.
+			iPlotType = inputClass.getData()
+			if inputClass.getData1() == 7889:
+				iPlotType = 1000 + iPlotType
+			if iPlotType >= 1000:
+				iPlotType -= 1000
 			if iEditType == 0:
-				pPlot.setPlotType(PlotTypes(inputClass.getData()), True, True)
+				pPlot.setPlotType(PlotTypes(iPlotType), True, True)
 			elif iEditType == 1:
 				for i in xrange(CyMap().numPlots()):
 					pLoopPlot = CyMap().plotByIndex(i)
 					if pLoopPlot.isNone(): continue
 					if pLoopPlot.getArea() == pPlot.getArea():
-						pLoopPlot.setPlotType(PlotTypes(inputClass.getData()), True, True)
+						pLoopPlot.setPlotType(PlotTypes(iPlotType), True, True)
 			else:
-				CyMap().setAllPlotTypes(PlotTypes(inputClass.getData()))
+				CyMap().setAllPlotTypes(PlotTypes(iPlotType))
 			self.interfaceScreen(pPlot)
 
 		elif inputClass.getFunctionName() == "WBPlotTerrain":

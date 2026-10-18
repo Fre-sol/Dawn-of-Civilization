@@ -1294,7 +1294,7 @@ void CvGame::normalizeRemovePeaks()
 						{
 							if (pLoopPlot->isPeak())
 							{
-								pLoopPlot->setPlotType(PLOT_HILLS);
+								pLoopPlot->setPlotType(PLOT_HIGHLAND);
 							}
 						}
 					}
@@ -2040,7 +2040,7 @@ void CvGame::normalizeAddExtras()
 									if ((pLoopPlot->getBonusType() == NO_BONUS) ||
 										GC.getBonusInfo(pLoopPlot->getBonusType()).isHills())
 									{
-										pLoopPlot->setPlotType(PLOT_HILLS, false, true);
+										pLoopPlot->setPlotType(PLOT_HIGHLAND, false, true);
 										iHillsCount++;
 									}
 								}

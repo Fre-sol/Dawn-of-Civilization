@@ -326,7 +326,8 @@ public:
 	DllExport bool isWater() const;																																								// Exposed to Python
 	bool isFlatlands() const;																																											// Exposed to Python
 	DllExport bool isHills() const;																																								// Exposed to Python
-	DllExport bool isPeak() const;																																								// Exposed to Python
+	DllExport bool isPeak() const;
+	bool isMountain() const; // Fresol: a real mountain - the impassable feature that stands in for peaks																																								// Exposed to Python
 	void setPlotType(PlotTypes eNewValue, bool bRecalculate = true, bool bRebuildGraphics = true);			// Exposed to Python
 
 	bool isPlains() const; // Leoreth
@@ -620,6 +621,7 @@ public:
 	bool isInlandStrait() const; // Fresol: a land tile that carries inland strait rules
 	bool isInlandStraitPassage() const; // Fresol: the ship half of it - a city takes that over
 	bool isInlandStraitEntryFrom(const CvPlot* pFrom) const; // Fresol
+	bool inlandStraitGatesOpen(PlayerTypes ePlayer) const; // Fresol
 	CvPlot* getInlandStraitExit(const CvPlot* pFrom) const; // Fresol
 	CvPlot* getInlandStraitLanding(const CvUnit* pUnit) const; // Fresol: an end to put a stranded ship out at
 	static bool isInlandStraitEdgeForbids(const CvPlot* pFrom, const CvPlot* pTo); // Fresol: no land unit may use this edge

@@ -720,10 +720,11 @@ enum PlotTypes							// Exposed to Python
 {
 	NO_PLOT = -1,
 
-	PLOT_PEAK,
-	PLOT_HILLS,
+	PLOT_MOUNTAIN,
+	PLOT_HIGHLAND,
 	PLOT_LAND,
 	PLOT_OCEAN,
+	PLOT_HIGHLAND_MOUNTAIN, // Fresol: a mountain standing on highland - both art families at once
 
 #ifdef _USRDLL
 	NUM_PLOT_TYPES
@@ -976,6 +977,7 @@ enum FeatureTypes					// Exposed to Python
 	FEATURE_STRAIT_QIONGZHOU, // Fresol: the Qiongzhou strait - ships W/SW <-> E/SE, land crosses to Hainan as a strait
 	FEATURE_STRAIT_TSUGARU, // Fresol: the Tsugaru strait - ships NW/W <-> NE/E, the edge north to Hokkaido is wide
 	FEATURE_STRAIT_MAGELLAN, // Fresol: the Strait of Magellan - ships SW <-> NE/E, west/north-west/north are wide
+	FEATURE_VOLCANO, // Fresol: a volcanic mountain - impassable like a peak (port of DOCAmerica's)
 	NUM_FEATURES
 };
 

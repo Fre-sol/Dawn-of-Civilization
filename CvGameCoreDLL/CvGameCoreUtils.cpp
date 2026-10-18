@@ -1886,7 +1886,8 @@ int pathValid(FAStarNode* parent, FAStarNode* node, int data, const void* pointe
 	{
 		if (pToPlot->isInlandStraitPassage())
 		{
-			if (!pToPlot->isInlandStraitEntryFrom(pFromPlot) || pToPlot->getInlandStraitExit(pFromPlot) == NULL)
+			if (!pToPlot->isInlandStraitEntryFrom(pFromPlot) || pToPlot->getInlandStraitExit(pFromPlot) == NULL
+			 || !pToPlot->inlandStraitGatesOpen(pSelectionGroup->getHeadOwner()))
 			{
 				return FALSE;
 			}

@@ -378,10 +378,10 @@ dTerrainsDict = {
 }
 
 dConquerorPlotTypesDict = {
-	(33, 25) : (iInca, PlotTypes.PLOT_HILLS),
-	(36, 22) : (iInca, PlotTypes.PLOT_HILLS),
-	(29, 29) : (iInca, PlotTypes.PLOT_HILLS),
-	(33, 12) : (iInca, PlotTypes.PLOT_HILLS),
+	(33, 25) : (iInca, PlotTypes.PLOT_HIGHLAND),
+	(36, 22) : (iInca, PlotTypes.PLOT_HIGHLAND),
+	(29, 29) : (iInca, PlotTypes.PLOT_HIGHLAND),
+	(33, 12) : (iInca, PlotTypes.PLOT_HIGHLAND),
 }
 
 dCivGroupResourcesDict = {

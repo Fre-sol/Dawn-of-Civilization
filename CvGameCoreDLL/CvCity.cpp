@@ -272,6 +272,7 @@ void CvCity::init(int iID, PlayerTypes eOwner, int iX, int iY, bool bBumpUnits, 
 	if (lResult == 1)
 	{
 		if (pPlot->getFeatureType() != NO_FEATURE && pPlot->getFeatureType() != (FeatureTypes)GC.getInfoTypeForString("FEATURE_FLOOD_PLAINS") //Leoreth: flood plains are not removed by cities
+		 && pPlot->getFeatureType() != FEATURE_LAKE && pPlot->getFeatureType() != FEATURE_OASIS // Fresol: cities keep the lake and the oasis as they are
 		 && !pPlot->isInlandStrait()) // Fresol: nor is an inland strait - the ship rules stand down on their own, and the land rules stay
 		{
 			pPlot->setFeatureType(NO_FEATURE);

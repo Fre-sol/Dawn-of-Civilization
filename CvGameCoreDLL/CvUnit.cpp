@@ -2703,6 +2703,23 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 		return false;
 	}
 
+	// Fresol: and the same for a city's harbour side - only the real questions are
+	// answered here, since bIgnoreLoad marks the hypothetical ones the pathfinder
+	// asks when it wants to know whether a plot may be occupied at all.  The
+	// pathfinder blocks the rest; this catches the one tile orders and attacks.
+	if (getDomainType() == DOMAIN_SEA && !bIgnoreLoad && plot() != NULL)
+	{
+		if (pPlot->isWater() && !CvPlot::isCanalEdgeAllowed(plot(), pPlot))
+		{
+			return false;
+		}
+
+		if (plot()->isWater() && !CvPlot::isCanalEdgeAllowed(pPlot, plot()))
+		{
+			return false;
+		}
+	}
+
 	if (pPlot->isImpassable())
 	{
 		if (!canMoveImpassable())

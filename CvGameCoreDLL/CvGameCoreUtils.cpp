@@ -1917,6 +1917,23 @@ int pathValid(FAStarNode* parent, FAStarNode* node, int data, const void* pointe
 	}
 	// Fresol - end
 
+	// Fresol: a city is not a canal.  A ship may enter or leave a city - or a fort -
+	// only on the side that holds most of the water around it; the other sides stay
+	// dry.  Only an edge knows both ends of the step, so the rule lives here.
+	// CvUnit::canMoveInto carries the same rule for the steps that never come this way.
+	if (pSelectionGroup->getDomainType() == DOMAIN_SEA)
+	{
+		if (pToPlot->isWater() && !CvPlot::isCanalEdgeAllowed(pFromPlot, pToPlot))
+		{
+			return FALSE;
+		}
+
+		if (pFromPlot->isWater() && !CvPlot::isCanalEdgeAllowed(pToPlot, pFromPlot))
+		{
+			return FALSE;
+		}
+	}
+
 	// Fresol: and the mirror image for land: a wide strait is a corner no land unit may cut,
 	// so there is no penalty to apply - the move simply does not exist.
 	if (pSelectionGroup->getDomainType() == DOMAIN_LAND)

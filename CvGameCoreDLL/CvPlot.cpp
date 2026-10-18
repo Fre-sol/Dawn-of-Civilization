@@ -13513,6 +13513,202 @@ int CvPlot::inlandStraitCrossingCost(FeatureTypes eFeature)
 
 // Fresol - start
 // ---------------------------------------------------------------------------
+// A city is not a canal.
+//
+// The engine lets a ship into any friendly coastal city without asking which side
+// of it the ship came from, so a city standing on a narrow neck joins the seas it
+// touches.  This rule gives such a city one harbour side and no other: its water
+// neighbours are grouped the way a ship may actually sail between them -
+// neighbouring tiles touch, and so do two diagonal ones when a strait feature is
+// what lets a ship cut that corner - and only the largest group may be entered or
+// left.  Ties go to the larger water area - a sea beats a pond - and then to the
+// engine's own direction
+// order, N, NE, E, SE, S, SW, W, NW, so the answer never depends on traversal
+// order.  The question belongs to an edge, because only the edge knows both ends
+// of the step; CvGameCoreUtils::pathValid asks it there, and CvUnit::canMoveInto
+// repeats it for the one step orders and attacks that never reach the pathfinder.
+static int canalFind(int* aiParent, int iIndex)
+{
+	while (aiParent[iIndex] != iIndex)
+	{
+		aiParent[iIndex] = aiParent[aiParent[iIndex]];
+		iIndex = aiParent[iIndex];
+	}
+
+	return iIndex;
+}
+
+
+static void canalUnion(int* aiParent, int iOne, int iTwo)
+{
+	iOne = canalFind(aiParent, iOne);
+	iTwo = canalFind(aiParent, iTwo);
+
+	if (iOne != iTwo)
+	{
+		aiParent[iTwo] = iOne;
+	}
+}
+
+
+static bool isCanalHarbourPlot(const CvPlot* pPlot)
+{
+	if (pPlot == NULL)
+	{
+		return false;
+	}
+
+	if (pPlot->getPlotCity() != NULL)
+	{
+		return true;
+	}
+
+	// Fresol: a fort is a harbour too, so it follows the same rule.  A deliberate
+	// canal improvement is the exception - it exists to be sailed through.
+	if (pPlot->getImprovementType() != NO_IMPROVEMENT)
+	{
+		return GC.getImprovementInfo(pPlot->getImprovementType()).isActsAsCity()
+		    && pPlot->getImprovementType() != (ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CANAL");
+	}
+
+	return false;
+}
+
+
+bool CvPlot::isCanalEdgeAllowed(const CvPlot* pCity, const CvPlot* pWater)
+{
+	CvPlot* apRing[NUM_DIRECTION_TYPES];
+	int aiGroup[NUM_DIRECTION_TYPES];
+	int aiSize[NUM_DIRECTION_TYPES];
+	int aiArea[NUM_DIRECTION_TYPES];
+	int aiFirst[NUM_DIRECTION_TYPES];
+	int iLand = -1;
+	int iBestGroup = -1;
+	int i;
+
+	if (pCity == NULL || pWater == NULL || pCity->isWater() || !pWater->isWater() || !isCanalHarbourPlot(pCity))
+	{
+		return true;
+	}
+
+	// Fresol: the straits a city takes over, and the map's own whitelist, keep
+	// every side open as before.
+	if (pCity->isInlandStrait() || pCity->getScriptData() == "CANAL_CITY")
+	{
+		return true;
+	}
+
+	if (plotDistance(pCity->getX_INLINE(), pCity->getY_INLINE(), pWater->getX_INLINE(), pWater->getY_INLINE()) > 1)
+	{
+		return true;
+	}
+
+	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+	{
+		apRing[i] = plotDirection(pCity->getX_INLINE(), pCity->getY_INLINE(), (DirectionTypes)i);
+		aiGroup[i] = i;
+
+		if (apRing[i] == NULL || !apRing[i]->isWater())
+		{
+			iLand = i;
+		}
+	}
+
+	// Fresol: an island city has no neck to cross, so it is no canal either.
+	if (iLand < 0)
+	{
+		return true;
+	}
+
+	// Fresol: join the water sides a ship may sail between without the city.  Two
+	// neighbouring sides always touch.  Two diagonal ones touch as well when both
+	// are strait tiles - that is the one way the pathfinder lets a ship cut such a
+	// corner - and otherwise they do not.
+	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+	{
+		int iNext = (i + 1) % NUM_DIRECTION_TYPES;
+		int iAcross = (i + 2) % NUM_DIRECTION_TYPES;
+
+		if (apRing[i] == NULL || !apRing[i]->isWater())
+		{
+			continue;
+		}
+
+		if (apRing[iNext] != NULL && apRing[iNext]->isWater())
+		{
+			canalUnion(aiGroup, i, iNext);
+		}
+		else if (apRing[iAcross] != NULL && apRing[iAcross]->isWater()
+		      && apRing[i]->isStrait() && apRing[iAcross]->isStrait())
+		{
+			canalUnion(aiGroup, i, iAcross);
+		}
+	}
+
+	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+	{
+		aiSize[i] = 0;
+		aiArea[i] = 0;
+		aiFirst[i] = NUM_DIRECTION_TYPES;
+	}
+
+	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+	{
+		int g;
+
+		if (apRing[i] == NULL || !apRing[i]->isWater())
+		{
+			continue;
+		}
+
+		g = canalFind(aiGroup, i);
+		aiSize[g] += 1;
+		aiArea[g] = std::max(aiArea[g], apRing[i]->area()->getNumTiles());
+
+		if (i < aiFirst[g])
+		{
+			aiFirst[g] = i;
+		}
+	}
+
+	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+	{
+		if (aiSize[i] == 0)
+		{
+			continue;
+		}
+
+		if (iBestGroup < 0
+		 || aiSize[i] > aiSize[iBestGroup]
+		 || (aiSize[i] == aiSize[iBestGroup] && aiArea[i] > aiArea[iBestGroup])
+		 || (aiSize[i] == aiSize[iBestGroup] && aiArea[i] == aiArea[iBestGroup] && aiFirst[i] < aiFirst[iBestGroup]))
+		{
+			iBestGroup = i;
+		}
+	}
+
+	if (iBestGroup < 0)
+	{
+		return true;
+	}
+
+	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
+	{
+		if (apRing[i] == pWater)
+		{
+			return canalFind(aiGroup, i) == iBestGroup;
+		}
+	}
+
+	// Fresol: not one of the ring tiles after all - leave the move to the other
+	// rules rather than invent a ban.
+	return true;
+}
+// Fresol - end
+
+
+// Fresol - start
+// ---------------------------------------------------------------------------
 // NavRiver art.  The engine picks a river piece by computing a key from the
 // plot's geometry alone and looking it up in a 256 entry table that
 // CIV4RiverModelInfos.xml fills, so an ordinary river and a NavRiver of the same

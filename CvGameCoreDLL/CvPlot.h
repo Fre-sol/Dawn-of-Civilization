@@ -630,6 +630,7 @@ public:
 	bool isStraitCrossing(const CvPlot* pToPlot) const; // Fresol
 	bool isLakeStraitCrossing(const CvPlot* pToPlot) const; // Fresol
 	bool isWideStraitCrossing(const CvPlot* pToPlot) const; // Fresol
+	static bool isCanalEdgeAllowed(const CvPlot* pCity, const CvPlot* pWater); // Fresol: a city or fort is a harbour on its main water side only
 
 	// Leoreth: graphics paging
 	static void EvictGraphicsIfNecessary();

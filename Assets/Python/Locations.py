@@ -93,6 +93,9 @@ iCanadaEasternBorder = 40
 tSuez = (82, 44)
 lPanamaStraits = [(26, 37), (27, 36)]
 
+# Fresol: cities allowed to act as canals - they keep every side open
+lCanalCities = []
+
 
 ### Tiles ###
 

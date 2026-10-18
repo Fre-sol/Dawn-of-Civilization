@@ -261,6 +261,18 @@ def panamaCanalEffect(city, iProject):
 			plot.setFeatureType(iStrait, 0)
 
 
+# Fresol: cities are harbours on their main water side only (CvPlot::isCanalEdgeAllowed);
+# the plots in lCanalCities keep every side open.
+@handler("GameStart")
+def markCanalCities():
+	for p in plots.all():
+		if p.getScriptData() == "CANAL_CITY":
+			p.setScriptData("")
+
+	for p in plots.of(lCanalCities):
+		p.setScriptData("CANAL_CITY")
+
+
 # Edict effect: free Mobility promotion for civilian units
 @handler("unitBuilt")
 def spaceElevatorEffect(city, unit):

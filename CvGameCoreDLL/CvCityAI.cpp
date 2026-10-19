@@ -4279,24 +4279,6 @@ int CvCityAI::AI_buildingValueThreshold(BuildingTypes eBuilding, int iFocusFlags
 						}
 					}
 
-					// Fresol: the harbor pays one food for the fishing the city works
-					if (iI == YIELD_FOOD)
-					{
-						static BuildingTypes eHarbor = NO_BUILDING;
-
-						if (eHarbor == NO_BUILDING)
-						{
-							eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
-						}
-
-						if (eBuilding == eHarbor)
-						{
-							iTempValue += ((countNumImprovedPlots(IMPROVEMENT_FISHING_BOATS)
-								+ countNumImprovedPlots(IMPROVEMENT_OCEAN_FISHERY)
-								+ countNumImprovedPlots(IMPROVEMENT_WHALING_BOATS)) * 6);
-						}
-					}
-
 					if (iTempValue != 0)
 					{
 						if (bFinancialTrouble && iI == YIELD_COMMERCE)

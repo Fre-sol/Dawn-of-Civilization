@@ -7575,31 +7575,6 @@ int CvPlot::calculateYield(YieldTypes eYield, bool bDisplay) const
 			}
 		}
 
-		// Fresol - start: the harbor pays one food for the fishing the city works
-		if (eYield == YIELD_FOOD && getImprovementType() != NO_IMPROVEMENT
-			&& (getImprovementType() == IMPROVEMENT_FISHING_BOATS
-				|| getImprovementType() == IMPROVEMENT_OCEAN_FISHERY
-				|| getImprovementType() == IMPROVEMENT_WHALING_BOATS))
-		{
-			static BuildingTypes eHarbor = NO_BUILDING;
-
-			if (eHarbor == NO_BUILDING)
-			{
-				eHarbor = (BuildingTypes)GC.getInfoTypeForString("BUILDING_HARBOR");
-			}
-
-			pWorkingCity = getWorkingCity();
-
-			if (pWorkingCity != NULL && pWorkingCity->hasBuilding(eHarbor))
-			{
-				if (!bDisplay || pWorkingCity->isRevealed(GC.getGameINLINE().getActiveTeam(), false))
-				{
-					iYield += 1;
-				}
-			}
-		}
-		// Fresol - end
-
 		// Karnatic UP
 		if (eCivilization == KARNATAKA)
 		{

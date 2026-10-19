@@ -2960,14 +2960,6 @@
 		<Spanish>[ICON_BULLET]%s1 on improved [LINK=literal]%s2[\LINK] resources</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUILDING_FISHING_IMPROVEMENT_YIELDS</Tag>
-		<English>[ICON_BULLET]%s1 from every [LINK=literal]Fishing Boats[\LINK], [LINK=literal]Ocean Fishery[\LINK] and [LINK=literal]Whaling Boats[\LINK] the city works</English>
-		<French>[ICON_BULLET]%s1 from every [LINK=literal]Fishing Boats[\LINK], [LINK=literal]Ocean Fishery[\LINK] and [LINK=literal]Whaling Boats[\LINK] the city works</French>
-		<German>[ICON_BULLET]%s1 from every [LINK=literal]Fishing Boats[\LINK], [LINK=literal]Ocean Fishery[\LINK] and [LINK=literal]Whaling Boats[\LINK] the city works</German>
-		<Italian>[ICON_BULLET]%s1 from every [LINK=literal]Fishing Boats[\LINK], [LINK=literal]Ocean Fishery[\LINK] and [LINK=literal]Whaling Boats[\LINK] the city works</Italian>
-		<Spanish>[ICON_BULLET]%s1 from every [LINK=literal]Fishing Boats[\LINK], [LINK=literal]Ocean Fishery[\LINK] and [LINK=literal]Whaling Boats[\LINK] the city works</Spanish>
-	</TEXT>
-	<TEXT>
 		<Tag>TXT_KEY_SPECIALIST_RESEARCH_SATELLITE</Tag>
 		<English>Research Satellite</English>
 		<French>Satellite scientifique</French>

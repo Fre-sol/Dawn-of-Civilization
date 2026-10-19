@@ -88,6 +88,8 @@ lBirthWars = [
 	(iArabia, iBabylonia),
 	(iArabia, iPersia),
 	(iMongols, iChina),
+	(iMughals, iBengal),
+	(iMughals, iRajputs),
 	(iOttomans, iByzantium),
 	(iManchuria, iChina),
 ]
@@ -329,7 +331,7 @@ def endExpansionOnPeace(bWar, iPlayer1, iPlayer2):
 		deleteExpansionUnits(iPlayer2)
 
 
-#@handler("collapse")
+@handler("collapse")
 def endExpansionOnCollapse(iPlayer):
 	for plot in plots.all().where(lambda plot: plot.getExpansion() == iPlayer):
 		plot.resetExpansion()
@@ -932,9 +934,8 @@ class Birth(object):
 		if self.iPlayer is None:
 			if self.sharesLimitedSlot():
 				self.canceled = True
-				# Fresol: there is no player yet, self.player is None here by construction,
-				# so the setAlive that used to be on this line raised AttributeError and took
-				# the rest of that turn's births with it.
+				if self.player is not None:
+					self.player.setAlive(False, False)
 				log.rise("BIRTH CANCELED: skipping %s slot to keep it free", infos.civ(self.iCiv).getText())
 				return
 			

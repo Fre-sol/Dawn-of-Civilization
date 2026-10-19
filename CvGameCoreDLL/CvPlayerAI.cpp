@@ -11021,10 +11021,18 @@ int CvPlayerAI::AI_civicValue(CivicTypes eCivic) const
 	}
 
 	// Leoreth: domain experience
-
 	iValue += kCivic.getDomainExperienceModifier(DOMAIN_LAND) * (2 * getNumCities() - iNumCoastalCities) * (bWarPlan ? 2 : 1) * iWarmongerPercent / 2 / 100;
 	iValue += kCivic.getDomainExperienceModifier(DOMAIN_SEA) * std::max(0, 2 * iNumCoastalCities - getNumCities()) * (bWarPlan ? 3 : 2) * iWarmongerPercent / 3 / 100;
 	iValue += kCivic.getDomainExperienceModifier(DOMAIN_AIR) * getNumCities() * (AI_isDoStrategy(AI_STRATEGY_AIR_BLITZ) ? 2 : 1) * (bWarPlan ? 3 : 2) * iWarmongerPercent / 5 / 100;
+
+	// Leoreth: unit combat food production
+	for (iI = 0; iI < NUM_UNITCOMBATS; iI++)
+	{
+		if (kCivic.isUnitCombatFoodProduction((UnitCombatTypes)iI))
+		{
+			iValue += (AI_yieldWeight(YIELD_PRODUCTION) * 10 * getNumCities() * iWarmongerPercent) / (bWarPlan ? 30000 : 50000);
+		}
+	}
 
 	// Leoreth: capture workers
 	if (kCivic.isSlavery())
@@ -12957,6 +12965,11 @@ void CvPlayerAI::AI_doReligion()
 	}
 
 	if (!canChangeReligion())
+	{
+		return;
+	}
+
+	if (getStateReligion() != NO_RELIGION && getNumCities() > 0 && countReligionSpreadUnits(getCapitalCity()->area(), getStateReligion()) > 1)
 	{
 		return;
 	}

@@ -174,6 +174,12 @@
 					<iProductionModifier>100</iProductionModifier>
 				</BuildingProductionModifier>
 			</BuildingProductionModifiers>
+			<UnitCombatFoodProductions>
+				<UnitCombatFoodProduction>
+					<UnitCombatType>UNITCOMBAT_LIGHT_CAVALRY</UnitCombatType>
+					<bFoodProduction>1</bFoodProduction>
+				</UnitCombatFoodProduction>
+			</UnitCombatFoodProductions>
 			<WeLoveTheKing>TXT_KEY_CIVIC_WE_LOVE_MONARCH</WeLoveTheKing>
 		</CivicInfo>
 		<CivicInfo>
@@ -268,7 +274,7 @@
 			<iFreeUnitsPopulationPercent>8</iFreeUnitsPopulationPercent>
 			<ImprovementYieldChanges>
 				<ImprovementYieldChange>
-					<ImprovementType>IMPROVEMENT_FARM</ImprovementType>
+					<ImprovementType>IMPROVEMENT_PLANTATION</ImprovementType>
 					<ImprovementYields>
 						<iYield>0</iYield>
 						<iYield>1</iYield>
@@ -288,6 +294,12 @@
 					<iHappinessChange>1</iHappinessChange>
 				</BuildingHappinessChange>
 			</BuildingHappinessChanges>
+			<UnitCombatFoodProductions>
+				<UnitCombatFoodProduction>
+					<UnitCombatType>UNITCOMBAT_HEAVY_CAVALRY</UnitCombatType>
+					<bFoodProduction>1</bFoodProduction>
+				</UnitCombatFoodProduction>
+			</UnitCombatFoodProductions>
 		</CivicInfo>
 		<CivicInfo>
 			<CivicOptionType>CIVICOPTION_LEGITIMACY</CivicOptionType>
@@ -323,8 +335,8 @@
 			<Upkeep>UPKEEP_HIGH</Upkeep>
 			<CapitalYieldModifiers>
 				<iYield>0</iYield>
-				<iYield>35</iYield>
-				<iYield>35</iYield>
+				<iYield>50</iYield>
+				<iYield>50</iYield>
 			</CapitalYieldModifiers>
 		</CivicInfo>
 		<CivicInfo>
@@ -395,6 +407,13 @@
 			<Upkeep>UPKEEP_LOW</Upkeep>
 			<bSlavery>1</bSlavery>
 			<ImprovementYieldChanges>
+				<ImprovementYieldChange>
+					<ImprovementType>IMPROVEMENT_FARM</ImprovementType>
+					<ImprovementYields>
+						<iYield>0</iYield>
+						<iYield>1</iYield>
+					</ImprovementYields>
+				</ImprovementYieldChange>
 				<ImprovementYieldChange>
 					<ImprovementType>IMPROVEMENT_QUARRY</ImprovementType>
 					<ImprovementYields>
@@ -483,41 +502,23 @@
 						<iYield>1</iYield>
 					</ImprovementYields>
 				</ImprovementYieldChange>
+				<ImprovementYieldChange>
+					<ImprovementType>IMPROVEMENT_WORKSHOP</ImprovementType>
+					<ImprovementYields>
+						<iYield>0</iYield>
+						<iYield>1</iYield>
+					</ImprovementYields>
+				</ImprovementYieldChange>
 			</ImprovementYieldChanges>
 			<SpecialistTypeExtraYields>
 				<SpecialistTypeExtraYield>
-					<SpecialistType>SPECIALIST_ARTIST</SpecialistType>
-					<YieldChanges>
-						<iYield>0</iYield>
-						<iYield>1</iYield>
-					</YieldChanges>
-				</SpecialistTypeExtraYield>
-				<SpecialistTypeExtraYield>
-					<SpecialistType>SPECIALIST_PRIEST</SpecialistType>
+					<SpecialistType>SPECIALIST_CITIZEN</SpecialistType>
 					<YieldChanges>
 						<iYield>0</iYield>
 						<iYield>1</iYield>
 					</YieldChanges>
 				</SpecialistTypeExtraYield>
 			</SpecialistTypeExtraYields>
-			<BuildingProductionModifiers>
-				<BuildingProductionModifier>
-					<BuildingType>BUILDINGCLASS_WEAVER</BuildingType>
-					<iProductionModifier>100</iProductionModifier>
-				</BuildingProductionModifier>
-				<BuildingProductionModifier>
-					<BuildingType>BUILDINGCLASS_JEWELLER</BuildingType>
-					<iProductionModifier>100</iProductionModifier>
-				</BuildingProductionModifier>
-				<BuildingProductionModifier>
-					<BuildingType>BUILDINGCLASS_GROCER</BuildingType>
-					<iProductionModifier>100</iProductionModifier>
-				</BuildingProductionModifier>
-				<BuildingProductionModifier>
-					<BuildingType>BUILDINGCLASS_PHARMACY</BuildingType>
-					<iProductionModifier>100</iProductionModifier>
-				</BuildingProductionModifier>
-			</BuildingProductionModifiers>
 		</CivicInfo>
 		<CivicInfo>
 			<CivicOptionType>CIVICOPTION_SOCIETY</CivicOptionType>
@@ -560,15 +561,6 @@
 			<iAnarchyLength>1</iAnarchyLength>
 			<Upkeep>NONE</Upkeep>
 			<iWarWearinessModifier>-100</iWarWearinessModifier>
-			<SpecialistTypeExtraYields>
-				<SpecialistTypeExtraYield>
-					<SpecialistType>SPECIALIST_CITIZEN</SpecialistType>
-					<YieldChanges>
-						<iYield>0</iYield>
-						<iYield>2</iYield>
-					</YieldChanges>
-				</SpecialistTypeExtraYield>
-			</SpecialistTypeExtraYields>
 			<ImprovementYieldChanges>
 				<ImprovementYieldChange>
 					<ImprovementType>IMPROVEMENT_TOWN</ImprovementType>

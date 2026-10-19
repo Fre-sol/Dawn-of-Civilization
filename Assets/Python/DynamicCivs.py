@@ -195,7 +195,8 @@ dSpecificVassalTitles = deepdict({
 		iMughals : "TXT_KEY_CIV_MONGOL_MUGHALS",
 	},
 	iMughals : {
-		iIndia : "TXT_KEY_CIV_MUGHAL_INDIA",
+		iKarnataka: "TXT_KEY_CIV_MUGHAL_KARNATAKA",
+		iBengal: "TXT_KEY_CIV_MUGHAL_BENGAL",
 	},
 	iRussia : {
 		iRus : "TXT_KEY_CIV_RUSSIAN_RUS",
@@ -447,6 +448,10 @@ dForeignNames = deepdict({
 	iMongols : {
 		iTurks : "TXT_KEY_CIV_MONGOL_NAME_TURKS",
 		iRussia : "TXT_KEY_CIV_MONGOL_NAME_RUSSIA",
+	},
+	iMughals : {
+		iIndia : "TXT_KEY_CIV_MUGHAL_NAME_INDIA",
+		iRajputs : "TXT_KEY_CIV_MUGHAL_NAME_RAJPUTS",
 	},
 	iOttomans : {
 		iPoland : "TXT_KEY_CIV_OTTOMAN_NAME_POLAND",
@@ -3015,7 +3020,7 @@ def leader(iPlayer):
 		if iReligion != -1 and capital in cities.rectangle(tNorway): return iHaakon
 	
 	elif iCiv == iBengal:
-		if iReligion == iIslam: return iAlauddin
+		if iEra >= iRenaissance: return iAlauddin
 		
 	elif iCiv == iTurks:
 		if bResurrected: return iTamerlane

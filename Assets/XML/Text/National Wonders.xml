@@ -55,11 +55,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_NATIONAL_PARK_STRATEGY</Tag>
-		<English>The [COLOR_BUILDING_TEXT]National Park[COLOR_REVERT] greatly increases the health in your city. It also provides a free specialist for each [COLOR_HIGHLIGHT_TEXT]Forest Preserve[COLOR_REVERT] in its city radius and increases the chance of generating a [COLOR_UNIT_TEXT]Great Scientist[COLOR_REVERT].</English>
+		<English>The [COLOR_BUILDING_TEXT]National Park[COLOR_REVERT] greatly increases the health in your city. It also provides a free specialist for each [COLOR_HIGHLIGHT_TEXT]Nature Reserve[COLOR_REVERT] or [COLOR_HIGHLIGHT_TEXT]Marine Reserve[COLOR_REVERT] in its city radius and increases the chance of generating a [COLOR_UNIT_TEXT]Great Scientist[COLOR_REVERT].</English>
 		<French>Le [COLOR_BUILDING_TEXT]parc national[COLOR_REVERT] am&#233;liore grandement la sant&#233; de la ville. Il fournit aussi un sp&#233;cialiste gratuit par [COLOR_HIGHLIGHT_TEXT]r&#233;serve naturelle[COLOR_REVERT] dans les environs de la ville et augmente les chances d'apparition d'un [COLOR_UNIT_TEXT]savant illustre[COLOR_REVERT].</French>
-		<German>The [COLOR_BUILDING_TEXT]National Park[COLOR_REVERT] greatly increases the health in your city. It also provides a free specialist for each [COLOR_HIGHLIGHT_TEXT]Forest Preserve[COLOR_REVERT] in its city radius and increases the chance of generating a [COLOR_UNIT_TEXT]Great Scientist[COLOR_REVERT].</German>
-		<Italian>The [COLOR_BUILDING_TEXT]National Park[COLOR_REVERT] greatly increases the health in your city. It also provides a free specialist for each [COLOR_HIGHLIGHT_TEXT]Forest Preserve[COLOR_REVERT] in its city radius and increases the chance of generating a [COLOR_UNIT_TEXT]Great Scientist[COLOR_REVERT].</Italian>
-		<Spanish>The [COLOR_BUILDING_TEXT]National Park[COLOR_REVERT] greatly increases the health in your city. It also provides a free specialist for each [COLOR_HIGHLIGHT_TEXT]Forest Preserve[COLOR_REVERT] in its city radius and increases the chance of generating a [COLOR_UNIT_TEXT]Great Scientist[COLOR_REVERT].</Spanish>
+		<German>The [COLOR_BUILDING_TEXT]National Park[COLOR_REVERT] greatly increases the health in your city. It also provides a free specialist for each [COLOR_HIGHLIGHT_TEXT]Nature Reserve[COLOR_REVERT] or [COLOR_HIGHLIGHT_TEXT]Marine Reserve[COLOR_REVERT] in its city radius and increases the chance of generating a [COLOR_UNIT_TEXT]Great Scientist[COLOR_REVERT].</German>
+		<Italian>The [COLOR_BUILDING_TEXT]National Park[COLOR_REVERT] greatly increases the health in your city. It also provides a free specialist for each [COLOR_HIGHLIGHT_TEXT]Nature Reserve[COLOR_REVERT] or [COLOR_HIGHLIGHT_TEXT]Marine Reserve[COLOR_REVERT] in its city radius and increases the chance of generating a [COLOR_UNIT_TEXT]Great Scientist[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_BUILDING_TEXT]National Park[COLOR_REVERT] greatly increases the health in your city. It also provides a free specialist for each [COLOR_HIGHLIGHT_TEXT]Nature Reserve[COLOR_REVERT] or [COLOR_HIGHLIGHT_TEXT]Marine Reserve[COLOR_REVERT] in its city radius and increases the chance of generating a [COLOR_UNIT_TEXT]Great Scientist[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_SECRET_SERVICE</Tag>
@@ -75,11 +75,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_SECRET_SERVICE_STRATEGY</Tag>
-		<English>The [COLOR_BUILDING_TEXT]Secret Service[COLOR_REVERT] increases its city's espionage output and gives experience points to [COLOR_UNIT_TEXT]Espionage Units[COLOR_REVERT] built in it's city.</English>
+		<English>The [COLOR_BUILDING_TEXT]Secret Service[COLOR_REVERT] increases its city's espionage output by 50% and gives 3 experience points to spy units built in its city.</English>
 		<French>Le [COLOR_BUILDING_TEXT]service secret[COLOR_REVERT] augmente la production d'espionnage de la ville et donne des points d'exp&#233;rience aux [COLOR_UNIT_TEXT]unit&#233;s d'espionnage[COLOR_REVERT] qui y sont form&#233;es.</French>
-		<German>The [COLOR_BUILDING_TEXT]Secret Service[COLOR_REVERT] increases its city's espionage output and gives experience points to [COLOR_UNIT_TEXT]Espionage Units[COLOR_REVERT] built in it's city.</German>
-		<Italian>The [COLOR_BUILDING_TEXT]Secret Service[COLOR_REVERT] increases its city's espionage output and gives experience points to [COLOR_UNIT_TEXT]Espionage Units[COLOR_REVERT] built in it's city.</Italian>
-		<Spanish>The [COLOR_BUILDING_TEXT]Secret Service[COLOR_REVERT] increases its city's espionage output and gives experience points to [COLOR_UNIT_TEXT]Espionage Units[COLOR_REVERT] built in it's city.</Spanish>
+		<German>The [COLOR_BUILDING_TEXT]Secret Service[COLOR_REVERT] increases its city's espionage output by 50% and gives 3 experience points to spy units built in its city.</German>
+		<Italian>The [COLOR_BUILDING_TEXT]Secret Service[COLOR_REVERT] increases its city's espionage output by 50% and gives 3 experience points to spy units built in its city.</Italian>
+		<Spanish>The [COLOR_BUILDING_TEXT]Secret Service[COLOR_REVERT] increases its city's espionage output by 50% and gives 3 experience points to spy units built in its city.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_RED_CROSS_STRATEGY</Tag>
@@ -299,7 +299,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_MILITARY_ACADEMY_STRATEGY</Tag>
-		<English>The [COLOR_BUILDING_TEXT]Military Academy[COLOR_REVERT] increases a city's military unit production, grants the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion to all units and increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</English>
+		<English>The [COLOR_BUILDING_TEXT]Military Academy[COLOR_REVERT] grants the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion to units built in its city, doubling the experience they gain, and provides 4 espionage. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT], and requires a unit of at least level 4.</English>
 		<French>L'[COLOR_BUILDING_TEXT]&#233;cole militaire[COLOR_REVERT] acc&#233;l&#232;re la production d'unit&#233;s militaires de la ville, conf&#232;re la promotion [COLOR_HIGHLIGHT_TEXT]Commandement[COLOR_REVERT] &#224; toutes les unit&#233;s qui y sont form&#233;es, et augmente les chances d'apparition d'un [COLOR_UNIT_TEXT]homme d'&#201;tat illustre[COLOR_REVERT].</French>
 		<German>The [COLOR_BUILDING_TEXT]Military Academy[COLOR_REVERT] increase a city's military unit production, grants the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion to all units and increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</German>
 		<Italian>The [COLOR_BUILDING_TEXT]Military Academy[COLOR_REVERT] increase a city's military unit production, grants the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion to all units and increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Italian>

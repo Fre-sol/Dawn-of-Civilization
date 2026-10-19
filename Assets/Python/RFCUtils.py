@@ -1114,9 +1114,8 @@ def convertSurroundingPlotCulture(iPlayer, plots):
 
 # used: CvPlatyBuilderScreen
 def paintPlots(plots, index=1000, color="COLOR_CYAN"):
-	engine.clearAreaBorderPlots(1000)
 	for plot in plots:
-		engine.fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1000, "COLOR_CYAN", 0.7)
+		engine.fillAreaBorderPlotAlt(plot.getX(), plot.getY(), index, color, 0.7)
 
 # used: Shortcuts
 def startObserverMode(iTurns):

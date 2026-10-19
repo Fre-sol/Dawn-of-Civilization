@@ -61,6 +61,7 @@ lMoveMapModes = [iModeMoveMap, iModeMoveMap2]
 # either. Pairs up with lRiverKinds in Core.
 lRiverKindButtons = ["RiverKindRiverButton", "RiverKindNavButton"]
 
+
 class CvWorldBuilderScreen:
 
 	def __init__ (self) :
@@ -2115,23 +2116,23 @@ class CvWorldBuilderScreen:
 			if iRegion == self.m_iRegionMapID:
 				CyEngine().fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1000, "COLOR_BLUE", 0.7)
 			elif self.bAllRegions:
-				CyEngine().fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1000+iRegion, self.dRegionColors[iRegion], 0.7)
-			
+				szColor = self.dRegionColors.get(iRegion)
+				if szColor:
+					CyEngine().fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1001 + lRegionMapColors.index(szColor), szColor, 0.7)
+
 	def determineRegionColors(self):
-		lColors = ["COLOR_PLAYER_LIGHT_PURPLE", "COLOR_PLAYER_LIGHT_YELLOW", "COLOR_PLAYER_LIGHT_ORANGE", "COLOR_SILVER"]
-		
 		dNeighbourRegions = dict([(i, []) for i in range(iNumRegions)])
 		dRegionColors = dict([(i, "") for i in range(iNumRegions)])
-		
-		for plot in plots.all().land().where(lambda p: p.getRegionID() != -1):
+
+		for plot in plots.all().land().where(lambda p: 0 <= p.getRegionID() < iNumRegions):
 			iRegion = plot.getRegionID()
-			for surroundingPlot in plots.surrounding(plot).where(lambda p: p.getRegionID() not in [-1, iRegion]):
+			for surroundingPlot in plots.surrounding(plot).where(lambda p: 0 <= p.getRegionID() < iNumRegions and p.getRegionID() != iRegion):
 				iNeighbourRegion = surroundingPlot.getRegionID()
 				if iNeighbourRegion not in dNeighbourRegions[iRegion]:
 					dNeighbourRegions[iRegion].append(iNeighbourRegion)
 
 		for iRegion in range(iNumRegions):
-			for color in lColors:
+			for color in lRegionMapColors:
 				for iNeighbourRegion in dNeighbourRegions[iRegion]:
 					if dRegionColors[iNeighbourRegion] == color:
 						break
@@ -2142,9 +2143,17 @@ class CvWorldBuilderScreen:
 
 	def showVictoryOverlay(self):
 		removeStabilityOverlay()
-		lRegions = []
-		for index, goal in enumerate(data.players[self.m_iCurrentPlayer].historicalVictory.goals + data.players[self.m_iCurrentPlayer].religiousVictory.goals):
-			for name, area in goal.areas.items():
+		pData = data.players[self.m_iCurrentPlayer]
+		lGoals = []
+		for victory in (pData.historicalVictory, pData.religiousVictory):
+			if victory is not None:
+				lGoals.extend(victory.goals)
+		for index, goal in enumerate(lGoals):
+			for name, area in goal.areas().items():
+				if hasattr(area, "create"):
+					area = area.create()
+				if not isinstance(area, Plots):
+					continue
 				paintPlots(area.land(), 1000 + 2*index, "COLOR_MAGENTA")
 				if self.bVictoryRectangle:
 					paintPlots(area.water(), 1001 + 2*index, "COLOR_LIGHT_GREY")
@@ -2186,11 +2195,11 @@ class CvWorldBuilderScreen:
 		show(sText)
 
 	def checkRegionTiles(self):
-		tiles = plots.all().land().where(lambda p: p.getRegionID() == -1)
+		tiles = plots.all().land().where(lambda p: not (0 <= p.getRegionID() < iNumRegions))
 		if tiles:
-			sText = "Land tiles without a defined region:\n" + str(tiles)
+			sText = "Land tiles without a valid region:\n" + str(tiles)
 		else:
-			sText = "All land tiles have a defined region"
+			sText = "All land tiles have a valid region"
 		show(sText)
 
 	def getPlotItems(self, tPlot):
@@ -2568,6 +2577,65 @@ class CvWorldBuilderScreen:
 		return (sStart + sEnd)
 ## Add "," ##
 
+	def clearChanges(self, iMode, iPlayer, iAlt):
+		import Setup, Rise
+		if iMode == iModeFlip:
+			if iAlt:
+				self.dFlipZoneEdits = {}
+			elif iPlayer in self.dFlipZoneEdits.keys():
+				del self.dFlipZoneEdits[iPlayer]
+		elif iMode == iModeCore:
+			if iAlt:
+				for iLoopPlayer in players.major():
+					Setup.updateCore(civ(iLoopPlayer))
+			else:
+				Setup.updateCore(civ(iPlayer))
+		elif iMode == iModeSettlerValue:
+			if iAlt:
+				for iLoopPlayer in players.major():
+					Rise.applySettlerMap(civ(iLoopPlayer), period(civ(iLoopPlayer)))
+			else:
+				Rise.applySettlerMap(civ(iPlayer), period(civ(iPlayer)))
+		elif iMode == iModeWarMap:
+			if iAlt:
+				for iLoopPlayer in players.major():
+					Rise.applyWarMap(civ(iLoopPlayer), period(civ(iLoopPlayer)))
+			else:
+				Rise.applyWarMap(civ(iPlayer), period(civ(iPlayer)))
+		elif iMode == iModeReligionMap:
+			if iAlt:
+				for iReligion in range(iNumReligions):
+					RegionMap.updateReligionSpread(iReligion)
+			else:
+				RegionMap.updateReligionSpread(self.m_iCurrentReligion)
+		elif iMode == iModeRegionMap:
+			RegionMap.updateRegionMap(False)
+			show("Region IDs reset from Regions.csv. The derived areas and continents are rebuilt on the next map load; they are not recalculated in the World Builder.")
+		elif iMode in lAreaExportModes:
+			self.TempInfo = []
+			if iMode == iModeAreaExporter3:
+				self.iPlayerAddMode = iModeAreaExporter2
+			self.showAreaExportOverlay()
+		self.updateOverlay()
+
+	def exportMaps(self, iMode, iPlayer):
+		if iMode == iModeFlip:
+			met.exportFlip(iPlayer, self.getFlipZone(iPlayer))
+		elif iMode == iModeCore:
+			met.exportCore(iPlayer)
+			self.showStabilityOverlay()
+		elif iMode == iModeSettlerValue:
+			met.exportSettlerMap(iPlayer)
+			self.showStabilityOverlay()
+		elif iMode == iModeWarMap:
+			met.exportWarMap(iPlayer)
+			self.showWarOverlay()
+		elif iMode == iModeRegionMap:
+			met.exportRegionMap()
+			self.showRegionOverlay()
+		elif iMode in lAreaExportModes:
+			met.exportAreaExport(self.TempInfo, self.bWaterException, self.bPeaksException)
+
 	def handleInput (self, inputClass):
 		screen = CyGInterfaceScreen( "WorldBuilderScreen", CvScreenEnums.WORLDBUILDER_SCREEN )
 		global iChange
@@ -2799,62 +2867,11 @@ class CvWorldBuilderScreen:
 
 		elif inputClass.getFunctionName() == "ClearChanges":
 			bDeleteOverlay = False
-			if self.iPlayerAddMode == iModeFlip:
-				if CvEventInterface.getEventManager().bAlt:
-					self.dFlipZoneEdits = {}
-				elif self.m_iCurrentPlayer in self.dFlipZoneEdits.keys():
-					del self.dFlipZoneEdits[self.m_iCurrentPlayer]
-			elif self.iPlayerAddMode == iModeCore:
-				if CvEventInterface.getEventManager().bAlt:
-					for iPlayer in players.major():
-						Areas.updateCore(iPlayer)
-				else:
-					Areas.updateCore(self.m_iCurrentPlayer)
-			elif self.iPlayerAddMode == iModeSettlerValue:
-				if CvEventInterface.getEventManager().bAlt:
-					for iPlayer in players.major():
-						SettlerMaps.updateMap(iPlayer)
-				else:
-					SettlerMaps.updateMap(self.m_iCurrentPlayer)
-			elif self.iPlayerAddMode == iModeWarMap:
-				if CvEventInterface.getEventManager().bAlt:
-					for iPlayer in players.major():
-						WarMaps.updateMap(iPlayer)
-				else:
-					WarMaps.updateMap(self.m_iCurrentPlayer)
-			elif self.iPlayerAddMode == iModeReligionMap:
-				if CvEventInterface.getEventManager().bAlt:
-					for iReligion in range(iNumReligions):
-						RegionMap.updateReligionSpread(iReligion)
-				else:
-					RegionMap.updateReligionSpread(self.m_iCurrentReligion)
-			elif self.iPlayerAddMode == iModeRegionMap:
-				RegionMap.updateRegionMap()
-			elif self.iPlayerAddMode in lAreaExportModes:
-				self.TempInfo = []
-				if self.iPlayerAddMode == iModeAreaExporter3:
-					self.iPlayerAddMode = iModeAreaExporter2
-				self.showAreaExportOverlay()
-			self.updateOverlay()
+			self.clearChanges(self.iPlayerAddMode, self.m_iCurrentPlayer, CvEventInterface.getEventManager().bAlt)
 
 		elif inputClass.getFunctionName() == "Export":
 			bDeleteOverlay = False
-			if self.iPlayerAddMode == iModeFlip:
-				met.exportFlip(self.m_iCurrentPlayer, self.getFlipZone(self.m_iCurrentPlayer))
-			elif self.iPlayerAddMode == iModeCore:
-				met.exportCore(self.m_iCurrentPlayer)
-				self.showStabilityOverlay()
-			elif self.iPlayerAddMode == iModeSettlerValue:
-				met.exportSettlerMap(self.m_iCurrentPlayer)
-				self.showStabilityOverlay()
-			elif self.iPlayerAddMode == iModeWarMap:
-				met.exportWarMap(self.m_iCurrentPlayer)
-				self.showWarOverlay()
-			elif self.iPlayerAddMode == iModeRegionMap:
-				met.exportRegionMap()
-				self.showRegionOverlay()
-			elif self.iPlayerAddMode in lAreaExportModes:
-				met.exportAreaExport(self.TempInfo, self.bWaterException, self.bPeaksException)
+			self.exportMaps(self.iPlayerAddMode, self.m_iCurrentPlayer)
 
 		elif inputClass.getFunctionName() == "PresetValue":
 			bDeleteOverlay = False

@@ -376,28 +376,36 @@ def preserveCivilizationAttributes(iPlayer):
 ### MAPS ###
 
 
-def applyMaps(iCivilization, iPeriod=-1):
+def applySettlerMap(iCivilization, iPeriod=-1):
 	for p in plots.all().land():
 		p.setSettlerValue(iCivilization, 0)
-		p.setWarValue(iCivilization, 0)
 
 	for (x, y), iValue in FileMap.read("Settler/%s.csv" % civ_name(iCivilization)):
 		if iValue and not plot(x, y).isWater():
 			plot(x, y).setSettlerValue(iCivilization, iValue)
 
-	for (x, y), iValue in FileMap.read("War/%s.csv" % civ_name(iCivilization)):
-		if iValue and not plot(x, y).isWater():
-			plot(x, y).setWarValue(iCivilization, iValue)
-	
 	if iPeriod != -1:
 		for (x, y), iValue in FileMap.read("Settler/Period/%s.csv" % dPeriodNames[iPeriod], bIgnoreMissing=True):
 			if not plot(x, y).isWater():
 				plot(x, y).setSettlerValue(iCivilization, iValue)
-				
+
+def applyWarMap(iCivilization, iPeriod=-1):
+	for p in plots.all().land():
+		p.setWarValue(iCivilization, 0)
+
+	for (x, y), iValue in FileMap.read("War/%s.csv" % civ_name(iCivilization)):
+		if iValue and not plot(x, y).isWater():
+			plot(x, y).setWarValue(iCivilization, iValue)
+
+	if iPeriod != -1:
 		for (x, y), iValue in FileMap.read("War/Period/%s.csv" % dPeriodNames[iPeriod], bIgnoreMissing=True):
 			if not plot(x, y).isWater():
 				plot(x, y).setWarValue(iCivilization, iValue)
-		
+
+def applyMaps(iCivilization, iPeriod=-1):
+	applySettlerMap(iCivilization, iPeriod)
+	applyWarMap(iCivilization, iPeriod)
+
 def initMaps():
 	for iCivilization in lBirthOrder:
 		applyMaps(iCivilization)

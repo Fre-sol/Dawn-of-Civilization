@@ -10,11 +10,16 @@ def getSpreadFactor(iReligion, plot):
 	
 	return next((iFactor for iFactor, lRegions in tSpreadFactors[iReligion].items() if iRegion in lRegions), iNone)
 	
-def updateRegionMap():
+def updateRegionMap(bRecalculate=True):
 	for (x, y), iRegion in FileMap.read("Regions.csv"):
 		plot(x, y).setRegionID(iRegion)
 
-	map.recalculateAreas()
+	# Fresol: recalculateAreas() is only safe while a map is being built.  Called
+	# in the World Builder with cities and units on the map, it throws a C++ error
+	# (and takes the game down).  The region brush never recalculates either, so a
+	# WB reset leaves the derived areas alone until the map is loaded again.
+	if bRecalculate:
+		map.recalculateAreas()
 			
 def updateReligionSpread(iReligion):
 	for plot in plots.all():

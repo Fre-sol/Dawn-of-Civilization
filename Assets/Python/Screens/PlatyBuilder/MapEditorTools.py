@@ -2,6 +2,7 @@ from Core import *
 from RFCUtils import *
 # Fresol: getSettlerValue / exportCore use this and it lives in Resources
 from Resources import dConquerorPlotTypesDict
+from Periods import dPeriodNames
 
 import BugPath as path
 
@@ -51,32 +52,55 @@ def exportFlip(iPlayer, (lHumanFlipPlot, lAIFlipPlots)):
 		
 	writeTRBLDictFile(sLocation, sName, (BL, TR), sDictName, tExceptions, lExtraDictList = lExtraDictList)
 	
-	show("Flipzone of %s exported" % sName) 
+	sPath = os.path.normpath(IMAGE_LOCATION + "\\FlipZones\\" + sName + ".txt")
+	show("Flip zone of %s exported to:\n%s\n\nTo make it take effect, paste the lines into Assets/Python/Areas.py: dBirthArea / dBirthAreaExceptions (and dExtendedBirthArea), then restart the game." % (sName, sPath))
 
 def exportCore(iPlayer):
 	sLocation = "Cores"
 	sName = getCivName(iPlayer)
-	sDictName = "dCoreArea"
-	
-	lCorePlots = plots.core(iPlayer)
+	iPeriod = period(civ(iPlayer))
+
+	# Fresol: the edited flags, not the defined area - plots.core() on the factory
+	# answers with dCoreArea, so the bounding box would ignore new plots outside it.
+	lCorePlots = plots.all().core(iPlayer)
+	if not lCorePlots:
+		show("No core plots for %s" % sName)
+		return
+
 	BL, TR = getTLBR(lCorePlots)
+
+	# Fresol: a civilisation in a special period exports into the period dictionaries;
+	# every other core exports into the base ones.
+	if iPeriod in dPeriodCoreArea:
+		sFile = dPeriodNames[iPeriod]
+		sIdentifier = "Period" + sFile.replace("_", "")
+		sDictName = "dPeriodCoreArea"
+		sExceptionName = "dPeriodCoreAreaExceptions"
+	else:
+		sFile = sName
+		sIdentifier = sName
+		sDictName = "dCoreArea"
+		sExceptionName = "dCoreAreaExceptions"
 
 	tExceptions = None
 	lExceptions = plots.rectangle(BL, TR).land().where(lambda p: (not p.isPeak() or location(p) in dConquerorPlotTypesDict) and not p.isPlayerCore(iPlayer))
 	if lExceptions:
-		tExceptions = ("dCoreAreaExceptions", lExceptions)
-	
-	writeTRBLDictFile(sLocation, sName, (BL, TR), sDictName, tExceptions)
-	
-	show("Core of %s exported" % sName) 
+		tExceptions = (sExceptionName, lExceptions)
+
+	writeTRBLDictFile(sLocation, sFile, (BL, TR), sDictName, tExceptions, sIdentifierName = sIdentifier)
+
+	sPath = os.path.normpath(IMAGE_LOCATION + "\\Cores\\" + sFile + ".txt")
+	sKey = "i" + sIdentifier
+	show("Core of %s exported to:\n%s\n\nThe current game already uses your edits. To make them permanent for future games, paste the two lines into Assets/Python/Areas.py:\n%s  (key %s)\n%s  (key %s)\nthen restart the game.\n\nA period change reloads this civilisation's core from the definitions." % (sFile, sPath, sDictName, sKey, sExceptionName, sKey))
 
 def exportSettlerMap(iPlayer):
 	sLocation = "SettlerValues"
 	sName = getCivName(iPlayer)
+	sLoadedName = civ_name(civ(iPlayer))
 	valueFunction = getSettlerValue
 	sPath = writeMapCsv(sLocation, sName, valueFunction, iPlayer = iPlayer)
-	
-	show("Settlermap of %s exported to %s" % (sName, sPath))
+
+	show("Settler map of %s exported to:\n%s\n\nThe current game already uses your edits: the AI reads the live plot values.\nFor all future games, review the file, then rename or copy it over Assets/Maps/Settler/%s.csv (the game does not load the _export file), and start a new game.\n\nA period change or this civilisation's activation reloads its map from that CSV." % (sName, sPath, sLoadedName))
 	
 def getSettlerValue(plot, *args, **kwargs):
 	iPlayer = kwargs.get('iPlayer', None)
@@ -94,10 +118,11 @@ def getSettlerValue(plot, *args, **kwargs):
 def exportWarMap(iPlayer):
 	sLocation = "WarMaps"
 	sName = getCivName(iPlayer)
+	sLoadedName = civ_name(civ(iPlayer))
 	valueFunction = getWarValue
 	sPath = writeMapCsv(sLocation, sName, valueFunction, iPlayer = iPlayer)
-	
-	show("Warmap of %s exported to %s" % (sName, sPath))
+
+	show("War map of %s exported to:\n%s\n\nThe current game already uses your edits: the AI reads the live plot values.\nFor all future games, review the file, then rename or copy it over Assets/Maps/War/%s.csv (the game does not load the _export file), and start a new game.\n\nA period change or this civilisation's activation reloads its map from that CSV." % (sName, sPath, sLoadedName))
 	
 def getWarValue(plot, *args, **kwargs):
 	iPlayer = kwargs.get('iPlayer', None)
@@ -113,7 +138,8 @@ def exportRegionMap():
 	valueFunction = getRegionValue
 	writeMapFile(sLocation, sName, valueFunction, sMapName = "tRegionMap")
 	
-	show("Regionmap exported")
+	sPath = os.path.normpath(IMAGE_LOCATION + "\\other\\RegionMap.txt")
+	show("Region map exported to:\n%s\n\nThe game loads Assets/Maps/Regions.csv; this export is a tuple map, so convert or copy the data into that file, then restart the game." % sPath)
 	
 def getRegionValue(plot, *args, **kwargs):
 
@@ -143,7 +169,7 @@ def exportAreaExport(lPlots, bWaterException, bPeakException):
 	try:
 		content = "rectangle = (%s,\t%s)\nexceptions = %s\nlist = %s" % (tTL, tBR, exceptions, lPlots)
 		file.write(content)
-		show("Area exported")
+		show("Area exported to:\n%s\n\nUse the rectangle/exceptions where the new area is defined (Areas.py), then restart the game." % file_path)
 	finally:
 		file.close()
 		
@@ -250,14 +276,19 @@ def writeMapFile(sFileLocaton, sName, valueFunction, *args, **kwargs):
 	finally:
 		file.close()
 
-def writeTRBLDictFile(sFileLocaton, sName, tSquare, sDictName, tExceptions = None, bIsDictionary = True, lExtraDictList = None):
+def writeTRBLDictFile(sFileLocaton, sName, tSquare, sDictName, tExceptions = None, bIsDictionary = True, lExtraDictList = None, sIdentifierName = None):
 	BL, TR = tSquare
-	
+
+	# Fresol: the dictionary key is not always the file name - a period core is filed
+	# under the period name but keyed by its iPeriod constant.
+	if sIdentifierName is None:
+		sIdentifierName = sName
+
 	sIdentifierText = ""
 	if bIsDictionary:
-		sIdentifier = "i" + sName
+		sIdentifier = "i" + sIdentifierName
 		# allign tabs
-		iTabs = (iLongestName - len(sName) - 1) // 4 + 1
+		iTabs = max(1, (iLongestName - len(sIdentifierName) - 1) // 4 + 1)
 		sIdentifierText = sIdentifier + " :" + iTabs*"\t"
 	
 	sFile = IMAGE_LOCATION + "\\" + sFileLocaton + "\\" + sName + ".txt"

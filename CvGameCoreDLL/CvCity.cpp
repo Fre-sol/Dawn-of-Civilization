@@ -356,7 +356,15 @@ void CvCity::init(int iID, PlayerTypes eOwner, int iX, int iY, bool bBumpUnits, 
 	{
 		for (iI = 0; iI < NUM_CITY_PLOTS_3; iI++)
 		{
-			if (!plotCity3(getX(), getY(), iI)->isWater() && plotCity3(getX(), getY(), iI)->getArea() != getArea())
+			// Fresol: the third ring runs off the map at its northern and southern edges
+			CvPlot* pThirdRingPlot = plotCity3(getX(), getY(), iI);
+
+			if (pThirdRingPlot == NULL)
+			{
+				continue;
+			}
+
+			if (!pThirdRingPlot->isWater() && pThirdRingPlot->getArea() != getArea())
 			{
 				changeExtraTradeRoutes(2);
 				break;
@@ -2283,34 +2291,39 @@ bool CvCity::canTrain(UnitTypes eUnit, bool bContinue, bool bTestVisible, bool b
 	// Leoreth - build settlers only in cities on the same continent as the capital until the discovery of Exploration
 	if (GC.getUnitInfo(eUnit).isFound())
 	{
-		CvPlot* pCapital = GET_PLAYER(getOwnerINLINE()).getCapitalCity()->plot();
+		// Fresol: a World Builder city has no capital until a palace is added, and this
+		// check needs one - getCapitalCity() returns NULL then.
+		CvCity* pCapitalCity = GET_PLAYER(getOwnerINLINE()).getCapitalCity();
 
-		int iCapitalRegion = GET_PLAYER(getOwnerINLINE()).getCapitalCity()->getRegionID();
-		int iRegion = getRegionID();
-
-		int iCapitalContinent = GET_PLAYER(getOwner()).getCapitalCity()->plot()->getContinentID();
-		int iCityContinent = plot()->getContinentID();
-
-		bool bException = false;
-
-		if ((iCapitalRegion == REGION_ANATOLIA || iCapitalRegion == REGION_GREECE) && (iCityContinent == 0 || iCityContinent == 1))
+		if (pCapitalCity != NULL)
 		{
-			bException = true;
-		}
-		else if ((iCapitalRegion == REGION_IBERIA && iRegion == REGION_MAGHREB) || (iCapitalRegion == REGION_MAGHREB && iRegion == REGION_IBERIA))
-		{
-			bException = true;
-		}
-		else if ((iCapitalContinent == 1 && iCityContinent == 2) || (iCapitalContinent == 2 && iCityContinent == 1)) // East Asia and Middle East
-		{
-			bException = true;
-		}
+			int iCapitalRegion = pCapitalCity->getRegionID();
+			int iRegion = getRegionID();
 
-		if (iCapitalContinent != iCityContinent && !bException)
-		{
-			if (!GET_TEAM(GET_PLAYER(getOwner()).getTeam()).isHasTech((TechTypes)EXPLORATION))
+			int iCapitalContinent = pCapitalCity->plot()->getContinentID();
+			int iCityContinent = plot()->getContinentID();
+
+			bool bException = false;
+
+			if ((iCapitalRegion == REGION_ANATOLIA || iCapitalRegion == REGION_GREECE) && (iCityContinent == 0 || iCityContinent == 1))
 			{
-				return false;
+				bException = true;
+			}
+			else if ((iCapitalRegion == REGION_IBERIA && iRegion == REGION_MAGHREB) || (iCapitalRegion == REGION_MAGHREB && iRegion == REGION_IBERIA))
+			{
+				bException = true;
+			}
+			else if ((iCapitalContinent == 1 && iCityContinent == 2) || (iCapitalContinent == 2 && iCityContinent == 1)) // East Asia and Middle East
+			{
+				bException = true;
+			}
+
+			if (iCapitalContinent != iCityContinent && !bException)
+			{
+				if (!GET_TEAM(GET_PLAYER(getOwner()).getTeam()).isHasTech((TechTypes)EXPLORATION))
+				{
+					return false;
+				}
 			}
 		}
 	}
@@ -2470,7 +2483,10 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 		int iNumWaterTiles = 0;
 		for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->isWater()) iNumWaterTiles++;
+			// Fresol: the city ring runs off the map at its northern and southern edges
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && pLoopPlot->isWater()) iNumWaterTiles++;
 		}
 
 		if (iNumWaterTiles < 20) return false;
@@ -2511,7 +2527,9 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 		bool bFound = false;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->getTerrainType() == TERRAIN_TUNDRA)
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && pLoopPlot->getTerrainType() == TERRAIN_TUNDRA)
 			{
 				bFound = true;
 				break;
@@ -2530,7 +2548,14 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 		int iNumDesertTiles = 0;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			switch (getCityIndexPlot(iI)->getTerrainType())
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot == NULL)
+			{
+				continue;
+			}
+
+			switch (pLoopPlot->getTerrainType())
 			{
 			case TERRAIN_DESERT:
 			case TERRAIN_SEMIDESERT:
@@ -2553,7 +2578,9 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 	{
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->isHills() || getCityIndexPlot(iI)->isMountain())
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && (pLoopPlot->isHills() || pLoopPlot->isMountain()))
 			{
 				return false;
 			}
@@ -2566,7 +2593,9 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 		bool bFound = false;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->getFeatureType() == FEATURE_OASIS)
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && pLoopPlot->getFeatureType() == FEATURE_OASIS)
 			{
 				bFound = true;
 				break;
@@ -2585,7 +2614,9 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 		bool bFound = false;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->isMountain())
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && pLoopPlot->isMountain())
 			{
 				bFound = true;
 				break;
@@ -4880,7 +4911,9 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bObsolet
 			int iNumHills = 0;
 			for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 			{
-				if (getCityIndexPlot(iI)->isHills())
+				CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+				if (pLoopPlot != NULL && pLoopPlot->isHills())
 				{
 					iNumHills++;
 				}
@@ -4901,7 +4934,9 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bObsolet
 			int iNumWater = 0;
 			for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 			{
-				if (getCityIndexPlot(iI)->isWater())
+				CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+				if (pLoopPlot != NULL && pLoopPlot->isWater())
 				{
 					iNumWater++;
 				}
@@ -4916,7 +4951,9 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bObsolet
 			int iNumPeaks = 0;
 			for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 			{
-				if (getCityIndexPlot(iI)->isMountain())
+				CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+				if (pLoopPlot != NULL && pLoopPlot->isMountain())
 				{
 					iNumPeaks++;
 				}
@@ -7131,7 +7168,9 @@ int CvCity::getAdditionalBaseGreatPeopleRateByBuilding(BuildingTypes eBuilding) 
 		{
 			for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 			{
-				if (getCityIndexPlot(iI)->isWater())
+				CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+				if (pLoopPlot != NULL && pLoopPlot->isWater())
 				{
 					iExtraRate += 1;
 				}
@@ -7141,7 +7180,9 @@ int CvCity::getAdditionalBaseGreatPeopleRateByBuilding(BuildingTypes eBuilding) 
 		{
 			for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 			{
-				if (getCityIndexPlot(iI)->isHills())
+				CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+				if (pLoopPlot != NULL && pLoopPlot->isHills())
 				{
 					iExtraRate += 1;
 				}
@@ -8486,7 +8527,9 @@ int CvCity::getAdditionalHealthByBuilding(BuildingTypes eBuilding, int& iGood, i
 		int iFloodPlainsCount = 0;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->getFeatureType() == FEATURE_FLOOD_PLAINS)
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && pLoopPlot->getFeatureType() == FEATURE_FLOOD_PLAINS)
 			{
 				iFloodPlainsCount += 1;
 			}
@@ -10240,7 +10283,9 @@ int CvCity::getAdditionalBaseYieldRateByBuilding(YieldTypes eIndex, BuildingType
 			{
 				for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 				{
-					if (getCityIndexPlot(iI)->isWater() && getCityIndexPlot(iI)->getImprovementType() != NO_IMPROVEMENT)
+					CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+					if (pLoopPlot != NULL && pLoopPlot->isWater() && pLoopPlot->getImprovementType() != NO_IMPROVEMENT)
 					{
 						iExtraRate += 2;
 					}
@@ -10254,7 +10299,9 @@ int CvCity::getAdditionalBaseYieldRateByBuilding(YieldTypes eIndex, BuildingType
 			{
 				for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 				{
-					if (getCityIndexPlot(iI)->isMountain())
+					CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+					if (pLoopPlot != NULL && pLoopPlot->isMountain())
 					{
 						iExtraRate += 2;
 					}
@@ -10267,7 +10314,9 @@ int CvCity::getAdditionalBaseYieldRateByBuilding(YieldTypes eIndex, BuildingType
 			{
 				for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 				{
-					if (getCityIndexPlot(iI)->getTerrainType() == TERRAIN_DESERT || getCityIndexPlot(iI)->getTerrainType() == TERRAIN_SEMIDESERT)
+					CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+					if (pLoopPlot != NULL && (pLoopPlot->getTerrainType() == TERRAIN_DESERT || pLoopPlot->getTerrainType() == TERRAIN_SEMIDESERT))
 					{
 						iExtraRate += 1;
 					}
@@ -11496,7 +11545,9 @@ int CvCity::getAdditionalBaseCommerceRateByBuildingImpl(CommerceTypes eIndex, Bu
 			{
 				for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 				{
-					if (getCityIndexPlot(iI)->isMountain())
+					CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+					if (pLoopPlot != NULL && pLoopPlot->isMountain())
 					{
 						iExtraRate += 2;
 					}
@@ -15030,7 +15081,12 @@ void CvCity::pushOrder(OrderTypes eOrder, int iData1, int iData2, bool bSave, bo
 	{
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			getCityIndexPlot(iI)->updateYield();
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL)
+			{
+				pLoopPlot->updateYield();
+			}
 		}
 	}
 
@@ -17414,7 +17470,11 @@ bool CvCity::isValidBuildingLocation(BuildingTypes eBuilding) const
 
 		if (!GC.getBuildingInfo(eBuilding).isRiver() || !plot()->isRiver())
 		{
-			if (!isCoastal(GC.getBuildingInfo(eBuilding).getMinAreaSize()))
+			// Fresol: a city on a pool the map crop cut off from the sea is a sea port
+			// even though its water area has stayed small, so the coastal buildings
+			// (harbour, lighthouse, customs house...) must be allowed.
+			if (!isCoastal(GC.getBuildingInfo(eBuilding).getMinAreaSize())
+			 && !plot()->isNextToCutOffSea())
 			{
 				return false;
 			}

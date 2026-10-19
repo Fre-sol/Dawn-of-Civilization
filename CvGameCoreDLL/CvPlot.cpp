@@ -6915,11 +6915,22 @@ void CvPlot::updateCityRoute(bool bUpdatePlotGroup)
 		eCityRoute = GET_PLAYER(getOwnerINLINE()).getBestRoute();
 
 		bool bRomanRoadAround = false;
-		for (int iI = std::max(0, getX_INLINE()-1); iI < std::min(getX_INLINE()+1, GC.getMapINLINE().getGridWidthINLINE())+1; iI++)
+		CvMap& kMap = GC.getMapINLINE();
+
+		// Fresol: the old upper bound was std::min(getX()+1, width) + 1, which walked one tile
+		// past the map on a non-wrapping axis - a city on the northern edge read plot(x, height)
+		// and crashed.  Keep the wrap step where the axis does wrap, stop at the last plot where
+		// it does not.  The lower bound was always safe: std::max(0, getY()-1).
+		const int iLastX = kMap.isWrapXINLINE() ? getX_INLINE()+1 : std::min(getX_INLINE()+1, kMap.getGridWidthINLINE()-1);
+		const int iLastY = kMap.isWrapYINLINE() ? getY_INLINE()+1 : std::min(getY_INLINE()+1, kMap.getGridHeightINLINE()-1);
+
+		for (int iI = std::max(0, getX_INLINE()-1); iI <= iLastX; iI++)
 		{
-			for (int iJ = std::max(0, getY_INLINE()-1); iJ < std::min(getY_INLINE()+1, GC.getMapINLINE().getGridHeightINLINE())+1; iJ++)
+			for (int iJ = std::max(0, getY_INLINE()-1); iJ <= iLastY; iJ++)
 			{
-				if (GC.getMap().plot(iI, iJ)->getRouteType() == (RouteTypes)GC.getInfoTypeForString("ROUTE_ROMAN_ROAD"))
+				CvPlot* pLoopPlot = kMap.plot(iI, iJ);
+
+				if (pLoopPlot != NULL && pLoopPlot->getRouteType() == (RouteTypes)GC.getInfoTypeForString("ROUTE_ROMAN_ROAD"))
 				{
 					bRomanRoadAround = true;
 					break;
@@ -8362,10 +8373,26 @@ void CvPlot::updatePlotGroup(PlayerTypes ePlayer, bool bRecalculate)
 	bool bEmpty;
 	int iI;
 
+	// Fresol: the eight neighbours plus the far ends of the virtual cut-off trade links.
+	CvPlot* apLinkedPlots[NUM_DIRECTION_TYPES + 8];
+	int iNumLinkedPlots = 0;
+
 	if (!(GC.getGameINLINE().isFinalInitialized()))
 	{
 		return;
 	}
+
+	for (iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
+	{
+		CvPlot* pLinkedPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+
+		if (pLinkedPlot != NULL)
+		{
+			apLinkedPlots[iNumLinkedPlots++] = pLinkedPlot;
+		}
+	}
+
+	iNumLinkedPlots += GC.getMapINLINE().getCutOffSeaTradeNeighbours(this, apLinkedPlots + iNumLinkedPlots);
 
 	pPlotGroup = getPlotGroup(ePlayer);
 
@@ -8379,19 +8406,16 @@ void CvPlot::updatePlotGroup(PlayerTypes ePlayer, bool bRecalculate)
 			{
 				bConnected = true;
 
-				for (iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
+				for (iI = 0; iI < iNumLinkedPlots; ++iI)
 				{
-					pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+					pAdjacentPlot = apLinkedPlots[iI];
 
-					if (pAdjacentPlot != NULL)
+					if (pAdjacentPlot->getPlotGroup(ePlayer) == pPlotGroup)
 					{
-						if (pAdjacentPlot->getPlotGroup(ePlayer) == pPlotGroup)
+						if (!isTradeNetworkConnected(pAdjacentPlot, GET_PLAYER(ePlayer).getTeam()))
 						{
-							if (!isTradeNetworkConnected(pAdjacentPlot, GET_PLAYER(ePlayer).getTeam()))
-							{
-								bConnected = false;
-								break;
-							}
+							bConnected = false;
+							break;
 						}
 					}
 				}
@@ -8413,12 +8437,11 @@ void CvPlot::updatePlotGroup(PlayerTypes ePlayer, bool bRecalculate)
 				if (isTradeNetwork(eTeam)
 					&& (pPlotGroup->countReachablePlots(ePlayer, this) == pPlotGroup->getLengthPlots() - 1))
 				{
-					for (iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
+					for (iI = 0; iI < iNumLinkedPlots; ++iI)
 					{
-						pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+						pAdjacentPlot = apLinkedPlots[iI];
 
-						if (pAdjacentPlot != NULL
-							&& pAdjacentPlot->getPlotGroup(ePlayer) == pPlotGroup
+						if (pAdjacentPlot->getPlotGroup(ePlayer) == pPlotGroup
 							&& pAdjacentPlot->isTradeNetwork(eTeam)
 							&& isTradeNetworkConnected(pAdjacentPlot, eTeam))
 						{
@@ -8448,31 +8471,28 @@ void CvPlot::updatePlotGroup(PlayerTypes ePlayer, bool bRecalculate)
 
 	if (isTradeNetwork(GET_PLAYER(ePlayer).getTeam()))
 	{
-		for (iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
+		for (iI = 0; iI < iNumLinkedPlots; ++iI)
 		{
-			pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+			pAdjacentPlot = apLinkedPlots[iI];
 
-			if (pAdjacentPlot != NULL)
+			pAdjacentPlotGroup = pAdjacentPlot->getPlotGroup(ePlayer);
+
+			if ((pAdjacentPlotGroup != NULL) && (pAdjacentPlotGroup != pPlotGroup))
 			{
-				pAdjacentPlotGroup = pAdjacentPlot->getPlotGroup(ePlayer);
-
-				if ((pAdjacentPlotGroup != NULL) && (pAdjacentPlotGroup != pPlotGroup))
+				if (isTradeNetworkConnected(pAdjacentPlot, GET_PLAYER(ePlayer).getTeam()))
 				{
-					if (isTradeNetworkConnected(pAdjacentPlot, GET_PLAYER(ePlayer).getTeam()))
+					if (pPlotGroup == NULL)
 					{
-						if (pPlotGroup == NULL)
-						{
-							pAdjacentPlotGroup->addPlot(this);
-							pPlotGroup = pAdjacentPlotGroup;
-							FAssertMsg(getPlotGroup(ePlayer) == pPlotGroup, "ePlayer's plot group is expected to equal pPlotGroup");
-						}
-						else
-						{
-							FAssertMsg(getPlotGroup(ePlayer) == pPlotGroup, "ePlayer's plot group is expected to equal pPlotGroup");
-							GC.getMapINLINE().combinePlotGroups(ePlayer, pPlotGroup, pAdjacentPlotGroup);
-							pPlotGroup = getPlotGroup(ePlayer);
-							FAssertMsg(pPlotGroup != NULL, "PlotGroup is not assigned a valid value");
-						}
+						pAdjacentPlotGroup->addPlot(this);
+						pPlotGroup = pAdjacentPlotGroup;
+						FAssertMsg(getPlotGroup(ePlayer) == pPlotGroup, "ePlayer's plot group is expected to equal pPlotGroup");
+					}
+					else
+					{
+						FAssertMsg(getPlotGroup(ePlayer) == pPlotGroup, "ePlayer's plot group is expected to equal pPlotGroup");
+						GC.getMapINLINE().combinePlotGroups(ePlayer, pPlotGroup, pAdjacentPlotGroup);
+						pPlotGroup = getPlotGroup(ePlayer);
+						FAssertMsg(pPlotGroup != NULL, "PlotGroup is not assigned a valid value");
 					}
 				}
 			}
@@ -12944,6 +12964,25 @@ bool CvPlot::isWideStraitCrossing(const CvPlot* pToPlot) const
 	}
 
 	return pSidePlot1->isWideStrait() && pSidePlot2->isWideStrait();
+}
+
+
+// Fresol: the city on the shore of a pool the 200x80 map crop cut off from the sea.  The pool
+// keeps its own small water area so that it is closed for ships and sea workers, so the usual
+// coastal tests against that area fail; a city here is still a sea port, though.
+bool CvPlot::isNextToCutOffSea() const
+{
+	for (int iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
+	{
+		CvPlot* pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+
+		if (pAdjacentPlot != NULL && GC.getMapINLINE().isCutOffSea(pAdjacentPlot->getX_INLINE(), pAdjacentPlot->getY_INLINE()))
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 

@@ -389,9 +389,11 @@ int CvArea::getNumTiles() const
 }
 
 
-bool CvArea::isLake() const							
+bool CvArea::isLake() const
 {
-	return (isWater() && (getNumTiles() <= GC.getLAKE_MAX_AREA_SIZE()));
+	// Fresol: a pool the map crop cut off from the sea is sea, not a lake, even though
+	// it has kept its own small area (see CvMap::isCutOffSeaArea).
+	return (isWater() && (getNumTiles() <= GC.getLAKE_MAX_AREA_SIZE()) && !GC.getMapINLINE().isCutOffSeaArea(getID()));
 }
 
 

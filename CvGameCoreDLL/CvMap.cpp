@@ -46,6 +46,8 @@ CvMap::CvMap()
 
 	m_pMapPlots = NULL;
 
+	m_iNumCutOffSeaAreas = 0;
+
 	reset(&defaultMapData);
 }
 
@@ -247,6 +249,8 @@ void CvMap::reset(CvMapInitData* pInitInfo)
 	}
 
 	m_areas.removeAll();
+
+	m_iNumCutOffSeaAreas = 0;
 }
 
 
@@ -263,6 +267,10 @@ void CvMap::setup()
 	gDLL->getFAStarIFace()->Initialize(&GC.getBorderFinder(), getGridWidthINLINE(), getGridHeightINLINE(), isWrapXINLINE(), isWrapYINLINE(), NULL, NULL, NULL, borderValid, NULL, NULL, NULL);
 	gDLL->getFAStarIFace()->Initialize(&GC.getAreaFinder(), getGridWidthINLINE(), getGridHeightINLINE(), isWrapXINLINE(), isWrapYINLINE(), NULL, NULL, NULL, areaValid, NULL, joinArea, NULL);
 	gDLL->getFAStarIFace()->Initialize(&GC.getPlotGroupFinder(), getGridWidthINLINE(), getGridHeightINLINE(), isWrapXINLINE(), isWrapYINLINE(), NULL, NULL, NULL, plotGroupValid, NULL, countPlotGroup, NULL);
+
+	// Fresol: on a load the plots are already there; on a fresh init they are not yet,
+	// and calculateAreas() fills this in later.
+	updateCutOffSeaAreas();
 }
 
 
@@ -1392,6 +1400,129 @@ void CvMap::rebuild(int iGridW, int iGridH, int iPrimeMeridian, int iEquator, in
 // Protected Functions...
 //////////////////////////////////////////////////////////////////////////
 
+// Fresol - start: water the 200x80 map crop cut off from the sea.
+// The crop removed the row that carried the White Sea's passage around the North Cape,
+// so on the map the pool is closed.  It is still sea, not a lake: the three tiles keep
+// their own small water area (so the game still treats the pool as closed for ships and
+// for the AI's sea workers), but CvArea::isLake() is overridden for them, and for trade
+// they join the ocean through the virtual links below.  The links carry trade only -
+// there is no passage for a ship.
+static const int aiCutOffSeaTiles[][2] = {
+	{119, 79},	// White Sea
+	{120, 78},
+	{121, 79},
+};
+
+static const int aiCutOffSeaTradeLink[][4] = {
+	{119, 79, 105, 79},
+	{121, 79, 105, 79},
+};
+
+#define NUM_CUT_OFF_SEA_TRADE_LINKS ((int)(sizeof(aiCutOffSeaTradeLink) / sizeof(aiCutOffSeaTradeLink[0])))
+#define NUM_CUT_OFF_SEA_TILES ((int)(sizeof(aiCutOffSeaTiles) / sizeof(aiCutOffSeaTiles[0])))
+
+bool CvMap::isCutOffSea(int iX, int iY) const
+{
+	for (int i = 0; i < NUM_CUT_OFF_SEA_TILES; ++i)
+	{
+		if (aiCutOffSeaTiles[i][0] == iX && aiCutOffSeaTiles[i][1] == iY)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+bool CvMap::isCutOffSeaArea(int iArea) const
+{
+	for (int i = 0; i < m_iNumCutOffSeaAreas; ++i)
+	{
+		if (m_aiCutOffSeaAreas[i] == iArea)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+// The far end of every virtual trade link touching pPlot, at most one per link.
+int CvMap::getCutOffSeaTradeNeighbours(const CvPlot* pPlot, CvPlot** apPlots) const
+{
+	int iCount = 0;
+
+	if (pPlot == NULL)
+	{
+		return 0;
+	}
+
+	const int iX = pPlot->getX_INLINE();
+	const int iY = pPlot->getY_INLINE();
+
+	for (int i = 0; i < NUM_CUT_OFF_SEA_TRADE_LINKS; ++i)
+	{
+		CvPlot* pPartner = NULL;
+
+		if (aiCutOffSeaTradeLink[i][0] == iX && aiCutOffSeaTradeLink[i][1] == iY)
+		{
+			pPartner = plotINLINE(aiCutOffSeaTradeLink[i][2], aiCutOffSeaTradeLink[i][3]);
+		}
+		else if (aiCutOffSeaTradeLink[i][2] == iX && aiCutOffSeaTradeLink[i][3] == iY)
+		{
+			pPartner = plotINLINE(aiCutOffSeaTradeLink[i][0], aiCutOffSeaTradeLink[i][1]);
+		}
+
+		if (pPartner != NULL)
+		{
+			apPlots[iCount++] = pPartner;
+		}
+	}
+
+	return iCount;
+}
+
+
+void CvMap::updateCutOffSeaAreas()
+{
+	m_iNumCutOffSeaAreas = 0;
+
+	if (m_pMapPlots == NULL)
+	{
+		return;
+	}
+
+	for (int i = 0; i < NUM_CUT_OFF_SEA_TILES; ++i)
+	{
+		CvPlot* pPlot = plotINLINE(aiCutOffSeaTiles[i][0], aiCutOffSeaTiles[i][1]);
+		if (pPlot == NULL || !pPlot->isWater())
+		{
+			continue;
+		}
+
+		const int iArea = pPlot->getArea();
+		bool bHave = false;
+
+		for (int j = 0; j < m_iNumCutOffSeaAreas; ++j)
+		{
+			if (m_aiCutOffSeaAreas[j] == iArea)
+			{
+				bHave = true;
+				break;
+			}
+		}
+
+		if (!bHave && m_iNumCutOffSeaAreas < (int)(sizeof(m_aiCutOffSeaAreas) / sizeof(m_aiCutOffSeaAreas[0])))
+		{
+			m_aiCutOffSeaAreas[m_iNumCutOffSeaAreas++] = iArea;
+		}
+	}
+}
+// Fresol - end
+
+
 void CvMap::calculateAreas()
 {
 	PROFILE("CvMap::calculateAreas");
@@ -1602,6 +1733,8 @@ void CvMap::calculateAreas()
 
 		pLoopPlot->setContinentArea(getArea(pLoopPlot->getArea())->getClosestAreaSize(40));
 	}
+
+	updateCutOffSeaAreas();
 }
 
 int CvMap::plotIndex(int iX, int iY) const

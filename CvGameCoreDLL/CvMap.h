@@ -126,6 +126,12 @@ public:
 	int getMapFractalFlags();																												// Exposed to Python
 	bool findWater(CvPlot* pPlot, int iRange, bool bFreshWater);										// Exposed to Python
 
+	// Fresol: the water bodies the map crop cut off from the sea
+	bool isCutOffSea(int iX, int iY) const;
+	bool isCutOffSeaArea(int iArea) const;
+	int getCutOffSeaTradeNeighbours(const CvPlot* pPlot, CvPlot** apPlots) const;
+	void updateCutOffSeaAreas();
+
 	DllExport bool isPlot(int iX, int iY) const;																		// Exposed to Python
 #ifdef _USRDLL
 	inline int isPlotINLINE(int iX, int iY) const
@@ -303,6 +309,10 @@ protected:
 	int* m_paiNumBonusOnLand;
 
 	CvPlot* m_pMapPlots;
+
+	// Fresol: area ids of the cut-off water bodies, derived from the map (not serialized)
+	int m_aiCutOffSeaAreas[8];
+	int m_iNumCutOffSeaAreas;
 
 	FFreeListTrashArray<CvArea> m_areas;
 

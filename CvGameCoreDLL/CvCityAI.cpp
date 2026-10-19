@@ -10666,7 +10666,10 @@ int CvCityAI::AI_buildingWeight(BuildingTypes eBuilding) const
 		int iFloodPlainsCount = 0;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->getFeatureType() == FEATURE_FLOOD_PLAINS)
+			// Fresol: the city ring runs off the map at its northern and southern edges
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && pLoopPlot->getFeatureType() == FEATURE_FLOOD_PLAINS)
 			{
 				iFloodPlainsCount += 1;
 			}
@@ -10696,7 +10699,9 @@ int CvCityAI::AI_buildingWeight(BuildingTypes eBuilding) const
 		int iPeakCount = 0;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->isMountain())
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && pLoopPlot->isMountain())
 			{
 				iPeakCount += 1;
 			}
@@ -10712,7 +10717,9 @@ int CvCityAI::AI_buildingWeight(BuildingTypes eBuilding) const
 		int iDesertCount = 0;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->getTerrainType() == TERRAIN_DESERT || getCityIndexPlot(iI)->getTerrainType() == TERRAIN_SEMIDESERT)
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && (pLoopPlot->getTerrainType() == TERRAIN_DESERT || pLoopPlot->getTerrainType() == TERRAIN_SEMIDESERT))
 			{
 				iDesertCount += 1;
 			}
@@ -10728,7 +10735,9 @@ int CvCityAI::AI_buildingWeight(BuildingTypes eBuilding) const
 		int iHillCount = 0;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->isHills())
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && pLoopPlot->isHills())
 			{
 				iHillCount += 1;
 			}
@@ -10744,7 +10753,9 @@ int CvCityAI::AI_buildingWeight(BuildingTypes eBuilding) const
 		int iWaterCount = 0;
 		for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
-			if (getCityIndexPlot(iI)->isWater())
+			CvPlot* pLoopPlot = getCityIndexPlot(iI);
+
+			if (pLoopPlot != NULL && pLoopPlot->isWater())
 			{
 				iWaterCount += 1;
 			}

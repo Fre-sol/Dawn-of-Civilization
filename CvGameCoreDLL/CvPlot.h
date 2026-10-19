@@ -629,6 +629,7 @@ public:
 	static int inlandStraitCrossingCost(FeatureTypes eFeature); // Fresol: movement points a crossing costs, or -1 for the whole turn
 	bool isStraitCrossing(const CvPlot* pToPlot) const; // Fresol
 	bool isLakeStraitCrossing(const CvPlot* pToPlot) const; // Fresol
+	bool isNextToCutOffSea() const; // Fresol: on the shore of a pool the map crop cut off
 	bool isWideStraitCrossing(const CvPlot* pToPlot) const; // Fresol
 	static bool isCanalEdgeAllowed(const CvPlot* pCity, const CvPlot* pWater); // Fresol: a city or fort is a harbour on its main water side only
 

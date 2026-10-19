@@ -141,6 +141,51 @@ int CvPlotGroup::countReachablePlots(PlayerTypes ePlayer, CvPlot* pBlockedPlot)
 			s_aiPlotGroupSeen[iIndex] = s_iPlotGroupStamp;
 			s_apPlotGroupStack.push_back(pAdjacentPlot);
 		}
+
+		// Fresol: the virtual trade links across the map crop, walked exactly like a neighbour
+		CvPlot* apExtra[4];
+		const int iNumExtra = kMap.getCutOffSeaTradeNeighbours(pPlot, apExtra);
+
+		for (int iE = 0; iE < iNumExtra; ++iE)
+		{
+			CvPlot* pAdjacentPlot = apExtra[iE];
+
+			if (pAdjacentPlot == NULL || pAdjacentPlot == pBlockedPlot)
+			{
+				continue;
+			}
+
+			if (pAdjacentPlot->getPlotGroup(ePlayer) != this)
+			{
+				continue;
+			}
+
+			const int iIndex = kMap.plotNumINLINE(pAdjacentPlot->getX_INLINE(), pAdjacentPlot->getY_INLINE());
+
+			if (s_aiPlotGroupSeen[iIndex] == s_iPlotGroupStamp)
+			{
+				continue;
+			}
+
+			if (s_aiPlotGroupTradeNetStamp[iIndex] != s_iPlotGroupStamp)
+			{
+				s_abPlotGroupTradeNet[iIndex] = pAdjacentPlot->isTradeNetwork(eTeam) ? 1 : 0;
+				s_aiPlotGroupTradeNetStamp[iIndex] = s_iPlotGroupStamp;
+			}
+
+			if (!s_abPlotGroupTradeNet[iIndex])
+			{
+				continue;
+			}
+
+			if (!pAdjacentPlot->isTradeNetworkConnected(pPlot, eTeam))
+			{
+				continue;
+			}
+
+			s_aiPlotGroupSeen[iIndex] = s_iPlotGroupStamp;
+			s_apPlotGroupStack.push_back(pAdjacentPlot);
+		}
 	}
 
 	return iCount;
@@ -255,6 +300,52 @@ static void computeRebuildComponents(PlayerTypes eOwner, CLinkList<XYCoords>& me
 			if (!pPlot->isTradeNetworkConnected(pAdjacentPlot, eTeam))
 			{
 				continue;		// the link the add loop checks, in the same direction
+			}
+
+			const int iRoot = plotGroupFindRoot(aiParent, i);
+			const int iAdjacentRoot = plotGroupFindRoot(aiParent, iAdjacent);
+
+			if (iRoot != iAdjacentRoot)
+			{
+				aiParent[iRoot] = iAdjacentRoot;
+			}
+		}
+
+		// Fresol: the virtual trade links across the map crop, by the same rule
+		CvPlot* apExtra[4];
+		const int iNumExtra = kMap.getCutOffSeaTradeNeighbours(pPlot, apExtra);
+
+		for (int iE = 0; iE < iNumExtra; ++iE)
+		{
+			CvPlot* pAdjacentPlot = apExtra[iE];
+
+			if (pAdjacentPlot == NULL)
+			{
+				continue;
+			}
+
+			const int iAdjacentIndex = kMap.plotNumINLINE(pAdjacentPlot->getX_INLINE(), pAdjacentPlot->getY_INLINE());
+
+			if (s_aiPlotGroupMemberMark[iAdjacentIndex] != s_iPlotGroupMemberStamp)
+			{
+				continue;
+			}
+
+			const int iAdjacent = s_aiPlotGroupMemberPos[iAdjacentIndex];
+
+			if (iAdjacent >= i)
+			{
+				continue;
+			}
+
+			if (!abInNetwork[iAdjacent])
+			{
+				continue;
+			}
+
+			if (!pPlot->isTradeNetworkConnected(pAdjacentPlot, eTeam))
+			{
+				continue;
 			}
 
 			const int iRoot = plotGroupFindRoot(aiParent, i);

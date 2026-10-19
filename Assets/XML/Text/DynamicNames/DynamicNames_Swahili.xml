@@ -42,14 +42,6 @@
 		<Spanish>%s1 Sultanate</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_CIV_SWAHILI_DEFAULT</Tag>
-		<English>%s1 Sultanate</English>
-		<French>%s1 Sultanate</French>
-		<German>%s1 Sultanate</German>
-		<Italian>%s1 Sultanate</Italian>
-		<Spanish>%s1 Sultanate</Spanish>
-	</TEXT>
-	<TEXT>
 		<Tag>TXT_KEY_CIV_SWAHILI_REPUBLIC</Tag>
 		<English>United Republic of %s1</English>
 		<French>United Republic of %s1</French>

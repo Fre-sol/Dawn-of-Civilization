@@ -490,18 +490,6 @@
 		</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_LEADER_KANGXI</Tag>
-		<English>Kangxi</English>
-		<French>
-			<Text>Kangxi</Text>
-			<Gender>Male</Gender>
-			<Plural>0</Plural>
-		</French>
-		<German>Kangxi</German>
-		<Italian>Kangxi</Italian>
-		<Spanish>Kangxi</Spanish>
-	</TEXT>
-	<TEXT>
 		<Tag>TXT_KEY_LEADER_KAMMU</Tag>
 		<English>Kammu</English>
 		<French>

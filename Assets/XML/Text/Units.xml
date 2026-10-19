@@ -103,11 +103,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_NUCLEAR_SUBMARINE_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] can carry one [COLOR_UNIT_TEXT]Scout[COLOR_REVERT], [COLOR_UNIT_TEXT]Explorer[COLOR_REVERT], [COLOR_UNIT_TEXT]Missionary[COLOR_REVERT], [COLOR_UNIT_TEXT]Spy[COLOR_REVERT] or [COLOR_UNIT_TEXT]Great Person[COLOR_REVERT], has an attack bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] units, can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, is able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except the [COLOR_UNIT_TEXT]Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Attack Submarine[COLOR_REVERT] units.</English>
-		<French>[COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] can carry one [COLOR_UNIT_TEXT]Scout[COLOR_REVERT], [COLOR_UNIT_TEXT]Explorer[COLOR_REVERT], [COLOR_UNIT_TEXT]Missionary[COLOR_REVERT], [COLOR_UNIT_TEXT]Spy[COLOR_REVERT] or [COLOR_UNIT_TEXT]Great Person[COLOR_REVERT], has an attack bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] units, can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, is able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except the [COLOR_UNIT_TEXT]Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Attack Submarine[COLOR_REVERT] units.</French>
-		<German>[COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] can carry one [COLOR_UNIT_TEXT]Scout[COLOR_REVERT], [COLOR_UNIT_TEXT]Explorer[COLOR_REVERT], [COLOR_UNIT_TEXT]Missionary[COLOR_REVERT], [COLOR_UNIT_TEXT]Spy[COLOR_REVERT] or [COLOR_UNIT_TEXT]Great Person[COLOR_REVERT], has an attack bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] units, can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, is able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except the [COLOR_UNIT_TEXT]Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Attack Submarine[COLOR_REVERT] units.</German>
-		<Italian>[COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] can carry one [COLOR_UNIT_TEXT]Scout[COLOR_REVERT], [COLOR_UNIT_TEXT]Explorer[COLOR_REVERT], [COLOR_UNIT_TEXT]Missionary[COLOR_REVERT], [COLOR_UNIT_TEXT]Spy[COLOR_REVERT] or [COLOR_UNIT_TEXT]Great Person[COLOR_REVERT], has an attack bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] units, can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, is able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except the [COLOR_UNIT_TEXT]Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Attack Submarine[COLOR_REVERT] units.</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] can carry one [COLOR_UNIT_TEXT]Scout[COLOR_REVERT], [COLOR_UNIT_TEXT]Explorer[COLOR_REVERT], [COLOR_UNIT_TEXT]Missionary[COLOR_REVERT], [COLOR_UNIT_TEXT]Spy[COLOR_REVERT] or [COLOR_UNIT_TEXT]Great Person[COLOR_REVERT], has an attack bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] units, can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, is able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except the [COLOR_UNIT_TEXT]Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Attack Submarine[COLOR_REVERT] units.</Spanish>
+		<English>[COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] can carry one [COLOR_UNIT_TEXT]Scout[COLOR_REVERT], [COLOR_UNIT_TEXT]Explorer[COLOR_REVERT], [COLOR_UNIT_TEXT]Missionary[COLOR_REVERT], [COLOR_UNIT_TEXT]Spy[COLOR_REVERT] or [COLOR_UNIT_TEXT]Great Person[COLOR_REVERT], have an attack bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] units, can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, are able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except the [COLOR_UNIT_TEXT]Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units.</English>
+		<French>[COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] can carry one [COLOR_UNIT_TEXT]Scout[COLOR_REVERT], [COLOR_UNIT_TEXT]Explorer[COLOR_REVERT], [COLOR_UNIT_TEXT]Missionary[COLOR_REVERT], [COLOR_UNIT_TEXT]Spy[COLOR_REVERT] or [COLOR_UNIT_TEXT]Great Person[COLOR_REVERT], have an attack bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] units, can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, are able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except the [COLOR_UNIT_TEXT]Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units.</French>
+		<German>[COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] can carry one [COLOR_UNIT_TEXT]Scout[COLOR_REVERT], [COLOR_UNIT_TEXT]Explorer[COLOR_REVERT], [COLOR_UNIT_TEXT]Missionary[COLOR_REVERT], [COLOR_UNIT_TEXT]Spy[COLOR_REVERT] or [COLOR_UNIT_TEXT]Great Person[COLOR_REVERT], have an attack bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] units, can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, are able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except the [COLOR_UNIT_TEXT]Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units.</German>
+		<Italian>[COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] can carry one [COLOR_UNIT_TEXT]Scout[COLOR_REVERT], [COLOR_UNIT_TEXT]Explorer[COLOR_REVERT], [COLOR_UNIT_TEXT]Missionary[COLOR_REVERT], [COLOR_UNIT_TEXT]Spy[COLOR_REVERT] or [COLOR_UNIT_TEXT]Great Person[COLOR_REVERT], have an attack bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] units, can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, are able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except the [COLOR_UNIT_TEXT]Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units.</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] can carry one [COLOR_UNIT_TEXT]Scout[COLOR_REVERT], [COLOR_UNIT_TEXT]Explorer[COLOR_REVERT], [COLOR_UNIT_TEXT]Missionary[COLOR_REVERT], [COLOR_UNIT_TEXT]Spy[COLOR_REVERT] or [COLOR_UNIT_TEXT]Great Person[COLOR_REVERT], have an attack bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] units, can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, are able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except the [COLOR_UNIT_TEXT]Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_AT_INFANTRY_STRATEGY</Tag>
@@ -159,11 +159,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_BATTLESHIP_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Battleships[COLOR_REVERT] can bombard city defenses and causes collateral damage.</English>
-		<French>[COLOR_UNIT_TEXT]Battleships[COLOR_REVERT] can bombard city defenses and causes collateral damage.</French>
-		<German>[COLOR_UNIT_TEXT]Battleships[COLOR_REVERT] can bombard city defenses and causes collateral damage.</German>
-		<Italian>[COLOR_UNIT_TEXT]Battleships[COLOR_REVERT] can bombard city defenses and causes collateral damage.</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Battleships[COLOR_REVERT] can bombard city defenses and causes collateral damage.</Spanish>
+		<English>[COLOR_UNIT_TEXT]Battleships[COLOR_REVERT] can bombard city defenses and cause collateral damage.</English>
+		<French>[COLOR_UNIT_TEXT]Battleships[COLOR_REVERT] can bombard city defenses and cause collateral damage.</French>
+		<German>[COLOR_UNIT_TEXT]Battleships[COLOR_REVERT] can bombard city defenses and cause collateral damage.</German>
+		<Italian>[COLOR_UNIT_TEXT]Battleships[COLOR_REVERT] can bombard city defenses and cause collateral damage.</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Battleships[COLOR_REVERT] can bombard city defenses and cause collateral damage.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_BABYLONIAN_ASHARITTU_BOWMAN_STRATEGY</Tag>
@@ -231,11 +231,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_BYZANTINE_CATAPHRACT_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]Cataphract[COLOR_REVERT], the Byzantine replacement for the the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], requires the [COLOR_TECH_TEXT]Nobility[COLOR_REVERT] technology, doesn't require the [COLOR_TECH_TEXT]Feudalism[COLOR_REVERT] technology and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion.</English>
-		<French>The [COLOR_UNIT_TEXT]Cataphract[COLOR_REVERT], the Byzantine replacement for the the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], requires the [COLOR_TECH_TEXT]Nobility[COLOR_REVERT] technology, doesn't require the [COLOR_TECH_TEXT]Feudalism[COLOR_REVERT] technology and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion.</French>
-		<German>The [COLOR_UNIT_TEXT]Cataphract[COLOR_REVERT], the Byzantine replacement for the the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], requires the [COLOR_TECH_TEXT]Nobility[COLOR_REVERT] technology, doesn't require the [COLOR_TECH_TEXT]Feudalism[COLOR_REVERT] technology and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion.</German>
-		<Italian>The [COLOR_UNIT_TEXT]Cataphract[COLOR_REVERT], the Byzantine replacement for the the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], requires the [COLOR_TECH_TEXT]Nobility[COLOR_REVERT] technology, doesn't require the [COLOR_TECH_TEXT]Feudalism[COLOR_REVERT] technology and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion.</Italian>
-		<Spanish>The [COLOR_UNIT_TEXT]Cataphract[COLOR_REVERT], the Byzantine replacement for the the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], requires the [COLOR_TECH_TEXT]Nobility[COLOR_REVERT] technology, doesn't require the [COLOR_TECH_TEXT]Feudalism[COLOR_REVERT] technology and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion.</Spanish>
+		<English>The [COLOR_UNIT_TEXT]Cataphract[COLOR_REVERT], the Byzantine replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], requires the [COLOR_TECH_TEXT]Nobility[COLOR_REVERT] technology, doesn't require the [COLOR_TECH_TEXT]Feudalism[COLOR_REVERT] technology and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion.</English>
+		<French>The [COLOR_UNIT_TEXT]Cataphract[COLOR_REVERT], the Byzantine replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], requires the [COLOR_TECH_TEXT]Nobility[COLOR_REVERT] technology, doesn't require the [COLOR_TECH_TEXT]Feudalism[COLOR_REVERT] technology and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion.</French>
+		<German>The [COLOR_UNIT_TEXT]Cataphract[COLOR_REVERT], the Byzantine replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], requires the [COLOR_TECH_TEXT]Nobility[COLOR_REVERT] technology, doesn't require the [COLOR_TECH_TEXT]Feudalism[COLOR_REVERT] technology and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Cataphract[COLOR_REVERT], the Byzantine replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], requires the [COLOR_TECH_TEXT]Nobility[COLOR_REVERT] technology, doesn't require the [COLOR_TECH_TEXT]Feudalism[COLOR_REVERT] technology and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Cataphract[COLOR_REVERT], the Byzantine replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], requires the [COLOR_TECH_TEXT]Nobility[COLOR_REVERT] technology, doesn't require the [COLOR_TECH_TEXT]Feudalism[COLOR_REVERT] technology and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_CAN_DIPLOMATIC_MISSION</Tag>
@@ -347,11 +347,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_CAVALRY_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Cavalry[COLOR_REVERT] don't receive defensive bonuses, can withdraw from combat, have a combat bonus on open terrain, has a combat bonus against [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units and has a flank attack against [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], [COLOR_UNIT_TEXT]Trebuchet[COLOR_REVERT], [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], [COLOR_UNIT_TEXT]Atillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units.</English>
-		<French>[COLOR_UNIT_TEXT]Cavalry[COLOR_REVERT] don't receive defensive bonuses, can withdraw from combat, have a combat bonus on open terrain, has a combat bonus against [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units and has a flank attack against [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], [COLOR_UNIT_TEXT]Trebuchet[COLOR_REVERT], [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], [COLOR_UNIT_TEXT]Atillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units.</French>
-		<German>[COLOR_UNIT_TEXT]Cavalry[COLOR_REVERT] don't receive defensive bonuses, can withdraw from combat, have a combat bonus on open terrain, has a combat bonus against [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units and has a flank attack against [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], [COLOR_UNIT_TEXT]Trebuchet[COLOR_REVERT], [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], [COLOR_UNIT_TEXT]Atillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units.</German>
-		<Italian>[COLOR_UNIT_TEXT]Cavalry[COLOR_REVERT] don't receive defensive bonuses, can withdraw from combat, have a combat bonus on open terrain, has a combat bonus against [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units and has a flank attack against [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], [COLOR_UNIT_TEXT]Trebuchet[COLOR_REVERT], [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], [COLOR_UNIT_TEXT]Atillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units.</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Cavalry[COLOR_REVERT] don't receive defensive bonuses, can withdraw from combat, have a combat bonus on open terrain, has a combat bonus against [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units and has a flank attack against [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], [COLOR_UNIT_TEXT]Trebuchet[COLOR_REVERT], [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], [COLOR_UNIT_TEXT]Atillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units.</Spanish>
+		<English>[COLOR_UNIT_TEXT]Cavalry[COLOR_REVERT] don't receive defensive bonuses, can withdraw from combat, have a combat bonus on open terrain and against [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units and have a flank attack against [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], [COLOR_UNIT_TEXT]Trebuchet[COLOR_REVERT], [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units.</English>
+		<French>[COLOR_UNIT_TEXT]Cavalry[COLOR_REVERT] don't receive defensive bonuses, can withdraw from combat, have a combat bonus on open terrain and against [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units and have a flank attack against [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], [COLOR_UNIT_TEXT]Trebuchet[COLOR_REVERT], [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units.</French>
+		<German>[COLOR_UNIT_TEXT]Cavalry[COLOR_REVERT] don't receive defensive bonuses, can withdraw from combat, have a combat bonus on open terrain and against [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units and have a flank attack against [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], [COLOR_UNIT_TEXT]Trebuchet[COLOR_REVERT], [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units.</German>
+		<Italian>[COLOR_UNIT_TEXT]Cavalry[COLOR_REVERT] don't receive defensive bonuses, can withdraw from combat, have a combat bonus on open terrain and against [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units and have a flank attack against [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], [COLOR_UNIT_TEXT]Trebuchet[COLOR_REVERT], [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units.</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Cavalry[COLOR_REVERT] don't receive defensive bonuses, can withdraw from combat, have a combat bonus on open terrain and against [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units and have a flank attack against [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], [COLOR_UNIT_TEXT]Trebuchet[COLOR_REVERT], [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], [COLOR_UNIT_TEXT]Artillery[COLOR_REVERT] and [COLOR_UNIT_TEXT]Howitzer[COLOR_REVERT] units.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_CHARIOT_STRATEGY</Tag>
@@ -459,19 +459,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_EGYPTIAN_WARCHARIOT_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]War Chariot[COLOR_REVERT], the Egyptian replacement for the [COLOR_UNIT_TEXT]Chariot[COLOR_REVERT], has an additional strength point, is immune to first strikes and begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] promotion.</English>
-		<French>The [COLOR_UNIT_TEXT]War Chariot[COLOR_REVERT], the Egyptian replacement for the [COLOR_UNIT_TEXT]Chariot[COLOR_REVERT], has an additional strength point, is immune to first strikes and begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] promotion.</French>
-		<German>The [COLOR_UNIT_TEXT]War Chariot[COLOR_REVERT], the Egyptian replacement for the [COLOR_UNIT_TEXT]Chariot[COLOR_REVERT], has an additional strength point, is immune to first strikes and begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] promotion.</German>
-		<Italian>The [COLOR_UNIT_TEXT]War Chariot[COLOR_REVERT], the Egyptian replacement for the [COLOR_UNIT_TEXT]Chariot[COLOR_REVERT], has an additional strength point, is immune to first strikes and begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] promotion.</Italian>
-		<Spanish>The [COLOR_UNIT_TEXT]War Chariot[COLOR_REVERT], the Egyptian replacement for the [COLOR_UNIT_TEXT]Chariot[COLOR_REVERT], has an additional strength point, is immune to first strikes and begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] promotion.</Spanish>
+		<English>The [COLOR_UNIT_TEXT]War Chariot[COLOR_REVERT], the Egyptian replacement for the [COLOR_UNIT_TEXT]Chariot[COLOR_REVERT], is immune to first strikes and begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] promotion.</English>
+		<French>The [COLOR_UNIT_TEXT]War Chariot[COLOR_REVERT], the Egyptian replacement for the [COLOR_UNIT_TEXT]Chariot[COLOR_REVERT], is immune to first strikes and begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] promotion.</French>
+		<German>The [COLOR_UNIT_TEXT]War Chariot[COLOR_REVERT], the Egyptian replacement for the [COLOR_UNIT_TEXT]Chariot[COLOR_REVERT], is immune to first strikes and begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] promotion.</German>
+		<Italian>The [COLOR_UNIT_TEXT]War Chariot[COLOR_REVERT], the Egyptian replacement for the [COLOR_UNIT_TEXT]Chariot[COLOR_REVERT], is immune to first strikes and begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] promotion.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]War Chariot[COLOR_REVERT], the Egyptian replacement for the [COLOR_UNIT_TEXT]Chariot[COLOR_REVERT], is immune to first strikes and begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] promotion.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_DESTROYER_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] can see the [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, intercept air units and bombard city defenses and have an combat bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Torpedo Boat[COLOR_REVERT] units.</English>
-		<French>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] can see the [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, intercept air units and bombard city defenses and have an combat bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Torpedo Boat[COLOR_REVERT] units.</French>
-		<German>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] can see the [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, intercept air units and bombard city defenses and have an combat bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Torpedo Boat[COLOR_REVERT] units.</German>
-		<Italian>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] can see the [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, intercept air units and bombard city defenses and have an combat bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Torpedo Boat[COLOR_REVERT] units.</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] can see the [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, intercept air units and bombard city defenses and have an combat bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Torpedo Boat[COLOR_REVERT] units.</Spanish>
+		<English>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] can see the [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, intercept air units and bombard city defenses and have a combat bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Torpedo Boat[COLOR_REVERT] units.</English>
+		<French>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] can see the [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, intercept air units and bombard city defenses and have a combat bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Torpedo Boat[COLOR_REVERT] units.</French>
+		<German>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] can see the [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, intercept air units and bombard city defenses and have a combat bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Torpedo Boat[COLOR_REVERT] units.</German>
+		<Italian>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] can see the [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, intercept air units and bombard city defenses and have a combat bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Torpedo Boat[COLOR_REVERT] units.</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] can see the [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, intercept air units and bombard city defenses and have a combat bonus against [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Torpedo Boat[COLOR_REVERT] units.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_ENGLISH_REDCOAT_STRATEGY</Tag>
@@ -607,11 +607,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GREAT_PROPHET_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Great Prophets[COLOR_REVERT] can begin golden ages, discover new technologies, settle in a city as a [COLOR_HIGHLIGHT_TEXT]Great Prophet[COLOR_REVERT] specialist and can construct [COLOR_BUILDING_TEXT]All Saints' Church[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Church of the Holy Sepulchre[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Hagia Sophia[COLOR_REVERT],  the [COLOR_BUILDING_TEXT]Masjid al-Haram[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Mahabodhi[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Kashi Vishwanath[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Kong Lin[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Dai Miao[COLOR_REVERT] and the [COLOR_BUILDING_TEXT]Adur Farnbag[COLOR_REVERT] World Wonders and can perform a Great Mission.</English>
-		<French>[COLOR_UNIT_TEXT]Great Prophets[COLOR_REVERT] can begin golden ages, discover new technologies, settle in a city as a [COLOR_HIGHLIGHT_TEXT]Great Prophet[COLOR_REVERT] specialist and can construct [COLOR_BUILDING_TEXT]All Saints' Church[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Church of the Holy Sepulchre[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Hagia Sophia[COLOR_REVERT],  the [COLOR_BUILDING_TEXT]Masjid al-Haram[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Mahabodhi[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Kashi Vishwanath[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Kong Lin[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Dai Miao[COLOR_REVERT] and the [COLOR_BUILDING_TEXT]Adur Farnbag[COLOR_REVERT] World Wonders and can perform a Great Mission.</French>
-		<German>[COLOR_UNIT_TEXT]Great Prophets[COLOR_REVERT] can begin golden ages, discover new technologies, settle in a city as a [COLOR_HIGHLIGHT_TEXT]Great Prophet[COLOR_REVERT] specialist and can construct [COLOR_BUILDING_TEXT]All Saints' Church[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Church of the Holy Sepulchre[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Hagia Sophia[COLOR_REVERT],  the [COLOR_BUILDING_TEXT]Masjid al-Haram[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Mahabodhi[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Kashi Vishwanath[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Kong Lin[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Dai Miao[COLOR_REVERT] and the [COLOR_BUILDING_TEXT]Adur Farnbag[COLOR_REVERT] World Wonders and can perform a Great Mission.</German>
-		<Italian>[COLOR_UNIT_TEXT]Great Prophets[COLOR_REVERT] can begin golden ages, discover new technologies, settle in a city as a [COLOR_HIGHLIGHT_TEXT]Great Prophet[COLOR_REVERT] specialist and can construct [COLOR_BUILDING_TEXT]All Saints' Church[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Church of the Holy Sepulchre[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Hagia Sophia[COLOR_REVERT],  the [COLOR_BUILDING_TEXT]Masjid al-Haram[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Mahabodhi[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Kashi Vishwanath[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Kong Lin[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Dai Miao[COLOR_REVERT] and the [COLOR_BUILDING_TEXT]Adur Farnbag[COLOR_REVERT] World Wonders and can perform a Great Mission.</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Great Prophets[COLOR_REVERT] can begin golden ages, discover new technologies, settle in a city as a [COLOR_HIGHLIGHT_TEXT]Great Prophet[COLOR_REVERT] specialist and can construct [COLOR_BUILDING_TEXT]All Saints' Church[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Church of the Holy Sepulchre[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Hagia Sophia[COLOR_REVERT],  the [COLOR_BUILDING_TEXT]Masjid al-Haram[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Mahabodhi[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Kashi Vishwanath[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Kong Lin[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Dai Miao[COLOR_REVERT] and the [COLOR_BUILDING_TEXT]Adur Farnbag[COLOR_REVERT] World Wonders and can perform a Great Mission.</Spanish>
+		<English>[COLOR_UNIT_TEXT]Great Prophets[COLOR_REVERT] can begin golden ages, discover new technologies, settle in a city as a [COLOR_HIGHLIGHT_TEXT]Great Prophet[COLOR_REVERT] specialist and can construct the [COLOR_BUILDING_TEXT]Temple of Solomon[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Church of the Anastasis[COLOR_REVERT], [COLOR_BUILDING_TEXT]Saint Peter's Basilica[COLOR_REVERT], [COLOR_BUILDING_TEXT]All Saints' Church[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Masjid al-Haram[COLOR_REVERT], [COLOR_BUILDING_TEXT]Vishwanath[COLOR_REVERT], [COLOR_BUILDING_TEXT]Palitana[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Mahabodhi[COLOR_REVERT], [COLOR_BUILDING_TEXT]San Kong[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Temple of Heaven[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Adur Farnbag[COLOR_REVERT] World Wonders and can perform a Great Mission.</English>
+		<French>[COLOR_UNIT_TEXT]Great Prophets[COLOR_REVERT] can begin golden ages, discover new technologies, settle in a city as a [COLOR_HIGHLIGHT_TEXT]Great Prophet[COLOR_REVERT] specialist and can construct the [COLOR_BUILDING_TEXT]Temple of Solomon[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Church of the Anastasis[COLOR_REVERT], [COLOR_BUILDING_TEXT]Saint Peter's Basilica[COLOR_REVERT], [COLOR_BUILDING_TEXT]All Saints' Church[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Masjid al-Haram[COLOR_REVERT], [COLOR_BUILDING_TEXT]Vishwanath[COLOR_REVERT], [COLOR_BUILDING_TEXT]Palitana[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Mahabodhi[COLOR_REVERT], [COLOR_BUILDING_TEXT]San Kong[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Temple of Heaven[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Adur Farnbag[COLOR_REVERT] World Wonders and can perform a Great Mission.</French>
+		<German>[COLOR_UNIT_TEXT]Great Prophets[COLOR_REVERT] can begin golden ages, discover new technologies, settle in a city as a [COLOR_HIGHLIGHT_TEXT]Great Prophet[COLOR_REVERT] specialist and can construct the [COLOR_BUILDING_TEXT]Temple of Solomon[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Church of the Anastasis[COLOR_REVERT], [COLOR_BUILDING_TEXT]Saint Peter's Basilica[COLOR_REVERT], [COLOR_BUILDING_TEXT]All Saints' Church[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Masjid al-Haram[COLOR_REVERT], [COLOR_BUILDING_TEXT]Vishwanath[COLOR_REVERT], [COLOR_BUILDING_TEXT]Palitana[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Mahabodhi[COLOR_REVERT], [COLOR_BUILDING_TEXT]San Kong[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Temple of Heaven[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Adur Farnbag[COLOR_REVERT] World Wonders and can perform a Great Mission.</German>
+		<Italian>[COLOR_UNIT_TEXT]Great Prophets[COLOR_REVERT] can begin golden ages, discover new technologies, settle in a city as a [COLOR_HIGHLIGHT_TEXT]Great Prophet[COLOR_REVERT] specialist and can construct the [COLOR_BUILDING_TEXT]Temple of Solomon[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Church of the Anastasis[COLOR_REVERT], [COLOR_BUILDING_TEXT]Saint Peter's Basilica[COLOR_REVERT], [COLOR_BUILDING_TEXT]All Saints' Church[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Masjid al-Haram[COLOR_REVERT], [COLOR_BUILDING_TEXT]Vishwanath[COLOR_REVERT], [COLOR_BUILDING_TEXT]Palitana[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Mahabodhi[COLOR_REVERT], [COLOR_BUILDING_TEXT]San Kong[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Temple of Heaven[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Adur Farnbag[COLOR_REVERT] World Wonders and can perform a Great Mission.</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Great Prophets[COLOR_REVERT] can begin golden ages, discover new technologies, settle in a city as a [COLOR_HIGHLIGHT_TEXT]Great Prophet[COLOR_REVERT] specialist and can construct the [COLOR_BUILDING_TEXT]Temple of Solomon[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Church of the Anastasis[COLOR_REVERT], [COLOR_BUILDING_TEXT]Saint Peter's Basilica[COLOR_REVERT], [COLOR_BUILDING_TEXT]All Saints' Church[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Masjid al-Haram[COLOR_REVERT], [COLOR_BUILDING_TEXT]Vishwanath[COLOR_REVERT], [COLOR_BUILDING_TEXT]Palitana[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Mahabodhi[COLOR_REVERT], [COLOR_BUILDING_TEXT]San Kong[COLOR_REVERT], the [COLOR_BUILDING_TEXT]Temple of Heaven[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Adur Farnbag[COLOR_REVERT] World Wonders and can perform a Great Mission.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GREAT_PROPHET_HELP</Tag>
@@ -707,11 +707,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GRENADIER_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Grenadiers[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage, have an attack bonus against [COLOR_UNIT_TEXT]Rifleman[COLOR_REVERT] and begin with the [COLOR_HIGHLIGHT_TEXT]City Raider I[COLOR_REVERT].</English>
-		<French>[COLOR_UNIT_TEXT]Grenadiers[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage, have an attack bonus against [COLOR_UNIT_TEXT]Rifleman[COLOR_REVERT] and begin with the [COLOR_HIGHLIGHT_TEXT]City Raider I[COLOR_REVERT].</French>
-		<German>[COLOR_UNIT_TEXT]Grenadiers[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage, have an attack bonus against [COLOR_UNIT_TEXT]Rifleman[COLOR_REVERT] and begin with the [COLOR_HIGHLIGHT_TEXT]City Raider I[COLOR_REVERT].</German>
-		<Italian>[COLOR_UNIT_TEXT]Grenadiers[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage, have an attack bonus against [COLOR_UNIT_TEXT]Rifleman[COLOR_REVERT] and begin with the [COLOR_HIGHLIGHT_TEXT]City Raider I[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Grenadiers[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage, have an attack bonus against [COLOR_UNIT_TEXT]Rifleman[COLOR_REVERT] and begin with the [COLOR_HIGHLIGHT_TEXT]City Raider I[COLOR_REVERT].</Spanish>
+		<English>[COLOR_UNIT_TEXT]Grenadiers[COLOR_REVERT] can withdraw from combat, cause collateral damage, have an attack bonus against [COLOR_UNIT_TEXT]Rifleman[COLOR_REVERT] and begin with the [COLOR_HIGHLIGHT_TEXT]City Raider I[COLOR_REVERT] promotion.</English>
+		<French>[COLOR_UNIT_TEXT]Grenadiers[COLOR_REVERT] can withdraw from combat, cause collateral damage, have an attack bonus against [COLOR_UNIT_TEXT]Rifleman[COLOR_REVERT] and begin with the [COLOR_HIGHLIGHT_TEXT]City Raider I[COLOR_REVERT] promotion.</French>
+		<German>[COLOR_UNIT_TEXT]Grenadiers[COLOR_REVERT] can withdraw from combat, cause collateral damage, have an attack bonus against [COLOR_UNIT_TEXT]Rifleman[COLOR_REVERT] and begin with the [COLOR_HIGHLIGHT_TEXT]City Raider I[COLOR_REVERT] promotion.</German>
+		<Italian>[COLOR_UNIT_TEXT]Grenadiers[COLOR_REVERT] can withdraw from combat, cause collateral damage, have an attack bonus against [COLOR_UNIT_TEXT]Rifleman[COLOR_REVERT] and begin with the [COLOR_HIGHLIGHT_TEXT]City Raider I[COLOR_REVERT] promotion.</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Grenadiers[COLOR_REVERT] can withdraw from combat, cause collateral damage, have an attack bonus against [COLOR_UNIT_TEXT]Rifleman[COLOR_REVERT] and begin with the [COLOR_HIGHLIGHT_TEXT]City Raider I[COLOR_REVERT] promotion.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GREEK_HOPLITE_STRATEGY</Tag>
@@ -731,11 +731,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_HOLY_ROMAN_LANDSKNECHT_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]Landsknecht[COLOR_REVERT], the German replacement for the the [COLOR_UNIT_TEXT]Pikeman[COLOR_REVERT], has a combat bonus against [COLOR_HIGHLIGHT_TEXT]Melee Units[COLOR_REVERT] and begins with the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion.</English>
-		<French>The [COLOR_UNIT_TEXT]Landsknecht[COLOR_REVERT], the German replacement for the the [COLOR_UNIT_TEXT]Pikeman[COLOR_REVERT], has a combat bonus against [COLOR_HIGHLIGHT_TEXT]Melee Units[COLOR_REVERT] and begins with the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion.</French>
-		<German>The [COLOR_UNIT_TEXT]Landsknecht[COLOR_REVERT], the German replacement for the the [COLOR_UNIT_TEXT]Pikeman[COLOR_REVERT], has a combat bonus against [COLOR_HIGHLIGHT_TEXT]Melee Units[COLOR_REVERT] and begins with the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion.</German>
-		<Italian>The [COLOR_UNIT_TEXT]Landsknecht[COLOR_REVERT], the German replacement for the the [COLOR_UNIT_TEXT]Pikeman[COLOR_REVERT], has a combat bonus against [COLOR_HIGHLIGHT_TEXT]Melee Units[COLOR_REVERT] and begins with the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion.</Italian>
-		<Spanish>The [COLOR_UNIT_TEXT]Landsknecht[COLOR_REVERT], the German replacement for the the [COLOR_UNIT_TEXT]Pikeman[COLOR_REVERT], has a combat bonus against [COLOR_HIGHLIGHT_TEXT]Melee Units[COLOR_REVERT] and begins with the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion.</Spanish>
+		<English>The [COLOR_UNIT_TEXT]Landsknecht[COLOR_REVERT], the German replacement for the [COLOR_UNIT_TEXT]Pikeman[COLOR_REVERT], has a combat bonus against [COLOR_HIGHLIGHT_TEXT]Melee Units[COLOR_REVERT] and begins with the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion.</English>
+		<French>The [COLOR_UNIT_TEXT]Landsknecht[COLOR_REVERT], the German replacement for the [COLOR_UNIT_TEXT]Pikeman[COLOR_REVERT], has a combat bonus against [COLOR_HIGHLIGHT_TEXT]Melee Units[COLOR_REVERT] and begins with the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion.</French>
+		<German>The [COLOR_UNIT_TEXT]Landsknecht[COLOR_REVERT], the German replacement for the [COLOR_UNIT_TEXT]Pikeman[COLOR_REVERT], has a combat bonus against [COLOR_HIGHLIGHT_TEXT]Melee Units[COLOR_REVERT] and begins with the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Landsknecht[COLOR_REVERT], the German replacement for the [COLOR_UNIT_TEXT]Pikeman[COLOR_REVERT], has a combat bonus against [COLOR_HIGHLIGHT_TEXT]Melee Units[COLOR_REVERT] and begins with the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Landsknecht[COLOR_REVERT], the German replacement for the [COLOR_UNIT_TEXT]Pikeman[COLOR_REVERT], has a combat bonus against [COLOR_HIGHLIGHT_TEXT]Melee Units[COLOR_REVERT] and begins with the [COLOR_HIGHLIGHT_TEXT]Leadership[COLOR_REVERT] promotion.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_HARAPPAN_CITY_BUILDER</Tag>
@@ -1059,19 +1059,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_LONGBOWMAN_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Longbowmen[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage and have an attack bonus in hills, forests and rainforests[COLOR_HIGHLIGHT_TEXT]hills[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]forests[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]rainforests[COLOR_REVERT].</English>
-		<French>[COLOR_UNIT_TEXT]Longbowmen[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage and have an attack bonus in hills, forests and rainforests[COLOR_HIGHLIGHT_TEXT]hills[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]forests[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]rainforests[COLOR_REVERT].</French>
-		<German>[COLOR_UNIT_TEXT]Longbowmen[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage and have an attack bonus in hills, forests and rainforests[COLOR_HIGHLIGHT_TEXT]hills[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]forests[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]rainforests[COLOR_REVERT].</German>
-		<Italian>[COLOR_UNIT_TEXT]Longbowmen[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage and have an attack bonus in hills, forests and rainforests[COLOR_HIGHLIGHT_TEXT]hills[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]forests[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]rainforests[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Longbowmen[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage and have an attack bonus in hills, forests and rainforests[COLOR_HIGHLIGHT_TEXT]hills[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]forests[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]rainforests[COLOR_REVERT].</Spanish>
+		<English>[COLOR_UNIT_TEXT]Longbowmen[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage and have an attack bonus on [COLOR_HIGHLIGHT_TEXT]hills[COLOR_REVERT] and in [COLOR_HIGHLIGHT_TEXT]forests[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]rainforests[COLOR_REVERT].</English>
+		<French>[COLOR_UNIT_TEXT]Longbowmen[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage and have an attack bonus on [COLOR_HIGHLIGHT_TEXT]hills[COLOR_REVERT] and in [COLOR_HIGHLIGHT_TEXT]forests[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]rainforests[COLOR_REVERT].</French>
+		<German>[COLOR_UNIT_TEXT]Longbowmen[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage and have an attack bonus on [COLOR_HIGHLIGHT_TEXT]hills[COLOR_REVERT] and in [COLOR_HIGHLIGHT_TEXT]forests[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]rainforests[COLOR_REVERT].</German>
+		<Italian>[COLOR_UNIT_TEXT]Longbowmen[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage and have an attack bonus on [COLOR_HIGHLIGHT_TEXT]hills[COLOR_REVERT] and in [COLOR_HIGHLIGHT_TEXT]forests[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]rainforests[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Longbowmen[COLOR_REVERT] have one first strike, can withdraw from combat, cause collateral damage and have an attack bonus on [COLOR_HIGHLIGHT_TEXT]hills[COLOR_REVERT] and in [COLOR_HIGHLIGHT_TEXT]forests[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]rainforests[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_KOREAN_HWACHA_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]Hwacha[COLOR_REVERT], the Korean replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], has three extra strength points and has an reduced attack bonus when attacking cities.</English>
-		<French>The [COLOR_UNIT_TEXT]Hwacha[COLOR_REVERT], the Korean replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], has three extra strength points and has an reduced attack bonus when attacking cities.</French>
-		<German>The [COLOR_UNIT_TEXT]Hwacha[COLOR_REVERT], the Korean replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], has three extra strength points and has an reduced attack bonus when attacking cities.</German>
-		<Italian>The [COLOR_UNIT_TEXT]Hwacha[COLOR_REVERT], the Korean replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], has three extra strength points and has an reduced attack bonus when attacking cities.</Italian>
-		<Spanish>The [COLOR_UNIT_TEXT]Hwacha[COLOR_REVERT], the Korean replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], has three extra strength points and has an reduced attack bonus when attacking cities.</Spanish>
+		<English>The [COLOR_UNIT_TEXT]Hwacha[COLOR_REVERT], the Korean replacement for the [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], has three extra strength points and has a reduced attack bonus when attacking cities.</English>
+		<French>The [COLOR_UNIT_TEXT]Hwacha[COLOR_REVERT], the Korean replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], has three extra strength points and has a reduced attack bonus when attacking cities.</French>
+		<German>The [COLOR_UNIT_TEXT]Hwacha[COLOR_REVERT], the Korean replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], has three extra strength points and has a reduced attack bonus when attacking cities.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Hwacha[COLOR_REVERT], the Korean replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], has three extra strength points and has a reduced attack bonus when attacking cities.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Hwacha[COLOR_REVERT], the Korean replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], has three extra strength points and has a reduced attack bonus when attacking cities.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_LION_STRATEGY</Tag>
@@ -1239,11 +1239,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_MONGOLIAN_KESHIK_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]Keshik[COLOR_REVERT], the Mongol replacement for the the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT] doesn't require the [COLOR_HIGHLIGHT_TEXT]Iron[COLOR_REVERT] resource, has an additional movement point, causes collateral damage, has a first strike, and receives a combat bonus when attacking cities.</English>
-		<French>The [COLOR_UNIT_TEXT]Keshik[COLOR_REVERT], the Mongol replacement for the the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT] doesn't require the [COLOR_HIGHLIGHT_TEXT]Iron[COLOR_REVERT] resource, has an additional movement point, causes collateral damage, has a first strike, and receives a combat bonus when attacking cities.</French>
-		<German>The [COLOR_UNIT_TEXT]Keshik[COLOR_REVERT], the Mongol replacement for the the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT] doesn't require the [COLOR_HIGHLIGHT_TEXT]Iron[COLOR_REVERT] resource, has an additional movement point, causes collateral damage, has a first strike, and receives a combat bonus when attacking cities.</German>
-		<Italian>The [COLOR_UNIT_TEXT]Keshik[COLOR_REVERT], the Mongol replacement for the the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT] doesn't require the [COLOR_HIGHLIGHT_TEXT]Iron[COLOR_REVERT] resource, has an additional movement point, causes collateral damage, has a first strike, and receives a combat bonus when attacking cities.</Italian>
-		<Spanish>The [COLOR_UNIT_TEXT]Keshik[COLOR_REVERT], the Mongol replacement for the the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT] doesn't require the [COLOR_HIGHLIGHT_TEXT]Iron[COLOR_REVERT] resource, has an additional movement point, causes collateral damage, has a first strike, and receives a combat bonus when attacking cities.</Spanish>
+		<English>The [COLOR_UNIT_TEXT]Keshik[COLOR_REVERT], the Mongol replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT] doesn't require the [COLOR_HIGHLIGHT_TEXT]Iron[COLOR_REVERT] resource, has an additional movement point, causes collateral damage, has a first strike, and receives a combat bonus when attacking cities.</English>
+		<French>The [COLOR_UNIT_TEXT]Keshik[COLOR_REVERT], the Mongol replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT] doesn't require the [COLOR_HIGHLIGHT_TEXT]Iron[COLOR_REVERT] resource, has an additional movement point, causes collateral damage, has a first strike, and receives a combat bonus when attacking cities.</French>
+		<German>The [COLOR_UNIT_TEXT]Keshik[COLOR_REVERT], the Mongol replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT] doesn't require the [COLOR_HIGHLIGHT_TEXT]Iron[COLOR_REVERT] resource, has an additional movement point, causes collateral damage, has a first strike, and receives a combat bonus when attacking cities.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Keshik[COLOR_REVERT], the Mongol replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT] doesn't require the [COLOR_HIGHLIGHT_TEXT]Iron[COLOR_REVERT] resource, has an additional movement point, causes collateral damage, has a first strike, and receives a combat bonus when attacking cities.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Keshik[COLOR_REVERT], the Mongol replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT] doesn't require the [COLOR_HIGHLIGHT_TEXT]Iron[COLOR_REVERT] resource, has an additional movement point, causes collateral damage, has a first strike, and receives a combat bonus when attacking cities.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_MOORISH_CORSAIR</Tag>
@@ -1267,11 +1267,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_MOORISH_CORSAIR_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]Corsair[COLOR_REVERT], the Moorish replacement for the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT], has one less movement point, has two less strength points, is cheaper, has a combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT], has a combat bonus against the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT] unit and provides some gold when sinking enemy ships.</English>
-		<French>The [COLOR_UNIT_TEXT]Corsair[COLOR_REVERT], the Moorish replacement for the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT], has one less movement point, has two less strength points, is cheaper, has a combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT], has a combat bonus against the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT] unit and provides some gold when sinking enemy ships.</French>
-		<German>The [COLOR_UNIT_TEXT]Corsair[COLOR_REVERT], the Moorish replacement for the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT], has one less movement point, has two less strength points, is cheaper, has a combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT], has a combat bonus against the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT] unit and provides some gold when sinking enemy ships.</German>
-		<Italian>The [COLOR_UNIT_TEXT]Corsair[COLOR_REVERT], the Moorish replacement for the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT], has one less movement point, has two less strength points, is cheaper, has a combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT], has a combat bonus against the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT] unit and provides some gold when sinking enemy ships.</Italian>
-		<Spanish>The [COLOR_UNIT_TEXT]Corsair[COLOR_REVERT], the Moorish replacement for the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT], has one less movement point, has two less strength points, is cheaper, has a combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT], has a combat bonus against the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT] unit and provides some gold when sinking enemy ships.</Spanish>
+		<English>The [COLOR_UNIT_TEXT]Corsair[COLOR_REVERT], the Moorish replacement for the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT], has two less strength points, is cheaper, has a combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT], has a combat bonus against the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT] unit and provides some gold when sinking enemy ships.</English>
+		<French>The [COLOR_UNIT_TEXT]Corsair[COLOR_REVERT], the Moorish replacement for the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT], has two less strength points, is cheaper, has a combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT], has a combat bonus against the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT] unit and provides some gold when sinking enemy ships.</French>
+		<German>The [COLOR_UNIT_TEXT]Corsair[COLOR_REVERT], the Moorish replacement for the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT], has two less strength points, is cheaper, has a combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT], has a combat bonus against the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT] unit and provides some gold when sinking enemy ships.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Corsair[COLOR_REVERT], the Moorish replacement for the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT], has two less strength points, is cheaper, has a combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT], has a combat bonus against the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT] unit and provides some gold when sinking enemy ships.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Corsair[COLOR_REVERT], the Moorish replacement for the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT], has two less strength points, is cheaper, has a combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT], has a combat bonus against the [COLOR_UNIT_TEXT]Privateer[COLOR_REVERT] unit and provides some gold when sinking enemy ships.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_SIOUX_MOUNTED_BRAVE</Tag>
@@ -1527,11 +1527,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_ROMAN_LEGION_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]Legion[COLOR_REVERT], the Roman replacement for the the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], has two additional strength points, is more expensive and can construct [COLOR_HIGHLIGHT_TEXT]Roman Roads[COLOR_REVERT].</English>
-		<French>The [COLOR_UNIT_TEXT]Legion[COLOR_REVERT], the Roman replacement for the the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], has two additional strength points, is more expensive and can construct [COLOR_HIGHLIGHT_TEXT]Roman Roads[COLOR_REVERT].</French>
-		<German>The [COLOR_UNIT_TEXT]Legion[COLOR_REVERT], the Roman replacement for the the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], has two additional strength points, is more expensive and can construct [COLOR_HIGHLIGHT_TEXT]Roman Roads[COLOR_REVERT].</German>
-		<Italian>The [COLOR_UNIT_TEXT]Legion[COLOR_REVERT], the Roman replacement for the the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], has two additional strength points, is more expensive and can construct [COLOR_HIGHLIGHT_TEXT]Roman Roads[COLOR_REVERT].</Italian>
-		<Spanish>The [COLOR_UNIT_TEXT]Legion[COLOR_REVERT], the Roman replacement for the the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], has two additional strength points, is more expensive and can construct [COLOR_HIGHLIGHT_TEXT]Roman Roads[COLOR_REVERT].</Spanish>
+		<English>The [COLOR_UNIT_TEXT]Legion[COLOR_REVERT], the Roman replacement for the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], has two additional strength points, is more expensive and can construct [COLOR_HIGHLIGHT_TEXT]Roman Roads[COLOR_REVERT].</English>
+		<French>The [COLOR_UNIT_TEXT]Legion[COLOR_REVERT], the Roman replacement for the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], has two additional strength points, is more expensive and can construct [COLOR_HIGHLIGHT_TEXT]Roman Roads[COLOR_REVERT].</French>
+		<German>The [COLOR_UNIT_TEXT]Legion[COLOR_REVERT], the Roman replacement for the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], has two additional strength points, is more expensive and can construct [COLOR_HIGHLIGHT_TEXT]Roman Roads[COLOR_REVERT].</German>
+		<Italian>The [COLOR_UNIT_TEXT]Legion[COLOR_REVERT], the Roman replacement for the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], has two additional strength points, is more expensive and can construct [COLOR_HIGHLIGHT_TEXT]Roman Roads[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Legion[COLOR_REVERT], the Roman replacement for the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], has two additional strength points, is more expensive and can construct [COLOR_HIGHLIGHT_TEXT]Roman Roads[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_RIFLEMAN_STRATEGY</Tag>
@@ -1543,11 +1543,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_PRIVATEER_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Privateers[COLOR_REVERT] has hidden nationality can attack enemy units without declaring war, can withdraw from combat and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</English>
-		<French>[COLOR_UNIT_TEXT]Privateers[COLOR_REVERT] has hidden nationality can attack enemy units without declaring war, can withdraw from combat and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</French>
-		<German>[COLOR_UNIT_TEXT]Privateers[COLOR_REVERT] has hidden nationality can attack enemy units without declaring war, can withdraw from combat and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</German>
-		<Italian>[COLOR_UNIT_TEXT]Privateers[COLOR_REVERT] has hidden nationality can attack enemy units without declaring war, can withdraw from combat and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Privateers[COLOR_REVERT] has hidden nationality can attack enemy units without declaring war, can withdraw from combat and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</Spanish>
+		<English>[COLOR_UNIT_TEXT]Privateers[COLOR_REVERT] have hidden nationality, can attack enemy units without declaring war, can withdraw from combat and begin with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</English>
+		<French>[COLOR_UNIT_TEXT]Privateers[COLOR_REVERT] have hidden nationality, can attack enemy units without declaring war, can withdraw from combat and begin with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</French>
+		<German>[COLOR_UNIT_TEXT]Privateers[COLOR_REVERT] have hidden nationality, can attack enemy units without declaring war, can withdraw from combat and begin with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</German>
+		<Italian>[COLOR_UNIT_TEXT]Privateers[COLOR_REVERT] have hidden nationality, can attack enemy units without declaring war, can withdraw from combat and begin with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Privateers[COLOR_REVERT] have hidden nationality, can attack enemy units without declaring war, can withdraw from combat and begin with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_PORTUGUESE_CARRACK</Tag>
@@ -1575,11 +1575,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_PORTUGUESE_CARRACK_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]Carrack[COLOR_REVERT], the Portuguese replacement for the the [COLOR_UNIT_TEXT]Caravel[COLOR_REVERT], can transport any unit, has an additional cargo space and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</English>
-		<French>The [COLOR_UNIT_TEXT]Carrack[COLOR_REVERT], the Portuguese replacement for the the [COLOR_UNIT_TEXT]Caravel[COLOR_REVERT], can transport any unit, has an additional cargo space and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</French>
-		<German>The [COLOR_UNIT_TEXT]Carrack[COLOR_REVERT], the Portuguese replacement for the the [COLOR_UNIT_TEXT]Caravel[COLOR_REVERT], can transport any unit, has an additional cargo space and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</German>
-		<Italian>The [COLOR_UNIT_TEXT]Carrack[COLOR_REVERT], the Portuguese replacement for the the [COLOR_UNIT_TEXT]Caravel[COLOR_REVERT], can transport any unit, has an additional cargo space and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</Italian>
-		<Spanish>The [COLOR_UNIT_TEXT]Carrack[COLOR_REVERT], the Portuguese replacement for the the [COLOR_UNIT_TEXT]Caravel[COLOR_REVERT], can transport any unit, has an additional cargo space and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</Spanish>
+		<English>The [COLOR_UNIT_TEXT]Carrack[COLOR_REVERT], the Portuguese replacement for the [COLOR_UNIT_TEXT]Caravel[COLOR_REVERT], can transport any unit, has an additional cargo space and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</English>
+		<French>The [COLOR_UNIT_TEXT]Carrack[COLOR_REVERT], the Portuguese replacement for the [COLOR_UNIT_TEXT]Caravel[COLOR_REVERT], can transport any unit, has an additional cargo space and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</French>
+		<German>The [COLOR_UNIT_TEXT]Carrack[COLOR_REVERT], the Portuguese replacement for the [COLOR_UNIT_TEXT]Caravel[COLOR_REVERT], can transport any unit, has an additional cargo space and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Carrack[COLOR_REVERT], the Portuguese replacement for the [COLOR_UNIT_TEXT]Caravel[COLOR_REVERT], can transport any unit, has an additional cargo space and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Carrack[COLOR_REVERT], the Portuguese replacement for the [COLOR_UNIT_TEXT]Caravel[COLOR_REVERT], can transport any unit, has an additional cargo space and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] promotion.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_POLYNESIAN_WAKA_STRATEGY</Tag>
@@ -1603,11 +1603,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_PIKEMAN_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Pikemen[COLOR_REVERT] have a combat bonus against [COLOR_UNIT_TEXT]Mounted Units[COLOR_REVERT] and [COLOR_UNIT_TEXT]Melee Units[COLOR_REVERT].</English>
-		<French>[COLOR_UNIT_TEXT]Pikemen[COLOR_REVERT] have a combat bonus against [COLOR_UNIT_TEXT]Mounted Units[COLOR_REVERT] and [COLOR_UNIT_TEXT]Melee Units[COLOR_REVERT].</French>
-		<German>[COLOR_UNIT_TEXT]Pikemen[COLOR_REVERT] have a combat bonus against [COLOR_UNIT_TEXT]Mounted Units[COLOR_REVERT] and [COLOR_UNIT_TEXT]Melee Units[COLOR_REVERT].</German>
-		<Italian>[COLOR_UNIT_TEXT]Pikemen[COLOR_REVERT] have a combat bonus against [COLOR_UNIT_TEXT]Mounted Units[COLOR_REVERT] and [COLOR_UNIT_TEXT]Melee Units[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Pikemen[COLOR_REVERT] have a combat bonus against [COLOR_UNIT_TEXT]Mounted Units[COLOR_REVERT] and [COLOR_UNIT_TEXT]Melee Units[COLOR_REVERT].</Spanish>
+		<English>[COLOR_UNIT_TEXT]Pikemen[COLOR_REVERT] have a combat bonus against [COLOR_UNIT_TEXT]Heavy Cavalry Units[COLOR_REVERT] and [COLOR_UNIT_TEXT]Melee Units[COLOR_REVERT].</English>
+		<French>[COLOR_UNIT_TEXT]Pikemen[COLOR_REVERT] have a combat bonus against [COLOR_UNIT_TEXT]Heavy Cavalry Units[COLOR_REVERT] and [COLOR_UNIT_TEXT]Melee Units[COLOR_REVERT].</French>
+		<German>[COLOR_UNIT_TEXT]Pikemen[COLOR_REVERT] have a combat bonus against [COLOR_UNIT_TEXT]Heavy Cavalry Units[COLOR_REVERT] and [COLOR_UNIT_TEXT]Melee Units[COLOR_REVERT].</German>
+		<Italian>[COLOR_UNIT_TEXT]Pikemen[COLOR_REVERT] have a combat bonus against [COLOR_UNIT_TEXT]Heavy Cavalry Units[COLOR_REVERT] and [COLOR_UNIT_TEXT]Melee Units[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Pikemen[COLOR_REVERT] have a combat bonus against [COLOR_UNIT_TEXT]Heavy Cavalry Units[COLOR_REVERT] and [COLOR_UNIT_TEXT]Melee Units[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_POLISH_WINGED_HUSSAR_STRATEGY</Tag>
@@ -1683,11 +1683,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_SHIP_OF_THE_LINE_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Ship of the Lines[COLOR_REVERT] can bombard city defenses and are basic [COLOR_UNIT_TEXT]Naval Units[COLOR_REVERT] in the late Renaissance.</English>
-		<French>[COLOR_UNIT_TEXT]Ship of the Lines[COLOR_REVERT] can bombard city defenses and are basic [COLOR_UNIT_TEXT]Naval Units[COLOR_REVERT] in the late Renaissance.</French>
-		<German>[COLOR_UNIT_TEXT]Ship of the Lines[COLOR_REVERT] can bombard city defenses and are basic [COLOR_UNIT_TEXT]Naval Units[COLOR_REVERT] in the late Renaissance.</German>
-		<Italian>[COLOR_UNIT_TEXT]Ship of the Lines[COLOR_REVERT] can bombard city defenses and are basic [COLOR_UNIT_TEXT]Naval Units[COLOR_REVERT] in the late Renaissance.</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Ship of the Lines[COLOR_REVERT] can bombard city defenses and are basic [COLOR_UNIT_TEXT]Naval Units[COLOR_REVERT] in the late Renaissance.</Spanish>
+		<English>[COLOR_UNIT_TEXT]Ships of the Line[COLOR_REVERT] can bombard city defenses and are basic [COLOR_UNIT_TEXT]Naval Units[COLOR_REVERT] in the late Renaissance.</English>
+		<French>[COLOR_UNIT_TEXT]Ships of the Line[COLOR_REVERT] can bombard city defenses and are basic [COLOR_UNIT_TEXT]Naval Units[COLOR_REVERT] in the late Renaissance.</French>
+		<German>[COLOR_UNIT_TEXT]Ships of the Line[COLOR_REVERT] can bombard city defenses and are basic [COLOR_UNIT_TEXT]Naval Units[COLOR_REVERT] in the late Renaissance.</German>
+		<Italian>[COLOR_UNIT_TEXT]Ships of the Line[COLOR_REVERT] can bombard city defenses and are basic [COLOR_UNIT_TEXT]Naval Units[COLOR_REVERT] in the late Renaissance.</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Ships of the Line[COLOR_REVERT] can bombard city defenses and are basic [COLOR_UNIT_TEXT]Naval Units[COLOR_REVERT] in the late Renaissance.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_NUCLEAR_BOMBER_STRATEGY</Tag>
@@ -1747,27 +1747,27 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_SUBMARINE_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, is able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except [COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] and [COLOR_UNIT_TEXT]Attack Submarines[COLOR_REVERT] units.</English>
-		<French>[COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, is able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except [COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] and [COLOR_UNIT_TEXT]Attack Submarines[COLOR_REVERT] units.</French>
-		<German>[COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, is able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except [COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] and [COLOR_UNIT_TEXT]Attack Submarines[COLOR_REVERT] units.</German>
-		<Italian>[COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, is able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except [COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] and [COLOR_UNIT_TEXT]Attack Submarines[COLOR_REVERT] units.</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, is able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except [COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] and [COLOR_UNIT_TEXT]Attack Submarines[COLOR_REVERT] units.</Spanish>
+		<English>[COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, are able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except [COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] units.</English>
+		<French>[COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, are able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except [COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] units.</French>
+		<German>[COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, are able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except [COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] units.</German>
+		<Italian>[COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, are able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except [COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] units.</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] units, are able to enter [COLOR_HIGHLIGHT_TEXT]Ice[COLOR_REVERT], can explore rival territory, can withdraw from combat and are invisible to all units except [COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] and [COLOR_UNIT_TEXT]Nuclear Submarines[COLOR_REVERT] units.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_STEALTH_DESTROYER_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT] are invisible to all units to all units except [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], have two first strikes and can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT] units.</English>
-		<French>[COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT] are invisible to all units to all units except [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], have two first strikes and can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT] units.</French>
-		<German>[COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT] are invisible to all units to all units except [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], have two first strikes and can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT] units.</German>
-		<Italian>[COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT] are invisible to all units to all units except [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], have two first strikes and can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT] units.</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT] are invisible to all units to all units except [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], have two first strikes and can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT] units.</Spanish>
+		<English>[COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT] are invisible to all units except [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], have two first strikes and can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT] units.</English>
+		<French>[COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT] are invisible to all units except [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], have two first strikes and can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT] units.</French>
+		<German>[COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT] are invisible to all units except [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], have two first strikes and can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT] units.</German>
+		<Italian>[COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT] are invisible to all units except [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], have two first strikes and can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT] units.</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT] are invisible to all units except [COLOR_UNIT_TEXT]Stealth Destroyers[COLOR_REVERT], have two first strikes and can see [COLOR_UNIT_TEXT]Submarine[COLOR_REVERT], [COLOR_UNIT_TEXT]Nuclear Submarine[COLOR_REVERT] and [COLOR_UNIT_TEXT]Stealth Destroyer[COLOR_REVERT] units.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_STEALTH_BOMBER_STRATEGY</Tag>
-		<English>[COLOR_UNIT_TEXT]Stealth Bombers[COLOR_REVERT] can destroy improvements, bomb city defenses, perform recon missions, damage enemy units, have an increased chance to evade interception, causes collateral damage and has a combat malus against [COLOR_UNIT_TEXT]Water Units[COLOR_REVERT].</English>
-		<French>[COLOR_UNIT_TEXT]Stealth Bombers[COLOR_REVERT] can destroy improvements, bomb city defenses, perform recon missions, damage enemy units, have an increased chance to evade interception, causes collateral damage and has a combat malus against [COLOR_UNIT_TEXT]Water Units[COLOR_REVERT].</French>
-		<German>[COLOR_UNIT_TEXT]Stealth Bombers[COLOR_REVERT] can destroy improvements, bomb city defenses, perform recon missions, damage enemy units, have an increased chance to evade interception, causes collateral damage and has a combat malus against [COLOR_UNIT_TEXT]Water Units[COLOR_REVERT].</German>
-		<Italian>[COLOR_UNIT_TEXT]Stealth Bombers[COLOR_REVERT] can destroy improvements, bomb city defenses, perform recon missions, damage enemy units, have an increased chance to evade interception, causes collateral damage and has a combat malus against [COLOR_UNIT_TEXT]Water Units[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_UNIT_TEXT]Stealth Bombers[COLOR_REVERT] can destroy improvements, bomb city defenses, perform recon missions, damage enemy units, have an increased chance to evade interception, causes collateral damage and has a combat malus against [COLOR_UNIT_TEXT]Water Units[COLOR_REVERT].</Spanish>
+		<English>[COLOR_UNIT_TEXT]Stealth Bombers[COLOR_REVERT] can destroy improvements, bomb city defenses, perform recon missions, damage enemy units, have an increased chance to evade interception, cause collateral damage and have a combat penalty against [COLOR_UNIT_TEXT]Water Units[COLOR_REVERT].</English>
+		<French>[COLOR_UNIT_TEXT]Stealth Bombers[COLOR_REVERT] can destroy improvements, bomb city defenses, perform recon missions, damage enemy units, have an increased chance to evade interception, cause collateral damage and have a combat penalty against [COLOR_UNIT_TEXT]Water Units[COLOR_REVERT].</French>
+		<German>[COLOR_UNIT_TEXT]Stealth Bombers[COLOR_REVERT] can destroy improvements, bomb city defenses, perform recon missions, damage enemy units, have an increased chance to evade interception, cause collateral damage and have a combat penalty against [COLOR_UNIT_TEXT]Water Units[COLOR_REVERT].</German>
+		<Italian>[COLOR_UNIT_TEXT]Stealth Bombers[COLOR_REVERT] can destroy improvements, bomb city defenses, perform recon missions, damage enemy units, have an increased chance to evade interception, cause collateral damage and have a combat penalty against [COLOR_UNIT_TEXT]Water Units[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_UNIT_TEXT]Stealth Bombers[COLOR_REVERT] can destroy improvements, bomb city defenses, perform recon missions, damage enemy units, have an increased chance to evade interception, cause collateral damage and have a combat penalty against [COLOR_UNIT_TEXT]Water Units[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_SPY_STRATEGY</Tag>
@@ -1939,11 +1939,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_TIBETAN_KHAMPA_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]Khampa[COLOR_REVERT], the Tibetan replacement for the the [COLOR_UNIT_TEXT]Horse Archer[COLOR_REVERT], is able to enter [COLOR_HIGHLIGHT_TEXT]Jungle[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Rainforest[COLOR_REVERT], can explore rival territory and has an attack bonus when attacking cities.</English>
-		<French>The [COLOR_UNIT_TEXT]Khampa[COLOR_REVERT], the Tibetan replacement for the the [COLOR_UNIT_TEXT]Horse Archer[COLOR_REVERT], is able to enter [COLOR_HIGHLIGHT_TEXT]Jungle[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Rainforest[COLOR_REVERT], can explore rival territory and has an attack bonus when attacking cities.</French>
-		<German>The [COLOR_UNIT_TEXT]Khampa[COLOR_REVERT], the Tibetan replacement for the the [COLOR_UNIT_TEXT]Horse Archer[COLOR_REVERT], is able to enter [COLOR_HIGHLIGHT_TEXT]Jungle[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Rainforest[COLOR_REVERT], can explore rival territory and has an attack bonus when attacking cities.</German>
-		<Italian>The [COLOR_UNIT_TEXT]Khampa[COLOR_REVERT], the Tibetan replacement for the the [COLOR_UNIT_TEXT]Horse Archer[COLOR_REVERT], is able to enter [COLOR_HIGHLIGHT_TEXT]Jungle[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Rainforest[COLOR_REVERT], can explore rival territory and has an attack bonus when attacking cities.</Italian>
-		<Spanish>The [COLOR_UNIT_TEXT]Khampa[COLOR_REVERT], the Tibetan replacement for the the [COLOR_UNIT_TEXT]Horse Archer[COLOR_REVERT], is able to enter [COLOR_HIGHLIGHT_TEXT]Jungle[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Rainforest[COLOR_REVERT], can explore rival territory and has an attack bonus when attacking cities.</Spanish>
+		<English>The [COLOR_UNIT_TEXT]Khampa[COLOR_REVERT], the Tibetan replacement for the [COLOR_UNIT_TEXT]Horse Archer[COLOR_REVERT], is able to enter [COLOR_HIGHLIGHT_TEXT]Jungle[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Rainforest[COLOR_REVERT], can explore rival territory and has an attack bonus when attacking cities.</English>
+		<French>The [COLOR_UNIT_TEXT]Khampa[COLOR_REVERT], the Tibetan replacement for the [COLOR_UNIT_TEXT]Horse Archer[COLOR_REVERT], is able to enter [COLOR_HIGHLIGHT_TEXT]Jungle[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Rainforest[COLOR_REVERT], can explore rival territory and has an attack bonus when attacking cities.</French>
+		<German>The [COLOR_UNIT_TEXT]Khampa[COLOR_REVERT], the Tibetan replacement for the [COLOR_UNIT_TEXT]Horse Archer[COLOR_REVERT], is able to enter [COLOR_HIGHLIGHT_TEXT]Jungle[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Rainforest[COLOR_REVERT], can explore rival territory and has an attack bonus when attacking cities.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Khampa[COLOR_REVERT], the Tibetan replacement for the [COLOR_UNIT_TEXT]Horse Archer[COLOR_REVERT], is able to enter [COLOR_HIGHLIGHT_TEXT]Jungle[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Rainforest[COLOR_REVERT], can explore rival territory and has an attack bonus when attacking cities.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Khampa[COLOR_REVERT], the Tibetan replacement for the [COLOR_UNIT_TEXT]Horse Archer[COLOR_REVERT], is able to enter [COLOR_HIGHLIGHT_TEXT]Jungle[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Rainforest[COLOR_REVERT], can explore rival territory and has an attack bonus when attacking cities.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_NORSE_HUSCARL</Tag>
@@ -3115,7 +3115,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_BYZANTINE_DROMON_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]Dromon[COLOR_REVERT], the Byzantine replacement for the [COLOR_UNIT_TEXT]War Galley[COLOR_REVERT], has one additional strength point and causes collateral damage.</English>
+		<English>The [COLOR_UNIT_TEXT]Dromon[COLOR_REVERT], the Byzantine replacement for the [COLOR_UNIT_TEXT]Heavy Galley[COLOR_REVERT], has one additional strength point and causes collateral damage.</English>
 		<French>The [COLOR_UNIT_TEXT]Dromon[COLOR_REVERT], the Byzantine replacement for the [COLOR_UNIT_TEXT]War Galley[COLOR_REVERT], has one additional strength point and causes collateral damage.</French>
 		<German>The [COLOR_UNIT_TEXT]Dromon[COLOR_REVERT], the Byzantine replacement for the [COLOR_UNIT_TEXT]War Galley[COLOR_REVERT], has one additional strength point and causes collateral damage.</German>
 		<Italian>The [COLOR_UNIT_TEXT]Dromon[COLOR_REVERT], the Byzantine replacement for the [COLOR_UNIT_TEXT]War Galley[COLOR_REVERT], has one additional strength point and causes collateral damage.</Italian>
@@ -3303,7 +3303,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_MALAY_DJONG_STRATEGY</Tag>
-		<English>The [COLOR_UNIT_TEXT]Djong[COLOR_REVERT], the Malay replacement for the [COLOR_UNIT_TEXT]Galeass[COLOR_REVERT], requires [COLOR_TECH_TEXT]Compass[COLOR_REVERT] instead of [COLOR_TECH_TEXT]Gunpowder[COLOR_REVERT], has an additional defensive combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT] and has a combat bonus against [COLOR_UNIT_TEXT]Privateers[COLOR_REVERT].</English>
+		<English>The [COLOR_UNIT_TEXT]Djong[COLOR_REVERT], the Malay replacement for the [COLOR_UNIT_TEXT]Galleass[COLOR_REVERT], requires [COLOR_TECH_TEXT]Compass[COLOR_REVERT] instead of [COLOR_TECH_TEXT]Gunpowder[COLOR_REVERT], has an additional defensive combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT] and has a combat bonus against [COLOR_UNIT_TEXT]Privateers[COLOR_REVERT].</English>
 		<French>The [COLOR_UNIT_TEXT]Djong[COLOR_REVERT], the Malay replacement for the [COLOR_UNIT_TEXT]Galeass[COLOR_REVERT], requires [COLOR_TECH_TEXT]Compass[COLOR_REVERT] instead of [COLOR_TECH_TEXT]Gunpowder[COLOR_REVERT], has an additional defensive combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT] and has a combat bonus against [COLOR_UNIT_TEXT]Privateers[COLOR_REVERT].</French>
 		<German>The [COLOR_UNIT_TEXT]Djong[COLOR_REVERT], the Malay replacement for the [COLOR_UNIT_TEXT]Galeass[COLOR_REVERT], requires [COLOR_TECH_TEXT]Compass[COLOR_REVERT] instead of [COLOR_TECH_TEXT]Gunpowder[COLOR_REVERT], has an additional defensive combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT] and has a combat bonus against [COLOR_UNIT_TEXT]Privateers[COLOR_REVERT].</German>
 		<Italian>The [COLOR_UNIT_TEXT]Djong[COLOR_REVERT], the Malay replacement for the [COLOR_UNIT_TEXT]Galeass[COLOR_REVERT], requires [COLOR_TECH_TEXT]Compass[COLOR_REVERT] instead of [COLOR_TECH_TEXT]Gunpowder[COLOR_REVERT], has an additional defensive combat bonus on [COLOR_HIGHLIGHT_TEXT]Coast[COLOR_REVERT] and has a combat bonus against [COLOR_UNIT_TEXT]Privateers[COLOR_REVERT].</Italian>
@@ -3812,5 +3812,237 @@
 		<German></German>
 		<Italian></Italian>
 		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_AMERICAN_FLYING_FORTRESS_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Flying Fortress[COLOR_REVERT], the American replacement for the [COLOR_UNIT_TEXT]Bomber[COLOR_REVERT], has greater range, causes more collateral damage and is more likely to evade interception.</English>
+		<French>The [COLOR_UNIT_TEXT]Flying Fortress[COLOR_REVERT], the American replacement for the [COLOR_UNIT_TEXT]Bomber[COLOR_REVERT], has greater range, causes more collateral damage and is more likely to evade interception.</French>
+		<German>The [COLOR_UNIT_TEXT]Flying Fortress[COLOR_REVERT], the American replacement for the [COLOR_UNIT_TEXT]Bomber[COLOR_REVERT], has greater range, causes more collateral damage and is more likely to evade interception.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Flying Fortress[COLOR_REVERT], the American replacement for the [COLOR_UNIT_TEXT]Bomber[COLOR_REVERT], has greater range, causes more collateral damage and is more likely to evade interception.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Flying Fortress[COLOR_REVERT], the American replacement for the [COLOR_UNIT_TEXT]Bomber[COLOR_REVERT], has greater range, causes more collateral damage and is more likely to evade interception.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_AMERICAN_SUPERCARRIER_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Supercarrier[COLOR_REVERT], the American replacement for the [COLOR_UNIT_TEXT]Carrier[COLOR_REVERT], has six additional strength points, moves one tile faster and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Medic I[COLOR_REVERT] promotions.</English>
+		<French>The [COLOR_UNIT_TEXT]Supercarrier[COLOR_REVERT], the American replacement for the [COLOR_UNIT_TEXT]Carrier[COLOR_REVERT], has six additional strength points, moves one tile faster and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Medic I[COLOR_REVERT] promotions.</French>
+		<German>The [COLOR_UNIT_TEXT]Supercarrier[COLOR_REVERT], the American replacement for the [COLOR_UNIT_TEXT]Carrier[COLOR_REVERT], has six additional strength points, moves one tile faster and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Medic I[COLOR_REVERT] promotions.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Supercarrier[COLOR_REVERT], the American replacement for the [COLOR_UNIT_TEXT]Carrier[COLOR_REVERT], has six additional strength points, moves one tile faster and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Medic I[COLOR_REVERT] promotions.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Supercarrier[COLOR_REVERT], the American replacement for the [COLOR_UNIT_TEXT]Carrier[COLOR_REVERT], has six additional strength points, moves one tile faster and begins with the [COLOR_HIGHLIGHT_TEXT]Sentry[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Medic I[COLOR_REVERT] promotions.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_ASSYRIAN_AZMARU_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Azmaru[COLOR_REVERT], the Assyrian replacement for the [COLOR_UNIT_TEXT]Spearman[COLOR_REVERT], has a +50% bonus when attacking cities.</English>
+		<French>The [COLOR_UNIT_TEXT]Azmaru[COLOR_REVERT], the Assyrian replacement for the [COLOR_UNIT_TEXT]Spearman[COLOR_REVERT], has a +50% bonus when attacking cities.</French>
+		<German>The [COLOR_UNIT_TEXT]Azmaru[COLOR_REVERT], the Assyrian replacement for the [COLOR_UNIT_TEXT]Spearman[COLOR_REVERT], has a +50% bonus when attacking cities.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Azmaru[COLOR_REVERT], the Assyrian replacement for the [COLOR_UNIT_TEXT]Spearman[COLOR_REVERT], has a +50% bonus when attacking cities.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Azmaru[COLOR_REVERT], the Assyrian replacement for the [COLOR_UNIT_TEXT]Spearman[COLOR_REVERT], has a +50% bonus when attacking cities.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_ASSYRIAN_SIEGE_RAM_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Siege Ram[COLOR_REVERT], the Assyrian replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], is cheaper to build, has one less strength point, has a greater bonus when attacking cities and causes less collateral damage.</English>
+		<French>The [COLOR_UNIT_TEXT]Siege Ram[COLOR_REVERT], the Assyrian replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], is cheaper to build, has one less strength point, has a greater bonus when attacking cities and causes less collateral damage.</French>
+		<German>The [COLOR_UNIT_TEXT]Siege Ram[COLOR_REVERT], the Assyrian replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], is cheaper to build, has one less strength point, has a greater bonus when attacking cities and causes less collateral damage.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Siege Ram[COLOR_REVERT], the Assyrian replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], is cheaper to build, has one less strength point, has a greater bonus when attacking cities and causes less collateral damage.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Siege Ram[COLOR_REVERT], the Assyrian replacement for the [COLOR_UNIT_TEXT]Catapult[COLOR_REVERT], is cheaper to build, has one less strength point, has a greater bonus when attacking cities and causes less collateral damage.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_BURMESE_CASSAY_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Cassay[COLOR_REVERT], the Burmese replacement for the [COLOR_UNIT_TEXT]Dragoon[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Blitz[COLOR_REVERT] promotions.</English>
+		<French>The [COLOR_UNIT_TEXT]Cassay[COLOR_REVERT], the Burmese replacement for the [COLOR_UNIT_TEXT]Dragoon[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Blitz[COLOR_REVERT] promotions.</French>
+		<German>The [COLOR_UNIT_TEXT]Cassay[COLOR_REVERT], the Burmese replacement for the [COLOR_UNIT_TEXT]Dragoon[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Blitz[COLOR_REVERT] promotions.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Cassay[COLOR_REVERT], the Burmese replacement for the [COLOR_UNIT_TEXT]Dragoon[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Blitz[COLOR_REVERT] promotions.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Cassay[COLOR_REVERT], the Burmese replacement for the [COLOR_UNIT_TEXT]Dragoon[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Blitz[COLOR_REVERT] promotions.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_BURMESE_KYUNDAW_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Kyundaw[COLOR_REVERT], the Burmese replacement for the [COLOR_UNIT_TEXT]Heavy Spearman[COLOR_REVERT], is cheaper to build.</English>
+		<French>The [COLOR_UNIT_TEXT]Kyundaw[COLOR_REVERT], the Burmese replacement for the [COLOR_UNIT_TEXT]Heavy Spearman[COLOR_REVERT], is cheaper to build.</French>
+		<German>The [COLOR_UNIT_TEXT]Kyundaw[COLOR_REVERT], the Burmese replacement for the [COLOR_UNIT_TEXT]Heavy Spearman[COLOR_REVERT], is cheaper to build.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Kyundaw[COLOR_REVERT], the Burmese replacement for the [COLOR_UNIT_TEXT]Heavy Spearman[COLOR_REVERT], is cheaper to build.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Kyundaw[COLOR_REVERT], the Burmese replacement for the [COLOR_UNIT_TEXT]Heavy Spearman[COLOR_REVERT], is cheaper to build.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_CELTIC_GALLOWGLASS_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Gallowglass[COLOR_REVERT], the Celtic replacement for the [COLOR_UNIT_TEXT]Heavy Swordsman[COLOR_REVERT], is cheaper to build but has one less strength point.</English>
+		<French>The [COLOR_UNIT_TEXT]Gallowglass[COLOR_REVERT], the Celtic replacement for the [COLOR_UNIT_TEXT]Heavy Swordsman[COLOR_REVERT], is cheaper to build but has one less strength point.</French>
+		<German>The [COLOR_UNIT_TEXT]Gallowglass[COLOR_REVERT], the Celtic replacement for the [COLOR_UNIT_TEXT]Heavy Swordsman[COLOR_REVERT], is cheaper to build but has one less strength point.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Gallowglass[COLOR_REVERT], the Celtic replacement for the [COLOR_UNIT_TEXT]Heavy Swordsman[COLOR_REVERT], is cheaper to build but has one less strength point.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Gallowglass[COLOR_REVERT], the Celtic replacement for the [COLOR_UNIT_TEXT]Heavy Swordsman[COLOR_REVERT], is cheaper to build but has one less strength point.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_CELTIC_OATHSWORN_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Oathsworn[COLOR_REVERT], the Celtic replacement for the [COLOR_UNIT_TEXT]Light Swordsman[COLOR_REVERT], moves two tiles per turn, begins with the [COLOR_HIGHLIGHT_TEXT]Mobility[COLOR_REVERT] promotion and has a +25% bonus when attacking cities.</English>
+		<French>The [COLOR_UNIT_TEXT]Oathsworn[COLOR_REVERT], the Celtic replacement for the [COLOR_UNIT_TEXT]Light Swordsman[COLOR_REVERT], moves two tiles per turn, begins with the [COLOR_HIGHLIGHT_TEXT]Mobility[COLOR_REVERT] promotion and has a +25% bonus when attacking cities.</French>
+		<German>The [COLOR_UNIT_TEXT]Oathsworn[COLOR_REVERT], the Celtic replacement for the [COLOR_UNIT_TEXT]Light Swordsman[COLOR_REVERT], moves two tiles per turn, begins with the [COLOR_HIGHLIGHT_TEXT]Mobility[COLOR_REVERT] promotion and has a +25% bonus when attacking cities.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Oathsworn[COLOR_REVERT], the Celtic replacement for the [COLOR_UNIT_TEXT]Light Swordsman[COLOR_REVERT], moves two tiles per turn, begins with the [COLOR_HIGHLIGHT_TEXT]Mobility[COLOR_REVERT] promotion and has a +25% bonus when attacking cities.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Oathsworn[COLOR_REVERT], the Celtic replacement for the [COLOR_UNIT_TEXT]Light Swordsman[COLOR_REVERT], moves two tiles per turn, begins with the [COLOR_HIGHLIGHT_TEXT]Mobility[COLOR_REVERT] promotion and has a +25% bonus when attacking cities.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_DUTCH_FLUYT_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Fluyt[COLOR_REVERT], the Dutch replacement for the [COLOR_UNIT_TEXT]Galleon[COLOR_REVERT], has two additional strength points.</English>
+		<French>The [COLOR_UNIT_TEXT]Fluyt[COLOR_REVERT], the Dutch replacement for the [COLOR_UNIT_TEXT]Galleon[COLOR_REVERT], has two additional strength points.</French>
+		<German>The [COLOR_UNIT_TEXT]Fluyt[COLOR_REVERT], the Dutch replacement for the [COLOR_UNIT_TEXT]Galleon[COLOR_REVERT], has two additional strength points.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Fluyt[COLOR_REVERT], the Dutch replacement for the [COLOR_UNIT_TEXT]Galleon[COLOR_REVERT], has two additional strength points.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Fluyt[COLOR_REVERT], the Dutch replacement for the [COLOR_UNIT_TEXT]Galleon[COLOR_REVERT], has two additional strength points.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_FRENCH_GRIBEAUVAL_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Gribeauval[COLOR_REVERT], the French replacement for the [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], moves two tiles per turn and begins with the [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] promotion.</English>
+		<French>The [COLOR_UNIT_TEXT]Gribeauval[COLOR_REVERT], the French replacement for the [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], moves two tiles per turn and begins with the [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] promotion.</French>
+		<German>The [COLOR_UNIT_TEXT]Gribeauval[COLOR_REVERT], the French replacement for the [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], moves two tiles per turn and begins with the [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] promotion.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Gribeauval[COLOR_REVERT], the French replacement for the [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], moves two tiles per turn and begins with the [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] promotion.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Gribeauval[COLOR_REVERT], the French replacement for the [COLOR_UNIT_TEXT]Cannon[COLOR_REVERT], moves two tiles per turn and begins with the [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] promotion.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_INDIAN_PUNJABI_WORKER_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Punjabi Worker[COLOR_REVERT] is the Indian replacement for the [COLOR_UNIT_TEXT]Worker[COLOR_REVERT], moving three tiles per turn instead of two.</English>
+		<French>The [COLOR_UNIT_TEXT]Punjabi Worker[COLOR_REVERT] is the Indian replacement for the [COLOR_UNIT_TEXT]Worker[COLOR_REVERT], moving three tiles per turn instead of two.</French>
+		<German>The [COLOR_UNIT_TEXT]Punjabi Worker[COLOR_REVERT] is the Indian replacement for the [COLOR_UNIT_TEXT]Worker[COLOR_REVERT], moving three tiles per turn instead of two.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Punjabi Worker[COLOR_REVERT] is the Indian replacement for the [COLOR_UNIT_TEXT]Worker[COLOR_REVERT], moving three tiles per turn instead of two.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Punjabi Worker[COLOR_REVERT] is the Indian replacement for the [COLOR_UNIT_TEXT]Worker[COLOR_REVERT], moving three tiles per turn instead of two.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_IRANIAN_ZAMBURAK_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Zamburak[COLOR_REVERT], the Iranian replacement for the [COLOR_UNIT_TEXT]Camel Gunner[COLOR_REVERT], has one additional strength point and causes collateral damage.</English>
+		<French>The [COLOR_UNIT_TEXT]Zamburak[COLOR_REVERT], the Iranian replacement for the [COLOR_UNIT_TEXT]Camel Gunner[COLOR_REVERT], has one additional strength point and causes collateral damage.</French>
+		<German>The [COLOR_UNIT_TEXT]Zamburak[COLOR_REVERT], the Iranian replacement for the [COLOR_UNIT_TEXT]Camel Gunner[COLOR_REVERT], has one additional strength point and causes collateral damage.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Zamburak[COLOR_REVERT], the Iranian replacement for the [COLOR_UNIT_TEXT]Camel Gunner[COLOR_REVERT], has one additional strength point and causes collateral damage.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Zamburak[COLOR_REVERT], the Iranian replacement for the [COLOR_UNIT_TEXT]Camel Gunner[COLOR_REVERT], has one additional strength point and causes collateral damage.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_JAIN_MISSIONARY_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Jain Muni[COLOR_REVERT] is the missionary of Jainism. It can spread Jainism to other cities and moves two tiles per turn.</English>
+		<French>The [COLOR_UNIT_TEXT]Jain Muni[COLOR_REVERT] is the missionary of Jainism. It can spread Jainism to other cities and moves two tiles per turn.</French>
+		<German>The [COLOR_UNIT_TEXT]Jain Muni[COLOR_REVERT] is the missionary of Jainism. It can spread Jainism to other cities and moves two tiles per turn.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Jain Muni[COLOR_REVERT] is the missionary of Jainism. It can spread Jainism to other cities and moves two tiles per turn.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Jain Muni[COLOR_REVERT] is the missionary of Jainism. It can spread Jainism to other cities and moves two tiles per turn.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_JAVANESE_LANTAKA_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Lantaka[COLOR_REVERT], the Javanese replacement for the [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Amphibious[COLOR_REVERT] promotion.</English>
+		<French>The [COLOR_UNIT_TEXT]Lantaka[COLOR_REVERT], the Javanese replacement for the [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Amphibious[COLOR_REVERT] promotion.</French>
+		<German>The [COLOR_UNIT_TEXT]Lantaka[COLOR_REVERT], the Javanese replacement for the [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Amphibious[COLOR_REVERT] promotion.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Lantaka[COLOR_REVERT], the Javanese replacement for the [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Amphibious[COLOR_REVERT] promotion.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Lantaka[COLOR_REVERT], the Javanese replacement for the [COLOR_UNIT_TEXT]Bombard[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Amphibious[COLOR_REVERT] promotion.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_JAVANESE_PENDEKAR_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Pendekar[COLOR_REVERT], the Javanese replacement for the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Amphibious[COLOR_REVERT] promotion.</English>
+		<French>The [COLOR_UNIT_TEXT]Pendekar[COLOR_REVERT], the Javanese replacement for the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Amphibious[COLOR_REVERT] promotion.</French>
+		<German>The [COLOR_UNIT_TEXT]Pendekar[COLOR_REVERT], the Javanese replacement for the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Amphibious[COLOR_REVERT] promotion.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Pendekar[COLOR_REVERT], the Javanese replacement for the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Amphibious[COLOR_REVERT] promotion.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Pendekar[COLOR_REVERT], the Javanese replacement for the [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Amphibious[COLOR_REVERT] promotion.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_MANCHU_BANNERMAN_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Bannerman[COLOR_REVERT], the Manchu replacement for the [COLOR_UNIT_TEXT]Cuirassier[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion and can capture a copy of an enemy unit it defeats when its owner is weaker than the enemy.</English>
+		<French>The [COLOR_UNIT_TEXT]Bannerman[COLOR_REVERT], the Manchu replacement for the [COLOR_UNIT_TEXT]Cuirassier[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion and can capture a copy of an enemy unit it defeats when its owner is weaker than the enemy.</French>
+		<German>The [COLOR_UNIT_TEXT]Bannerman[COLOR_REVERT], the Manchu replacement for the [COLOR_UNIT_TEXT]Cuirassier[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion and can capture a copy of an enemy unit it defeats when its owner is weaker than the enemy.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Bannerman[COLOR_REVERT], the Manchu replacement for the [COLOR_UNIT_TEXT]Cuirassier[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion and can capture a copy of an enemy unit it defeats when its owner is weaker than the enemy.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Bannerman[COLOR_REVERT], the Manchu replacement for the [COLOR_UNIT_TEXT]Cuirassier[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] promotion and can capture a copy of an enemy unit it defeats when its owner is weaker than the enemy.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_MANDE_FARARI_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Farari[COLOR_REVERT], the Mande replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]River Combat[COLOR_REVERT] promotions.</English>
+		<French>The [COLOR_UNIT_TEXT]Farari[COLOR_REVERT], the Mande replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]River Combat[COLOR_REVERT] promotions.</French>
+		<German>The [COLOR_UNIT_TEXT]Farari[COLOR_REVERT], the Mande replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]River Combat[COLOR_REVERT] promotions.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Farari[COLOR_REVERT], the Mande replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]River Combat[COLOR_REVERT] promotions.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Farari[COLOR_REVERT], the Mande replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Desert Adaptation[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]River Combat[COLOR_REVERT] promotions.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_MASRYEEN_MAMLUK_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Mamluk[COLOR_REVERT], the Masryeen replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Formation[COLOR_REVERT] promotions.</English>
+		<French>The [COLOR_UNIT_TEXT]Mamluk[COLOR_REVERT], the Masryeen replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Formation[COLOR_REVERT] promotions.</French>
+		<German>The [COLOR_UNIT_TEXT]Mamluk[COLOR_REVERT], the Masryeen replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Formation[COLOR_REVERT] promotions.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Mamluk[COLOR_REVERT], the Masryeen replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Formation[COLOR_REVERT] promotions.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Mamluk[COLOR_REVERT], the Masryeen replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Formation[COLOR_REVERT] promotions.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_MUGHAL_SOWAR_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Sowar[COLOR_REVERT], the Mughal replacement for the [COLOR_UNIT_TEXT]Cuirassier[COLOR_REVERT], does not suffer the Cuirassier's penalty when attacking cities.</English>
+		<French>The [COLOR_UNIT_TEXT]Sowar[COLOR_REVERT], the Mughal replacement for the [COLOR_UNIT_TEXT]Cuirassier[COLOR_REVERT], does not suffer the Cuirassier's penalty when attacking cities.</French>
+		<German>The [COLOR_UNIT_TEXT]Sowar[COLOR_REVERT], the Mughal replacement for the [COLOR_UNIT_TEXT]Cuirassier[COLOR_REVERT], does not suffer the Cuirassier's penalty when attacking cities.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Sowar[COLOR_REVERT], the Mughal replacement for the [COLOR_UNIT_TEXT]Cuirassier[COLOR_REVERT], does not suffer the Cuirassier's penalty when attacking cities.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Sowar[COLOR_REVERT], the Mughal replacement for the [COLOR_UNIT_TEXT]Cuirassier[COLOR_REVERT], does not suffer the Cuirassier's penalty when attacking cities.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_NATIVE_RAIDER_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Raider[COLOR_REVERT] is a Native American replacement for the [COLOR_UNIT_TEXT]Spearman[COLOR_REVERT], moving two tiles per turn and beginning with the [COLOR_HIGHLIGHT_TEXT]Mobility[COLOR_REVERT] promotion.</English>
+		<French>The [COLOR_UNIT_TEXT]Raider[COLOR_REVERT] is a Native American replacement for the [COLOR_UNIT_TEXT]Spearman[COLOR_REVERT], moving two tiles per turn and beginning with the [COLOR_HIGHLIGHT_TEXT]Mobility[COLOR_REVERT] promotion.</French>
+		<German>The [COLOR_UNIT_TEXT]Raider[COLOR_REVERT] is a Native American replacement for the [COLOR_UNIT_TEXT]Spearman[COLOR_REVERT], moving two tiles per turn and beginning with the [COLOR_HIGHLIGHT_TEXT]Mobility[COLOR_REVERT] promotion.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Raider[COLOR_REVERT] is a Native American replacement for the [COLOR_UNIT_TEXT]Spearman[COLOR_REVERT], moving two tiles per turn and beginning with the [COLOR_HIGHLIGHT_TEXT]Mobility[COLOR_REVERT] promotion.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Raider[COLOR_REVERT] is a Native American replacement for the [COLOR_UNIT_TEXT]Spearman[COLOR_REVERT], moving two tiles per turn and beginning with the [COLOR_HIGHLIGHT_TEXT]Mobility[COLOR_REVERT] promotion.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_PHOENICIAN_BIREME_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Bireme[COLOR_REVERT] is the Phoenician replacement for the [COLOR_UNIT_TEXT]Galley[COLOR_REVERT], with the same strength and movement.</English>
+		<French>The [COLOR_UNIT_TEXT]Bireme[COLOR_REVERT] is the Phoenician replacement for the [COLOR_UNIT_TEXT]Galley[COLOR_REVERT], with the same strength and movement.</French>
+		<German>The [COLOR_UNIT_TEXT]Bireme[COLOR_REVERT] is the Phoenician replacement for the [COLOR_UNIT_TEXT]Galley[COLOR_REVERT], with the same strength and movement.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Bireme[COLOR_REVERT] is the Phoenician replacement for the [COLOR_UNIT_TEXT]Galley[COLOR_REVERT], with the same strength and movement.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Bireme[COLOR_REVERT] is the Phoenician replacement for the [COLOR_UNIT_TEXT]Galley[COLOR_REVERT], with the same strength and movement.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_RUS_DRUZHINA_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Druzhina[COLOR_REVERT], the Ruthenian replacement for the [COLOR_UNIT_TEXT]Heavy Swordsman[COLOR_REVERT], moves two tiles per turn and begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Flanking I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]River Combat[COLOR_REVERT] promotions.</English>
+		<French>The [COLOR_UNIT_TEXT]Druzhina[COLOR_REVERT], the Ruthenian replacement for the [COLOR_UNIT_TEXT]Heavy Swordsman[COLOR_REVERT], moves two tiles per turn and begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Flanking I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]River Combat[COLOR_REVERT] promotions.</French>
+		<German>The [COLOR_UNIT_TEXT]Druzhina[COLOR_REVERT], the Ruthenian replacement for the [COLOR_UNIT_TEXT]Heavy Swordsman[COLOR_REVERT], moves two tiles per turn and begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Flanking I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]River Combat[COLOR_REVERT] promotions.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Druzhina[COLOR_REVERT], the Ruthenian replacement for the [COLOR_UNIT_TEXT]Heavy Swordsman[COLOR_REVERT], moves two tiles per turn and begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Flanking I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]River Combat[COLOR_REVERT] promotions.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Druzhina[COLOR_REVERT], the Ruthenian replacement for the [COLOR_UNIT_TEXT]Heavy Swordsman[COLOR_REVERT], moves two tiles per turn and begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Flanking I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]River Combat[COLOR_REVERT] promotions.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_SWAHILI_DHOW_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Dhow[COLOR_REVERT], the Swahili replacement for the [COLOR_UNIT_TEXT]Cog[COLOR_REVERT], moves two tiles faster.</English>
+		<French>The [COLOR_UNIT_TEXT]Dhow[COLOR_REVERT], the Swahili replacement for the [COLOR_UNIT_TEXT]Cog[COLOR_REVERT], moves two tiles faster.</French>
+		<German>The [COLOR_UNIT_TEXT]Dhow[COLOR_REVERT], the Swahili replacement for the [COLOR_UNIT_TEXT]Cog[COLOR_REVERT], moves two tiles faster.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Dhow[COLOR_REVERT], the Swahili replacement for the [COLOR_UNIT_TEXT]Cog[COLOR_REVERT], moves two tiles faster.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Dhow[COLOR_REVERT], the Swahili replacement for the [COLOR_UNIT_TEXT]Cog[COLOR_REVERT], moves two tiles faster.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_SWEDISH_CAROLEAN_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Carolean[COLOR_REVERT], the Swedish replacement for the [COLOR_UNIT_TEXT]Musketeer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]March[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Formation[COLOR_REVERT] promotions.</English>
+		<French>The [COLOR_UNIT_TEXT]Carolean[COLOR_REVERT], the Swedish replacement for the [COLOR_UNIT_TEXT]Musketeer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]March[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Formation[COLOR_REVERT] promotions.</French>
+		<German>The [COLOR_UNIT_TEXT]Carolean[COLOR_REVERT], the Swedish replacement for the [COLOR_UNIT_TEXT]Musketeer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]March[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Formation[COLOR_REVERT] promotions.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Carolean[COLOR_REVERT], the Swedish replacement for the [COLOR_UNIT_TEXT]Musketeer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]March[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Formation[COLOR_REVERT] promotions.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Carolean[COLOR_REVERT], the Swedish replacement for the [COLOR_UNIT_TEXT]Musketeer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]March[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Formation[COLOR_REVERT] promotions.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_SWEDISH_HAKKAPELIITTA_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Hakkapeliitta[COLOR_REVERT], the Swedish replacement for the [COLOR_UNIT_TEXT]Pistolier[COLOR_REVERT], has one additional strength point and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] promotions.</English>
+		<French>The [COLOR_UNIT_TEXT]Hakkapeliitta[COLOR_REVERT], the Swedish replacement for the [COLOR_UNIT_TEXT]Pistolier[COLOR_REVERT], has one additional strength point and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] promotions.</French>
+		<German>The [COLOR_UNIT_TEXT]Hakkapeliitta[COLOR_REVERT], the Swedish replacement for the [COLOR_UNIT_TEXT]Pistolier[COLOR_REVERT], has one additional strength point and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] promotions.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Hakkapeliitta[COLOR_REVERT], the Swedish replacement for the [COLOR_UNIT_TEXT]Pistolier[COLOR_REVERT], has one additional strength point and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] promotions.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Hakkapeliitta[COLOR_REVERT], the Swedish replacement for the [COLOR_UNIT_TEXT]Pistolier[COLOR_REVERT], has one additional strength point and begins with the [COLOR_HIGHLIGHT_TEXT]Shock[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Pinch[COLOR_REVERT] promotions.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_TATAR_CHAMBUL_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Chambul[COLOR_REVERT], the Tatar replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]March[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Steppe Adaptation[COLOR_REVERT] promotions.</English>
+		<French>The [COLOR_UNIT_TEXT]Chambul[COLOR_REVERT], the Tatar replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]March[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Steppe Adaptation[COLOR_REVERT] promotions.</French>
+		<German>The [COLOR_UNIT_TEXT]Chambul[COLOR_REVERT], the Tatar replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]March[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Steppe Adaptation[COLOR_REVERT] promotions.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Chambul[COLOR_REVERT], the Tatar replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]March[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Steppe Adaptation[COLOR_REVERT] promotions.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Chambul[COLOR_REVERT], the Tatar replacement for the [COLOR_UNIT_TEXT]Lancer[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]March[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Steppe Adaptation[COLOR_REVERT] promotions.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_TOLTEC_ATLATL_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Atlatl[COLOR_REVERT] is the Toltec replacement for the [COLOR_UNIT_TEXT]Skirmisher[COLOR_REVERT]. It shares the Skirmisher's strength and collateral damage.</English>
+		<French>The [COLOR_UNIT_TEXT]Atlatl[COLOR_REVERT] is the Toltec replacement for the [COLOR_UNIT_TEXT]Skirmisher[COLOR_REVERT]. It shares the Skirmisher's strength and collateral damage.</French>
+		<German>The [COLOR_UNIT_TEXT]Atlatl[COLOR_REVERT] is the Toltec replacement for the [COLOR_UNIT_TEXT]Skirmisher[COLOR_REVERT]. It shares the Skirmisher's strength and collateral damage.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Atlatl[COLOR_REVERT] is the Toltec replacement for the [COLOR_UNIT_TEXT]Skirmisher[COLOR_REVERT]. It shares the Skirmisher's strength and collateral damage.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Atlatl[COLOR_REVERT] is the Toltec replacement for the [COLOR_UNIT_TEXT]Skirmisher[COLOR_REVERT]. It shares the Skirmisher's strength and collateral damage.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_VIETNAMESE_RATTAN_ARCHER_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Rattan Archer[COLOR_REVERT], the Vietnamese replacement for the [COLOR_UNIT_TEXT]Longbowman[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Guerilla I[COLOR_REVERT] promotions.</English>
+		<French>The [COLOR_UNIT_TEXT]Rattan Archer[COLOR_REVERT], the Vietnamese replacement for the [COLOR_UNIT_TEXT]Longbowman[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Guerilla I[COLOR_REVERT] promotions.</French>
+		<German>The [COLOR_UNIT_TEXT]Rattan Archer[COLOR_REVERT], the Vietnamese replacement for the [COLOR_UNIT_TEXT]Longbowman[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Guerilla I[COLOR_REVERT] promotions.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Rattan Archer[COLOR_REVERT], the Vietnamese replacement for the [COLOR_UNIT_TEXT]Longbowman[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Guerilla I[COLOR_REVERT] promotions.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Rattan Archer[COLOR_REVERT], the Vietnamese replacement for the [COLOR_UNIT_TEXT]Longbowman[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Guerilla I[COLOR_REVERT] promotions.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_VIETNAMESE_VIET_CONG_STRATEGY</Tag>
+		<English>The [COLOR_UNIT_TEXT]Viet Cong[COLOR_REVERT], the Vietnamese replacement for the [COLOR_UNIT_TEXT]Infantry[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Guerilla I[COLOR_REVERT] promotions.</English>
+		<French>The [COLOR_UNIT_TEXT]Viet Cong[COLOR_REVERT], the Vietnamese replacement for the [COLOR_UNIT_TEXT]Infantry[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Guerilla I[COLOR_REVERT] promotions.</French>
+		<German>The [COLOR_UNIT_TEXT]Viet Cong[COLOR_REVERT], the Vietnamese replacement for the [COLOR_UNIT_TEXT]Infantry[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Guerilla I[COLOR_REVERT] promotions.</German>
+		<Italian>The [COLOR_UNIT_TEXT]Viet Cong[COLOR_REVERT], the Vietnamese replacement for the [COLOR_UNIT_TEXT]Infantry[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Guerilla I[COLOR_REVERT] promotions.</Italian>
+		<Spanish>The [COLOR_UNIT_TEXT]Viet Cong[COLOR_REVERT], the Vietnamese replacement for the [COLOR_UNIT_TEXT]Infantry[COLOR_REVERT], begins with the [COLOR_HIGHLIGHT_TEXT]Woodsman I[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Guerilla I[COLOR_REVERT] promotions.</Spanish>
 	</TEXT>
 </Civ4GameText>

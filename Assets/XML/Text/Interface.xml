@@ -2472,14 +2472,6 @@
 		<Spanish>[ICON_BULLET]Can Enslave Population</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_CIVIC_CAN_USE_SLAVES</Tag>
-		<English>[ICON_BULLET]Can Use Slaves</English>
-		<French>[ICON_BULLET]Possible d'utiliser des esclaves</French>
-		<German>[ICON_BULLET]Kann Sklaven verwenden</German>
-		<Italian>[ICON_BULLET]Can Use Slaves</Italian>
-		<Spanish>[ICON_BULLET]Can Use Slaves</Spanish>
-	</TEXT>
-	<TEXT>
 		<Tag>TXT_KEY_CIVIC_CANNOT_USE_SLAVES</Tag>
 		<English>[ICON_BULLET]Cannot Use Slaves</English>
 		<French>[ICON_BULLET]Impossible d'utiliser des esclaves</French>
@@ -4056,13 +4048,5 @@
 		<German>[ICON_BULLET][LINK=literal]%s1[\LINK] Produced with [ICON_FOOD]</German>
 		<Italian>[ICON_BULLET][LINK=literal]%s1[\LINK] Produced with [ICON_FOOD]</Italian>
 		<Spanish>[ICON_BULLET][LINK=literal]%s1[\LINK] Produced with [ICON_FOOD]</Spanish>
-	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_</Tag>
-		<English></English>
-		<French></French>
-		<German></German>
-		<Italian></Italian>
-		<Spanish></Spanish>
 	</TEXT>
 </Civ4GameText>

@@ -131,5 +131,20 @@
 			<Description>TXT_KEY_CONCEPT_CITY_CONQUEST</Description>
 			<Civilopedia>TXT_KEY_CONCEPT_CITY_CONQUEST_PEDIA</Civilopedia>
 		</ConceptInfo>
+		<ConceptInfo>
+			<Type>CONCEPT_STRAITS</Type>
+			<Description>TXT_KEY_CONCEPT_STRAITS</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_STRAITS_PEDIA</Civilopedia>
+		</ConceptInfo>
+		<ConceptInfo>
+			<Type>CONCEPT_CITY_CANALS</Type>
+			<Description>TXT_KEY_CONCEPT_CITY_CANALS</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_CITY_CANALS_PEDIA</Civilopedia>
+		</ConceptInfo>
+		<ConceptInfo>
+			<Type>CONCEPT_TRADE_NODES</Type>
+			<Description>TXT_KEY_CONCEPT_TRADE_NODES</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_TRADE_NODES_PEDIA</Civilopedia>
+		</ConceptInfo>
 	</ConceptInfos>
 </Civ4BasicInfos>

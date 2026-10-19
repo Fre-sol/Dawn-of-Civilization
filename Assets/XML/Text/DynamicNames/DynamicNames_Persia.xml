@@ -422,42 +422,6 @@
 		<Spanish>Athura</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_CIV_IRAN_ADJECTIVE</Tag>
-		<English>Iranian</English>
-		<French>
-			<Text>iranien:iranienne:iraniens:iraniennes</Text>
-			<Gender>Male:Female:Male:Female</Gender>
-			<Plural>0:0:1:1</Plural>
-		</French>
-		<German>Iranian</German>
-		<Italian>Iranian</Italian>
-		<Spanish>Iranian</Spanish>
-	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_CIV_IRAN_DESC</Tag>
-		<English>The Iranians</English>
-		<French>
-			<Text>Les Iraniens</Text>
-			<Gender>Male</Gender>
-			<Plural>1</Plural>
-		</French>
-		<German>
-			<Text>Perser:Die Perser:den Persern</Text>
-			<Gender>Male:Male:Male</Gender>
-			<Plural>1:1:1</Plural>
-		</German>
-		<Italian>
-			<Text>I Persiani</Text>
-			<Gender>Male</Gender>
-			<Plural>1</Plural>
-		</Italian>
-		<Spanish>
-			<Text>Los Persas</Text>
-			<Gender>Male</Gender>
-			<Plural>1</Plural>
-		</Spanish>
-	</TEXT>
-	<TEXT>
 		<Tag>TXT_KEY_CIV_PERSIA_ADJECTIVE</Tag>
 		<English>Persian</English>
 		<French>

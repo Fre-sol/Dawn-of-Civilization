@@ -383,11 +383,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_GREAT_LIGHTHOUSE_STRATEGY</Tag>
-		<English>The [COLOR_BUILDING_TEXT]Great Lighthouse[COLOR_REVERT] creates a free [COLOR_BUILDING_TEXT]Lighthouse[COLOR_REVERT] in every coastal city and provides two free trade routes in its city. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</English>
-		<French>The [COLOR_BUILDING_TEXT]Great Lighthouse[COLOR_REVERT] creates a free [COLOR_BUILDING_TEXT]Lighthouse[COLOR_REVERT] in every coastal city and provides two free trade routes in its city. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</French>
-		<German>The [COLOR_BUILDING_TEXT]Great Lighthouse[COLOR_REVERT] creates a free [COLOR_BUILDING_TEXT]Lighthouse[COLOR_REVERT] in every coastal city and provides two free trade routes in its city. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</German>
-		<Italian>The [COLOR_BUILDING_TEXT]Great Lighthouse[COLOR_REVERT] creates a free [COLOR_BUILDING_TEXT]Lighthouse[COLOR_REVERT] in every coastal city and provides two free trade routes in its city. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</Italian>
-		<Spanish>The [COLOR_BUILDING_TEXT]Great Lighthouse[COLOR_REVERT] creates a free [COLOR_BUILDING_TEXT]Lighthouse[COLOR_REVERT] in every coastal city and provides two free trade routes in its city. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</Spanish>
+		<English>The [COLOR_BUILDING_TEXT]Great Lighthouse[COLOR_REVERT] provides four trade routes and doubles trade route yield in its city. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</English>
+		<French>The [COLOR_BUILDING_TEXT]Great Lighthouse[COLOR_REVERT] provides four trade routes and doubles trade route yield in its city. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</French>
+		<German>The [COLOR_BUILDING_TEXT]Great Lighthouse[COLOR_REVERT] provides four trade routes and doubles trade route yield in its city. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</German>
+		<Italian>The [COLOR_BUILDING_TEXT]Great Lighthouse[COLOR_REVERT] provides four trade routes and doubles trade route yield in its city. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_BUILDING_TEXT]Great Lighthouse[COLOR_REVERT] provides four trade routes and doubles trade route yield in its city. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_GREAT_WALL_HELP</Tag>
@@ -463,11 +463,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_HIMEJI_CASTLE_STRATEGY</Tag>
-		<English>The [COLOR_BUILDING_TEXT]Himeji Castle[COLOR_REVERT] makes city defence increases culture output in all cities and makes all fully fortified units in its provide +1 culture per level. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</English>
-		<French>The [COLOR_BUILDING_TEXT]Himeji Castle[COLOR_REVERT] makes city defence increases culture output in all cities and makes all fully fortified units in its provide +1 culture per level. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</French>
-		<German>The [COLOR_BUILDING_TEXT]Himeji Castle[COLOR_REVERT] makes city defence increases culture output in all cities and makes all fully fortified units in its provide +1 culture per level. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</German>
-		<Italian>The [COLOR_BUILDING_TEXT]Himeji Castle[COLOR_REVERT] makes city defence increases culture output in all cities and makes all fully fortified units in its provide +1 culture per level. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Italian>
-		<Spanish>The [COLOR_BUILDING_TEXT]Himeji Castle[COLOR_REVERT] makes city defence increases culture output in all cities and makes all fully fortified units in its provide +1 culture per level. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Spanish>
+		<English>The [COLOR_BUILDING_TEXT]Himeji Castle[COLOR_REVERT] increases its city's culture output based on its defensive buildings, and every fully fortified unit in the city adds culture equal to its level. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</English>
+		<French>The [COLOR_BUILDING_TEXT]Himeji Castle[COLOR_REVERT] increases its city's culture output based on its defensive buildings, and every fully fortified unit in the city adds culture equal to its level. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</French>
+		<German>The [COLOR_BUILDING_TEXT]Himeji Castle[COLOR_REVERT] increases its city's culture output based on its defensive buildings, and every fully fortified unit in the city adds culture equal to its level. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</German>
+		<Italian>The [COLOR_BUILDING_TEXT]Himeji Castle[COLOR_REVERT] increases its city's culture output based on its defensive buildings, and every fully fortified unit in the city adds culture equal to its level. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_BUILDING_TEXT]Himeji Castle[COLOR_REVERT] increases its city's culture output based on its defensive buildings, and every fully fortified unit in the city adds culture equal to its level. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_ISHTAR_GATE</Tag>
@@ -551,11 +551,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_ST_BASILS_CATHEDRAL_STRATEGY</Tag>
-		<English>[COLOR_BUILDING_TEXT]St. Basil's Cathedral[COLOR_REVERT] increases the production of all state religion buildings and increases its city's chances of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</English>
-		<French>[COLOR_BUILDING_TEXT]St. Basil's Cathedral[COLOR_REVERT] increases the production of all state religion buildings and increases its city's chances of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</French>
+		<English>[COLOR_BUILDING_TEXT]St. Basil's Cathedral[COLOR_REVERT] increases the production of all state religion buildings and increases its city's chances of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</English>
+		<French>[COLOR_BUILDING_TEXT]St. Basil's Cathedral[COLOR_REVERT] increases the production of all state religion buildings and increases its city's chances of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</French>
 		<German>Der [COLOR_BUILDING_TEXT]Basilius-Kathedrale[COLOR_REVERT] erh&#246;ht die Produktion aller Geb&#228;ude der Staatsreligion und erh&#246;ht die Chancen einer Stadt, einen [COLOR_UNIT_TEXT]Gro&#223;en Staatsmann[COLOR_REVERT] hervorzubringen.</German>
-		<Italian>[COLOR_BUILDING_TEXT]St. Basil's Cathedral[COLOR_REVERT] increases the production of all state religion buildings and increases its city's chances of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_BUILDING_TEXT]St. Basil's Cathedral[COLOR_REVERT] increases the production of all state religion buildings and increases its city's chances of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Spanish>
+		<Italian>[COLOR_BUILDING_TEXT]St. Basil's Cathedral[COLOR_REVERT] increases the production of all state religion buildings and increases its city's chances of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_BUILDING_TEXT]St. Basil's Cathedral[COLOR_REVERT] increases the production of all state religion buildings and increases its city's chances of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_MACHU_PICCHU</Tag>
@@ -1019,11 +1019,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_GREAT_SPHINX_STRATEGY</Tag>
-		<English>The [COLOR_BUILDING_TEXT]Great Sphinx[COLOR_REVERT] provides additional happiness with Dye, Gold, and Incense. It increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</English>
-		<French>The [COLOR_BUILDING_TEXT]Great Sphinx[COLOR_REVERT] provides additional happiness with Dye, Gold, and Incense. It increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</French>
-		<German>The [COLOR_BUILDING_TEXT]Great Sphinx[COLOR_REVERT] provides additional happiness with Dye, Gold, and Incense. It increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</German>
-		<Italian>The [COLOR_BUILDING_TEXT]Great Sphinx[COLOR_REVERT] provides additional happiness with Dye, Gold, and Incense. It increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Italian>
-		<Spanish>The [COLOR_BUILDING_TEXT]Great Sphinx[COLOR_REVERT] provides additional happiness with Dye, Gold, and Incense. It increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Spanish>
+		<English>The [COLOR_BUILDING_TEXT]Great Sphinx[COLOR_REVERT] provides additional happiness with Stone and Marble. It increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</English>
+		<French>The [COLOR_BUILDING_TEXT]Great Sphinx[COLOR_REVERT] provides additional happiness with Stone and Marble. It increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</French>
+		<German>The [COLOR_BUILDING_TEXT]Great Sphinx[COLOR_REVERT] provides additional happiness with Stone and Marble. It increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</German>
+		<Italian>The [COLOR_BUILDING_TEXT]Great Sphinx[COLOR_REVERT] provides additional happiness with Stone and Marble. It increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_BUILDING_TEXT]Great Sphinx[COLOR_REVERT] provides additional happiness with Stone and Marble. It increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_TAJ_MAHAL_STRATEGY</Tag>
@@ -1371,11 +1371,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_PRAMBANAN_STRATEGY</Tag>
-		<English>[COLOR_BUILDING_TEXT]Prambanan[COLOR_REVERT] generates additional production from happiness resources. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</English>
-		<French>[COLOR_BUILDING_TEXT]Prambanan[COLOR_REVERT] generates additional production from happiness resources. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</French>
-		<German>[COLOR_BUILDING_TEXT]Prambanan[COLOR_REVERT] generates additional production from happiness resources. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</German>
-		<Italian>[COLOR_BUILDING_TEXT]Prambanan[COLOR_REVERT] generates additional production from happiness resources. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_BUILDING_TEXT]Prambanan[COLOR_REVERT] generates additional production from happiness resources. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Spanish>
+		<English>[COLOR_BUILDING_TEXT]Prambanan[COLOR_REVERT] generates additional production from happiness resources. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</English>
+		<French>[COLOR_BUILDING_TEXT]Prambanan[COLOR_REVERT] generates additional production from happiness resources. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</French>
+		<German>[COLOR_BUILDING_TEXT]Prambanan[COLOR_REVERT] generates additional production from happiness resources. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</German>
+		<Italian>[COLOR_BUILDING_TEXT]Prambanan[COLOR_REVERT] generates additional production from happiness resources. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_BUILDING_TEXT]Prambanan[COLOR_REVERT] generates additional production from happiness resources. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_CHEOMSEONGDAE</Tag>
@@ -1515,11 +1515,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_SAINT_SOPHIA_STRATEGY</Tag>
-		<English>[COLOR_BUILDING_TEXT]Saint Sophia's Cathedral[COLOR_REVERT] grants a free [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] promotion for [COLOR_HIGHLIGHT_TEXT]Melee[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT], and [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] units. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</English>
-		<French>[COLOR_BUILDING_TEXT]Saint Sophia's Cathedral[COLOR_REVERT] grants a free [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] promotion for [COLOR_HIGHLIGHT_TEXT]Melee[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT], and [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] units. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</French>
-		<German>[COLOR_BUILDING_TEXT]Saint Sophia's Cathedral[COLOR_REVERT] grants a free [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] promotion for [COLOR_HIGHLIGHT_TEXT]Melee[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT], and [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] units. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</German>
-		<Italian>[COLOR_BUILDING_TEXT]Saint Sophia's Cathedral[COLOR_REVERT] grants a free [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] promotion for [COLOR_HIGHLIGHT_TEXT]Melee[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT], and [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] units. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_BUILDING_TEXT]Saint Sophia's Cathedral[COLOR_REVERT] grants a free [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] promotion for [COLOR_HIGHLIGHT_TEXT]Melee[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT], and [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] units. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Spanish>
+		<English>[COLOR_BUILDING_TEXT]Saint Sophia's Cathedral[COLOR_REVERT] grants the [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] promotion to [COLOR_HIGHLIGHT_TEXT]Melee[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Light Cavalry[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Heavy Cavalry[COLOR_REVERT] units. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</English>
+		<French>[COLOR_BUILDING_TEXT]Saint Sophia's Cathedral[COLOR_REVERT] grants the [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] promotion to [COLOR_HIGHLIGHT_TEXT]Melee[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Light Cavalry[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Heavy Cavalry[COLOR_REVERT] units. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</French>
+		<German>[COLOR_BUILDING_TEXT]Saint Sophia's Cathedral[COLOR_REVERT] grants the [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] promotion to [COLOR_HIGHLIGHT_TEXT]Melee[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Light Cavalry[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Heavy Cavalry[COLOR_REVERT] units. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</German>
+		<Italian>[COLOR_BUILDING_TEXT]Saint Sophia's Cathedral[COLOR_REVERT] grants the [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] promotion to [COLOR_HIGHLIGHT_TEXT]Melee[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Light Cavalry[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Heavy Cavalry[COLOR_REVERT] units. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_BUILDING_TEXT]Saint Sophia's Cathedral[COLOR_REVERT] grants the [COLOR_HIGHLIGHT_TEXT]Skirmish[COLOR_REVERT] promotion to [COLOR_HIGHLIGHT_TEXT]Melee[COLOR_REVERT], [COLOR_HIGHLIGHT_TEXT]Light Cavalry[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Heavy Cavalry[COLOR_REVERT] units. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_SAINT_SOPHIA_HELP</Tag>
@@ -2071,11 +2071,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_MONOLITHIC_CHURCH_STRATEGY</Tag>
-		<English>The [COLOR_BUILDING_TEXT]Monolithic Church[COLOR_REVERT] adds additional commerce to all of your [COLOR_HIGHLIGHT_TEXT]Priest[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</English>
-		<French>The [COLOR_BUILDING_TEXT]Monolithic Church[COLOR_REVERT] adds additional commerce to all of your [COLOR_HIGHLIGHT_TEXT]Priest[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</French>
-		<German>The [COLOR_BUILDING_TEXT]Monolithic Church[COLOR_REVERT] adds additional commerce to all of your [COLOR_HIGHLIGHT_TEXT]Priest[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</German>
-		<Italian>The [COLOR_BUILDING_TEXT]Monolithic Church[COLOR_REVERT] adds additional commerce to all of your [COLOR_HIGHLIGHT_TEXT]Priest[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Italian>
-		<Spanish>The [COLOR_BUILDING_TEXT]Monolithic Church[COLOR_REVERT] adds additional commerce to all of your [COLOR_HIGHLIGHT_TEXT]Priest[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Spanish>
+		<English>The [COLOR_BUILDING_TEXT]Monolithic Church[COLOR_REVERT] adds additional culture to all of your [COLOR_HIGHLIGHT_TEXT]Priest[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</English>
+		<French>The [COLOR_BUILDING_TEXT]Monolithic Church[COLOR_REVERT] adds additional culture to all of your [COLOR_HIGHLIGHT_TEXT]Priest[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</French>
+		<German>The [COLOR_BUILDING_TEXT]Monolithic Church[COLOR_REVERT] adds additional culture to all of your [COLOR_HIGHLIGHT_TEXT]Priest[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</German>
+		<Italian>The [COLOR_BUILDING_TEXT]Monolithic Church[COLOR_REVERT] adds additional culture to all of your [COLOR_HIGHLIGHT_TEXT]Priest[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_BUILDING_TEXT]Monolithic Church[COLOR_REVERT] adds additional culture to all of your [COLOR_HIGHLIGHT_TEXT]Priest[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_GOLDEN_GATE_BRIDGE</Tag>
@@ -2287,11 +2287,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_DELTA_WORKS_STRATEGY</Tag>
-		<English>[COLOR_BUILDING_TEXT]Delta Works[COLOR_REVERT] adds extra food, production and commerce to all water tiles worked by its city. It also increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</English>
-		<French>[COLOR_BUILDING_TEXT]Delta Works[COLOR_REVERT] adds extra food, production and commerce to all water tiles worked by its city. It also increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</French>
-		<German>[COLOR_BUILDING_TEXT]Delta Works[COLOR_REVERT] adds extra food, production and commerce to all water tiles worked by its city. It also increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</German>
-		<Italian>[COLOR_BUILDING_TEXT]Delta Works[COLOR_REVERT] adds extra food, production and commerce to all water tiles worked by its city. It also increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_BUILDING_TEXT]Delta Works[COLOR_REVERT] adds extra food, production and commerce to all water tiles worked by its city. It also increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Merchant[COLOR_REVERT].</Spanish>
+		<English>[COLOR_BUILDING_TEXT]Delta Works[COLOR_REVERT] adds extra food, production and commerce to all water tiles worked by its city. It also increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</English>
+		<French>[COLOR_BUILDING_TEXT]Delta Works[COLOR_REVERT] adds extra food, production and commerce to all water tiles worked by its city. It also increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</French>
+		<German>[COLOR_BUILDING_TEXT]Delta Works[COLOR_REVERT] adds extra food, production and commerce to all water tiles worked by its city. It also increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</German>
+		<Italian>[COLOR_BUILDING_TEXT]Delta Works[COLOR_REVERT] adds extra food, production and commerce to all water tiles worked by its city. It also increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_BUILDING_TEXT]Delta Works[COLOR_REVERT] adds extra food, production and commerce to all water tiles worked by its city. It also increases its city's odds of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_IRON_DOME</Tag>
@@ -2463,11 +2463,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_BERLAYMONT_STRATEGY</Tag>
-		<English>[COLOR_BUILDING_TEXT]Berlaymont[COLOR_REVERT] increases the limit of defensive pacts you can sign, increases the willingness of other civilizations to sign defensive pacts, and provides provides 1 free specialist per signed defensive pact. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</English>
-		<French>[COLOR_BUILDING_TEXT]Berlaymont[COLOR_REVERT] increases the limit of defensive pacts you can sign, increases the willingness of other civilizations to sign defensive pacts, and provides provides 1 free specialist per signed defensive pact. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</French>
-		<German>[COLOR_BUILDING_TEXT]Berlaymont[COLOR_REVERT] increases the limit of defensive pacts you can sign, increases the willingness of other civilizations to sign defensive pacts, and provides provides 1 free specialist per signed defensive pact. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</German>
-		<Italian>[COLOR_BUILDING_TEXT]Berlaymont[COLOR_REVERT] increases the limit of defensive pacts you can sign, increases the willingness of other civilizations to sign defensive pacts, and provides provides 1 free specialist per signed defensive pact. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_BUILDING_TEXT]Berlaymont[COLOR_REVERT] increases the limit of defensive pacts you can sign, increases the willingness of other civilizations to sign defensive pacts, and provides provides 1 free specialist per signed defensive pact. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Spanish>
+		<English>[COLOR_BUILDING_TEXT]Berlaymont[COLOR_REVERT] increases the limit of defensive pacts you can sign, increases the willingness of other civilizations to sign defensive pacts, and provides 1 free specialist per signed defensive pact. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</English>
+		<French>[COLOR_BUILDING_TEXT]Berlaymont[COLOR_REVERT] increases the limit of defensive pacts you can sign, increases the willingness of other civilizations to sign defensive pacts, and provides 1 free specialist per signed defensive pact. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</French>
+		<German>[COLOR_BUILDING_TEXT]Berlaymont[COLOR_REVERT] increases the limit of defensive pacts you can sign, increases the willingness of other civilizations to sign defensive pacts, and provides 1 free specialist per signed defensive pact. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</German>
+		<Italian>[COLOR_BUILDING_TEXT]Berlaymont[COLOR_REVERT] increases the limit of defensive pacts you can sign, increases the willingness of other civilizations to sign defensive pacts, and provides 1 free specialist per signed defensive pact. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_BUILDING_TEXT]Berlaymont[COLOR_REVERT] increases the limit of defensive pacts you can sign, increases the willingness of other civilizations to sign defensive pacts, and provides 1 free specialist per signed defensive pact. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_ITER</Tag>
@@ -2531,11 +2531,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_VIJAYA_STAMBHA_STRATEGY</Tag>
-		<English>The [COLOR_BUILDING_TEXT]Vijaya Stambha[COLOR_REVERT] gives all eligible units built in this city the [COLOR_HIGHLIGHT_TEXT]City Garrison I[COLOR_REVERT] promotion and increases [COLOR_UNIT_TEXT]Great General[COLOR_REVERT] emergence. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</English>
-		<French>The [COLOR_BUILDING_TEXT]Vijaya Stambha[COLOR_REVERT] gives all eligible units built in this city the [COLOR_HIGHLIGHT_TEXT]City Garrison I[COLOR_REVERT] promotion and increases [COLOR_UNIT_TEXT]Great General[COLOR_REVERT] emergence. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</French>
-		<German>The [COLOR_BUILDING_TEXT]Vijaya Stambha[COLOR_REVERT] gives all eligible units built in this city the [COLOR_HIGHLIGHT_TEXT]City Garrison I[COLOR_REVERT] promotion and increases [COLOR_UNIT_TEXT]Great General[COLOR_REVERT] emergence. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</German>
-		<Italian>The [COLOR_BUILDING_TEXT]Vijaya Stambha[COLOR_REVERT] gives all eligible units built in this city the [COLOR_HIGHLIGHT_TEXT]City Garrison I[COLOR_REVERT] promotion and increases [COLOR_UNIT_TEXT]Great General[COLOR_REVERT] emergence. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Italian>
-		<Spanish>The [COLOR_BUILDING_TEXT]Vijaya Stambha[COLOR_REVERT] gives all eligible units built in this city the [COLOR_HIGHLIGHT_TEXT]City Garrison I[COLOR_REVERT] promotion and increases [COLOR_UNIT_TEXT]Great General[COLOR_REVERT] emergence. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Spanish>
+		<English>The [COLOR_BUILDING_TEXT]Vijaya Stambha[COLOR_REVERT] gives all eligible units built in this city the [COLOR_HIGHLIGHT_TEXT]Blitz[COLOR_REVERT] promotion and increases [COLOR_UNIT_TEXT]Great General[COLOR_REVERT] emergence. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</English>
+		<French>The [COLOR_BUILDING_TEXT]Vijaya Stambha[COLOR_REVERT] gives all eligible units built in this city the [COLOR_HIGHLIGHT_TEXT]Blitz[COLOR_REVERT] promotion and increases [COLOR_UNIT_TEXT]Great General[COLOR_REVERT] emergence. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</French>
+		<German>The [COLOR_BUILDING_TEXT]Vijaya Stambha[COLOR_REVERT] gives all eligible units built in this city the [COLOR_HIGHLIGHT_TEXT]Blitz[COLOR_REVERT] promotion and increases [COLOR_UNIT_TEXT]Great General[COLOR_REVERT] emergence. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</German>
+		<Italian>The [COLOR_BUILDING_TEXT]Vijaya Stambha[COLOR_REVERT] gives all eligible units built in this city the [COLOR_HIGHLIGHT_TEXT]Blitz[COLOR_REVERT] promotion and increases [COLOR_UNIT_TEXT]Great General[COLOR_REVERT] emergence. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_BUILDING_TEXT]Vijaya Stambha[COLOR_REVERT] gives all eligible units built in this city the [COLOR_HIGHLIGHT_TEXT]Blitz[COLOR_REVERT] promotion and increases [COLOR_UNIT_TEXT]Great General[COLOR_REVERT] emergence. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_SHWEDAGON_PAYA_HELP</Tag>
@@ -2927,11 +2927,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_TRIUMPHAL_ARCH_STRATEGY</Tag>
-		<English>The [COLOR_BUILDING_TEXT]Triumphal Arch[COLOR_REVERT] completely heals your units when they are promoted. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</English>
-		<French>The [COLOR_BUILDING_TEXT]Triumphal Arch[COLOR_REVERT] completely heals your units when they are promoted. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</French>
-		<German>The [COLOR_BUILDING_TEXT]Triumphal Arch[COLOR_REVERT] completely heals your units when they are promoted. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</German>
-		<Italian>The [COLOR_BUILDING_TEXT]Triumphal Arch[COLOR_REVERT] completely heals your units when they are promoted. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Italian>
-		<Spanish>The [COLOR_BUILDING_TEXT]Triumphal Arch[COLOR_REVERT] completely heals your units when they are promoted. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Spanish>
+		<English>The [COLOR_BUILDING_TEXT]Triumphal Arch[COLOR_REVERT] increases the damage healed when your units are promoted from half to three quarters. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</English>
+		<French>The [COLOR_BUILDING_TEXT]Triumphal Arch[COLOR_REVERT] increases the damage healed when your units are promoted from half to three quarters. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</French>
+		<German>The [COLOR_BUILDING_TEXT]Triumphal Arch[COLOR_REVERT] increases the damage healed when your units are promoted from half to three quarters. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</German>
+		<Italian>The [COLOR_BUILDING_TEXT]Triumphal Arch[COLOR_REVERT] increases the damage healed when your units are promoted from half to three quarters. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_BUILDING_TEXT]Triumphal Arch[COLOR_REVERT] increases the damage healed when your units are promoted from half to three quarters. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Statesman[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_METROPOLITAIN</Tag>
@@ -3107,11 +3107,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_LAS_LAJAS_SANCTUARY_STRATEGY</Tag>
-		<English>[COLOR_BUILDING_TEXT]Las Lajas Sanctuary[COLOR_REVERT] increases unit heal reate in all cities. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</English>
-		<French>[COLOR_BUILDING_TEXT]Las Lajas Sanctuary[COLOR_REVERT] increases unit heal reate in all cities. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</French>
-		<German>[COLOR_BUILDING_TEXT]Las Lajas Sanctuary[COLOR_REVERT] increases unit heal reate in all cities. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</German>
-		<Italian>[COLOR_BUILDING_TEXT]Las Lajas Sanctuary[COLOR_REVERT] increases unit heal reate in all cities. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Italian>
-		<Spanish>[COLOR_BUILDING_TEXT]Las Lajas Sanctuary[COLOR_REVERT] increases unit heal reate in all cities. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Spanish>
+		<English>[COLOR_BUILDING_TEXT]Las Lajas Sanctuary[COLOR_REVERT] increases unit heal rate in all cities. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</English>
+		<French>[COLOR_BUILDING_TEXT]Las Lajas Sanctuary[COLOR_REVERT] increases unit heal rate in all cities. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</French>
+		<German>[COLOR_BUILDING_TEXT]Las Lajas Sanctuary[COLOR_REVERT] increases unit heal rate in all cities. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</German>
+		<Italian>[COLOR_BUILDING_TEXT]Las Lajas Sanctuary[COLOR_REVERT] increases unit heal rate in all cities. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_BUILDING_TEXT]Las Lajas Sanctuary[COLOR_REVERT] increases unit heal rate in all cities. It also increases its city's chance of generating a [COLOR_UNIT_TEXT]Great Prophet[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_CRYSTAL_CATHEDRAL</Tag>
@@ -3147,11 +3147,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_SKYTREE_STRATEGY</Tag>
-		<English>The [COLOR_BUILDING_TEXT]Skytree[COLOR_REVERT] adds additional production to all of your [COLOR_HIGHLIGHT_TEXT]Scientist[COLOR_REVERT] and food to all your [COLOR_HIGHLIGHT_TEXT]Engineer[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</English>
-		<French>The [COLOR_BUILDING_TEXT]Skytree[COLOR_REVERT] adds additional production to all of your [COLOR_HIGHLIGHT_TEXT]Scientist[COLOR_REVERT] and food to all your [COLOR_HIGHLIGHT_TEXT]Engineer[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</French>
-		<German>The [COLOR_BUILDING_TEXT]Skytree[COLOR_REVERT] adds additional production to all of your [COLOR_HIGHLIGHT_TEXT]Scientist[COLOR_REVERT] and food to all your [COLOR_HIGHLIGHT_TEXT]Engineer[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</German>
-		<Italian>The [COLOR_BUILDING_TEXT]Skytree[COLOR_REVERT] adds additional production to all of your [COLOR_HIGHLIGHT_TEXT]Scientist[COLOR_REVERT] and food to all your [COLOR_HIGHLIGHT_TEXT]Engineer[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Italian>
-		<Spanish>The [COLOR_BUILDING_TEXT]Skytree[COLOR_REVERT] adds additional production to all of your [COLOR_HIGHLIGHT_TEXT]Scientist[COLOR_REVERT] and food to all your [COLOR_HIGHLIGHT_TEXT]Engineer[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Spanish>
+		<English>The [COLOR_BUILDING_TEXT]Skytree[COLOR_REVERT] adds additional production to all of your [COLOR_HIGHLIGHT_TEXT]Scientist[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Engineer[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</English>
+		<French>The [COLOR_BUILDING_TEXT]Skytree[COLOR_REVERT] adds additional production to all of your [COLOR_HIGHLIGHT_TEXT]Scientist[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Engineer[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</French>
+		<German>The [COLOR_BUILDING_TEXT]Skytree[COLOR_REVERT] adds additional production to all of your [COLOR_HIGHLIGHT_TEXT]Scientist[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Engineer[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</German>
+		<Italian>The [COLOR_BUILDING_TEXT]Skytree[COLOR_REVERT] adds additional production to all of your [COLOR_HIGHLIGHT_TEXT]Scientist[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Engineer[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_BUILDING_TEXT]Skytree[COLOR_REVERT] adds additional production to all of your [COLOR_HIGHLIGHT_TEXT]Scientist[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Engineer[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_CHAPULTEPEC_CASTLE</Tag>
@@ -3392,13 +3392,5 @@
 		<German>The [COLOR_BUILDING_TEXT]Minakshi Temple[COLOR_REVERT] adds additional food to all of your [COLOR_HIGHLIGHT_TEXT]Artist[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Merchant[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Artist[COLOR_REVERT].</German>
 		<Italian>The [COLOR_BUILDING_TEXT]Minakshi Temple[COLOR_REVERT] adds additional food to all of your [COLOR_HIGHLIGHT_TEXT]Artist[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Merchant[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Artist[COLOR_REVERT].</Italian>
 		<Spanish>The [COLOR_BUILDING_TEXT]Minakshi Temple[COLOR_REVERT] adds additional food to all of your [COLOR_HIGHLIGHT_TEXT]Artist[COLOR_REVERT] and [COLOR_HIGHLIGHT_TEXT]Merchant[COLOR_REVERT] specialists. It also increases the chance of generating a [COLOR_UNIT_TEXT]Great Artist[COLOR_REVERT].</Spanish>
-	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_BUILDING_</Tag>
-		<English></English>
-		<French></French>
-		<German></German>
-		<Italian></Italian>
-		<Spanish></Spanish>
 	</TEXT>
 </Civ4GameText>

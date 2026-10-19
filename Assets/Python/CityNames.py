@@ -10,7 +10,79 @@ from Events import handler
 
 ### CSV CITY NAME MAP ###
 
-city_names = FileMap("Cities.csv")
+# Fresol - start
+def parseTileName(value, tile):
+	"""Strip a trailing -x-y that matches this tile; keep the first name.
+
+	The reconstruction pass writes "Name1|Name2|...-x-y" so that several real
+	places sharing one cell are all recorded.  The game only wants the base
+	name; the alternates stay in the CSV for the editing tools.
+	"""
+	x, y = location(tile)
+
+	if not value:
+		# an unnamed cell keeps the coordinate placeholder: it must never reach
+		# the translation code as None (Translations.of(None) degrades to
+		# Translation(None) and getNameEvolution then tries to join a None)
+		return "%d-%d" % (x, y)
+
+	parts = value.rsplit("-", 2)
+	if len(parts) == 3 and parts[1].isdigit() and parts[2].isdigit():
+		if int(parts[1]) == x and int(parts[2]) == y:
+			value = parts[0]
+
+	return value.split("|")[0]
+
+
+class TileNameMap(FileMap):
+	def __getitem__(self, tile):
+		return parseTileName(FileMap.__getitem__(self, tile), tile)
+
+	def __iter__(self):
+		# same as FileMap, but the coordinate placeholder of an empty cell is
+		# only a name for the game, not for the map editing tools
+		for x in range(iWorldX):
+			for y in range(iWorldY):
+				value = FileMap.__getitem__(self, (x, y))
+				if self.is_valid_value(value):
+					yield (x, y), self[x, y]
+
+
+city_names = TileNameMap("Cities.csv")
+# Fresol - end
+
+
+### TEMPORARY: raw Cities.csv names for one civilisation ###
+
+# Fresol - start
+# Verification aid for the map reconstruction: a city of this civilisation
+# keeps the whole CSV cell as its name (all alternates plus the -x-y suffix)
+# instead of a translated name, so the game and World Builder show exactly what
+# the file contains.  None = off, -1 = every civilisation.  Remove this block
+# and the three hooks (applyName, getDisplayNameForName, getNameEvolution)
+# when done.
+iRawNameCiv = iEgypt
+
+
+def isRawNameCiv(identifier):
+	if iRawNameCiv is None:
+		return False
+	if iRawNameCiv == -1:
+		return True
+	if identifier is None:
+		return False
+	if player(identifier) is None:
+		return False
+	return civ(identifier) == iRawNameCiv
+
+
+def getRawTileName(tile):
+	value = FileMap.__getitem__(city_names, tile)
+	if value:
+		return value
+	x, y = location(tile)
+	return "%d-%d" % (x, y)
+# Fresol - end
 
 
 ### CONSTANTS ###
@@ -553,6 +625,15 @@ def checkName(city, bFound=False, bNotify=False):
 
 
 def applyName(city, translation, bNotify=False):
+	# Fresol - start
+	if isRawNameCiv(city):
+		# no message: a scenario start renames every city at once
+		raw = getRawTileName(city)
+		if city.getName() != raw:
+			city.setName(raw, False)
+		return
+	# Fresol - end
+
 	if translation.bRelocation:
 		applyRelocation(city, translation.name)
 		return
@@ -564,7 +645,8 @@ def applyName(city, translation, bNotify=False):
 	name = translation.name
 	
 	# remove specific suffixes from names if not needed (e.g. Alexandria ad Issum -> Alexandria)
-	prefix = next(p for p in lUniqueSuffixes if name.startswith(p))
+	# the default matters: a coordinate placeholder such as "0-0" matches no suffix
+	prefix = next((p for p in lUniqueSuffixes if name.startswith(p)), None)  # Fresol
 	if prefix is not None and cities.owner(city).without(city).none(lambda other: other.getName().startswith(prefix)):
 		name = prefix
 	
@@ -614,7 +696,10 @@ def getDisplayName(identifier, tile):
 	return getDisplayNameForName(identifier, tile, tile_names)
 
 
-def getDisplayNameForName(identifier, tile, tile_names, bFound=True):
+def getDisplayNameForName(identifier, tile, tile_names, bFound=True):  # Fresol
+	if isRawNameCiv(identifier):
+		return getRawTileName(tile)
+
 	base_name, tile_name = tile_names
 	
 	bFound = bFound and not plot_(tile).isCity()
@@ -633,7 +718,10 @@ def getDisplayNameForName(identifier, tile, tile_names, bFound=True):
 	return translation.name
 
 
-def getNameEvolution(identifier, tile):
+def getNameEvolution(identifier, tile):  # Fresol
+	if isRawNameCiv(identifier):
+		return getRawTileName(tile)
+
 	tile_names = getTileNames(tile)
 	bFound = not plot_(tile).isCity()
 	

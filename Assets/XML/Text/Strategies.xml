@@ -123,7 +123,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CONCEPT_RESPAWNS</Tag>
-		<English>Respawns in DoC</English>
+		<English>Resurrections in Dawn of Civilization</English>
 		<French>R&#233;apparition dans DoC</French>
 		<German>Respawns in DoC</German>
 		<Italian>Respawns in DoC</Italian>
@@ -131,7 +131,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CONCEPT_RFCINTRO</Tag>
-		<English>Welcome to Rhye's and Fall of Civilization</English>
+		<English>Welcome to Dawn of Civilization</English>
 		<French>Bienvenue &#224; "Rhye's and Fall of Civilization"</French>
 		<German>Willkommen zu Rhye's and Fall of Civilization</German>
 		<Italian>Benvenuto a Rhye's and Fall</Italian>
@@ -224,5 +224,29 @@
 		<German>Stadteroberung</German>
 		<Italian>City Conquest</Italian>
 		<Spanish>City Conquest</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_STRAITS</Tag>
+		<English>Straits</English>
+		<French>Straits</French>
+		<German>Meerengen</German>
+		<Italian>Straits</Italian>
+		<Spanish>Straits</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_CITY_CANALS</Tag>
+		<English>City Canals</English>
+		<French>City Canals</French>
+		<German>Stadtkan&#228;le</German>
+		<Italian>City Canals</Italian>
+		<Spanish>City Canals</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_TRADE_NODES</Tag>
+		<English>Trade Nodes</English>
+		<French>Trade Nodes</French>
+		<German>Handelsknotenpunkte</German>
+		<Italian>Trade Nodes</Italian>
+		<Spanish>Trade Nodes</Spanish>
 	</TEXT>
 </Civ4GameText>

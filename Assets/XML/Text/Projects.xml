@@ -331,19 +331,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PROJECT_MANHATTAN_PROJECT_STRATEGY</Tag>
-		<English>The [COLOR_PROJECT_TEXT]Manhattan Project[COLOR_REVERT] is required to create [COLOR_PROJECT_TEXT]SDI[COLOR_REVERT]. It also allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT], [COLOR_UNIT_TEXT]Tactical Nukes[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Bomb Shelters[COLOR_REVERT].</English>
-		<French>The [COLOR_PROJECT_TEXT]Manhattan Project[COLOR_REVERT] is required to create [COLOR_PROJECT_TEXT]SDI[COLOR_REVERT]. It also allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT], [COLOR_UNIT_TEXT]Tactical Nukes[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Bomb Shelters[COLOR_REVERT].</French>
-		<German>The [COLOR_PROJECT_TEXT]Manhattan Project[COLOR_REVERT] is required to create [COLOR_PROJECT_TEXT]SDI[COLOR_REVERT]. It also allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT], [COLOR_UNIT_TEXT]Tactical Nukes[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Bomb Shelters[COLOR_REVERT].</German>
-		<Italian>The [COLOR_PROJECT_TEXT]Manhattan Project[COLOR_REVERT] is required to create [COLOR_PROJECT_TEXT]SDI[COLOR_REVERT]. It also allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT], [COLOR_UNIT_TEXT]Tactical Nukes[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Bomb Shelters[COLOR_REVERT].</Italian>
-		<Spanish>The [COLOR_PROJECT_TEXT]Manhattan Project[COLOR_REVERT] is required to create [COLOR_PROJECT_TEXT]SDI[COLOR_REVERT]. It also allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT], [COLOR_UNIT_TEXT]Tactical Nukes[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Bomb Shelters[COLOR_REVERT].</Spanish>
+		<English>The [COLOR_PROJECT_TEXT]Manhattan Project[COLOR_REVERT] grants a free [COLOR_UNIT_TEXT]Nuclear Bomber[COLOR_REVERT] and allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Bomb Shelters[COLOR_REVERT]. It is also required to create [COLOR_PROJECT_TEXT]SDI[COLOR_REVERT].</English>
+		<French>The [COLOR_PROJECT_TEXT]Manhattan Project[COLOR_REVERT] grants a free [COLOR_UNIT_TEXT]Nuclear Bomber[COLOR_REVERT] and allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Bomb Shelters[COLOR_REVERT]. It is also required to create [COLOR_PROJECT_TEXT]SDI[COLOR_REVERT].</French>
+		<German>The [COLOR_PROJECT_TEXT]Manhattan Project[COLOR_REVERT] grants a free [COLOR_UNIT_TEXT]Nuclear Bomber[COLOR_REVERT] and allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Bomb Shelters[COLOR_REVERT]. It is also required to create [COLOR_PROJECT_TEXT]SDI[COLOR_REVERT].</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Manhattan Project[COLOR_REVERT] grants a free [COLOR_UNIT_TEXT]Nuclear Bomber[COLOR_REVERT] and allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Bomb Shelters[COLOR_REVERT]. It is also required to create [COLOR_PROJECT_TEXT]SDI[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Manhattan Project[COLOR_REVERT] grants a free [COLOR_UNIT_TEXT]Nuclear Bomber[COLOR_REVERT] and allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT] and [COLOR_BUILDING_TEXT]Bomb Shelters[COLOR_REVERT]. It is also required to create [COLOR_PROJECT_TEXT]SDI[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PROJECT_SDI_STRATEGY</Tag>
-		<English>[COLOR_PROJECT_TEXT]SDI[COLOR_REVERT] gives a fifty percent chance of intercepting nukes.</English>
-		<French>[COLOR_PROJECT_TEXT]SDI[COLOR_REVERT] gives a fifty percent chance of intercepting nukes.</French>
-		<German>[COLOR_PROJECT_TEXT]SDI[COLOR_REVERT] gives a fifty percent chance of intercepting nukes.</German>
-		<Italian>[COLOR_PROJECT_TEXT]SDI[COLOR_REVERT] gives a fifty percent chance of intercepting nukes.</Italian>
-		<Spanish>[COLOR_PROJECT_TEXT]SDI[COLOR_REVERT] gives a fifty percent chance of intercepting nukes.</Spanish>
+		<English>[COLOR_PROJECT_TEXT]SDI[COLOR_REVERT] allows your [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT] to intercept nuclear weapons and attack enemy [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT].</English>
+		<French>[COLOR_PROJECT_TEXT]SDI[COLOR_REVERT] allows your [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT] to intercept nuclear weapons and attack enemy [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT].</French>
+		<German>[COLOR_PROJECT_TEXT]SDI[COLOR_REVERT] allows your [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT] to intercept nuclear weapons and attack enemy [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT].</German>
+		<Italian>[COLOR_PROJECT_TEXT]SDI[COLOR_REVERT] allows your [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT] to intercept nuclear weapons and attack enemy [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT].</Italian>
+		<Spanish>[COLOR_PROJECT_TEXT]SDI[COLOR_REVERT] allows your [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT] to intercept nuclear weapons and attack enemy [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PROJECT_SPACE_CASING_STRATEGY</Tag>
@@ -403,11 +403,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PROJECT_THE_INTERNET_STRATEGY</Tag>
-		<English>The [COLOR_PROJECT_TEXT]Internet[COLOR_REVERT] grants all technologies that are already discovered by 2 known civilizations.</English>
-		<French>The [COLOR_PROJECT_TEXT]Internet[COLOR_REVERT] grants all technologies that are already discovered by 2 known civilizations.</French>
-		<German>The [COLOR_PROJECT_TEXT]Internet[COLOR_REVERT] grants all technologies that are already discovered by 2 known civilizations.</German>
-		<Italian>The [COLOR_PROJECT_TEXT]Internet[COLOR_REVERT] grants all technologies that are already discovered by 2 known civilizations.</Italian>
-		<Spanish>The [COLOR_PROJECT_TEXT]Internet[COLOR_REVERT] grants all technologies that are already discovered by 2 known civilizations.</Spanish>
+		<English>The [COLOR_PROJECT_TEXT]Internet[COLOR_REVERT] adds one [ICON_COMMERCE] to every [COLOR_HIGHLIGHT_TEXT]Specialist[COLOR_REVERT] in your cities.</English>
+		<French>The [COLOR_PROJECT_TEXT]Internet[COLOR_REVERT] adds one [ICON_COMMERCE] to every [COLOR_HIGHLIGHT_TEXT]Specialist[COLOR_REVERT] in your cities.</French>
+		<German>The [COLOR_PROJECT_TEXT]Internet[COLOR_REVERT] adds one [ICON_COMMERCE] to every [COLOR_HIGHLIGHT_TEXT]Specialist[COLOR_REVERT] in your cities.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Internet[COLOR_REVERT] adds one [ICON_COMMERCE] to every [COLOR_HIGHLIGHT_TEXT]Specialist[COLOR_REVERT] in your cities.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Internet[COLOR_REVERT] adds one [ICON_COMMERCE] to every [COLOR_HIGHLIGHT_TEXT]Specialist[COLOR_REVERT] in your cities.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PROJECT_SUEZ_CANAL</Tag>
@@ -456,5 +456,157 @@
 		<German>[ICON_BULLET]+2 experience for Sea units[NEWLINE][ICON_BULLET]Creates Straits along the Panama tile[NEWLINE][COLOR_RED]Requires no city on the Panama tile[COLOR_REVERT][NEWLINE][COLOR_RED]Requires access to the Panama tile[COLOR_REVERT]</German>
 		<Italian>[ICON_BULLET]+2 experience for Sea units[NEWLINE][ICON_BULLET]Creates Straits along the Panama tile[NEWLINE][COLOR_RED]Requires no city on the Panama tile[COLOR_REVERT][NEWLINE][COLOR_RED]Requires access to the Panama tile[COLOR_REVERT]</Italian>
 		<Spanish>[ICON_BULLET]+2 experience for Sea units[NEWLINE][ICON_BULLET]Creates Straits along the Panama tile[NEWLINE][COLOR_RED]Requires no city on the Panama tile[COLOR_REVERT][NEWLINE][COLOR_RED]Requires access to the Panama tile[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_HUMAN_GENOME_PROJECT_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Human Genome Project[COLOR_REVERT] adds one [ICON_FOOD] to every [COLOR_HIGHLIGHT_TEXT]Town[COLOR_REVERT] improvement in your cities.</English>
+		<French>The [COLOR_PROJECT_TEXT]Human Genome Project[COLOR_REVERT] adds one [ICON_FOOD] to every [COLOR_HIGHLIGHT_TEXT]Town[COLOR_REVERT] improvement in your cities.</French>
+		<German>The [COLOR_PROJECT_TEXT]Human Genome Project[COLOR_REVERT] adds one [ICON_FOOD] to every [COLOR_HIGHLIGHT_TEXT]Town[COLOR_REVERT] improvement in your cities.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Human Genome Project[COLOR_REVERT] adds one [ICON_FOOD] to every [COLOR_HIGHLIGHT_TEXT]Town[COLOR_REVERT] improvement in your cities.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Human Genome Project[COLOR_REVERT] adds one [ICON_FOOD] to every [COLOR_HIGHLIGHT_TEXT]Town[COLOR_REVERT] improvement in your cities.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_GLOBAL_POSITIONING_SYSTEM_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Global Positioning System[COLOR_REVERT] grants four additional experience to newly constructed [COLOR_UNIT_TEXT]Air Units[COLOR_REVERT] and the [COLOR_HIGHLIGHT_TEXT]Commando[COLOR_REVERT] promotion to your units.</English>
+		<French>The [COLOR_PROJECT_TEXT]Global Positioning System[COLOR_REVERT] grants four additional experience to newly constructed [COLOR_UNIT_TEXT]Air Units[COLOR_REVERT] and the [COLOR_HIGHLIGHT_TEXT]Commando[COLOR_REVERT] promotion to your units.</French>
+		<German>The [COLOR_PROJECT_TEXT]Global Positioning System[COLOR_REVERT] grants four additional experience to newly constructed [COLOR_UNIT_TEXT]Air Units[COLOR_REVERT] and the [COLOR_HIGHLIGHT_TEXT]Commando[COLOR_REVERT] promotion to your units.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Global Positioning System[COLOR_REVERT] grants four additional experience to newly constructed [COLOR_UNIT_TEXT]Air Units[COLOR_REVERT] and the [COLOR_HIGHLIGHT_TEXT]Commando[COLOR_REVERT] promotion to your units.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Global Positioning System[COLOR_REVERT] grants four additional experience to newly constructed [COLOR_UNIT_TEXT]Air Units[COLOR_REVERT] and the [COLOR_HIGHLIGHT_TEXT]Commando[COLOR_REVERT] promotion to your units.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_GREAT_FIREWALL_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Great Firewall[COLOR_REVERT] increases your counterespionage against all civilizations by 200% and provides one [ICON_HAPPY] for every 20% of your [ICON_ESPIONAGE] espionage rate.</English>
+		<French>The [COLOR_PROJECT_TEXT]Great Firewall[COLOR_REVERT] increases your counterespionage against all civilizations by 200% and provides one [ICON_HAPPY] for every 20% of your [ICON_ESPIONAGE] espionage rate.</French>
+		<German>The [COLOR_PROJECT_TEXT]Great Firewall[COLOR_REVERT] increases your counterespionage against all civilizations by 200% and provides one [ICON_HAPPY] for every 20% of your [ICON_ESPIONAGE] espionage rate.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Great Firewall[COLOR_REVERT] increases your counterespionage against all civilizations by 200% and provides one [ICON_HAPPY] for every 20% of your [ICON_ESPIONAGE] espionage rate.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Great Firewall[COLOR_REVERT] increases your counterespionage against all civilizations by 200% and provides one [ICON_HAPPY] for every 20% of your [ICON_ESPIONAGE] espionage rate.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_INTERNATIONAL_SPACE_STATION_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]International Space Station[COLOR_REVERT] provides two [ICON_GREATPEOPLE] for every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist in each of your cities.</English>
+		<French>The [COLOR_PROJECT_TEXT]International Space Station[COLOR_REVERT] provides two [ICON_GREATPEOPLE] for every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist in each of your cities.</French>
+		<German>The [COLOR_PROJECT_TEXT]International Space Station[COLOR_REVERT] provides two [ICON_GREATPEOPLE] for every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist in each of your cities.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]International Space Station[COLOR_REVERT] provides two [ICON_GREATPEOPLE] for every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist in each of your cities.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]International Space Station[COLOR_REVERT] provides two [ICON_GREATPEOPLE] for every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist in each of your cities.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_BALLISTIC_MISSILE_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Ballistic Missile[COLOR_REVERT] project grants a free [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT] and allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT].</English>
+		<French>The [COLOR_PROJECT_TEXT]Ballistic Missile[COLOR_REVERT] project grants a free [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT] and allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT].</French>
+		<German>The [COLOR_PROJECT_TEXT]Ballistic Missile[COLOR_REVERT] project grants a free [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT] and allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT].</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Ballistic Missile[COLOR_REVERT] project grants a free [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT] and allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Ballistic Missile[COLOR_REVERT] project grants a free [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT] and allows you to construct [COLOR_UNIT_TEXT]ICBMs[COLOR_REVERT].</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_FIRST_SATELLITE_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]First Satellite[COLOR_REVERT] project allows you to construct [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT]. If you are the first to complete it, every civilization currently building it falls into anarchy for one turn.</English>
+		<French>The [COLOR_PROJECT_TEXT]First Satellite[COLOR_REVERT] project allows you to construct [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT]. If you are the first to complete it, every civilization currently building it falls into anarchy for one turn.</French>
+		<German>The [COLOR_PROJECT_TEXT]First Satellite[COLOR_REVERT] project allows you to construct [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT]. If you are the first to complete it, every civilization currently building it falls into anarchy for one turn.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]First Satellite[COLOR_REVERT] project allows you to construct [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT]. If you are the first to complete it, every civilization currently building it falls into anarchy for one turn.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]First Satellite[COLOR_REVERT] project allows you to construct [COLOR_UNIT_TEXT]Satellites[COLOR_REVERT]. If you are the first to complete it, every civilization currently building it falls into anarchy for one turn.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_MAN_IN_SPACE_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Man in Space[COLOR_REVERT] project reveals the entire map. If you are the first to complete it, your [COLOR_UNIT_TEXT]Air Units[COLOR_REVERT] permanently receive four additional experience.</English>
+		<French>The [COLOR_PROJECT_TEXT]Man in Space[COLOR_REVERT] project reveals the entire map. If you are the first to complete it, your [COLOR_UNIT_TEXT]Air Units[COLOR_REVERT] permanently receive four additional experience.</French>
+		<German>The [COLOR_PROJECT_TEXT]Man in Space[COLOR_REVERT] project reveals the entire map. If you are the first to complete it, your [COLOR_UNIT_TEXT]Air Units[COLOR_REVERT] permanently receive four additional experience.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Man in Space[COLOR_REVERT] project reveals the entire map. If you are the first to complete it, your [COLOR_UNIT_TEXT]Air Units[COLOR_REVERT] permanently receive four additional experience.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Man in Space[COLOR_REVERT] project reveals the entire map. If you are the first to complete it, your [COLOR_UNIT_TEXT]Air Units[COLOR_REVERT] permanently receive four additional experience.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_LUNAR_LANDING_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Lunar Landing[COLOR_REVERT] starts a [COLOR_HIGHLIGHT_TEXT]Golden Age[COLOR_REVERT].</English>
+		<French>The [COLOR_PROJECT_TEXT]Lunar Landing[COLOR_REVERT] starts a [COLOR_HIGHLIGHT_TEXT]Golden Age[COLOR_REVERT].</French>
+		<German>The [COLOR_PROJECT_TEXT]Lunar Landing[COLOR_REVERT] starts a [COLOR_HIGHLIGHT_TEXT]Golden Age[COLOR_REVERT].</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Lunar Landing[COLOR_REVERT] starts a [COLOR_HIGHLIGHT_TEXT]Golden Age[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Lunar Landing[COLOR_REVERT] starts a [COLOR_HIGHLIGHT_TEXT]Golden Age[COLOR_REVERT].</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_GOLDEN_RECORD_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Golden Record[COLOR_REVERT] adds three [ICON_CULTURE] to every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist and converts half of your spaceship production bonus into [ICON_CULTURE].</English>
+		<French>The [COLOR_PROJECT_TEXT]Golden Record[COLOR_REVERT] adds three [ICON_CULTURE] to every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist and converts half of your spaceship production bonus into [ICON_CULTURE].</French>
+		<German>The [COLOR_PROJECT_TEXT]Golden Record[COLOR_REVERT] adds three [ICON_CULTURE] to every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist and converts half of your spaceship production bonus into [ICON_CULTURE].</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Golden Record[COLOR_REVERT] adds three [ICON_CULTURE] to every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist and converts half of your spaceship production bonus into [ICON_CULTURE].</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Golden Record[COLOR_REVERT] adds three [ICON_CULTURE] to every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist and converts half of your spaceship production bonus into [ICON_CULTURE].</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_MARS_MISSION_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Mission to Mars[COLOR_REVERT] is required to construct the [COLOR_PROJECT_TEXT]Mars colony projects[COLOR_REVERT] that complete the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</English>
+		<French>The [COLOR_PROJECT_TEXT]Mission to Mars[COLOR_REVERT] is required to construct the [COLOR_PROJECT_TEXT]Mars colony projects[COLOR_REVERT] that complete the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</French>
+		<German>The [COLOR_PROJECT_TEXT]Mission to Mars[COLOR_REVERT] is required to construct the [COLOR_PROJECT_TEXT]Mars colony projects[COLOR_REVERT] that complete the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Mission to Mars[COLOR_REVERT] is required to construct the [COLOR_PROJECT_TEXT]Mars colony projects[COLOR_REVERT] that complete the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Mission to Mars[COLOR_REVERT] is required to construct the [COLOR_PROJECT_TEXT]Mars colony projects[COLOR_REVERT] that complete the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_LUNAR_COLONY_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Lunar Colony[COLOR_REVERT] adds two [ICON_PRODUCTION] to every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist.</English>
+		<French>The [COLOR_PROJECT_TEXT]Lunar Colony[COLOR_REVERT] adds two [ICON_PRODUCTION] to every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist.</French>
+		<German>The [COLOR_PROJECT_TEXT]Lunar Colony[COLOR_REVERT] adds two [ICON_PRODUCTION] to every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Lunar Colony[COLOR_REVERT] adds two [ICON_PRODUCTION] to every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Lunar Colony[COLOR_REVERT] adds two [ICON_PRODUCTION] to every [COLOR_HIGHLIGHT_TEXT]Satellite[COLOR_REVERT] specialist.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_INTERSTELLAR_PROBE_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Interstellar Probe[COLOR_REVERT] starts a [COLOR_HIGHLIGHT_TEXT]Golden Age[COLOR_REVERT].</English>
+		<French>The [COLOR_PROJECT_TEXT]Interstellar Probe[COLOR_REVERT] starts a [COLOR_HIGHLIGHT_TEXT]Golden Age[COLOR_REVERT].</French>
+		<German>The [COLOR_PROJECT_TEXT]Interstellar Probe[COLOR_REVERT] starts a [COLOR_HIGHLIGHT_TEXT]Golden Age[COLOR_REVERT].</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Interstellar Probe[COLOR_REVERT] starts a [COLOR_HIGHLIGHT_TEXT]Golden Age[COLOR_REVERT].</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Interstellar Probe[COLOR_REVERT] starts a [COLOR_HIGHLIGHT_TEXT]Golden Age[COLOR_REVERT].</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_MARS_FRAMING_STRATEGY</Tag>
+		<English>Each [COLOR_PROJECT_TEXT]Mars Framing[COLOR_REVERT] contributes to the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory. You need five; each missing copy reduces the launch success chance by 20%.</English>
+		<French>Each [COLOR_PROJECT_TEXT]Mars Framing[COLOR_REVERT] contributes to the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory. You need five; each missing copy reduces the launch success chance by 20%.</French>
+		<German>Each [COLOR_PROJECT_TEXT]Mars Framing[COLOR_REVERT] contributes to the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory. You need five; each missing copy reduces the launch success chance by 20%.</German>
+		<Italian>Each [COLOR_PROJECT_TEXT]Mars Framing[COLOR_REVERT] contributes to the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory. You need five; each missing copy reduces the launch success chance by 20%.</Italian>
+		<Spanish>Each [COLOR_PROJECT_TEXT]Mars Framing[COLOR_REVERT] contributes to the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory. You need five; each missing copy reduces the launch success chance by 20%.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_MARS_POWER_SOURCE_STRATEGY</Tag>
+		<English>You need two [COLOR_PROJECT_TEXT]Mars Power Sources[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory; each missing copy reduces the launch success chance by 50%.</English>
+		<French>You need two [COLOR_PROJECT_TEXT]Mars Power Sources[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory; each missing copy reduces the launch success chance by 50%.</French>
+		<German>You need two [COLOR_PROJECT_TEXT]Mars Power Sources[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory; each missing copy reduces the launch success chance by 50%.</German>
+		<Italian>You need two [COLOR_PROJECT_TEXT]Mars Power Sources[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory; each missing copy reduces the launch success chance by 50%.</Italian>
+		<Spanish>You need two [COLOR_PROJECT_TEXT]Mars Power Sources[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory; each missing copy reduces the launch success chance by 50%.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_MARS_EXTRACTOR_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Mars Extractor[COLOR_REVERT] is an optional part of the Mars colony for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</English>
+		<French>The [COLOR_PROJECT_TEXT]Mars Extractor[COLOR_REVERT] is an optional part of the Mars colony for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</French>
+		<German>The [COLOR_PROJECT_TEXT]Mars Extractor[COLOR_REVERT] is an optional part of the Mars colony for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Mars Extractor[COLOR_REVERT] is an optional part of the Mars colony for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Mars Extractor[COLOR_REVERT] is an optional part of the Mars colony for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_MARS_HABITAT_STRATEGY</Tag>
+		<English>You need at least one and can build up to five [COLOR_PROJECT_TEXT]Mars Habitats[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</English>
+		<French>You need at least one and can build up to five [COLOR_PROJECT_TEXT]Mars Habitats[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</French>
+		<German>You need at least one and can build up to five [COLOR_PROJECT_TEXT]Mars Habitats[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</German>
+		<Italian>You need at least one and can build up to five [COLOR_PROJECT_TEXT]Mars Habitats[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Italian>
+		<Spanish>You need at least one and can build up to five [COLOR_PROJECT_TEXT]Mars Habitats[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_MARS_HYDROPONICS_STRATEGY</Tag>
+		<English>You need at least one and can build up to three [COLOR_PROJECT_TEXT]Mars Hydroponics[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</English>
+		<French>You need at least one and can build up to three [COLOR_PROJECT_TEXT]Mars Hydroponics[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</French>
+		<German>You need at least one and can build up to three [COLOR_PROJECT_TEXT]Mars Hydroponics[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</German>
+		<Italian>You need at least one and can build up to three [COLOR_PROJECT_TEXT]Mars Hydroponics[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Italian>
+		<Spanish>You need at least one and can build up to three [COLOR_PROJECT_TEXT]Mars Hydroponics[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_MARS_LABORATORY_STRATEGY</Tag>
+		<English>You need three [COLOR_PROJECT_TEXT]Mars Laboratories[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</English>
+		<French>You need three [COLOR_PROJECT_TEXT]Mars Laboratories[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</French>
+		<German>You need three [COLOR_PROJECT_TEXT]Mars Laboratories[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</German>
+		<Italian>You need three [COLOR_PROJECT_TEXT]Mars Laboratories[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Italian>
+		<Spanish>You need three [COLOR_PROJECT_TEXT]Mars Laboratories[COLOR_REVERT] for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROJECT_MARS_CONTROL_CENTER_STRATEGY</Tag>
+		<English>The [COLOR_PROJECT_TEXT]Mars Control Center[COLOR_REVERT] is an optional part of the Mars colony for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</English>
+		<French>The [COLOR_PROJECT_TEXT]Mars Control Center[COLOR_REVERT] is an optional part of the Mars colony for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</French>
+		<German>The [COLOR_PROJECT_TEXT]Mars Control Center[COLOR_REVERT] is an optional part of the Mars colony for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</German>
+		<Italian>The [COLOR_PROJECT_TEXT]Mars Control Center[COLOR_REVERT] is an optional part of the Mars colony for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Italian>
+		<Spanish>The [COLOR_PROJECT_TEXT]Mars Control Center[COLOR_REVERT] is an optional part of the Mars colony for the [COLOR_HIGHLIGHT_TEXT]Space Race[COLOR_REVERT] victory.</Spanish>
 	</TEXT>
 </Civ4GameText>

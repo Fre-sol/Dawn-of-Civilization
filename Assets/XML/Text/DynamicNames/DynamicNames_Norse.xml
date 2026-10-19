@@ -90,30 +90,6 @@
 		<Spanish>Norwegian</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_CIV_SWEDEN_DEFAULT</Tag>
-		<English>Kingdom of %s1</English>
-		<French>
-			<Text>Royaume de %s1</Text>
-			<Gender>Male</Gender>
-			<Plural>0</Plural>
-		</French>
-		<German>Kingdom of %s1</German>
-		<Italian>Kingdom of %s1</Italian>
-		<Spanish>Kingdom of %s1</Spanish>
-	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_CIV_SWEDEN_FASCIST</Tag>
-		<English>National Gathering of %s1</English>
-		<French>
-			<Text>Rassemblement national de %s1</Text>
-			<Gender>Male</Gender>
-			<Plural>0</Plural>
-		</French>
-		<German>National Gathering of %s1</German>
-		<Italian>National Gathering of %s1</Italian>
-		<Spanish>National Gathering of %s1</Spanish>
-	</TEXT>
-	<TEXT>
 		<Tag>TXT_KEY_CIV_NORWAY_FASCIST</Tag>
 		<English>National Gathering of %s1</English>
 		<French>

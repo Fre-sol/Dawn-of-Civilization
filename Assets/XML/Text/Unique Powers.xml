@@ -547,11 +547,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UP_IRA</Tag>
-		<English>Religious buildings produce +2 [ICON_CULTURE] and +2 [ICON_RESEARCH]</English>
+		<English>State [ICON_RELIGION] buildings produce +2 [ICON_CULTURE] and +2 [ICON_RESEARCH]</English>
 		<French>Les b&#226;timents religieux produisent +2 [ICON_CULTURE] et +2 [ICON_RESEARCH]</French>
 		<German>Religi&#246;se Geb&#228;ude produzieren +2 [ICON_CULTURE] und +2 [ICON_RESEARCH]</German>
-		<Italian>Religious buildings produce +2 [ICON_CULTURE] and +2 [ICON_RESEARCH]</Italian>
-		<Spanish>Religious buildings produce +2 [ICON_CULTURE] and +2 [ICON_RESEARCH]</Spanish>
+		<Italian>State [ICON_RELIGION] buildings produce +2 [ICON_CULTURE] and +2 [ICON_RESEARCH]</Italian>
+		<Spanish>State [ICON_RELIGION] buildings produce +2 [ICON_CULTURE] and +2 [ICON_RESEARCH]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UP_ITA_TITLE</Tag>
@@ -899,11 +899,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UP_NUB</Tag>
-		<English>No negative attitude from different state [ICON_RELIGION]</English>
-		<French>No negative attitude from different state [ICON_RELIGION]</French>
-		<German>No negative attitude from different state [ICON_RELIGION]</German>
-		<Italian>No negative attitude from different state [ICON_RELIGION]</Italian>
-		<Spanish>No negative attitude from different state [ICON_RELIGION]</Spanish>
+		<English>No attitude modifiers from different state [ICON_RELIGION]</English>
+		<French>No attitude modifiers from different state [ICON_RELIGION]</French>
+		<German>No attitude modifiers from different state [ICON_RELIGION]</German>
+		<Italian>No attitude modifiers from different state [ICON_RELIGION]</Italian>
+		<Spanish>No attitude modifiers from different state [ICON_RELIGION]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UP_PER_TITLE</Tag>

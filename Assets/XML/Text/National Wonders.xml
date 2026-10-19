@@ -345,12 +345,4 @@
 		<Italian>The [COLOR_BUILDING_TEXT]Spaceport[COLOR_REVERT] increases spaceship production in all cities and increases its chances of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Italian>
 		<Spanish>The [COLOR_BUILDING_TEXT]Spaceport[COLOR_REVERT] increases spaceship production in all cities and increases its chances of generating a [COLOR_UNIT_TEXT]Great Engineer[COLOR_REVERT].</Spanish>
 	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_BUILDING_</Tag>
-		<English></English>
-		<French></French>
-		<German></German>
-		<Italian></Italian>
-		<Spanish></Spanish>
-	</TEXT>
 </Civ4GameText>

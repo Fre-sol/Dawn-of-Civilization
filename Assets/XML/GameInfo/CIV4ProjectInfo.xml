@@ -211,7 +211,7 @@
 			<Type>PROJECT_STRATEGIC_DEFENSE_INITIATIVE</Type>
 			<Description>TXT_KEY_PROJECT_STATEGIC_DEFENSE_INITIATIVE</Description>
 			<Civilopedia>TXT_KEY_PROJECT_STRATEGIC_DEFENSE_INITIATIVE_PEDIA</Civilopedia>
-			<Strategy>TXT_KEY_PROJECT_STATEGIC_DEFENSE_INITIATIVE_STRATEGY</Strategy>
+			<Strategy>TXT_KEY_PROJECT_SDI_STRATEGY</Strategy>
 			<VictoryPrereq>NONE</VictoryPrereq>
 			<TechPrereq>TECH_LASER</TechPrereq>
 			<AnyonePrereqProject>PROJECT_MANHATTAN_PROJECT</AnyonePrereqProject>

@@ -58,14 +58,6 @@
 		<Spanish>Socialist Republic of the Union of %s1</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_CIV_BURMA_FASCIST</Tag>
-		<English>Greater %s1</English>
-		<French>Greater %s1</French>
-		<German>Greater %s1</German>
-		<Italian>Greater %s1</Italian>
-		<Spanish>Greater %s1</Spanish>
-	</TEXT>
-	<TEXT>
 		<Tag>TXT_KEY_CIV_BURMA_CITY_STATES</Tag>
 		<English>%s1 City States</English>
 		<French>%s1 City States</French>

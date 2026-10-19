@@ -12,7 +12,7 @@ BeginMap
 EndMap
 
 BeginPlot
-	x=79,y=43
+	x=79,y=31
 	BeginUnit
 		UnitType=UNIT_MILITIA
 		UnitOwner=CIVILIZATION_EGYPT
@@ -27,7 +27,7 @@ BeginPlot
 	EndUnit
 EndPlot
 BeginPlot
-	x=89,y=47
+	x=90,y=47
 	BeginUnit
 		UnitType=UNIT_MILITIA
 		UnitOwner=CIVILIZATION_BABYLONIA

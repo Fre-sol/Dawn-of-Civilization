@@ -1502,8 +1502,10 @@ void CvMap::calculateAreas()
 	CvArea* scandinavia = addArea();
 	CvArea* denmark = addArea();
 
-	int asiaID = plot(60, 78)->getArea(); // Chang'an
-	int americaID = plot(157, 81)->getArea(); // Washington
+	CvPlot* pAsiaPlot = plot(60, 68); // Chang'an
+	CvPlot* pAmericaPlot = plot(157, 71); // Washington
+	int asiaID = (pAsiaPlot != NULL) ? pAsiaPlot->getArea() : FFreeList::INVALID_INDEX;
+	int americaID = (pAmericaPlot != NULL) ? pAmericaPlot->getArea() : FFreeList::INVALID_INDEX;
 
 	int europeID = europe->getID();
 	int africaID = africa->getID();

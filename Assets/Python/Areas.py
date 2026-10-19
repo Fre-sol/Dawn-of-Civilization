@@ -3,8 +3,8 @@ from Consts import *
 ### Capitals ###
 
 dCapitals = CivDict({
-iEgypt :		(79, 43), # Memphis
-iBabylonia :	(89, 47), # Babylon
+iEgypt :		(79, 31), # Memphis
+iBabylonia :	(90, 47), # Babylon
 iHarappa :		(102, 47), # Harappa
 iAssyria :		(89, 50), # Ash-shur
 iNubia :		(81, 37), # Meroe
@@ -94,7 +94,7 @@ iManchuria :	(125, 56),	# Beijing
 
 # new capital locations on respawn
 dRespawnCapitals = CivDict({
-iEgypt :	(79, 43),	# Cairo
+iEgypt :	(79, 31),	# Cairo
 iChina :	(125, 56),	# Beijing
 iIndia :	(105, 46),	# Delhi
 iPersia :	(93, 48),	# Esfahan
@@ -216,8 +216,8 @@ iArgentina :	[(33, 17), (34, 17), (35, 17), (36, 17), (37, 17), (38, 17), (39, 1
 ### Core Area ###
 
 dCoreArea = CivDict({
-iEgypt :		((78, 41),	(80, 44)),
-iBabylonia :	((88, 45),	(90, 48)),
+iEgypt :		((77, 29),	(81, 33)),
+iBabylonia :	((88, 45),	(92, 49)),
 iHarappa :		((101, 46),	(102, 47)),
 iAssyria :		((88, 49),	(90, 51)),
 iNubia :		((80, 37),	(81, 39)),

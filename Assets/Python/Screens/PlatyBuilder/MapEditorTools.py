@@ -2,12 +2,16 @@ from Core import *
 from RFCUtils import *
 # Fresol: getSettlerValue / exportCore use this and it lives in Resources
 from Resources import dConquerorPlotTypesDict
+from Periods import dPeriodNames  # Fresol: period cores export into their own dictionaries
 
 import BugPath as path
 
 import Setup
-from Files import FileMap, getPath
+from Files import FileMap, getPath, UnicodeWriter
+import csv
 import os
+import CvUtil
+import Popup as PyPopup
 
 EXPORT_MAPS_PATH = "Assets/Maps"
 
@@ -52,32 +56,54 @@ def exportFlip(iPlayer, (lHumanFlipPlot, lAIFlipPlots)):
 		
 	writeTRBLDictFile(sLocation, sName, (BL, TR), sDictName, tExceptions, lExtraDictList = lExtraDictList)
 	
-	show("Flipzone of %s exported" % sName) 
+	sPath = os.path.normpath(IMAGE_LOCATION + "\\FlipZones\\" + sName + ".txt")
+	show("Flip zone of %s exported to:\n%s\n\nTo make it take effect, paste the lines into Assets/Python/Areas.py: dBirthArea / dBirthAreaExceptions (and dExtendedBirthArea), then restart the game." % (sName, sPath))
 
 def exportCore(iPlayer):
 	sLocation = "Cores"
 	sName = getCivName(iPlayer)
-	sDictName = "dCoreArea"
-	
-	lCorePlots = plots.core(iPlayer)
+	iPeriod = period(civ(iPlayer))
+
+	# Fresol: the edited flags, not the defined area - plots.core() on the factory
+	# answers with dCoreArea, so the bounding box would ignore new plots outside it.
+	lCorePlots = plots.all().core(iPlayer)
+	if not lCorePlots:
+		show("No core plots for %s" % sName)
+		return
 	BL, TR = getTLBR(lCorePlots)
+
+	# Fresol: a civilisation in a special period exports into the period dictionaries;
+	# every other core exports into the base ones.
+	if iPeriod in dPeriodCoreArea:
+		sFile = dPeriodNames[iPeriod]
+		sIdentifier = "Period" + sFile.replace("_", "")
+		sDictName = "dPeriodCoreArea"
+		sExceptionName = "dPeriodCoreAreaExceptions"
+	else:
+		sFile = sName
+		sIdentifier = sName
+		sDictName = "dCoreArea"
+		sExceptionName = "dCoreAreaExceptions"
 
 	tExceptions = None
 	lExceptions = plots.rectangle(BL, TR).land().where(lambda p: (not p.isPeak() or location(p) in dConquerorPlotTypesDict) and not p.isPlayerCore(iPlayer))
 	if lExceptions:
-		tExceptions = ("dCoreAreaExceptions", lExceptions)
-	
-	writeTRBLDictFile(sLocation, sName, (BL, TR), sDictName, tExceptions)
-	
-	show("Core of %s exported" % sName) 
+		tExceptions = (sExceptionName, lExceptions)
+
+	writeTRBLDictFile(sLocation, sFile, (BL, TR), sDictName, tExceptions, sIdentifierName = sIdentifier)
+
+	sPath = os.path.normpath(IMAGE_LOCATION + "\\Cores\\" + sFile + ".txt")
+	sKey = "i" + sIdentifier
+	show("Core of %s exported to:\n%s\n\nThe current game already uses your edits. To make them permanent for future games, paste the two lines into Assets/Python/Areas.py:\n%s  (key %s)\n%s  (key %s)\nthen restart the game.\n\nA period change reloads this civilisation's core from the definitions." % (sFile, sPath, sDictName, sKey, sExceptionName, sKey))
 
 def exportSettlerMap(iPlayer):
 	sLocation = "SettlerValues"
 	sName = getCivName(iPlayer)
+	sLoadedName = civ_name(civ(iPlayer))
 	valueFunction = getSettlerValue
 	sPath = writeMapCsv(sLocation, sName, valueFunction, iPlayer = iPlayer)
-	
-	show("Settlermap of %s exported to %s" % (sName, sPath))
+
+	show("Settler map of %s exported to:\n%s\n\nThe current game already uses your edits: the AI reads the live plot values.\nFor all future games, review the file, then rename or copy it over Assets/Maps/Settler/%s.csv (the game does not load the _export file), and start a new game.\n\nA period change or this civilisation's activation reloads its map from that CSV." % (sName, sPath, sLoadedName))
 	
 def getSettlerValue(plot, *args, **kwargs):
 	iPlayer = kwargs.get('iPlayer', None)
@@ -95,10 +121,11 @@ def getSettlerValue(plot, *args, **kwargs):
 def exportWarMap(iPlayer):
 	sLocation = "WarMaps"
 	sName = getCivName(iPlayer)
+	sLoadedName = civ_name(civ(iPlayer))
 	valueFunction = getWarValue
 	sPath = writeMapCsv(sLocation, sName, valueFunction, iPlayer = iPlayer)
-	
-	show("Warmap of %s exported to %s" % (sName, sPath))
+
+	show("War map of %s exported to:\n%s\n\nThe current game already uses your edits: the AI reads the live plot values.\nFor all future games, review the file, then rename or copy it over Assets/Maps/War/%s.csv (the game does not load the _export file), and start a new game.\n\nA period change or this civilisation's activation reloads its map from that CSV." % (sName, sPath, sLoadedName))
 	
 def getWarValue(plot, *args, **kwargs):
 	iPlayer = kwargs.get('iPlayer', None)
@@ -262,14 +289,19 @@ def writeMapFile(sFileLocaton, sName, valueFunction, *args, **kwargs):
 	finally:
 		file.close()
 
-def writeTRBLDictFile(sFileLocaton, sName, tSquare, sDictName, tExceptions = None, bIsDictionary = True, lExtraDictList = None):
+def writeTRBLDictFile(sFileLocaton, sName, tSquare, sDictName, tExceptions = None, bIsDictionary = True, lExtraDictList = None, sIdentifierName = None):
 	BL, TR = tSquare
-	
+
+	# Fresol: the dictionary key is not always the file name - a period core is filed
+	# under the period name but keyed by its iPeriod constant.
+	if sIdentifierName is None:
+		sIdentifierName = sName
+
 	sIdentifierText = ""
 	if bIsDictionary:
-		sIdentifier = "i" + sName
+		sIdentifier = "i" + sIdentifierName
 		# allign tabs
-		iTabs = (iLongestName - len(sName) - 1) // 4 + 1
+		iTabs = max(1, (iLongestName - len(sIdentifierName) - 1) // 4 + 1)
 		sIdentifierText = sIdentifier + " :" + iTabs*"\t"
 	
 	sFile = IMAGE_LOCATION + "\\" + sFileLocaton + "\\" + sName + ".txt"
@@ -296,3 +328,92 @@ def writeTRBLDictFile(sFileLocaton, sName, tSquare, sDictName, tExceptions = Non
 					file.write(",")
 	finally:
 		file.close()
+
+## Fresol - start: city name editor (World Builder > Doc Maps)
+# Clicking a tile in iModeCityName opens a popup that edits that tile's raw
+# Cities.csv cell; Export writes the whole table to Assets/Maps/Cities_export.csv
+# next to Cities.csv, so the result can be reviewed before it replaces the file.
+# The edit is kept in memory only - the game's own CityNames map is untouched.
+
+dCityNameEdits = {}
+_cityNameGrid = None
+
+CITY_NAME_POPUP_ID = CvUtil.getNewEventID("DoC.CityNameEditor")
+
+def readCityNameGrid():
+	f = open(getPath("Cities.csv"))
+	try:
+		rows = []
+		for row in csv.reader(f):
+			rows.append(row)
+	finally:
+		f.close()
+
+	while rows and not rows[-1]:
+		rows.pop()
+
+	grid = [[u""] * iWorldX for y in range(iWorldY)]
+	for i, row in enumerate(reversed(rows)):
+		if i >= iWorldY:
+			break
+		for x in range(min(len(row), iWorldX)):
+			grid[i][x] = row[x].decode("utf-8")
+
+	return grid
+
+def getCityNameGrid():
+	global _cityNameGrid
+	if _cityNameGrid is None:
+		_cityNameGrid = readCityNameGrid()
+	return _cityNameGrid
+
+def getRawTileName(tPlot):
+	"""The cell exactly as Cities.csv has it, or the pending edit."""
+	x, y = tPlot
+	if tPlot in dCityNameEdits:
+		return dCityNameEdits[tPlot]
+	if x < 0 or y < 0 or x >= iWorldX or y >= iWorldY:
+		return u""
+	return getCityNameGrid()[y][x]
+
+def editCityName(tPlot):
+	x, y = tPlot
+	sCurrent = getRawTileName(tPlot)
+
+	popup = PyPopup.PyPopup(CITY_NAME_POPUP_ID, EventContextTypes.EVENTCONTEXT_ALL)
+	popup.setHeaderString(u"%s (%d, %d)" % (CyTranslator().getText("TXT_KEY_WB_CITYNAME", ()), x, y))
+	popup.setBodyString(CyTranslator().getText("TXT_KEY_WB_CITYNAME_PROMPT", ()))
+	popup.createEditBox(sCurrent)
+	popup.setUserData(tPlot)
+	popup.launch()
+
+def setCityNameEdit(tPlot, sName):
+	dCityNameEdits[tPlot] = sName
+	refreshCityNameOverlay()
+
+def refreshCityNameOverlay():
+	# imported here: CvScreensInterface builds the World Builder screen, which
+	# imports this module, so a top level import would be circular
+	try:
+		import CvScreensInterface
+		CvScreensInterface.worldBuilderScreen.updateOverlay()
+	except:
+		pass
+
+def exportCityNames():
+	grid = [list(row) for row in getCityNameGrid()]
+
+	for (x, y), sName in dCityNameEdits.items():
+		grid[y][x] = sName
+
+	sPath = os.path.normpath(getPath("Cities_export.csv"))
+	f = open(sPath, "wb")
+	try:
+		writer = UnicodeWriter(f)
+		for y in range(iWorldY - 1, -1, -1):
+			writer.writerow(grid[y])
+	finally:
+		f.close()
+
+	show("City names exported to:\n%s\n\n%d cells changed in this session.\n\nSend this file back to the map author, or use it yourself: rename or copy it over Assets/Maps/Cities.csv and start a new game. Cities.csv is not touched here, and the running game keeps the names it read when it started.\n\nA cell holds up to three names separated by | and ends with -x-y; names that came from the automatic fill start with ~." % (sPath, len(dCityNameEdits)))
+## Fresol - end

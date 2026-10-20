@@ -25,6 +25,7 @@ import WBUnitScreen
 import WBPlayerScreen
 import WBGameDataScreen
 import WBPlotScreen
+import MapEditorTools  # Fresol: Doc Maps city name editor
 ## Ultrapack ##
 
 from CvMainInterface import g_mainInterface as mainInterface
@@ -868,6 +869,22 @@ def __eventWBLandmarkPopupApply(playerID, userData, popupReturn):
 	return
 
 
+## Fresol - start: Doc Maps city name editor
+def __asUnicode(s):
+	if isinstance(s, unicode):
+		return s
+	try:
+		return s.decode("utf-8")
+	except UnicodeDecodeError:
+		return s.decode("latin_1")
+
+def __eventWBCityNamePopupApply(playerID, userData, popupReturn):
+	sName = popupReturn.getEditBoxString(0)
+	MapEditorTools.setCityNameEdit((userData[0], userData[1]), __asUnicode(sName).strip())
+	return
+## Fresol - end
+
+
 ### REGISTER POPUP HANDLERS ###
 
 
@@ -878,6 +895,8 @@ events.setPopupHandlers(CvUtil.EventEditUnitName, 'EditUnitName', __eventEditUni
 
 ## Platy Builder ##
 events.setPopupHandlers(CvUtil.EventWBLandmarkPopup, 'WBLandmarkPopup', __eventWBScriptPopupBegin, __eventWBLandmarkPopupApply)
+## Fresol: city name editor in Doc Maps (MapEditorTools)
+events.setPopupHandlers(MapEditorTools.CITY_NAME_POPUP_ID, 'WBCityName', __eventWBScriptPopupBegin, __eventWBCityNamePopupApply)
 events.setPopupHandlers(CvUtil.EventShowWonder, 'ShowWonder', __eventShowWonderBegin, __eventShowWonderApply)
 events.setPopupHandlers(1111, 'WBPlayerScript', __eventWBScriptPopupBegin, __eventWBPlayerScriptPopupApply)
 events.setPopupHandlers(2222, 'WBCityScript', __eventWBScriptPopupBegin, __eventWBCityScriptPopupApply)

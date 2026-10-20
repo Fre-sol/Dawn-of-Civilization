@@ -41,19 +41,26 @@ from RFCUtils import *
 localText = CyTranslator()
 
 
-iNumModes = 46
+iNumModes = 47
 (iModeOwnership, iModeUnits, iModeBuildings, iModeCity, iModeStartingPlot, iModeAddLandMark, iModePlotData, iModeRiver, iModeImprovements, iModeBonus,
-iModeBonusVariety, iModePlotType, iModeTerrain, iModeRoutes, iModeFeatures, iModeFlip, iModeCore, iModeSettlerValue, iModeWarMap, iModeReligionMap, 
-iModeRegionMap, iModeVictoryMap, iModeRevealPlot, iModeInvisibleSubmarine, iModeInvisibleStealth, iModeBlockade, iModeInvisibleSatellite, iModeAreaExporter1, iModeAreaExporter2, iModeAreaExporter3, 
-iModeMoveMap, iModeMoveMap2, iModeEditUnit, iModeEditCity, iModeEraseAll, iModeCityDataI, iModePromotions, iModeCityDataII, iModeCityBuildings, iModeMoveCity, 
-iModeMoveCityPlus, iModeDuplicateCity, iModeDuplicateCityPlus, iModeTargetPlot, iModeMoveUnits, iModeEvents) = range(iNumModes)
+iModeBonusVariety, iModePlotType, iModeTerrain, iModeRoutes, iModeFeatures, iModeFlip, iModeCore, iModeSettlerValue, iModeWarMap, iModeReligionMap,
+iModeRegionMap, iModeVictoryMap, iModeRevealPlot, iModeInvisibleSubmarine, iModeInvisibleStealth, iModeBlockade, iModeInvisibleSatellite, iModeAreaExporter1, iModeAreaExporter2, iModeAreaExporter3,
+iModeMoveMap, iModeMoveMap2, iModeEditUnit, iModeEditCity, iModeEraseAll, iModeCityDataI, iModePromotions, iModeCityDataII, iModeCityBuildings, iModeMoveCity,
+iModeMoveCityPlus, iModeDuplicateCity, iModeDuplicateCityPlus, iModeTargetPlot, iModeMoveUnits, iModeEvents, iModeCityName) = range(iNumModes)
 
 lPlayerModes = [iModeOwnership, iModeUnits, iModeBuildings, iModeCity, iModeStartingPlot]
 lMapModes = [iModeAddLandMark, iModePlotData, iModeRiver, iModeImprovements, iModeBonus, iModePlotType, iModeTerrain, iModeRoutes, iModeFeatures, iModeBonusVariety]
-lDoCMapModes = [iModeFlip, iModeCore, iModeSettlerValue, iModeWarMap, iModeReligionMap, iModeRegionMap, iModeVictoryMap]
+lDoCMapModes = [iModeFlip, iModeCore, iModeSettlerValue, iModeWarMap, iModeReligionMap, iModeRegionMap, iModeVictoryMap, iModeCityName]
 lRevealModes = [iModeRevealPlot, iModeInvisibleSubmarine, iModeInvisibleStealth, iModeBlockade, iModeInvisibleSatellite]
 lAreaExportModes = [iModeAreaExporter1, iModeAreaExporter2, iModeAreaExporter3]
 lMoveMapModes = [iModeMoveMap, iModeMoveMap2]
+
+# Fresol: the region overlay paints by colour, not by region id - the engine
+# keeps one area and one colour per layer and only about fifty layers can be
+# cleared, while there are iNumRegions + iNumWaterRegions (172) regions, water
+# included.
+lRegionMapColors = ["COLOR_PLAYER_LIGHT_PURPLE", "COLOR_PLAYER_LIGHT_YELLOW", "COLOR_PLAYER_LIGHT_ORANGE", "COLOR_SILVER"]
+lRegionIds = list(range(iNumRegions)) + list(range(100, 100 + iNumWaterRegions))
 
 # Fresol: the buttons that pick a river kind in the map tab. They are told apart
 # by name, and the names carry no digits: this screen's table cells cannot pass
@@ -174,12 +181,21 @@ class CvWorldBuilderScreen:
 				else:
 					# city names and settlervalue
 					if x > -1 and y > -1: #If you move you mouse to fast, I cannot always keep track of the current tile, which can lead to pythex
-						sCityName = cn.getDisplayName(iPlayer, (x, y))
+						# Fresol: the editor shows the raw Cities.csv cell, not the name
+						# translated for the current player
+						if self.iPlayerAddMode == iModeCityName:
+							sCityName = met.getRawTileName((x, y))
+							if not sCityName:
+								sCityName = "%d-%d" % (x, y)
+							elif (x, y) in met.dCityNameEdits:
+								sCityName += " (edited)"
+						else:
+							sCityName = cn.getDisplayName(iPlayer, (x, y))
 						sDoCText += "<font=3b>%s</font>" % sCityName
 					if self.iPlayerAddMode == iModeWarMap:
 						iPlotWarValue = self.m_pCurrentPlot.getPlayerWarValue(iPlayer)
 						sDoCText += "<font=3b>   %s: %d</font>" %(localText.getText("TXT_KEY_WB_WARVALUE", ()), iPlotWarValue)
-					else:
+					elif self.iPlayerAddMode != iModeCityName:
 						iPlotSettlerValue = self.m_pCurrentPlot.getPlayerSettlerValue(iPlayer)
 						sDoCText += "<font=3b>   %s: %d</font>" %(localText.getText("TXT_KEY_WB_SETTLERVALUE", ()), iPlotSettlerValue)
 				if sDoCText == "":
@@ -614,6 +630,8 @@ class CvWorldBuilderScreen:
 			tPlot = (x, y)
 			if tPlot not in self.TempInfo:
 				self.TempInfo.append(tPlot)
+		elif self.iPlayerAddMode == iModeCityName:
+			met.editCityName((x, y))
 		return 1
 
 	def removeObject( self ):
@@ -1069,6 +1087,9 @@ class CvWorldBuilderScreen:
 			return True
 		if self.iPlayerAddMode == iModeFeatures:
 			return True
+		if self.iPlayerAddMode == iModeCityName:
+			# one popup per tile: never let a brush rectangle fire this mode
+			return False
 		if self.iPlayerAddMode in lDoCMapModes:
 			return True
 		if self.iPlayerAddMode in lMoveMapModes:
@@ -1441,8 +1462,12 @@ class CvWorldBuilderScreen:
 					iX, iY, iButtonWidth, iButtonWidth, WidgetTypes.WIDGET_PYTHON, 1029, 40, ButtonStyles.BUTTON_STYLE_LABEL)
 				iX = iXStart + 8
 				iY += iAdjust
-				screen.addCheckBoxGFC("VictoryMapButton", ",-,Art/Interface/Buttons/GodsOfOld_Atlas.dds,6,1", CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), 
+				screen.addCheckBoxGFC("VictoryMapButton", ",-,Art/Interface/Buttons/GodsOfOld_Atlas.dds,6,1", CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
 					iX, iY, iButtonWidth, iButtonWidth, WidgetTypes.WIDGET_PYTHON, 1029, 46, ButtonStyles.BUTTON_STYLE_LABEL)
+				# Fresol: city name editor sits on the same row as the victory map
+				iX += iAdjust
+				screen.addCheckBoxGFC("CityNameButton", ",-,Art/Interface/Buttons/GodsOfOld_Atlas.dds,8,1", CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
+					iX, iY, iButtonWidth, iButtonWidth, WidgetTypes.WIDGET_PYTHON, 1029, 55, ButtonStyles.BUTTON_STYLE_LABEL)
 
 				iX = iXStart + 8
 				iY += iAdjust
@@ -1483,9 +1508,13 @@ class CvWorldBuilderScreen:
 						sName = gc.getReligionInfo(iReligion).getDescription()
 						screen.addPullDownString("WorldBuilderPlayerChoice", sName, iReligion, iReligion, self.m_iCurrentReligion == iReligion)
 				elif self.iPlayerAddMode == iModeRegionMap:
-					for iRegion in range(iNumRegions):
+					# Fresol: water regions are brushes too, so they are listed here
+					# with the land ones (ids 100+ are the sea and lake regions)
+					for iRegion in lRegionIds:
 						TextKey = u"TXT_KEY_REGION_%d" % iRegion
 						sName = CyTranslator().getText(str(TextKey), ())
+						if iRegion >= 100:
+							sName = u"~ " + sName
 						screen.addPullDownString("WorldBuilderPlayerChoice", sName, iRegion, iRegion, self.m_iRegionMapID == iRegion)
 				else:
 					for iPlayer in players.major().where(lambda p: player(p).isEverAlive()):
@@ -1497,21 +1526,24 @@ class CvWorldBuilderScreen:
 						screen.addPullDownString("WorldBuilderPlayerChoice", sName, iPlayer, iPlayer, self.m_iCurrentPlayer == iPlayer)
 
 				if self.iPlayerAddMode != iModeVictoryMap:
-					iX = iXStart + 8
-					iY += iAdjust
-					screen.addCheckBoxGFC("RegionButton", ",-,Art/Interface/Buttons/FinalFrontier2_Atlas.dds,1,6", CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
-						 iX, iY, iButtonWidth, iButtonWidth, WidgetTypes.WIDGET_PYTHON, 1029, 43, ButtonStyles.BUTTON_STYLE_LABEL)
-					iX += iAdjust
-					iWidth = (screen.getXResolution() - 8 - iX - 3)/2
-					screen.addDropDownBoxGFC("BrushWidth", iX, iY, iWidth, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
-					for i in range(1, 11):
-						screen.addPullDownString("BrushWidth", "W: " + str(i), i, i, self.iBrushWidth == i)
-					screen.addPullDownString("BrushWidth", "W: " + "--", -1, -1, self.iBrushWidth == -1)
-					iX += iWidth
-					screen.addDropDownBoxGFC("BrushHeight", iX, iY, iWidth, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
-					for i in range(1, 11):
-						screen.addPullDownString("BrushHeight", "H: " + str(i), i, i, self.iBrushHeight == i)
-					screen.addPullDownString("BrushHeight", "H: " + "--", -1, -1, self.iBrushHeight == -1)
+					# Fresol: the city name editor paints one tile at a time, so the
+					# region button and the brush size are left out of its panel
+					if self.iPlayerAddMode != iModeCityName:
+						iX = iXStart + 8
+						iY += iAdjust
+						screen.addCheckBoxGFC("RegionButton", ",-,Art/Interface/Buttons/FinalFrontier2_Atlas.dds,1,6", CyArtFileMgr().getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
+							 iX, iY, iButtonWidth, iButtonWidth, WidgetTypes.WIDGET_PYTHON, 1029, 43, ButtonStyles.BUTTON_STYLE_LABEL)
+						iX += iAdjust
+						iWidth = (screen.getXResolution() - 8 - iX - 3)/2
+						screen.addDropDownBoxGFC("BrushWidth", iX, iY, iWidth, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
+						for i in range(1, 11):
+							screen.addPullDownString("BrushWidth", "W: " + str(i), i, i, self.iBrushWidth == i)
+						screen.addPullDownString("BrushWidth", "W: " + "--", -1, -1, self.iBrushWidth == -1)
+						iX += iWidth
+						screen.addDropDownBoxGFC("BrushHeight", iX, iY, iWidth, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
+						for i in range(1, 11):
+							screen.addPullDownString("BrushHeight", "H: " + str(i), i, i, self.iBrushHeight == i)
+						screen.addPullDownString("BrushHeight", "H: " + "--", -1, -1, self.iBrushHeight == -1)
 
 					iX = iXStart + 8
 					iY += iAdjust
@@ -1691,6 +1723,7 @@ class CvWorldBuilderScreen:
 		screen.setState("ReligionMapButton", self.iPlayerAddMode == iModeReligionMap)
 		screen.setState("RegionMapButton", self.iPlayerAddMode == iModeRegionMap)
 		screen.setState("VictoryMapButton", self.iPlayerAddMode == iModeVictoryMap)
+		screen.setState("CityNameButton", self.iPlayerAddMode == iModeCityName)
 		screen.setState("MoveMapScreen", self.iPlayerAddMode in lMoveMapModes)
 		screen.setState("FlipAIButton", self.bFlipAI)
 		screen.setState("VictoryRectangleButton", self.bVictoryRectangle)
@@ -2047,6 +2080,8 @@ class CvWorldBuilderScreen:
 			self.showRegionOverlay()
 		elif self.iPlayerAddMode == iModeVictoryMap:
 			self.showVictoryOverlay()
+		elif self.iPlayerAddMode == iModeCityName:
+			self.showCityNameOverlay()
 		elif self.iPlayerAddMode == iModeRiver:
 			self.showRiverKindOverlay()
 
@@ -2132,19 +2167,22 @@ class CvWorldBuilderScreen:
 
 	def showRegionOverlay(self):
 		removeStabilityOverlay()
-		# Fresol: land only, one layer per region (the engine caches one area
-		# and one colour per layer).  Water regions are drawn at 1100+ and can
-		# be *filled* there, but clearing those layers takes the whole overlay
-		# down, so they are left out; select one with m_iRegionMapID to see it.
-		for plot in plots.all().land():
+		# Fresol: land and water together.  The old version only walked the land
+		# tiles, so the sea and lake regions could be neither seen nor checked;
+		# painting by colour instead of by region id keeps the layer count at
+		# four, which stays inside what removeStabilityOverlay can clear.
+		engine = CyEngine()
+		for plot in plots.all():
 			iRegion = plot.getRegionID()
 			if iRegion == self.m_iRegionMapID:
-				CyEngine().fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1000, "COLOR_BLUE", 0.7)
-			elif self.bAllRegions and iRegion < 85:
-				CyEngine().fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1000+iRegion, self.dRegionColors.get(iRegion) or "COLOR_LIGHT_GREY", 0.7)
+				engine.fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1000, "COLOR_BLUE", 0.7)
+			elif self.bAllRegions:
+				szColor = self.dRegionColors.get(iRegion)
+				if szColor in lRegionMapColors:
+					engine.fillAreaBorderPlotAlt(plot.getX(), plot.getY(), 1001 + lRegionMapColors.index(szColor), szColor, 0.7)
 			
 	def determineRegionColors(self):
-		lColors = ["COLOR_PLAYER_LIGHT_PURPLE", "COLOR_PLAYER_LIGHT_YELLOW", "COLOR_PLAYER_LIGHT_ORANGE", "COLOR_SILVER"]
+		lColors = lRegionMapColors
 		
 		# Fresol: seed every valid region (land AND water) and tolerate anything
 		# else; the old code only had 0..84 and indexed it with a land plot's
@@ -2152,7 +2190,7 @@ class CvWorldBuilderScreen:
 		# self.dRegionColors empty, killing the button for the whole session.
 		dNeighbourRegions = {}
 		dRegionColors = {}
-		for iRegion in list(range(iNumRegions)) + list(range(100, 100 + iNumWaterRegions)):
+		for iRegion in lRegionIds:
 			dNeighbourRegions[iRegion] = []
 			dRegionColors[iRegion] = ""
 		
@@ -2180,9 +2218,20 @@ class CvWorldBuilderScreen:
 
 	def showVictoryOverlay(self):
 		removeStabilityOverlay()
-		lRegions = []
-		for index, goal in enumerate(data.players[self.m_iCurrentPlayer].historicalVictory.goals + data.players[self.m_iCurrentPlayer].religiousVictory.goals):
-			for name, area in goal.areas.items():
+		# Fresol: ported from play-local-mod - areas() is a method on the goal,
+		# and a goal may describe its area with a definition that has to be
+		# turned into a Plots before it can be painted
+		pData = data.players[self.m_iCurrentPlayer]
+		lGoals = []
+		for victory in (pData.historicalVictory, pData.religiousVictory):
+			if victory is not None:
+				lGoals.extend(victory.goals)
+		for index, goal in enumerate(lGoals):
+			for name, area in goal.areas().items():
+				if hasattr(area, "create"):
+					area = area.create()
+				if not isinstance(area, Plots):
+					continue
 				paintPlots(area.land(), 1000 + 2*index, "COLOR_MAGENTA")
 				if self.bVictoryRectangle:
 					paintPlots(area.water(), 1001 + 2*index, "COLOR_LIGHT_GREY")
@@ -2200,6 +2249,18 @@ class CvWorldBuilderScreen:
 			else:
 				CyEngine().fillAreaBorderPlotAlt(x, y, 1000, "COLOR_MAGENTA", 0.7)
 
+	def showCityNameOverlay(self):
+		removeStabilityOverlay()
+		engine = CyEngine()
+		for y in range(iWorldY):
+			for x in range(iWorldX):
+				if met.getRawTileName((x, y)):
+					# bright yellow for a named tile, so the red of an edited
+					# cell stands out against it
+					engine.fillAreaBorderPlotAlt(x, y, 1001, "COLOR_PLAYER_LIGHT_YELLOW", 0.5)
+		for (x, y) in met.dCityNameEdits:
+			engine.fillAreaBorderPlotAlt(x, y, 1000, "COLOR_RED", 0.7)
+
 	def showToolHelp(self):
 		if self.iPlayerAddMode == iModeFlip:
 			sText = CyTranslator().getText("TXT_KEY_WB_FLIPMAP_HELP", ())
@@ -2215,6 +2276,8 @@ class CvWorldBuilderScreen:
 			sText = CyTranslator().getText("TXT_KEY_WB_REGIONMAP_HELP", ())
 		elif self.iPlayerAddMode == iModeVictoryMap:
 			sText = CyTranslator().getText("TXT_KEY_WB_VICTORYMAP_HELP", ())
+		elif self.iPlayerAddMode == iModeCityName:
+			sText = CyTranslator().getText("TXT_KEY_WB_CITYNAME_HELP", ())
 		elif self.iPlayerAddMode in lMoveMapModes:
 			sText = CyTranslator().getText("TXT_KEY_WB_MOVEMAP_HELP", ())
 		elif self.iPlayerAddMode in lAreaExportModes:
@@ -2224,11 +2287,11 @@ class CvWorldBuilderScreen:
 		show(sText)
 
 	def checkRegionTiles(self):
-		tiles = plots.all().land().where(lambda p: p.getRegionID() == -1)
+		tiles = plots.all().land().where(lambda p: not (0 <= p.getRegionID() < iNumRegions))
 		if tiles:
-			sText = "Land tiles without a defined region:\n" + str(tiles)
+			sText = "Land tiles without a valid region:\n" + str(tiles)
 		else:
-			sText = "All land tiles have a defined region"
+			sText = "All land tiles have a valid region"
 		show(sText)
 
 	def getPlotItems(self, tPlot):
@@ -2606,6 +2669,76 @@ class CvWorldBuilderScreen:
 		return (sStart + sEnd)
 ## Add "," ##
 
+	# Fresol: ported from play-local-mod (75f4b4349).  The old inline blocks in
+	# handleInput called Areas.updateCore, SettlerMaps.updateMap and
+	# WarMaps.updateMap -- none of those names exist any more, so Revert Changes
+	# raised a NameError in the core, settler and war modes.
+	def clearChanges(self, iMode, iPlayer, iAlt):
+		import Setup, Rise
+		if iMode == iModeFlip:
+			if iAlt:
+				self.dFlipZoneEdits = {}
+			elif iPlayer in self.dFlipZoneEdits.keys():
+				del self.dFlipZoneEdits[iPlayer]
+		elif iMode == iModeCore:
+			if iAlt:
+				for iLoopPlayer in players.major():
+					Setup.updateCore(civ(iLoopPlayer))
+			else:
+				Setup.updateCore(civ(iPlayer))
+		elif iMode == iModeSettlerValue:
+			if iAlt:
+				for iLoopPlayer in players.major():
+					Rise.applySettlerMap(civ(iLoopPlayer), period(civ(iLoopPlayer)))
+			else:
+				Rise.applySettlerMap(civ(iPlayer), period(civ(iPlayer)))
+		elif iMode == iModeWarMap:
+			if iAlt:
+				for iLoopPlayer in players.major():
+					Rise.applyWarMap(civ(iLoopPlayer), period(civ(iLoopPlayer)))
+			else:
+				Rise.applyWarMap(civ(iPlayer), period(civ(iPlayer)))
+		elif iMode == iModeReligionMap:
+			if iAlt:
+				for iReligion in range(iNumReligions):
+					RegionMap.updateReligionSpread(iReligion)
+			else:
+				RegionMap.updateReligionSpread(self.m_iCurrentReligion)
+		elif iMode == iModeCityName:
+			iCount = len(met.dCityNameEdits)
+			met.dCityNameEdits.clear()
+			show("City names reset.\n\nThe %d cells changed in this session were dropped, and the map shows the names stored in Assets/Maps/Cities.csv again. The file itself was never modified." % iCount)
+		elif iMode == iModeRegionMap:
+			RegionMap.updateRegionMap(False)
+			show("Region IDs reset from Regions.csv. The derived areas and continents are rebuilt on the next map load; they are not recalculated in the World Builder.")
+		elif iMode in lAreaExportModes:
+			self.TempInfo = []
+			if iMode == iModeAreaExporter3:
+				self.iPlayerAddMode = iModeAreaExporter2
+			self.showAreaExportOverlay()
+		self.updateOverlay()
+
+	def exportMaps(self, iMode, iPlayer):
+		if iMode == iModeFlip:
+			met.exportFlip(iPlayer, self.getFlipZone(iPlayer))
+		elif iMode == iModeCore:
+			met.exportCore(iPlayer)
+			self.showStabilityOverlay()
+		elif iMode == iModeSettlerValue:
+			met.exportSettlerMap(iPlayer)
+			self.showStabilityOverlay()
+		elif iMode == iModeWarMap:
+			met.exportWarMap(iPlayer)
+			self.showWarOverlay()
+		elif iMode == iModeRegionMap:
+			met.exportRegionMap()
+			self.showRegionOverlay()
+		elif iMode == iModeCityName:
+			met.exportCityNames()
+			self.showCityNameOverlay()
+		elif iMode in lAreaExportModes:
+			met.exportAreaExport(self.TempInfo, self.bWaterException, self.bPeaksException)
+
 	def handleInput (self, inputClass):
 		screen = CyGInterfaceScreen( "WorldBuilderScreen", CvScreenEnums.WORLDBUILDER_SCREEN )
 		global iChange
@@ -2824,6 +2957,12 @@ class CvWorldBuilderScreen:
 			self.refreshSideMenu()
 			self.showVictoryOverlay()
 
+		elif inputClass.getFunctionName() == "CityNameButton":
+			bDeleteOverlay = False
+			self.iPlayerAddMode = iModeCityName
+			self.refreshSideMenu()
+			self.showCityNameOverlay()
+
 		elif inputClass.getFunctionName() == "MoveMapScreen":
 			self.iPlayerAddMode = iModeMoveMap
 			self.bRegion = False
@@ -2837,62 +2976,11 @@ class CvWorldBuilderScreen:
 
 		elif inputClass.getFunctionName() == "ClearChanges":
 			bDeleteOverlay = False
-			if self.iPlayerAddMode == iModeFlip:
-				if CvEventInterface.getEventManager().bAlt:
-					self.dFlipZoneEdits = {}
-				elif self.m_iCurrentPlayer in self.dFlipZoneEdits.keys():
-					del self.dFlipZoneEdits[self.m_iCurrentPlayer]
-			elif self.iPlayerAddMode == iModeCore:
-				if CvEventInterface.getEventManager().bAlt:
-					for iPlayer in players.major():
-						Areas.updateCore(iPlayer)
-				else:
-					Areas.updateCore(self.m_iCurrentPlayer)
-			elif self.iPlayerAddMode == iModeSettlerValue:
-				if CvEventInterface.getEventManager().bAlt:
-					for iPlayer in players.major():
-						SettlerMaps.updateMap(iPlayer)
-				else:
-					SettlerMaps.updateMap(self.m_iCurrentPlayer)
-			elif self.iPlayerAddMode == iModeWarMap:
-				if CvEventInterface.getEventManager().bAlt:
-					for iPlayer in players.major():
-						WarMaps.updateMap(iPlayer)
-				else:
-					WarMaps.updateMap(self.m_iCurrentPlayer)
-			elif self.iPlayerAddMode == iModeReligionMap:
-				if CvEventInterface.getEventManager().bAlt:
-					for iReligion in range(iNumReligions):
-						RegionMap.updateReligionSpread(iReligion)
-				else:
-					RegionMap.updateReligionSpread(self.m_iCurrentReligion)
-			elif self.iPlayerAddMode == iModeRegionMap:
-				RegionMap.updateRegionMap()
-			elif self.iPlayerAddMode in lAreaExportModes:
-				self.TempInfo = []
-				if self.iPlayerAddMode == iModeAreaExporter3:
-					self.iPlayerAddMode = iModeAreaExporter2
-				self.showAreaExportOverlay()
-			self.updateOverlay()
+			self.clearChanges(self.iPlayerAddMode, self.m_iCurrentPlayer, CvEventInterface.getEventManager().bAlt)
 
 		elif inputClass.getFunctionName() == "Export":
 			bDeleteOverlay = False
-			if self.iPlayerAddMode == iModeFlip:
-				met.exportFlip(self.m_iCurrentPlayer, self.getFlipZone(self.m_iCurrentPlayer))
-			elif self.iPlayerAddMode == iModeCore:
-				met.exportCore(self.m_iCurrentPlayer)
-				self.showStabilityOverlay()
-			elif self.iPlayerAddMode == iModeSettlerValue:
-				met.exportSettlerMap(self.m_iCurrentPlayer)
-				self.showStabilityOverlay()
-			elif self.iPlayerAddMode == iModeWarMap:
-				met.exportWarMap(self.m_iCurrentPlayer)
-				self.showWarOverlay()
-			elif self.iPlayerAddMode == iModeRegionMap:
-				met.exportRegionMap()
-				self.showRegionOverlay()
-			elif self.iPlayerAddMode in lAreaExportModes:
-				met.exportAreaExport(self.TempInfo, self.bWaterException, self.bPeaksException)
+			self.exportMaps(self.iPlayerAddMode, self.m_iCurrentPlayer)
 
 		elif inputClass.getFunctionName() == "PresetValue":
 			bDeleteOverlay = False

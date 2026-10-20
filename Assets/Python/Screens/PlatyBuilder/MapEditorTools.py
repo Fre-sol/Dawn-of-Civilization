@@ -367,14 +367,18 @@ def getCityNameGrid():
 		_cityNameGrid = readCityNameGrid()
 	return _cityNameGrid
 
-def getRawTileName(tPlot):
-	"""The cell exactly as Cities.csv has it, or the pending edit."""
+def getFileTileName(tPlot):
+	"""The cell exactly as Cities.csv has it, ignoring any pending edit."""
 	x, y = tPlot
-	if tPlot in dCityNameEdits:
-		return dCityNameEdits[tPlot]
 	if x < 0 or y < 0 or x >= iWorldX or y >= iWorldY:
 		return u""
 	return getCityNameGrid()[y][x]
+
+def getRawTileName(tPlot):
+	"""The cell as the editor shows it: the pending edit, else the file."""
+	if tPlot in dCityNameEdits:
+		return dCityNameEdits[tPlot]
+	return getFileTileName(tPlot)
 
 def editCityName(tPlot):
 	x, y = tPlot
@@ -388,7 +392,13 @@ def editCityName(tPlot):
 	popup.launch()
 
 def setCityNameEdit(tPlot, sName):
-	dCityNameEdits[tPlot] = sName
+	# opening a cell and confirming the same text is not a change; nor is
+	# typing the original back after an edit
+	if sName == getFileTileName(tPlot):
+		if tPlot in dCityNameEdits:
+			del dCityNameEdits[tPlot]
+	else:
+		dCityNameEdits[tPlot] = sName
 	refreshCityNameOverlay()
 
 def refreshCityNameOverlay():

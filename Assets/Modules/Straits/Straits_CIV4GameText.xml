@@ -26,12 +26,12 @@
 		<English>Muddy - Meandering</English>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_FEATURE_INLAND_STRAIT</Tag>
-		<English>Inland Strait</English>
+		<Tag>TXT_KEY_FEATURE_STRAIT_DANISH</Tag>
+		<English>Danish Straits</English>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_FEATURE_INLAND_STRAIT_PEDIA</Tag>
-		<English>An inland strait is a narrow passage of water cutting through a land tile. Ships sail through it from one end to the other, but they cannot stop on it: a ship entering is carried straight to the far end and ends its turn there. A land unit may cross the tile, but entering or leaving it is a landing: the move costs a whole turn, and an attack made from or into it is at -50%.[NEWLINE][NEWLINE]It is for passages that are real water but too narrow to deserve a tile of their own, such as the Sound at Copenhagen.</English>
+		<Tag>TXT_KEY_FEATURE_STRAIT_DANISH_PEDIA</Tag>
+		<English>The Danish Straits are the channels between the Baltic and the North Sea, threading between Zealand and the coasts around it, and the art on this tile draws several of them. Ships sail through the tile from one end to the other, but they cannot stop on it: a ship entering is carried straight to the far end and ends its turn there. A land unit may cross the tile, but entering or leaving it is a landing: the move costs a whole turn, and an attack made from or into it is at -50%.</English>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_FEATURE_STRAIT_BOSPHORUS</Tag>
@@ -72,5 +72,21 @@
 	<TEXT>
 		<Tag>TXT_KEY_FEATURE_STRAIT_MAGELLAN_PEDIA</Tag>
 		<English>The Strait of Magellan separates Tierra del Fuego from the mainland. Ships cross it from the south-west (the Pacific) to the north-east or east (the Atlantic), and no ship may stop on the tile; a crossing costs two movement points.[NEWLINE][NEWLINE]The tile is mainland ground. Its western, north-western and northern edges are wide straits: no land unit may cross them, by walking or by attacking, and the path goes the long way round instead. A city founded here takes the passage over, and the strait returns if the city is razed.</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_GIBRALTAR</Tag>
+		<English>Strait of Gibraltar</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_GIBRALTAR_PEDIA</Tag>
+		<English>The Strait of Gibraltar joins the Atlantic to the Mediterranean. Ships cross it from the west or south-west (the Atlantic) to the east (the Mediterranean), and no ship may stop on the tile; a crossing costs two movement points.[NEWLINE][NEWLINE]The tile is Gadir's ground, the Spanish side, so every northern edge is ordinary land. The southern edge, over to Africa, is a narrow strait: moving across it takes a whole turn, and an attack made across it is at -50%. The south-eastern edge is a wide one - no land unit may cross it at all, and the path goes the long way round instead. A city founded here takes the passage over, and the strait returns if the city is razed.</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_BOHAI</Tag>
+		<English>Bohai Strait</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FEATURE_STRAIT_BOHAI_PEDIA</Tag>
+		<English>The Bohai Strait separates the Shandong peninsula from Liaodong. Ships cross it from the west (the Bohai Sea) to the east (the Yellow Sea), and no ship may stop on the tile; a crossing costs two movement points.[NEWLINE][NEWLINE]The tile is Penglai's ground. Its northern edge, over to Dalian, is a wide strait: no land unit may cross it, by walking or by attacking, and the path goes the long way round instead. A city founded here takes the passage over, and the strait returns if the city is razed.</English>
 	</TEXT>
 </Civ4GameText>

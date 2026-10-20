@@ -1099,7 +1099,7 @@
 			</FeatureVariety>
 		</FeatureArtInfo>
 		<FeatureArtInfo>
-			<Type>ART_DEF_FEATURE_INLAND_STRAIT_NS</Type>
+			<Type>ART_DEF_FEATURE_STRAIT_DANISH</Type>
 			<bAnimated>0</bAnimated>
 			<bRiverArt>0</bRiverArt>
 			<TileArtType>TILE_ART_TYPE_NONE</TileArtType>
@@ -1110,7 +1110,7 @@
 			<FeatureVariety>
 				<FeatureArtPieces>
 					<FeatureArtPiece>
-						<ModelFile>Art/Terrain/Features/Straits/InlandStrait_Refined_NS.nif</ModelFile>
+						<ModelFile>Art/Terrain/Features/Straits/InlandStrait_Refined_Danish.nif</ModelFile>
 						<Connections></Connections>
 					</FeatureArtPiece>
 				</FeatureArtPieces>
@@ -1216,6 +1216,48 @@
 				<FeatureArtPieces>
 					<FeatureArtPiece>
 						<ModelFile>Art/Terrain/Features/Straits/InlandStrait_Refined_Magellan.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+		</FeatureArtInfo>
+<FeatureArtInfo>
+			<Type>ART_DEF_FEATURE_STRAIT_GIBRALTAR</Type>
+			<bAnimated>0</bAnimated>
+			<bRiverArt>0</bRiverArt>
+			<TileArtType>TILE_ART_TYPE_NONE</TileArtType>
+			<LightType>LIGHT_TYPE_SUN</LightType>
+			<fScale>1.0</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<Button></Button>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/InlandStrait_Refined_Gibraltar.nif</ModelFile>
+						<Connections></Connections>
+					</FeatureArtPiece>
+				</FeatureArtPieces>
+				<FeatureDummyNodes/>
+				<bGenerateRotations>0</bGenerateRotations>
+				<VarietyButton></VarietyButton>
+			</FeatureVariety>
+		</FeatureArtInfo>
+<FeatureArtInfo>
+			<Type>ART_DEF_FEATURE_STRAIT_BOHAI</Type>
+			<bAnimated>0</bAnimated>
+			<bRiverArt>0</bRiverArt>
+			<TileArtType>TILE_ART_TYPE_NONE</TileArtType>
+			<LightType>LIGHT_TYPE_SUN</LightType>
+			<fScale>1.0</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<Button></Button>
+			<FeatureVariety>
+				<FeatureArtPieces>
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Features/Straits/InlandStrait_Refined_Bohai.nif</ModelFile>
 						<Connections></Connections>
 					</FeatureArtPiece>
 				</FeatureArtPieces>

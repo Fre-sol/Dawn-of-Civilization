@@ -971,12 +971,14 @@ enum FeatureTypes					// Exposed to Python
 	FEATURE_LAKE,
 	FEATURE_WIDE_STRAIT,
 	FEATURE_ISLANDS_WIDE_STRAIT,
-	FEATURE_INLAND_STRAIT_NS, // Fresol: a land tile a ship may pass through (N <-> S) but never stop on
+	FEATURE_STRAIT_DANISH, // Fresol: a land tile a ship may pass through (N <-> S) but never stop on
 	FEATURE_STRAIT_BOSPHORUS, // Fresol: the same, but the passage runs SW <-> E
 	FEATURE_STRAIT_DARDANELLES, // Fresol: no passage at all - land rules only
 	FEATURE_STRAIT_QIONGZHOU, // Fresol: the Qiongzhou strait - ships W/SW <-> E/SE, land crosses to Hainan as a strait
 	FEATURE_STRAIT_TSUGARU, // Fresol: the Tsugaru strait - ships NW/W <-> NE/E, the edge north to Hokkaido is wide
 	FEATURE_STRAIT_MAGELLAN, // Fresol: the Strait of Magellan - ships SW <-> NE/E, west/north-west/north are wide
+	FEATURE_STRAIT_GIBRALTAR, // Fresol: the Strait of Gibraltar - ships W/SW <-> E, south is a landing, south-east is closed
+	FEATURE_STRAIT_BOHAI, // Fresol: the Bohai strait - ships NW/W <-> NE/E, the edge north to Dalian is wide
 	FEATURE_VOLCANO, // Fresol: a volcanic mountain - impassable like a peak (port of DOCAmerica's)
 	NUM_FEATURES
 };

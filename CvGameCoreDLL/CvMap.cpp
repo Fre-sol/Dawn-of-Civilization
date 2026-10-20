@@ -1407,15 +1407,29 @@ void CvMap::rebuild(int iGridW, int iGridH, int iPrimeMeridian, int iEquator, in
 // for the AI's sea workers), but CvArea::isLake() is overridden for them, and for trade
 // they join the ocean through the virtual links below.  The links carry trade only -
 // there is no passage for a ship.
+//
+// The Bohai Sea is here for the same reason and with the same treatment: three tiles
+// behind the Bohai strait at (167, 57) are too few for the game to call them sea, so
+// without this they were a lake - lake yields, fresh water, no trade, and a shore that
+// could not build a harbour.  Ships do reach it here, through the strait tile, which is
+// why its link only has to carry trade.
 static const int aiCutOffSeaTiles[][2] = {
 	{119, 79},	// White Sea
 	{120, 78},
 	{121, 79},
+	{165, 58},	// Bohai Sea: three tiles behind the Bohai strait at (167, 57)
+	{166, 57},
+	{166, 58},
 };
 
 static const int aiCutOffSeaTradeLink[][4] = {
 	{119, 79, 105, 79},
 	{121, 79, 105, 79},
+	{166, 57, 168, 57},	// Bohai Sea <-> the Yellow Sea, across the strait tile
+	{95, 56, 97, 56},	// the Mediterranean <-> the Atlantic, at Gibraltar
+	{106, 72, 106, 70},	// the Baltic <-> the North Sea, through the Danish straits
+	{115, 61, 114, 59},	// the Black Sea <-> the Mediterranean, at the Bosphorus
+	{60, 0, 62, 1},	// the two halves of the world ocean, at Magellan
 };
 
 #define NUM_CUT_OFF_SEA_TRADE_LINKS ((int)(sizeof(aiCutOffSeaTradeLink) / sizeof(aiCutOffSeaTradeLink[0])))

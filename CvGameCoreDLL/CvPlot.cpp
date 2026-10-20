@@ -13035,12 +13035,14 @@ static bool isInlandStraitFeature(FeatureTypes eFeature)
 {
 	switch (eFeature)
 	{
-	case FEATURE_INLAND_STRAIT_NS:
+	case FEATURE_STRAIT_DANISH:
 	case FEATURE_STRAIT_BOSPHORUS:
 	case FEATURE_STRAIT_DARDANELLES:
 	case FEATURE_STRAIT_QIONGZHOU:
 	case FEATURE_STRAIT_TSUGARU:
 	case FEATURE_STRAIT_MAGELLAN:
+	case FEATURE_STRAIT_GIBRALTAR:
+	case FEATURE_STRAIT_BOHAI:
 		return true;
 
 	default:
@@ -13068,7 +13070,7 @@ static bool inlandStraitSides(FeatureTypes eFeature, InlandStraitSide* pSides)
 
 	switch (eFeature)
 	{
-	case FEATURE_INLAND_STRAIT_NS:
+	case FEATURE_STRAIT_DANISH:
 		// Fresol: Copenhagen stands on an island the map had to attach to its neighbours.  Land
 		// crosses it only east and west - the two edges the art lays its dashed lines along - and
 		// even there the move is a landing.  Every other edge is closed for good, with a city or
@@ -13112,10 +13114,11 @@ static bool inlandStraitSides(FeatureTypes eFeature, InlandStraitSide* pSides)
 		pSides[DIRECTION_SOUTHEAST].bLandPenalty = true;
 		return true;
 	case FEATURE_STRAIT_QIONGZHOU:
-		// Fresol: the Qiongzhou strait.  The tile is the Leizhou peninsula's ground - northern
-		// mainland - so land crosses freely to its north-west, north and north-east sides.  Only
-		// the southern edge, the crossing over to Hainan, is a strait: a whole turn to move over
-		// and -50% to attack over, by the same rule the diagonal narrow strait uses.
+		// Fresol: the Qiongzhou strait.  The tile stands on Hainan's north shore, so the crossing
+		// is its northern edge, over the water to the Leizhou peninsula: a whole turn to move
+		// over and -50% to attack over, by the same rule the diagonal narrow strait uses.  Every
+		// other edge of this tile is ordinary ground - the Hainan side is water on this map and
+		// land cannot walk into it anyway, so nothing else needs saying.
 		// Ships come in from the west (west or south-west, the Gulf of Tonkin) and leave to the
 		// east (east or south-east, the South China Sea), and the mirror of that.  Four ends are
 		// declared because the map has two water tiles on each side; getInlandStraitExit takes
@@ -13124,7 +13127,7 @@ static bool inlandStraitSides(FeatureTypes eFeature, InlandStraitSide* pSides)
 		pSides[DIRECTION_SOUTHWEST].bSeaPassage = true;
 		pSides[DIRECTION_EAST].bSeaPassage = true;
 		pSides[DIRECTION_SOUTHEAST].bSeaPassage = true;
-		pSides[DIRECTION_SOUTH].bLandPenalty = true;
+		pSides[DIRECTION_NORTH].bLandPenalty = true;
 		return true;
 	case FEATURE_STRAIT_TSUGARU:
 		// Fresol: the Tsugaru strait.  The tile stands with Honshu: every land edge but one is
@@ -13151,6 +13154,33 @@ static bool inlandStraitSides(FeatureTypes eFeature, InlandStraitSide* pSides)
 		pSides[DIRECTION_EAST].bSeaPassage = true;
 		pSides[DIRECTION_WEST].bLandPassage = false;
 		pSides[DIRECTION_NORTHWEST].bLandPassage = false;
+		pSides[DIRECTION_NORTH].bLandPassage = false;
+		return true;
+	case FEATURE_STRAIT_GIBRALTAR:
+		// Fresol: the Strait of Gibraltar.  The tile is Gadir's ground, the Spanish side, so
+		// every northern edge is ordinary land.  The southern edge, over to Africa, is a
+		// narrow strait: a whole turn to move over and -50% to attack over.  The south-eastern
+		// edge is a wide one - no land unit crosses it at all, and the pathfinder goes the
+		// long way round instead.
+		// Ships come in from the Atlantic (west or south-west) and leave to the Mediterranean
+		// (east), and the mirror of that.
+		pSides[DIRECTION_WEST].bSeaPassage = true;
+		pSides[DIRECTION_SOUTHWEST].bSeaPassage = true;
+		pSides[DIRECTION_EAST].bSeaPassage = true;
+		pSides[DIRECTION_SOUTH].bLandPenalty = true;
+		pSides[DIRECTION_SOUTHEAST].bLandPassage = false;
+		return true;
+	case FEATURE_STRAIT_BOHAI:
+		// Fresol: the Bohai strait.  The tile is Penglai's ground on the Shandong
+		// peninsula: every land edge but one is ordinary ground, and the edge north to
+		// Dalian is a wide strait - land may neither move nor attack across it, and the
+		// pathfinder goes the long way round instead.
+		// Ships come in from the west or north-west (the Bohai Sea) and leave to the east
+		// or north-east (the Yellow Sea), and the mirror of that.
+		pSides[DIRECTION_NORTHWEST].bSeaPassage = true;
+		pSides[DIRECTION_WEST].bSeaPassage = true;
+		pSides[DIRECTION_NORTHEAST].bSeaPassage = true;
+		pSides[DIRECTION_EAST].bSeaPassage = true;
 		pSides[DIRECTION_NORTH].bLandPassage = false;
 		return true;
 	}
@@ -13536,11 +13566,13 @@ int CvPlot::inlandStraitCrossingCost(FeatureTypes eFeature)
 {
 	switch (eFeature)
 	{
-	case FEATURE_INLAND_STRAIT_NS:			// the Sound at Copenhagen
+	case FEATURE_STRAIT_DANISH:			// the Sound at Copenhagen
 	case FEATURE_STRAIT_BOSPHORUS:			// and the Bosphorus: both are sailed through
 	case FEATURE_STRAIT_QIONGZHOU:			// the Qiongzhou strait as well
 	case FEATURE_STRAIT_TSUGARU:			// and the Tsugaru strait
 	case FEATURE_STRAIT_MAGELLAN:			// and the Strait of Magellan
+	case FEATURE_STRAIT_GIBRALTAR:			// the Strait of Gibraltar too
+	case FEATURE_STRAIT_BOHAI:				// and the Bohai strait
 		return 2;
 
 	default:

@@ -59,7 +59,15 @@ lMoveMapModes = [iModeMoveMap, iModeMoveMap2]
 # keeps one area and one colour per layer and only about fifty layers can be
 # cleared, while there are iNumRegions + iNumWaterRegions (172) regions, water
 # included.
-lRegionMapColors = ["COLOR_PLAYER_LIGHT_PURPLE", "COLOR_PLAYER_LIGHT_YELLOW", "COLOR_PLAYER_LIGHT_ORANGE", "COLOR_SILVER"]
+# Fresol: eight high-contrast colours instead of the old four.  The old set ended
+# with COLOR_SILVER, a pale grey that is invisible over most terrain -- and with
+# only four colours the greedy assignment fell back to it for every region whose
+# neighbours had already taken the other three (the Deccan, for one).
+# Every entry here must be saturated: pale tints (silver, white, cream, beige)
+# are effectively invisible over terrain.
+lRegionMapColors = ["COLOR_PLAYER_PURPLE", "COLOR_PLAYER_YELLOW", "COLOR_PLAYER_BRIGHT_GREEN",
+	"COLOR_PLAYER_CYAN", "COLOR_PLAYER_BRIGHT_RED", "COLOR_PLAYER_ORANGE",
+	"COLOR_PLAYER_MIDDLE_BLUE", "COLOR_PLAYER_PINK"]
 lRegionIds = list(range(iNumRegions)) + list(range(100, 100 + iNumWaterRegions))
 
 # Fresol: the buttons that pick a river kind in the map tab. They are told apart
@@ -1510,9 +1518,15 @@ class CvWorldBuilderScreen:
 				elif self.iPlayerAddMode == iModeRegionMap:
 					# Fresol: water regions are brushes too, so they are listed here
 					# with the land ones (ids 100+ are the sea and lake regions)
+					# Fresol: sorted by name, because hunting for one of the 172
+					# regions in numeric order is hopeless.  Seas keep their "~"
+					# marker but sort among the land regions by their bare name.
+					lRegionNames = []
 					for iRegion in lRegionIds:
-						TextKey = u"TXT_KEY_REGION_%d" % iRegion
-						sName = CyTranslator().getText(str(TextKey), ())
+						sName = CyTranslator().getText(str(u"TXT_KEY_REGION_%d" % iRegion), ())
+						lRegionNames.append((sName, iRegion))
+					lRegionNames.sort(key=lambda entry: entry[0].lower())
+					for sName, iRegion in lRegionNames:
 						if iRegion >= 100:
 							sName = u"~ " + sName
 						screen.addPullDownString("WorldBuilderPlayerChoice", sName, iRegion, iRegion, self.m_iRegionMapID == iRegion)

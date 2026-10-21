@@ -42604,7 +42604,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=106,y=42
-	TerrainType=TERRAIN_DESERT
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
@@ -52686,7 +52686,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=117,y=52
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
@@ -53802,7 +53802,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=140,y=53
-	TerrainType=TERRAIN_DESERT
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
@@ -54722,7 +54722,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=124,y=54
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot

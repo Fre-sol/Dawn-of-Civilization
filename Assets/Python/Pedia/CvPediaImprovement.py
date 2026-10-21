@@ -226,6 +226,95 @@ class CvPediaImprovement:
 		if self.iImprovement == iTown:
 			szText += u"%c+1%c with <link=literal>%s</link>\n" % (szBullet, gc.getYieldInfo(0).getChar(), gc.getProjectInfo(iHumanGenome).getText())
 
+		# Fresol - start
+		# Requirements that this page otherwise never shows.
+		# A build can need a technology just because the tile carries a feature; those come from
+		# the FeatureStructs in CIV4BuildInfos.xml and are checked in CvPlayer::canBuild.  The
+		# worker's action is the only place in the game that names them, so the pedia lists them
+		# here together with the extra build time and whether the feature is cleared or kept.
+		# The extra time is given as a percentage of the base build time: CvPlot::getBuildTime
+		# adds the feature time before it applies the terrain, game speed and start era
+		# modifiers, so the ratio holds in every game while a number of turns would not.
+		for iBuild in xrange(gc.getNumBuildInfos()):
+			BuildInfo = gc.getBuildInfo(iBuild)
+			if BuildInfo.getImprovement() != self.iImprovement or BuildInfo.isGraphicalOnly():
+				continue
+			for iFeature in xrange(gc.getNumFeatureInfos()):
+				iTech = BuildInfo.getFeatureTech(iFeature)
+				iTime = BuildInfo.getFeatureTime(iFeature)
+				bRemove = BuildInfo.isFeatureRemove(iFeature)
+				szFeature = gc.getFeatureInfo(iFeature).getDescription()
+				# links work the same way the concept links do: the resolver matches the info type
+				# (isMatchForLink), so a click opens the feature or the technology page
+				szFeatureLink = u"<link=%s>%s</link>" % (gc.getFeatureInfo(iFeature).getType(), szFeature)
+				if iTech > -1:
+					szText += u"%cOn %s: requires <link=%s>%s</link>" % (szBullet, szFeatureLink, gc.getTechInfo(iTech).getType(), gc.getTechInfo(iTech).getDescription())
+				elif iTime > 0 or bRemove:
+					szText += u"%cOn %s: no extra technology" % (szBullet, szFeatureLink)
+				else:
+					continue
+				if iTime > 0:
+					iBaseTime = BuildInfo.getTime()
+					if iBaseTime > 0:
+						szText += u", +%d%% build time" % int(100.0 * iTime / iBaseTime + 0.5)
+					else:
+						iTurns = iTime / gc.getUnitInfo(gc.getInfoTypeForString('UNIT_WORKER')).getWorkRate()
+						szText += u", +%d turns" % iTurns
+				if bRemove:
+					szText += u", clears the %s" % szFeature
+				else:
+					szText += u", keeps the %s" % szFeature
+				szText += u"\n"
+
+		# Fresol: the slave builds (BUILD_SLAVE_MINE and BUILD_SLAVE_PLANTATION) kill the unit
+		# that makes them.  CvPlot::canBuild refuses such a build on a feature the build would
+		# remove, because the feature would be wiped out instantly; so Forest and Savanna are
+		# impossible for them even though the same tile takes the normal improvement.
+		# Other kill builds exist (the work boat ones for fishing boats and the like), so only
+		# builds that a slave unit can actually perform are listed here.
+		for iBuild in xrange(gc.getNumBuildInfos()):
+			BuildInfo = gc.getBuildInfo(iBuild)
+			if BuildInfo.getImprovement() != self.iImprovement or not BuildInfo.isKill():
+				continue
+			bSlaveBuild = False
+			for iUnit in xrange(gc.getNumUnitInfos()):
+				SlaveInfo = gc.getUnitInfo(iUnit)
+				if SlaveInfo.isSlave() and SlaveInfo.getBuilds(iBuild):
+					bSlaveBuild = True
+					break
+			if not bSlaveBuild:
+				continue
+			if BuildInfo.getTime() == 0:
+				szText += u"%cSlaves build this instantly and are consumed\n" % szBullet
+			lBlocked = []
+			for iFeature in xrange(gc.getNumFeatureInfos()):
+				if BuildInfo.isFeatureRemove(iFeature):
+					lBlocked.append(u"<link=%s>%s</link>" % (gc.getFeatureInfo(iFeature).getType(), gc.getFeatureInfo(iFeature).getDescription()))
+			if len(lBlocked) > 1:
+				szText += u"%cSlaves cannot build this on %s or %s before removing the feature\n" % (szBullet, u", ".join(lBlocked[:-1]), lBlocked[-1])
+			elif lBlocked:
+				szText += u"%cSlaves cannot build this on %s before removing the feature\n" % (szBullet, lBlocked[0])
+
+		# Fresol: villages and towns add to the administration of a core city that works them
+		# (Stability.py calculateAdministration); cottages and hamlets do not.
+		if self.iImprovement in (iVillage, iTown):
+			szText += u"%cA core city working this tile counts it as +1 population for its administration\n" % szBullet
+			szText += u"%cAdministration resists the separatism of your non-core cities (<link=CONCEPT_STABILITY>Expansion stability</link>)\n" % szBullet
+		elif self.iImprovement in (iCottage, iHamlet):
+			szText += u"%cDoes not count towards administration (only <link=IMPROVEMENT_VILLAGE>villages</link> and <link=IMPROVEMENT_TOWN>towns</link> do)\n" % szBullet
+
+		# The availability flags CvGameTextMgr does not print (it prints the river, fresh water
+		# exclusion, water, flatlands and irrigation carrying ones).
+		if info.isRequiresIrrigation():
+			szText += u"%cRequires irrigation\n" % szBullet
+		if info.isFreshWaterMakesValid():
+			szText += u"%cCan also be built on land with fresh water\n" % szBullet
+		if info.isRequiresFeature():
+			szText += u"%cMust be built on a feature\n" % szBullet
+		if info.isOutsideBorders():
+			szText += u"%cCan be built outside your borders\n" % szBullet
+		# Fresol - end
+
 		szText += gc.getImprovementInfo(self.iImprovement).getHelp()
 		szText += CyGameTextMgr().getImprovementHelp(self.iImprovement, True)
 		szText = szText.replace("\n\n", "\n").strip()

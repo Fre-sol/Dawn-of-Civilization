@@ -178,6 +178,14 @@
 		<Spanish>Tile Stability Display</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_COLONY</Tag>
+		<English>Colonies</English>
+		<French>Colonies</French>
+		<German>Colonies</German>
+		<Italian>Colonies</Italian>
+		<Spanish>Colonies</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_CONCEPT_TRADING_COMPANY_CONQUERORS</Tag>
 		<English>Trading Companies</English>
 		<French>Compagnies commerciales</French>

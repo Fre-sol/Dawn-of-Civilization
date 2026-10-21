@@ -483,7 +483,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_REQUIRES_NUM_COLONIES</Tag>
-		<English>[COLOR_WARNING_TEXT]Requires at least %d1_Num Colony[COLOR_REVERT]</English>
+		<English>[COLOR_WARNING_TEXT]Requires at least %d1_Num [LINK=CONCEPT_COLONY]Colony[\LINK][COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]N&#233;cessite un minimum de %d1_Num colonies[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Erfordert mindestens %d1_Num Kolonie[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]Requires at least %d1_Num Colony[COLOR_REVERT]</Italian>

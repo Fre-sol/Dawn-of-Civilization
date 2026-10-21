@@ -146,5 +146,10 @@
 			<Description>TXT_KEY_CONCEPT_TRADE_NODES</Description>
 			<Civilopedia>TXT_KEY_CONCEPT_TRADE_NODES_PEDIA</Civilopedia>
 		</ConceptInfo>
+		<ConceptInfo>
+			<Type>CONCEPT_COLONY</Type>
+			<Description>TXT_KEY_CONCEPT_COLONY</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_COLONY_PEDIA</Civilopedia>
+		</ConceptInfo>
 	</ConceptInfos>
 </Civ4BasicInfos>

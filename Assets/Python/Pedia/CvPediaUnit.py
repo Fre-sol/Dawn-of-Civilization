@@ -236,6 +236,32 @@ class CvPediaUnit:
 		szText = CyGameTextMgr().getUnitHelp(self.iUnit, True, False, False, None)[1:]
 
 		UnitInfo = gc.getUnitInfo(self.iUnit)
+
+		# Fresol - start
+		# The conditions on a slave's kill builds, from CvPlot::canUseSlave and
+		# CvPlayer::canUseSlaves.  The game never shows any of them.
+		bKillBuild = False
+		for iBuild in xrange(gc.getNumBuildInfos()):
+			if UnitInfo.getBuilds(iBuild) and gc.getBuildInfo(iBuild).isKill():
+				bKillBuild = True
+				break
+		if UnitInfo.isSlave() and bKillBuild:
+			szSlaveBullet = CyGame().getSymbolID(FontSymbols.BULLET_CHAR)
+			szText += u"\n%cSlave improvements can only be built in North America or South America, or in Sub-Saharan Africa when your capital is outside that region" % szSlaveBullet
+			szText += u"\n%cMinor civilizations and barbarians cannot use slaves this way" % szSlaveBullet
+			# CvCivicInfo::isNoSlavery is not exposed to Python, so the three civics that carry
+			# the flag are named here; their names and links still come from the infos.
+			lNoSlavery = []
+			for szCivicType in ("CIVIC_EGALITARIANISM", "CIVIC_NATIONHOOD", "CIVIC_MULTILATERALISM"):
+				iCivic = gc.getInfoTypeForString(szCivicType)
+				if iCivic > -1:
+					lNoSlavery.append(u"<link=%s>%s</link>" % (gc.getCivicInfo(iCivic).getType(), gc.getCivicInfo(iCivic).getDescription()))
+			if len(lNoSlavery) > 1:
+				szText += u"\n%cBlocked under %s or %s" % (szSlaveBullet, u", ".join(lNoSlavery[:-1]), lNoSlavery[-1])
+			elif lNoSlavery:
+				szText += u"\n%cBlocked under %s" % (szSlaveBullet, lNoSlavery[0])
+		# Fresol - end
+
 		iMaxUnits = UnitInfo.getCollateralDamageMaxUnits()
 		if iMaxUnits > 0 and UnitInfo.getCollateralDamage() > 0:
 			szCollateral = u"Collateral Damage (%d Units)" % iMaxUnits

@@ -263,6 +263,16 @@ class CvPediaBuilding:
 		BuildingInfo = gc.getBuildingInfo(self.iBuilding)
 		screen.addPanel(panel, CyTranslator().getText("TXT_KEY_PEDIA_EFFECTS", ()), "", True, False, self.X_EFFECTS, self.Y_EFFECTS, self.W_EFFECTS, self.H_EFFECTS, PanelStyles.PANEL_STYLE_BLUE50)
 		szText = CyGameTextMgr().getBuildingHelp(self.iBuilding, True, False, False, CyCity()).lstrip()
+
+		# Fresol: the capital's part in administration (Stability.py calculateAdministration and
+		# calculatePlayerAdministration).  A player is never in decline, so the second helping of
+		# population always applies to a human capital.
+		if BuildingInfo.isCapital():
+			szBullet = CyGame().getSymbolID(FontSymbols.BULLET_CHAR)
+			szText += u"\n%cThe city with the Palace is your capital" % szBullet
+			szText += u"\n%cA capital in your core adds its effective population twice, plus 10 administration" % szBullet
+			szText += u"\n%cA capital outside your core gives no administration, and if no core city is on its landmass your administration is zero" % szBullet
+
 		screen.addMultilineText(text, szText, self.X_EFFECTS + 10, self.Y_EFFECTS + 30, self.W_EFFECTS - 10, self.H_EFFECTS - 35, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 

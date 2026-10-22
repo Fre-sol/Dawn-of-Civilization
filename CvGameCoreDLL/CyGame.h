@@ -88,6 +88,7 @@ public:
 
 	int getNumHumanPlayers();
 	int getGameTurn();
+	void setSuspendPlotGroups(bool bSuspend);
 	void setGameTurn(int iNewValue);
 	int getTurnYear(int iGameTurn);
 	int getGameTurnYear();

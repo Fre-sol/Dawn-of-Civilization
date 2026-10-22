@@ -494,8 +494,39 @@ void CvPlotGroup::recalculatePlots()
 	computeRebuildComponents(eOwner, oldPlotGroup, aiPlotIndex, aiLabel);
 	rebuildPlotGroups(eOwner, aiPlotIndex, aiLabel);
 
-	syncCityBonuses(eOwner, aiPlotIndex); // Fresol
 	setSuspendCityBonusSync(bWasSuspended); // Fresol
+
+	// Fresol: while re-adding, the old algorithm merged the group with any adjacent
+	// group it reached.  Do the same here, otherwise a rebuild can leave two groups
+	// that are connected to each other apart.
+	for (int i = 0; i < (int)aiPlotIndex.size(); ++i)
+	{
+		CvPlot* pPlot = GC.getMapINLINE().plotByIndexINLINE(aiPlotIndex[i]);
+		CvPlotGroup* pGroup = pPlot->getPlotGroup(eOwner);
+
+		if (pGroup == NULL)
+		{
+			continue;
+		}
+
+		for (int iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
+		{
+			CvPlot* pAdjacent = plotDirection(pPlot->getX_INLINE(), pPlot->getY_INLINE(), (DirectionTypes)iI);
+
+			if (pAdjacent != NULL)
+			{
+				CvPlotGroup* pAdjacentGroup = pAdjacent->getPlotGroup(eOwner);
+
+				if (pAdjacentGroup != NULL && pAdjacentGroup != pGroup)
+				{
+					pPlot->updatePlotGroup(eOwner, false);
+					break;
+				}
+			}
+		}
+	}
+
+	syncCityBonuses(eOwner, aiPlotIndex); // Fresol
 }
 
 

@@ -9318,6 +9318,7 @@ name_translations = {
 			translate("Bhubaneshwar", iAfter=iDigital),
 			_,
 		),
+		iLocal: _,
 		iPersian: "Katiq",
 	},
 	"Kastamonu": {  # founded on Gangra

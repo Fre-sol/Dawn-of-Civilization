@@ -14110,6 +14110,14 @@ void CvPlayerAI::AI_doDiplo()
 												{
 													setTradeItem(&item, TRADE_TECHNOLOGIES, iJ);
 
+													// Fresol: both are necessary conditions inside canTradeItem, and a
+													// false result draws no random number, so this changes nothing else.
+													if (!GET_TEAM(GET_PLAYER((PlayerTypes)iI).getTeam()).isHasTech((TechTypes)iJ)
+														|| GET_TEAM(getTeam()).isHasTech((TechTypes)iJ))
+													{
+														continue;
+													}
+
 													if (GET_PLAYER((PlayerTypes)iI).canTradeItem(getID(), item, true))
 													{
 														iValue = (1 + GC.getGameINLINE().getSorenRandNum(10000, "AI Tech Trading #1"));
@@ -14130,6 +14138,13 @@ void CvPlayerAI::AI_doDiplo()
 													for (iJ = 0; iJ < GC.getNumTechInfos(); iJ++)
 													{
 														setTradeItem(&item, TRADE_TECHNOLOGIES, iJ);
+
+														// Fresol: same necessary conditions as above, mirrored.
+														if (!GET_TEAM(getTeam()).isHasTech((TechTypes)iJ)
+															|| GET_TEAM(GET_PLAYER((PlayerTypes)iI).getTeam()).isHasTech((TechTypes)iJ))
+														{
+															continue;
+														}
 
 														if (canTradeItem(((PlayerTypes)iI), item, true))
 														{

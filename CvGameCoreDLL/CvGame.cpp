@@ -2445,11 +2445,32 @@ void CvGame::updateScore(bool bForce)
 	}
 }
 
+// Fresol: while a whole civilization is being seceded, acquireCity runs a full map
+// plot group update for every single city.  Suspend it and do the work once at the end.
+static bool s_bSuspendPlotGroups = false;
+
+void CvGame::setSuspendPlotGroups(bool bSuspend)
+{
+	const bool bWasSuspended = s_bSuspendPlotGroups;
+
+	s_bSuspendPlotGroups = bSuspend;
+
+	if (bWasSuspended && !bSuspend)
+	{
+		updatePlotGroups();
+	}
+}
+
 void CvGame::updatePlotGroups()
 {
 	PROFILE_FUNC();
 
 	int iI;
+
+	if (s_bSuspendPlotGroups)
+	{
+		return;
+	}
 
 	for (iI = 0; iI < MAX_PLAYERS; iI++)
 	{

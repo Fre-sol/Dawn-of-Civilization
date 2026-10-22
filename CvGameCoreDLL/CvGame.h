@@ -65,6 +65,7 @@ public:
 	DllExport void updateBlockadedPlots();
 
 	DllExport void updatePlotGroups();
+	DllExport void setSuspendPlotGroups(bool bSuspend);
 	DllExport void updateBuildingCommerce();
 	DllExport void updateCitySight(bool bIncrement);
 	DllExport void updateTradeRoutes();

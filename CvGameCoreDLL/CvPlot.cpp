@@ -5282,7 +5282,7 @@ PlayerTypes CvPlot::getOwner() const
 }
 
 
-void CvPlot::setOwner(PlayerTypes eNewValue, bool bCheckUnits, bool bUpdatePlotGroup)
+void CvPlot::setOwner(PlayerTypes eNewValue, bool bCheckUnits, bool bUpdatePlotGroup, bool bUpdateVisibility)
 {
 	PROFILE_FUNC();
 
@@ -5395,7 +5395,10 @@ void CvPlot::setOwner(PlayerTypes eNewValue, bool bCheckUnits, bool bUpdatePlotG
 
 			if (isOwned())
 			{
-				changeAdjacentSight(getTeam(), GC.getDefineINT("PLOT_VISIBILITY_RANGE"), false, NULL, bUpdatePlotGroup);
+				if (bUpdateVisibility)
+				{
+					changeAdjacentSight(getTeam(), GC.getDefineINT("PLOT_VISIBILITY_RANGE"), false, NULL, bUpdatePlotGroup);
+				}
 
 				if (area())
 				{
@@ -5471,7 +5474,10 @@ void CvPlot::setOwner(PlayerTypes eNewValue, bool bCheckUnits, bool bUpdatePlotG
 
 			if (isOwned())
 			{
-				changeAdjacentSight(getTeam(), GC.getDefineINT("PLOT_VISIBILITY_RANGE"), true, NULL, bUpdatePlotGroup);
+				if (bUpdateVisibility)
+				{
+					changeAdjacentSight(getTeam(), GC.getDefineINT("PLOT_VISIBILITY_RANGE"), true, NULL, bUpdatePlotGroup);
+				}
 
 				if (area())
 				{
@@ -5517,11 +5523,14 @@ void CvPlot::setOwner(PlayerTypes eNewValue, bool bCheckUnits, bool bUpdatePlotG
 				}
 			}
 
-			for (iI = 0; iI < MAX_TEAMS; ++iI)
+			if (bUpdateVisibility)
 			{
-				if (GET_TEAM((TeamTypes)iI).isAlive())
+				for (iI = 0; iI < MAX_TEAMS; ++iI)
 				{
-					updateRevealedOwner((TeamTypes)iI);
+					if (GET_TEAM((TeamTypes)iI).isAlive())
+					{
+						updateRevealedOwner((TeamTypes)iI);
+					}
 				}
 			}
 

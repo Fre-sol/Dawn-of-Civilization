@@ -1382,6 +1382,15 @@ name_translations = {
 		iSpanish: u"Náyaf",
 		iTurkish: "Necef",
 	},
+	"Anakopia": {  # founded on Sukhumi
+		iByzantine: _,
+		iGreek: _,
+		iItalian: "Niocoxia",
+		iLatin: "Tracheia",
+		iLocal: "Anakofia", # Georgian
+		iRussian: "Psyrtskha",
+		iTurkish: "Absara",
+	},
 	"Anapa": {
 		iGreek: "Gorgippia",
 		iItalian: "Mapa",
@@ -1473,6 +1482,16 @@ name_translations = {
 			translate("Patan", iAfter=iIndustrial),
 			_,
 		),
+	},
+	"Ani": {  # founded on Kumayri
+		iArabic: _,
+		iGreek: "Anion",
+		iLatin: "Abnicum",
+		iLocal: ( # Armenian
+			translate("Khnamk", iBefore=iClassical),
+			_,
+		),
+		iTurkish: _,
 	},
 	"Anna Regina": {
 		iDutch: "Nieuw Middelburg",
@@ -1706,9 +1725,11 @@ name_translations = {
 		iTurkish: "Erbil",
 	},
 	"Ardabil": {
+		iArabic: _,
 		# iArmenian: "Artawil",
 		iDravidian: "Arutapil",
-		iPersian: _,
+		iLatin: "Ardebilia",
+		iPersian: "Adurbadagan",
 		iRussian: "Ardebil",
 		iTurkish: "Erdebil",
 	},
@@ -2313,22 +2334,6 @@ name_translations = {
 		iSpanish: "Babilonia",
 		# iSumerian: "Kandigirak",
 	},
-	"Bagaw": {  # renamed from Hongsawatoi
-		iBurmese: _,
-		iEnglish: "Pegu",
-	},
-	"Baktra": {
-		iArabic: "Balkh",
-		# iArmenian: "Bahl",
-		iGreek: _,
-		iIndian: "Bahlika",
-		iLatin: "Bactra",
-		iLocal: "Bakhlo", # Bactrian
-		iPersian: (
-			translate("Zariaspa", iBefore=iClassical),
-			"Bakhl",
-		),
-	},
 	"Badamsha": {
 		iRussian: _,
 		iTurkish: "Badamshy",
@@ -2339,6 +2344,10 @@ name_translations = {
 			_,
 		),
 		iGreek: "Ptolemais Theron",
+	},
+	"Bagaw": {  # renamed from Hongsawatoi
+		iBurmese: _,
+		iEnglish: "Pegu",
 	},
 	u"Baghçasaray": {  # founded on Khersonesos
 		iGerman: "Bachtschyssaraj",
@@ -2424,6 +2433,18 @@ name_translations = {
 		iEnglish: _,
 		iLocal: "Qamani'tuaq", # Inuktitut
 	},
+	"Baktra": {
+		iArabic: "Balkh",
+		# iArmenian: "Bahl",
+		iGreek: _,
+		iIndian: "Bahlika",
+		iLatin: "Bactra",
+		iLocal: "Bakhlo", # Bactrian
+		iPersian: (
+			translate("Zariaspa", iBefore=iClassical),
+			"Bakhl",
+		),
+	},
 	"Baku": {
 		iArabic: "Bakuyah",
 		iDutch: "Bakoe",
@@ -2456,6 +2477,31 @@ name_translations = {
 		iArabic: "Al-Masaqit",
 		iFrench: "Massaguet",
 		iLocal: _, # Kanuri
+	},
+	"Balanjar": {
+		iArabic: _,
+		# iArmenian: "Varachan",
+		iPersian: found("Humraj"),
+		iRussian: (
+			found("Temir-Khan-Shura"),
+			"Belendzher",
+		),
+		iTurkish: "Belenjar",
+	},
+	"Humraj": {  # founded on Balanjar
+		iArabic: _,
+		iPersian: _,
+		iRussian: "Khunzakh",
+		iTurkish: "Khunzakh",
+	},
+	"Temir-Khan-Shura": {  # founded on Balanjar
+		iGerman: translate("Buinaksk", iAfter=iGlobal),
+		iLocal: "Schurahi", # Lak
+		iRussian: (
+			translate("Buynaksk", iAfter=iGlobal),
+			_,
+		),
+		iTurkish: "Temirxan-Shura",
 	},
 	"Balasagun": {
 		iMongol: "Gobalik",
@@ -5290,6 +5336,14 @@ name_translations = {
 	},
 	"Derbent": {
 		iArabic: "Bab al-Abwab",
+		# iArmenian: "Chor",
+		iByzantine: "Tzon",
+		iEnglish: _,
+		iFrench: u"Derbént",
+		iGerman: _,
+		iGreek: "Albana",
+		iLatin: "Albanopolis",
+		iMongol: "Kakhulga",
 		iPersian: (
 			translate("Darband", iAfter=iRenaissance),
 			translate("Weroy-pahr", iAfter=iMedieval),
@@ -5770,6 +5824,7 @@ name_translations = {
 	"Dvin": {  # relocated from Artashat
 		iArabic: "Dabil",
 		iGreek: "Tibion",
+		iLatin: "Doubious",
 		iLocal: _, # Armenian
 	},
 	"Dvinsk": {
@@ -6679,9 +6734,15 @@ name_translations = {
 	},
 	"Ganja": {  # relocated from Qabala
 		iArabic: "Janza",
-		iPersian: _,
+		iLocal: "Gandzak", # Armenian
+		iPersian: (
+			translate("Ganjeh", iAfter=iIndustrial),
+			translate("Abbasabad", iAfter=iRenaissance),
+			_,
+		),
 		iRussian: (
 			translate("Kirovabad", bCommunist=True),
+			translate("Gyandzha", iAfter=iGlobal),
 			"Yelizatevpol",
 		),
 		iTurkish: "Gence",
@@ -7742,6 +7803,12 @@ name_translations = {
 			translate("Minab", iAfter=iMedieval),
 			"Armuzia",
 		),
+	},
+	"Harmozike": {  # founded on Mtskheta
+		iGreek: _,
+		iLatin: "Hermastus",
+		iLocal: "Armazi", # Georgian
+		iPersian: "Harmaz",
 	},
 	"Harran": {  # founded on Adma
 		iArabic: _,
@@ -9445,6 +9512,17 @@ name_translations = {
 		iSpanish: "Kirkuk",
 		iTurkish: u"Kerkük",
 	},
+	"Kars": {  # founded on Kumayri
+		iArabic: "Qars",
+		iGerman: _,
+		iGreek: "Karse",
+		iLocal: ( # Armenian
+			translate("Ghars", iAfter=iMedieval),
+			"Karuts",
+		),
+		iRussian: _,
+		iTurkish: _,
+	},
 	"Kartili": {  # founded on Al-Asnam
 		iArabic: "Damous",
 		iFrench: "Dupleix",
@@ -10516,13 +10594,22 @@ name_translations = {
 		iLocal: _,
 	},
 	"Kumayri": {
+		iArabic: found("Ani"),
+		iAssyrian: _,
+		iByzantine: found("Ani"),
+		iGreek: "Gymnias",
 		iLocal: ( # Armenian
 			translate("Gyumri", iAfter=iIndustrial),
 			_,
 		),
+		iPersian: _,
 		iRussian: (
 			translate("Leninakan", bCommunist=True),
 			"Alexandropol",
+		),
+		iTurkish: (
+			found("Kars"),
+			u"Gümrü",
 		),
 	},
 	"Kumbi Saleh": {
@@ -11870,6 +11957,14 @@ name_translations = {
 		iDutch: "Nieuw-Antwerpen",
 		iFrench: "Nouvelle-Anvers",
 	},
+	"Makas": {  # founded on Vladikavkaz
+		iArabic: "Maghas",
+		iChinese: "Muzashan",
+		iLatin: "Castellum Alanorum",
+		iMongol: "Minkas",
+		iPersian: _,
+		iTurkish: _,
+	},
 	"Maketi": {  # founded on Akka
 		iBabylonian: "Megiddu",
 		iEgyptian: _,
@@ -12818,7 +12913,11 @@ name_translations = {
 		iTibetan: _,
 	},
 	"Mtskheta": {
-		iGreek: found("Harmozike"),
+		iGreek: (
+			found("Harmozike"),
+			"Mestleta",
+		),
+		iLatin: "Meschistha",
 		iLocal: ( # Georgian
 			relocate("Tbilisi", iAfter=iMedieval),
 			_,
@@ -14252,13 +14351,6 @@ name_translations = {
 			_,
 		),
 	},
-	"Ordzhonikidze": {
-		iLocal: "Dzaudzhikau", # Ossetian
-		iRussian: (
-			translate("Vladikavkaz", iAfter=iIndustrial),
-			_,
-		),
-	},
 	"Orekhov": {
 		iRussian: (
 			relocate("Sankt-Peterburg", iAfter=iRenaissance),
@@ -15138,6 +15230,8 @@ name_translations = {
 		iVietnamese: "Nam Vang",
 	},
 	"Phraaspa": {  # founded on Gazaka
+		iArabic: "Afrad-Rudh",
+		iLatin: "Phraata",
 		iMongol: relocate("Tabriz"),
 		iPersian: (
 			translate("Maragheh", iAfter=iMedieval),
@@ -15195,6 +15289,14 @@ name_translations = {
 	"Pitic": {
 		iMexican: rename("Hermosillo", iGreatGenerals=1),
 		iSpanish: _,
+	},
+	"Pitius": {  # founded on Sukhumi
+		iGreek: "Pityous",
+		iItalian: "Pezonda",
+		iLatin: _,
+		iLocal: "Bichvinta", # Georgian
+		iRussian: "Pitsunda",
+		iTurkish: "Pitsunda",
 	},
 	"Pittsburgh": {
 		iEnglish: _,
@@ -15404,6 +15506,8 @@ name_translations = {
 		iPortuguese: u"Ilha São Paulo"
 	},
 	"Port-Petrovsk": {  # relocated from Samandar
+		iGerman: "Port-Petrowsk",
+		iPersian: "Inji Qalʿa",
 		iRussian: (
 			translate("Makhachkala", bCommunist=True),
 			_,
@@ -15482,8 +15586,31 @@ name_translations = {
 		iLocal: "Kuujjuarapik", # Inuktitut
 	},
 	"Poti": {
-		iGreek: "Phasis",
+		iGreek: (
+			found("Kotais"),
+			"Phasis",
+		),
+		iItalian: "Fasso",
 		iLocal: _, # Georgian
+		iPersian: found("Kotais"),
+		iRussian: _,
+		iTurkish: "Fash",
+	},
+	"Kotais": {  # founded on Poti
+		iArabic: "Kutaysi",
+		iByzantine: "Kotaion",
+		iEnglish: "Kutaisi",
+		iFrench: u"Koutaïssi",
+		iGerman: "Kutaissi",
+		iGreek: _,
+		iLatin: "Cotais",
+		iLocal: (
+			translate("Kutaisi", iAfter=iMedieval),
+			"Kutatisi",
+		),
+		iPersian: "Aia",
+		iRussian: "Kutaisi",
+		iTurkish: "Kutays",
 	},
 	u"Potosí": {  # founded on Q'ochapampa
 		iQuechua: "Potojsi",
@@ -15791,6 +15918,8 @@ name_translations = {
 	},
 	"Qabala": {
 		iArabic: _,
+		iGreek: "Khabala",
+		iLatin: "Chabala",
 		iPersian: (
 			relocate("Ganja", iAfter=iMedieval),
 			"Gabala",
@@ -16736,10 +16865,14 @@ name_translations = {
 		iSpanish: "Salzburgo",
 	},
 	"Samandar": {
+		iArabic: _,
+		# iArmenian: "Msndr",
+		iGreek: "Zabender",
+		iPersian: _,
 		iRussian: relocate("Port-Petrovsk"),
 		iTurkish: (
 			relocate("Targhu", iAfter=iRenaissance),
-			_,
+			"Semender",
 		),
 	},
 	"Samara": {
@@ -18328,9 +18461,26 @@ name_translations = {
 		iThai: _,
 	},
 	"Sukhumi": {
+		iByzantine: (
+			found("Anakopia"),
+			"Sebastoupolis",
+		),
+		iEnglish: "Sokhumi",
+		iFrench: "Soukhoumi",
+		iGerman: "Sochumi",
 		iGreek: "Dioskourias",
-		iLocal: _,
+		iItalian: "Savastopoli",
+		iLatin: (
+			found("Pitius"),
+			"Sebastopolis",
+		),
+		iLocal: (
+			translate(_, iAfter=iRenaissance),
+			"Tskhumi",
+		),
+		iPolish: "Suchumi",
 		iRussian: "Sukhum",
+		iSpanish: "Sujumi",
 		iTurkish: "Sohumkale",
 	},
 	"Sukkertoppen": {
@@ -18516,8 +18666,21 @@ name_translations = {
 		iLocal: _,
 	},
 	"Tabriz": {  # relocated from Gazaka
+		iArabic: _,
+		iAssyrian: "Tarui-Tarmakisa",
+		iByzantine: "Tabrezion",
+		iChinese: "Tiebieliesi",
+		iGerman: u"Täbris",
+		iGreek: "Tauris",
 		iLocal: "Tavrezh", # Armenian
-		iPersian: _,
+		iMongol: _,
+		iPersian: (
+			translate(_, iReligion=iIslam),
+			translate(_, iAfter=iMedieval),
+			"Tawres",
+		),
+		iRussian: "Tebriz",
+		iTurkish: "Tebriz",
 	},
 	"Tabuk": {
 		iArabic: _,
@@ -18814,6 +18977,8 @@ name_translations = {
 		iSpanish: "Tarento",
 	},
 	"Targhu": {  # relocated from Samandar
+		iGreek: "Reteg",
+		iPersian: "Tarkhu",
 		iRussian: "Tarki",
 		iTurkish: _,
 	},
@@ -18960,6 +19125,7 @@ name_translations = {
 	},
 	"Tbilisi": {  # relocated from Mtskheta
 		iArabic: "Tiflis",
+		# iArmenian: "Tplis",
 		iChinese: "Tifulisi",
 		iDravidian: "Timilichi",
 		iDutch: "Tiflis",
@@ -18970,12 +19136,14 @@ name_translations = {
 		iItalian: "Tiflis",
 		iJapanese: "Tobirishi",
 		iKorean: "Teubillisi",
+		iLatin: "Tiphlis",
 		iLocal: ( # Georgian
 			translate("Tp'ilisi", iBefore=iRenaissance),
 			_,
 		),
 		iPersian: "Teflis",
 		iPolish: "Tyflis",
+		iPortuguese: u"Tíflis",
 		iRussian: "Tiflis",
 		iSpanish: "Tiflis",
 		iTurkish: "Tiflis",
@@ -19864,6 +20032,7 @@ name_translations = {
 		iBabylonian: "Turuspa",
 		iByzantine: relocate("Erzurum"),
 		iGreek: "Eua",
+		iLatin: "Thospia",
 		iLocal: ( # Armenian
 			translate("Van", iAfter=iClassical),
 			"Tosp",
@@ -20604,6 +20773,16 @@ name_translations = {
 		iFrench: "Trivandrum",
 		iIndian: "Syanandurapuram",
 		iPortuguese: found("Thoothukudi"),
+	},
+	"Vladikavkaz": {
+		iGerman: "Wladikawkas",
+		iLocal: "Dzaudzhikau", # Ossetian
+		iPersian: found("Makas"),
+		iRussian: (
+			translate("Ordzhonikidze", bCommunist=True),
+			_,
+		),
+		iTurkish: found("Zaur"),
 	},
 	"Vladimir": {
 		iGerman: "Wladimir",
@@ -21408,7 +21587,9 @@ name_translations = {
 		iEnglish: "Erevan",
 		iFrench: "Erevan",
 		iGerman: "Eriwan",
+		iGreek: "Erebuni",
 		iJapanese: "Eriban",
+		iLatin: "Erebuni",
 		iLocal: _, # Armenian
 		iModernGreek: u"Iereván",
 		iMongol: "Yeryevan",
@@ -21743,6 +21924,14 @@ name_translations = {
 			"Sais",
 		),
 		iLatin: "Sais",
+	},
+	"Zaur": {  # founded on Vladikavkaz
+		iArabic: "Suarig",
+		# iArmenian: "Zura",
+		iGreek: "Tzur",
+		iLocal: _, # Ingush
+		iRussian: "Zaurovo",
+		iTurkish: _,
 	},
 	"Zawila": {
 		iArabic: _,

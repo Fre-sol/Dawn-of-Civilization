@@ -127,7 +127,7 @@ MISCELLANEOUS
 * devolution (AdvCiv mod): DLL compiler options (Final_Release target)
 * MacAurther: Straits implementation
 * Apple111111: game font symbol assignment fix
-* MaciejLipinski: city names
+* MaciejLipinski, Krieger-FS: city names
 * migck: unit changes
 
 PEDIA

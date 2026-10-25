@@ -1464,6 +1464,10 @@ BeginPlot
 	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
+	x=30,y=62
+	RouteType=ROUTE_ROAD
+EndPlot
+BeginPlot
 	x=31,y=13
 	ImprovementType=IMPROVEMENT_FISHING_BOATS
 EndPlot
@@ -1695,6 +1699,7 @@ EndPlot
 BeginPlot
 	x=31,y=63
 	ImprovementType=IMPROVEMENT_MINE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=32,y=10
@@ -1831,6 +1836,7 @@ EndPlot
 BeginPlot
 	x=32,y=63
 	ImprovementType=IMPROVEMENT_CAMP
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=33,y=9
@@ -2047,7 +2053,7 @@ BeginPlot
 	ImprovementType=IMPROVEMENT_FISHING_BOATS
 EndPlot
 BeginPlot
-	x=34,y=61
+	x=34,y=62
 	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
@@ -2123,8 +2129,13 @@ BeginPlot
 	EndCity
 EndPlot
 BeginPlot
+	x=35,y=61
+	RouteType=ROUTE_ROAD
+EndPlot
+BeginPlot
 	x=35,y=62
 	ImprovementType=IMPROVEMENT_CAMP
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=36,y=14
@@ -2704,6 +2715,7 @@ EndPlot
 BeginPlot
 	x=42,y=19
 	ImprovementType=IMPROVEMENT_SLAVE_PLANTATION
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=42,y=20
@@ -2915,6 +2927,7 @@ EndPlot
 BeginPlot
 	x=46,y=22
 	ImprovementType=IMPROVEMENT_SLAVE_PLANTATION
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=46,y=25
@@ -2933,10 +2946,12 @@ EndPlot
 BeginPlot
 	x=47,y=22
 	ImprovementType=IMPROVEMENT_ORCHARD
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=47,y=23
 	ImprovementType=IMPROVEMENT_QUARRY
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=47,y=25
@@ -3253,6 +3268,7 @@ EndPlot
 BeginPlot
 	x=53,y=65
 	ImprovementType=IMPROVEMENT_PASTURE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=53,y=66
@@ -3261,6 +3277,7 @@ EndPlot
 BeginPlot
 	x=53,y=67
 	ImprovementType=IMPROVEMENT_MINE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=54,y=37
@@ -3484,6 +3501,7 @@ EndPlot
 BeginPlot
 	x=54,y=66
 	ImprovementType=IMPROVEMENT_PASTURE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=54,y=67
@@ -3633,6 +3651,7 @@ EndPlot
 BeginPlot
 	x=56,y=54
 	ImprovementType=IMPROVEMENT_QUARRY
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=56,y=58
@@ -3653,6 +3672,7 @@ EndPlot
 BeginPlot
 	x=56,y=65
 	ImprovementType=IMPROVEMENT_QUARRY
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=56,y=68
@@ -3661,6 +3681,7 @@ EndPlot
 BeginPlot
 	x=56,y=70
 	ImprovementType=IMPROVEMENT_PASTURE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=56,y=71
@@ -3857,6 +3878,7 @@ EndPlot
 BeginPlot
 	x=57,y=63
 	ImprovementType=IMPROVEMENT_FARM
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=57,y=64
@@ -3865,6 +3887,7 @@ EndPlot
 BeginPlot
 	x=57,y=65
 	ImprovementType=IMPROVEMENT_QUARRY
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=57,y=66
@@ -4939,6 +4962,7 @@ EndPlot
 BeginPlot
 	x=62,y=55
 	ImprovementType=IMPROVEMENT_PASTURE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=62,y=56
@@ -5220,6 +5244,7 @@ EndPlot
 BeginPlot
 	x=63,y=59
 	ImprovementType=IMPROVEMENT_ORCHARD
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=63,y=60
@@ -6490,6 +6515,7 @@ EndPlot
 BeginPlot
 	x=69,y=55
 	ImprovementType=IMPROVEMENT_MINE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=69,y=56
@@ -6719,6 +6745,7 @@ EndPlot
 BeginPlot
 	x=70,y=48
 	ImprovementType=IMPROVEMENT_ORCHARD
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=70,y=49
@@ -6933,6 +6960,7 @@ EndPlot
 BeginPlot
 	x=71,y=52
 	ImprovementType=IMPROVEMENT_ORCHARD
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=71,y=56
@@ -7212,6 +7240,7 @@ EndPlot
 BeginPlot
 	x=72,y=52
 	ImprovementType=IMPROVEMENT_ORCHARD
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=72,y=53
@@ -9265,6 +9294,7 @@ EndPlot
 BeginPlot
 	x=81,y=41
 	ImprovementType=IMPROVEMENT_MINE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=81,y=42
@@ -9285,6 +9315,7 @@ EndPlot
 BeginPlot
 	x=81,y=52
 	ImprovementType=IMPROVEMENT_PLANTATION
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=81,y=53
@@ -9527,6 +9558,7 @@ EndPlot
 BeginPlot
 	x=82,y=40
 	ImprovementType=IMPROVEMENT_MINE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=82,y=44
@@ -11661,6 +11693,7 @@ EndPlot
 BeginPlot
 	x=95,y=55
 	ImprovementType=IMPROVEMENT_QUARRY
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=95,y=64
@@ -11887,6 +11920,7 @@ EndPlot
 BeginPlot
 	x=97,y=56
 	ImprovementType=IMPROVEMENT_COTTAGE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=97,y=57
@@ -12081,6 +12115,7 @@ EndPlot
 BeginPlot
 	x=98,y=57
 	ImprovementType=IMPROVEMENT_QUARRY
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=98,y=66
@@ -12128,6 +12163,7 @@ EndPlot
 BeginPlot
 	x=99,y=55
 	ImprovementType=IMPROVEMENT_PASTURE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=99,y=67
@@ -12529,6 +12565,7 @@ EndPlot
 BeginPlot
 	x=102,y=57
 	ImprovementType=IMPROVEMENT_MINE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=102,y=65
@@ -13368,6 +13405,7 @@ EndPlot
 BeginPlot
 	x=108,y=41
 	ImprovementType=IMPROVEMENT_ORCHARD
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=108,y=42
@@ -16070,6 +16108,7 @@ EndPlot
 BeginPlot
 	x=125,y=45
 	ImprovementType=IMPROVEMENT_ORCHARD
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=125,y=46
@@ -17355,6 +17394,7 @@ EndPlot
 BeginPlot
 	x=131,y=56
 	ImprovementType=IMPROVEMENT_MINE
+	RouteType=ROUTE_ROAD
 EndPlot
 BeginPlot
 	x=131,y=57

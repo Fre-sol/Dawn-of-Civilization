@@ -18968,6 +18968,7 @@ void CvPlayer::read(FDataStreamBase* pStream)
 
 	// Leoreth
 	pStream->Read(NUM_DOMAIN_TYPES, m_aiDomainExperienceModifiers);
+	pStream->Read(NUM_UNITCOMBATS, m_aiUnitCombatFoodProductionCount);
 	pStream->Read(NUM_PARAMETERS, m_aiStabilityParameters);
 	pStream->Read(NUM_MODIFIER_TYPES, m_aiModifiers);
 
@@ -19414,6 +19415,7 @@ void CvPlayer::write(FDataStreamBase* pStream)
 
 	// Leoreth
 	pStream->Write(NUM_DOMAIN_TYPES, m_aiDomainExperienceModifiers);
+	pStream->Write(NUM_UNITCOMBATS, m_aiUnitCombatFoodProductionCount);
 	pStream->Write(NUM_PARAMETERS, m_aiStabilityParameters);
 	pStream->Write(NUM_MODIFIER_TYPES, m_aiModifiers);
 	//pStream->Write(GC.getNumTechInfos(), m_aiTechPreferences);

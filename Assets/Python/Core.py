@@ -2492,9 +2492,9 @@ city_ = city
 #   bit 0 = the edge it calls isNOfRiver, which it draws along its southern
 #   side, and bit 1 = the one it calls isWOfRiver, drawn along its eastern side.
 # A later kind would take the next pair of bits.
-iRiverKindNavNorth = 1
-iRiverKindNavWest = 2
-iRiverKindNavMask = iRiverKindNavNorth | iRiverKindNavWest
+iRiverKindSurfaceNorth = 1
+iRiverKindSurfaceWest = 2
+iRiverKindSurfaceMask = iRiverKindSurfaceNorth | iRiverKindSurfaceWest
 
 # The area border id the WorldBuilder draws the extra kinds with. It has to stay
 # clear of 1000..1049: the shared stability overlay clears those on every click,
@@ -2502,8 +2502,8 @@ iRiverKindNavMask = iRiverKindNavNorth | iRiverKindNavWest
 iRiverKindOverlayID = 1100
 
 # What the WorldBuilder's river tool offers, in the order of its selection table.
-lRiverKinds = ["River", "NavRiver"]
-iRiverKindNavIndex = 1
+lRiverKinds = ["River", "SurfaceRiver"]
+iRiverKindSurfaceIndex = 1
 
 
 def getRiverKindMask(pPlot):
@@ -2520,5 +2520,5 @@ def setRiverKindMask(pPlot, iMask):
 		pPlot.setRiverID(-1)
 
 
-def isNavRiver(pPlot):
-	return (getRiverKindMask(pPlot) & iRiverKindNavMask) != 0
+def isSurfaceRiver(pPlot):
+	return (getRiverKindMask(pPlot) & iRiverKindSurfaceMask) != 0

@@ -1947,7 +1947,7 @@ bool CvPlot::isRiver() const
 
 
 // Fresol - start
-int CvPlot::getNavRiverMask() const
+int CvPlot::getSurfaceRiverMask() const
 {
 	// Random map generation writes small non-negative river ids of its own; ours
 	// sit below -1, and -1 means "no extra kind".
@@ -1962,11 +1962,11 @@ int CvPlot::getNavRiverMask() const
 // none of the four itself -- the piece comes from a neighbour's edge alone, which
 // is what the plot just past a westward or northward mouth is -- so asking about
 // this plot's own mark leaves those ends drawn as ordinary river.  Gather the
-// four edges the same way the chooser does and answer NavRiver art as soon as one
-// of them is a NavRiver edge.
-bool CvPlot::hasNavRiverArt() const
+// four edges the same way the chooser does and answer SurfaceRiver art as soon as one
+// of them is a SurfaceRiver edge.
+bool CvPlot::hasSurfaceRiverArt() const
 {
-	if (getNavRiverMask() != 0)
+	if (getSurfaceRiverMask() != 0)
 	{
 		return true;
 	}
@@ -1974,33 +1974,33 @@ bool CvPlot::hasNavRiverArt() const
 	const CvMap& kMap = GC.getMapINLINE();
 	const CvPlot* pPlot = kMap.plotINLINE(getX_INLINE() + 1, getY_INLINE());
 
-	if (pPlot != NULL && (pPlot->getNavRiverMask() & RIVER_KIND_NAV_NORTH))
+	if (pPlot != NULL && (pPlot->getSurfaceRiverMask() & RIVER_KIND_NAV_NORTH))
 	{
 		return true;
 	}
 
 	pPlot = kMap.plotINLINE(getX_INLINE(), getY_INLINE() - 1);
 
-	return ((pPlot != NULL) && ((pPlot->getNavRiverMask() & RIVER_KIND_NAV_WEST) != 0));
+	return ((pPlot != NULL) && ((pPlot->getSurfaceRiverMask() & RIVER_KIND_NAV_WEST) != 0));
 }
 // Fresol - end
 
-bool CvPlot::hasNavKindEdge(DirectionTypes eIndex) const
+bool CvPlot::hasSurfaceKindEdge(DirectionTypes eIndex) const
 {
 	if (eIndex == DIRECTION_NORTH)
 	{
-		return ((getNavRiverMask() & RIVER_KIND_NAV_NORTH) != 0);
+		return ((getSurfaceRiverMask() & RIVER_KIND_NAV_NORTH) != 0);
 	}
 
 	if (eIndex == DIRECTION_WEST)
 	{
-		return ((getNavRiverMask() & RIVER_KIND_NAV_WEST) != 0);
+		return ((getSurfaceRiverMask() & RIVER_KIND_NAV_WEST) != 0);
 	}
 
 	return false;
 }
 
-bool CvPlot::calculateNavRiverCrossing(DirectionTypes eIndex) const
+bool CvPlot::calculateSurfaceRiverCrossing(DirectionTypes eIndex) const
 {
 	// The same rule CvPlot::updateRiverCrossing works out for ordinary rivers,
 	// run over the extra kinds instead. Keeping the two in step is what makes a
@@ -2025,7 +2025,7 @@ bool CvPlot::calculateNavRiverCrossing(DirectionTypes eIndex) const
 		case DIRECTION_NORTH:
 			if (pPlot != NULL)
 			{
-				bValid = pPlot->hasNavKindEdge(DIRECTION_NORTH);
+				bValid = pPlot->hasSurfaceKindEdge(DIRECTION_NORTH);
 			}
 			break;
 
@@ -2034,7 +2034,7 @@ bool CvPlot::calculateNavRiverCrossing(DirectionTypes eIndex) const
 			break;
 
 		case DIRECTION_EAST:
-			bValid = hasNavKindEdge(DIRECTION_WEST);
+			bValid = hasSurfaceKindEdge(DIRECTION_WEST);
 			break;
 
 		case DIRECTION_SOUTHEAST:
@@ -2042,7 +2042,7 @@ bool CvPlot::calculateNavRiverCrossing(DirectionTypes eIndex) const
 			break;
 
 		case DIRECTION_SOUTH:
-			bValid = hasNavKindEdge(DIRECTION_NORTH);
+			bValid = hasSurfaceKindEdge(DIRECTION_NORTH);
 			break;
 
 		case DIRECTION_SOUTHWEST:
@@ -2052,7 +2052,7 @@ bool CvPlot::calculateNavRiverCrossing(DirectionTypes eIndex) const
 		case DIRECTION_WEST:
 			if (pPlot != NULL)
 			{
-				bValid = pPlot->hasNavKindEdge(DIRECTION_WEST);
+				bValid = pPlot->hasSurfaceKindEdge(DIRECTION_WEST);
 			}
 			break;
 
@@ -2074,29 +2074,29 @@ bool CvPlot::calculateNavRiverCrossing(DirectionTypes eIndex) const
 
 			if (pSouthWestPlot && pNorthWestPlot && pSouthEastPlot && pNorthEastPlot)
 			{
-				if (pSouthWestPlot->hasNavKindEdge(DIRECTION_WEST) && pNorthWestPlot->hasNavKindEdge(DIRECTION_WEST))
+				if (pSouthWestPlot->hasSurfaceKindEdge(DIRECTION_WEST) && pNorthWestPlot->hasSurfaceKindEdge(DIRECTION_WEST))
 				{
 					bValid = true;
 				}
-				else if (pNorthEastPlot->hasNavKindEdge(DIRECTION_NORTH) && pNorthWestPlot->hasNavKindEdge(DIRECTION_NORTH))
+				else if (pNorthEastPlot->hasSurfaceKindEdge(DIRECTION_NORTH) && pNorthWestPlot->hasSurfaceKindEdge(DIRECTION_NORTH))
 				{
 					bValid = true;
 				}
 				else if ((eIndex == DIRECTION_NORTHEAST) || (eIndex == DIRECTION_SOUTHWEST))
 				{
-					if (pNorthEastPlot->hasNavKindEdge(DIRECTION_NORTH) && (pNorthWestPlot->hasNavKindEdge(DIRECTION_WEST) || pNorthWestPlot->isWater()))
+					if (pNorthEastPlot->hasSurfaceKindEdge(DIRECTION_NORTH) && (pNorthWestPlot->hasSurfaceKindEdge(DIRECTION_WEST) || pNorthWestPlot->isWater()))
 					{
 						bValid = true;
 					}
-					else if ((pNorthEastPlot->hasNavKindEdge(DIRECTION_NORTH) || pSouthEastPlot->isWater()) && pNorthWestPlot->hasNavKindEdge(DIRECTION_WEST))
+					else if ((pNorthEastPlot->hasSurfaceKindEdge(DIRECTION_NORTH) || pSouthEastPlot->isWater()) && pNorthWestPlot->hasSurfaceKindEdge(DIRECTION_WEST))
 					{
 						bValid = true;
 					}
-					else if (pSouthWestPlot->hasNavKindEdge(DIRECTION_WEST) && (pNorthWestPlot->hasNavKindEdge(DIRECTION_NORTH) || pNorthWestPlot->isWater()))
+					else if (pSouthWestPlot->hasSurfaceKindEdge(DIRECTION_WEST) && (pNorthWestPlot->hasSurfaceKindEdge(DIRECTION_NORTH) || pNorthWestPlot->isWater()))
 					{
 						bValid = true;
 					}
-					else if ((pSouthWestPlot->hasNavKindEdge(DIRECTION_WEST) || pSouthEastPlot->isWater()) && pNorthWestPlot->hasNavKindEdge(DIRECTION_NORTH))
+					else if ((pSouthWestPlot->hasSurfaceKindEdge(DIRECTION_WEST) || pSouthEastPlot->isWater()) && pNorthWestPlot->hasSurfaceKindEdge(DIRECTION_NORTH))
 					{
 						bValid = true;
 					}
@@ -2105,19 +2105,19 @@ bool CvPlot::calculateNavRiverCrossing(DirectionTypes eIndex) const
 				{
 					FAssert((eIndex == DIRECTION_SOUTHEAST) || (eIndex == DIRECTION_NORTHWEST));
 
-					if (pNorthWestPlot->hasNavKindEdge(DIRECTION_NORTH) && (pNorthWestPlot->hasNavKindEdge(DIRECTION_WEST) || pNorthEastPlot->isWater()))
+					if (pNorthWestPlot->hasSurfaceKindEdge(DIRECTION_NORTH) && (pNorthWestPlot->hasSurfaceKindEdge(DIRECTION_WEST) || pNorthEastPlot->isWater()))
 					{
 						bValid = true;
 					}
-					else if ((pNorthWestPlot->hasNavKindEdge(DIRECTION_NORTH) || pSouthWestPlot->isWater()) && pNorthWestPlot->hasNavKindEdge(DIRECTION_WEST))
+					else if ((pNorthWestPlot->hasSurfaceKindEdge(DIRECTION_NORTH) || pSouthWestPlot->isWater()) && pNorthWestPlot->hasSurfaceKindEdge(DIRECTION_WEST))
 					{
 						bValid = true;
 					}
-					else if (pNorthEastPlot->hasNavKindEdge(DIRECTION_NORTH) && (pSouthWestPlot->hasNavKindEdge(DIRECTION_WEST) || pSouthWestPlot->isWater()))
+					else if (pNorthEastPlot->hasSurfaceKindEdge(DIRECTION_NORTH) && (pSouthWestPlot->hasSurfaceKindEdge(DIRECTION_WEST) || pSouthWestPlot->isWater()))
 					{
 						bValid = true;
 					}
-					else if ((pNorthEastPlot->hasNavKindEdge(DIRECTION_NORTH) || pNorthEastPlot->isWater()) && pSouthWestPlot->hasNavKindEdge(DIRECTION_WEST))
+					else if ((pNorthEastPlot->hasSurfaceKindEdge(DIRECTION_NORTH) || pNorthEastPlot->isWater()) && pSouthWestPlot->hasSurfaceKindEdge(DIRECTION_WEST))
 					{
 						bValid = true;
 					}
@@ -2129,7 +2129,7 @@ bool CvPlot::calculateNavRiverCrossing(DirectionTypes eIndex) const
 	return bValid;
 }
 
-bool CvPlot::isNavRiverSide() const
+bool CvPlot::isSurfaceRiverSide() const
 {
 	int i;
 
@@ -2138,7 +2138,7 @@ bool CvPlot::isNavRiverSide() const
 	// fixed offset. The yield code is the hot caller; make it a side table then.
 	for (i = 0; i < NUM_DIRECTION_TYPES; ++i)
 	{
-		if (calculateNavRiverCrossing((DirectionTypes)i))
+		if (calculateSurfaceRiverCrossing((DirectionTypes)i))
 		{
 			return true;
 		}
@@ -9542,8 +9542,6 @@ CvFeature* CvPlot::getFeatureSymbol() const
 }
 
 
-namespace NavRiverArt { void install(); }	// Fresol - defined at the end of this file
-
 
 void CvPlot::updateRiverSymbol(bool bForce, bool bAdjacent)
 {
@@ -9556,7 +9554,6 @@ void CvPlot::updateRiverSymbol(bool bForce, bool bAdjacent)
 		return;
 	}
 
-	NavRiverArt::install();	// Fresol
 
 	if (bAdjacent)
 	{
@@ -9642,7 +9639,10 @@ void CvPlot::updateRiverSymbol(bool bForce, bool bAdjacent)
 		}
 
 		//cut out canyons
-		gDLL->getEngineIFace()->RebuildRiverPlotTile(getX_INLINE(), getY_INLINE(), true, false);
+		// Fresol: the normal river is cut down to a riverbed, while a SurfaceRiver keeps the terrain
+		// height - that is what lets one run along the top of a highland instead of in a canyon.
+		const bool bRebuildHeights = !hasSurfaceRiverArt();
+		gDLL->getEngineIFace()->RebuildRiverPlotTile(getX_INLINE(), getY_INLINE(), bRebuildHeights, false);
 
 		//recontour adjacent rivers
 		for(int i=0;i<NUM_DIRECTION_TYPES;i++)
@@ -13777,155 +13777,3 @@ bool CvPlot::isCanalEdgeAllowed(const CvPlot* pCity, const CvPlot* pWater)
 }
 // Fresol - end
 
-
-// Fresol - start
-// ---------------------------------------------------------------------------
-// NavRiver art.  The engine picks a river piece by computing a key from the
-// plot's geometry alone and looking it up in a 256 entry table that
-// CIV4RiverModelInfos.xml fills, so an ordinary river and a NavRiver of the same
-// shape ask for the same key.  Nothing we are free to change can separate them:
-// the direction fields the routine also reads are already written both ways on
-// the shipped map, which is exactly what puts a river in each of the two art
-// families (995 normal / 387 mouth pieces on Earth).
-//
-// The routine only ever reaches 64 of the 256 keys, though.  So we take the
-// routine over: a NavRiver is answered with a private key out of the untouched
-// space, whose entries are ours to define in the XML, and everything else gets
-// the engine's own answer back unchanged.  The routine is a virtual method of
-// the engine's river symbol object (the pointer sits at exe 0x00b06dc8), so this
-// is one dword write into the exe's .rdata -- no code is patched, and the
-// original routine is still the one that computes the ordinary answer.
-// ---------------------------------------------------------------------------
-// One line per river symbol into sdkDbg.log. Useful when checking which key a
-// plot asked for and what it was answered; off in normal play.
-#define NAVRIVER_ART_DIAGNOSTIC 0
-
-namespace NavRiverArt
-{
-	const unsigned long RIVER_KEY_ROUTINE_SLOT = 0x00b06dc8UL;	// exe .rdata
-	const unsigned long EXE_TEXT_LOW  = 0x00401000UL;
-	const unsigned long EXE_TEXT_HIGH = 0x00a00000UL;
-
-	// Ordinary key -> the key we answer with for a NavRiver plot.  A target is a
-	// key the descriptor cannot produce, so the two sets never meet.  See
-	// perf/navmap_v2.py; regenerate rather than hand-editing.
-	static const unsigned char s_navRiverKeyMap[256] =
-	{
-		  0,  65,   2, 129,   4,  69,   6,  71,   8,  73,  10,  75,  12,  77,  14,  79,
-		 17,  17,  82,  83,  20,  21,  86,  87,  24,  25,  90,  91,  28, 146,  94,  95,
-		 32,  33,  34,  35, 100, 101, 102, 103,  40,  41,  42,  43, 164, 109, 110, 111,
-		 48,  49,  50,  51,  52,  53,  54,  55, 120, 121, 122, 123, 124, 125, 126, 127,
-		 64,  65,   2, 147,  68,  69, 150,  71,  72,  73, 154,  75,  76,  77,  78,  79,
-		 80, 210,  82,  83,  84,  21,  86,  87,  88,  89,  90,  91,  92,  93,  94,  95,
-		 96,  97,  98,  99, 100, 101, 102, 103,  40,  25, 106, 107, 211, 109, 110, 111,
-		112, 113, 114, 115,  52, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127,
-		128, 129, 193, 214, 132, 133, 151, 135, 136, 137,  10, 139, 140, 141, 142, 143,
-		144, 215, 146, 147, 148,  89, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159,
-		160, 161, 162, 163, 164, 165, 166, 167, 228,  41, 170, 171, 153, 173, 174, 175,
-		176, 177, 178, 179,  53, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191,
-		192, 193, 133, 218, 196, 197,   6, 199, 200, 201, 155, 203, 204, 205, 206, 207,
-		208, 219, 210, 211, 212, 158, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223,
-		224, 225, 226, 227, 228, 229, 230, 231, 165, 222, 234, 235, 159, 237, 238, 239,
-		240, 241, 242, 243, 117, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255,
-	};
-
-	typedef int (__fastcall *RiverModelKeyFn)(const void*);
-
-	RiverModelKeyFn g_pfnOriginalRoutine = NULL;
-	bool g_bInstalled = false;
-
-#if NAVRIVER_ART_DIAGNOSTIC
-	void logKey(const CvPlot* pPlot, int iX, int iY, int iKey, int iAnswer)
-	{
-		static int iLogged = 0;
-
-		if (!pPlot->isRiver() || iLogged >= 4000)
-		{
-			return;
-		}
-
-		++iLogged;
-		GC.getGameINLINE().logMsg("navriver art %d %d mask %d key %d -> %d",
-			iX, iY, pPlot->getNavRiverMask(), iKey, iAnswer);
-	}
-#endif
-
-	int __fastcall riverModelKey(const void* pRiverSymbol)
-	{
-		if (g_pfnOriginalRoutine == NULL)
-		{
-			return 0;
-		}
-
-		const int iKey = g_pfnOriginalRoutine(pRiverSymbol);
-
-		if (pRiverSymbol == NULL || iKey < 0 || iKey > 255)
-		{
-			return iKey;
-		}
-
-		// The symbol caches the coordinates of the plot it belongs to.
-		const int iX = *((const int*)(((const char*)pRiverSymbol) + 0x78));
-		const int iY = *((const int*)(((const char*)pRiverSymbol) + 0x7c));
-
-		if (iX < 0 || iY < 0
-			|| iX >= GC.getMapINLINE().getGridWidthINLINE()
-			|| iY >= GC.getMapINLINE().getGridHeightINLINE())
-		{
-			return iKey;
-		}
-
-		CvPlot* pPlot = GC.getMapINLINE().plotINLINE(iX, iY);
-
-		if (pPlot == NULL)
-		{
-			return iKey;
-		}
-
-		const int iAnswer = pPlot->hasNavRiverArt() ? s_navRiverKeyMap[iKey] : iKey;
-
-#if NAVRIVER_ART_DIAGNOSTIC
-		logKey(pPlot, iX, iY, iKey, iAnswer);
-#endif
-
-		return iAnswer;
-	}
-
-	void install()
-	{
-		if (g_bInstalled)
-		{
-			return;
-		}
-
-		g_bInstalled = true;
-
-		unsigned long* pSlot = (unsigned long*)RIVER_KEY_ROUTINE_SLOT;
-		const unsigned long ulOriginal = *pSlot;
-
-		// Refuse to touch anything that does not look like a pointer into the
-		// exe's code: on an exe we have not been introduced to, an unpatched
-		// game is much better than a patched one.
-		if (ulOriginal < EXE_TEXT_LOW || ulOriginal >= EXE_TEXT_HIGH)
-		{
-			return;
-		}
-
-		memcpy(&g_pfnOriginalRoutine, &ulOriginal, sizeof(ulOriginal));
-
-		const unsigned long ulReplacement = (unsigned long)(size_t)(&riverModelKey);
-
-		DWORD dwOldProtect = 0;
-
-		if (VirtualProtect(pSlot, sizeof(unsigned long), PAGE_EXECUTE_READWRITE, &dwOldProtect))
-		{
-			*pSlot = ulReplacement;
-			VirtualProtect(pSlot, sizeof(unsigned long), dwOldProtect, &dwOldProtect);
-		}
-		else
-		{
-			g_pfnOriginalRoutine = NULL;
-		}
-	}
-}
-// Fresol - end

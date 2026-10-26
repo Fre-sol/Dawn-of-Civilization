@@ -1540,8 +1540,8 @@ class CvPlotDesc:
 		self.isWOfRiver = None
 		# Fresol: the extra river kinds, one flag per kind per edge. A navigable
 		# river is an ordinary river as well, only the token differs.
-		self.isNOfNavRiver = None
-		self.isWOfNavRiver = None
+		self.isNOfSurfaceRiver = None
+		self.isWOfSurfaceRiver = None
 		self.isStartingPlot = 0
 		self.bonusType = None
 		self.bonusVarietyType = None
@@ -1610,14 +1610,14 @@ class CvPlotDesc:
 			# Fresol: the extra river kinds are written next to the ordinary
 			# river, so a reader without them still gets the river itself.
 			iRiverKindMask = getRiverKindMask(plot)
-			if (iRiverKindMask & iRiverKindNavNorth):
-				f.write("\tisNOfNavRiver\n")
+			if (iRiverKindMask & iRiverKindSurfaceNorth):
+				f.write("\tisNOfSurfaceRiver\n")
 			if (plot.getRiverWEDirection() != CardinalDirectionTypes.NO_CARDINALDIRECTION):
 				f.write("\tRiverWEDirection=%d\n" %(int(plot.getRiverWEDirection()),) )
 			if (plot.isWOfRiver()):
 				f.write("\tisWOfRiver\n")
-			if (iRiverKindMask & iRiverKindNavWest):
-				f.write("\tisWOfNavRiver\n")
+			if (iRiverKindMask & iRiverKindSurfaceWest):
+				f.write("\tisWOfSurfaceRiver\n")
 			# extras
 			if (plot.isStartingPlot()):
 				f.write("\tStartingPlot\n")
@@ -1716,8 +1716,8 @@ class CvPlotDesc:
 				self.isNOfRiver = (true)
 				continue
 
-			if (parser.findTokenValue(toks, "isNOfNavRiver"))!=-1:
-				self.isNOfNavRiver = (true)
+			if (parser.findTokenValue(toks, "isNOfSurfaceRiver"))!=-1:
+				self.isNOfSurfaceRiver = (true)
 				continue
 
 			v = parser.findTokenValue(toks, "RiverWEDirection")
@@ -1729,8 +1729,8 @@ class CvPlotDesc:
 				self.isWOfRiver = (true)
 				continue
 
-			if (parser.findTokenValue(toks, "isWOfNavRiver"))!=-1:
-				self.isWOfNavRiver = (true)
+			if (parser.findTokenValue(toks, "isWOfSurfaceRiver"))!=-1:
+				self.isWOfSurfaceRiver = (true)
 				continue
 
 			if (parser.findTokenValue(toks, "StartingPlot"))!=-1:
@@ -1818,20 +1818,20 @@ class CvPlotDesc:
 		# Setting an edge is what makes the engine build the river symbol, and the
 		# symbol is what carries the kind's art, so the other order would build it
 		# as an ordinary river and leave it that way.
-		if self.isNOfNavRiver is not None or self.isWOfNavRiver is not None:
+		if self.isNOfSurfaceRiver is not None or self.isWOfSurfaceRiver is not None:
 			iMask = getRiverKindMask(self.plot)
-			if self.isNOfNavRiver is not None:
-				iMask |= iRiverKindNavNorth
-			if self.isWOfNavRiver is not None:
-				iMask |= iRiverKindNavWest
+			if self.isNOfSurfaceRiver is not None:
+				iMask |= iRiverKindSurfaceNorth
+			if self.isWOfSurfaceRiver is not None:
+				iMask |= iRiverKindSurfaceWest
 			setRiverKindMask(self.plot, iMask)
 
 		# A navigable river is an ordinary river as well, so its token alone
 		# brings the river, its graphics and everything a river does.
-		if self.isNOfNavRiver is not None:
+		if self.isNOfSurfaceRiver is not None:
 			self.plot.setNOfRiver(True, self.riverWEDirection)
 
-		if self.isWOfNavRiver is not None:
+		if self.isWOfSurfaceRiver is not None:
 			self.plot.setWOfRiver(True, self.riverNSDirection)
 
 		if self.isNOfRiver is not None:

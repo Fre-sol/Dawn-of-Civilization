@@ -28,7 +28,7 @@
 			<Type>ART_DEF_BONUS_COPPER</Type>
 			<fScale>1.0</fScale>
 			<fInterfaceScale>1.0</fInterfaceScale>
-			<NIF>Art/Terrain/Resources/Copper/Copper.nif</NIF>
+			<NIF>Art/Terrain/Resources/Copper/Copper_lowcut.nif</NIF>
 			<KFM>Art/Terrain/Resources/Copper/Copper.kfm</KFM>
 			<Button>,Art/Interface/Buttons/WorldBuilder/Copper.dds,Art/Interface/Buttons/Unit_Resource_Atlas.dds,5,12</Button>
 			<FontButtonIndex>2</FontButtonIndex>
@@ -249,9 +249,9 @@
 			<Type>ART_DEF_BONUS_DEER</Type>
 			<fScale>1.2</fScale>
 			<fInterfaceScale>1.0</fInterfaceScale>
-			<NIF>Art/Terrain/Resources/Deer/Deer.nif</NIF>
+			<NIF>Art/Terrain/Resources/Deer/Deer_lowcut.nif</NIF>
 			<KFM>Art/Terrain/Resources/Deer/Deer.kfm</KFM>
-			<SHADERNIF>Art/Terrain/Resources/Deer/Deer_FX.nif</SHADERNIF>
+			<SHADERNIF>Art/Terrain/Resources/Deer/Deer_lowcut_FX.nif</SHADERNIF>
 			<Button>,Art/Interface/Buttons/WorldBuilder/Deer.dds,Art/Interface/Buttons/Unit_Resource_Atlas.dds,1,15</Button>
 			<FontButtonIndex>14</FontButtonIndex>
 		</BonusArtInfo>
@@ -288,9 +288,9 @@
 			<Type>ART_DEF_BONUS_SHEEP</Type>
 			<fScale>1.0</fScale>
 			<fInterfaceScale>1.0</fInterfaceScale>
-			<NIF>Art/Terrain/Resources/Sheep/Sheep.nif</NIF>
+			<NIF>Art/Terrain/Resources/Sheep/Sheep_lowcut.nif</NIF>
 			<KFM>Art/Terrain/Resources/Sheep/Sheep.kfm</KFM>
-			<SHADERNIF>Art/Terrain/Resources/Sheep/Sheep_FX.nif</SHADERNIF>
+			<SHADERNIF>Art/Terrain/Resources/Sheep/Sheep_lowcut_FX.nif</SHADERNIF>
 			<Button>,Art/Interface/Buttons/WorldBuilder/Sheep.dds,Art/Interface/Buttons/Unit_Resource_Atlas.dds,2,14</Button>
 			<FontButtonIndex>18</FontButtonIndex>
 		</BonusArtInfo>
@@ -677,9 +677,9 @@
 			<Type>ART_DEF_BONUS_SHEEP_BLACK</Type>
 			<fScale>1.0</fScale>
 			<fInterfaceScale>1.0</fInterfaceScale>
-			<NIF>Art/Terrain/Resources/sheep_black/Sheep.nif</NIF>
+			<NIF>Art/Terrain/Resources/sheep_black/Sheep_lowcut.nif</NIF>
 			<KFM>Art/Terrain/Resources/Sheep/Sheep.kfm</KFM>
-			<SHADERNIF>Art/Terrain/Resources/sheep_black/Sheep_FX.nif</SHADERNIF>
+			<SHADERNIF>Art/Terrain/Resources/sheep_black/Sheep_lowcut_FX.nif</SHADERNIF>
 			<Button>,Art/Interface/Buttons/WorldBuilder/Sheep.dds,Art/Interface/Buttons/Unit_Resource_Atlas.dds,2,14</Button>
 			<FontButtonIndex>18</FontButtonIndex>
 		</BonusArtInfo>

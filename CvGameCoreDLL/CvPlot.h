@@ -111,11 +111,11 @@ public:
 		RIVER_KIND_NAV_WEST = 2,		// the edge this plot calls isWOfRiver, drawn on its east side
 	};
 
-	int getNavRiverMask() const;
-	bool hasNavRiverArt() const;																															// a NavRiver edge takes part in this plot's symbol
-	bool hasNavKindEdge(DirectionTypes eIndex) const;
-	bool calculateNavRiverCrossing(DirectionTypes eIndex) const;
-	bool isNavRiverSide() const;																															// an extra kind touches the plot, corners included
+	int getSurfaceRiverMask() const;
+	bool hasSurfaceRiverArt() const;																															// a SurfaceRiver edge takes part in this plot's symbol
+	bool hasSurfaceKindEdge(DirectionTypes eIndex) const;
+	bool calculateSurfaceRiverCrossing(DirectionTypes eIndex) const;
+	bool isSurfaceRiverSide() const;																															// an extra kind touches the plot, corners included
 	// Fresol - end
 
 	CvPlot* getNearestLandPlotInternal(int iDistance) const;

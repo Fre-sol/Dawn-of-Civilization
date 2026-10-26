@@ -792,12 +792,12 @@ class CvWorldBuilderScreen:
 	def setRiver ( self, pPlot, bNorth, eDirection ):
 		# Fresol: lay down the kind of river picked in the selection table. Every
 		# kind is an ordinary river as well, so only the extra kind is marked.
-		if self.iSelection == iRiverKindNavIndex:
+		if self.iSelection == iRiverKindSurfaceIndex:
 			iMask = getRiverKindMask(pPlot)
 			if bNorth:
-				iMask |= iRiverKindNavNorth
+				iMask |= iRiverKindSurfaceNorth
 			else:
-				iMask |= iRiverKindNavWest
+				iMask |= iRiverKindSurfaceWest
 			setRiverKindMask(pPlot, iMask)
 
 		# Fresol: only lay the edge down if it is not there yet. The direction we
@@ -1877,7 +1877,9 @@ class CvWorldBuilderScreen:
 				screen.addPullDownString("WBSelectClass", sText, iBonusClass, iBonusClass, iBonusClass == self.iSelectClass)
 				iBonusClass += 1
 
-			lItems = [[gc.getBonusInfo(i).getDescription(), i] for i in xrange(gc.getNumBonusInfos()) if not (gc.getBonusInfo(i).getBonusClassType() != self.iSelectClass and self.iSelectClass > -1)]
+			# Fresol: graphical-only bonuses are art variants (black sheep, llama) and
+			# only work through the bonus variety brush - setBonusType refuses them.
+			lItems = [[gc.getBonusInfo(i).getDescription(), i] for i in xrange(gc.getNumBonusInfos()) if not gc.getBonusInfo(i).isGraphicalOnly() and not (gc.getBonusInfo(i).getBonusClassType() != self.iSelectClass and self.iSelectClass > -1)]
 			lItems.sort()
 
 			iY += 30
@@ -2421,7 +2423,7 @@ class CvWorldBuilderScreen:
 		# exactly like an ordinary river, so this is the only way to tell them apart.
 		CyEngine().clearAreaBorderPlots(iRiverKindOverlayID)
 		for pPlot in plots.all():
-			if getRiverKindMask(pPlot) & iRiverKindNavMask:
+			if getRiverKindMask(pPlot) & iRiverKindSurfaceMask:
 				CyEngine().fillAreaBorderPlotAlt(pPlot.getX(), pPlot.getY(), iRiverKindOverlayID, "COLOR_CYAN", 0.7)
 
 	def setRiverHighlights(self):

@@ -1284,9 +1284,9 @@ iNumFeatures = 26
 iTaiga, iSavanna, iStrait, iIslandsStrait, iLake, iWideStrait, iIslandsWideStrait,
 iInlandStraitNS, iStraitBosphorus, iStraitDardanelles, iStraitQiongzhou, iStraitTsugaru, iStraitMagellan, iStraitGibraltar, iStraitBohai, iVolcano) = range(iNumFeatures)
 
-iNumTerrains = 20
+iNumTerrains = 27
 (iGrass, iPlains, iDesert, iTundra, iSnow, iCoast, iOcean, iTerrainPeak, iTerrainHill, iMarsh, 
-iLagoon, iArcticCoast, iSemidesert, iSteppe, iMoorland, iSaltFlat, iSaltLake, iAtoll, iTerrainSavanna, iTerrainIsland) = range(iNumTerrains)
+iLagoon, iArcticCoast, iSemidesert, iSteppe, iMoorland, iSaltFlat, iSaltLake, iAtoll, iTerrainSavanna, iTerrainIsland, iFarmlands, iWoodlands, iTropical, iDrylands, iTerrainHills, iTerrainMountains, iForests) = range(iNumTerrains)
 
 #Plague
 iImmunity = 20

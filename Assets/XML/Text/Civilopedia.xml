@@ -8779,4 +8779,60 @@
 		<Italian>No Translation</Italian>
 		<Spanish>No Translation</Spanish>
 	</TEXT>
+		<TEXT>
+		<Tag>TXT_KEY_TERRAIN_FARMLANDS_PEDIA</Tag>
+		<English>[TAB]Farmland is ground that people have cleared, ploughed and kept under crops for generations; it feeds cities but needs work to stay fertile.</English>
+		<French>[TAB]Farmland is ground that people have cleared, ploughed and kept under crops for generations; it feeds cities but needs work to stay fertile.</French>
+		<German>[TAB]Farmland is ground that people have cleared, ploughed and kept under crops for generations; it feeds cities but needs work to stay fertile.</German>
+		<Italian>[TAB]Farmland is ground that people have cleared, ploughed and kept under crops for generations; it feeds cities but needs work to stay fertile.</Italian>
+		<Spanish>[TAB]Farmland is ground that people have cleared, ploughed and kept under crops for generations; it feeds cities but needs work to stay fertile.</Spanish>
+	</TEXT>
+		<TEXT>
+		<Tag>TXT_KEY_TERRAIN_WOODLANDS_PEDIA</Tag>
+		<English>[TAB]Woodland is open country with scattered trees and scrub - grazed, coppiced and cut for fuel, but never fully cleared.</English>
+		<French>[TAB]Woodland is open country with scattered trees and scrub - grazed, coppiced and cut for fuel, but never fully cleared.</French>
+		<German>[TAB]Woodland is open country with scattered trees and scrub - grazed, coppiced and cut for fuel, but never fully cleared.</German>
+		<Italian>[TAB]Woodland is open country with scattered trees and scrub - grazed, coppiced and cut for fuel, but never fully cleared.</Italian>
+		<Spanish>[TAB]Woodland is open country with scattered trees and scrub - grazed, coppiced and cut for fuel, but never fully cleared.</Spanish>
+	</TEXT>
+		<TEXT>
+		<Tag>TXT_KEY_TERRAIN_TROPICAL_PEDIA</Tag>
+		<English>[TAB]Tropical ground is hot and wet; it grows fast, but the heat wears down those who work in it and disease is never far away.</English>
+		<French>[TAB]Tropical ground is hot and wet; it grows fast, but the heat wears down those who work in it and disease is never far away.</French>
+		<German>[TAB]Tropical ground is hot and wet; it grows fast, but the heat wears down those who work in it and disease is never far away.</German>
+		<Italian>[TAB]Tropical ground is hot and wet; it grows fast, but the heat wears down those who work in it and disease is never far away.</Italian>
+		<Spanish>[TAB]Tropical ground is hot and wet; it grows fast, but the heat wears down those who work in it and disease is never far away.</Spanish>
+	</TEXT>
+		<TEXT>
+		<Tag>TXT_KEY_TERRAIN_DRYLANDS_PEDIA</Tag>
+		<English>[TAB]Dryland is the sparse country on the edge of the desert: thin grass, bare earth and long dry seasons.</English>
+		<French>[TAB]Dryland is the sparse country on the edge of the desert: thin grass, bare earth and long dry seasons.</French>
+		<German>[TAB]Dryland is the sparse country on the edge of the desert: thin grass, bare earth and long dry seasons.</German>
+		<Italian>[TAB]Dryland is the sparse country on the edge of the desert: thin grass, bare earth and long dry seasons.</Italian>
+		<Spanish>[TAB]Dryland is the sparse country on the edge of the desert: thin grass, bare earth and long dry seasons.</Spanish>
+	</TEXT>
+		<TEXT>
+		<Tag>TXT_KEY_TERRAIN_HILLS_PEDIA</Tag>
+		<English>[TAB]Hill country rises in folds above the surrounding land; it is harder to work but easier to defend.</English>
+		<French>[TAB]Hill country rises in folds above the surrounding land; it is harder to work but easier to defend.</French>
+		<German>[TAB]Hill country rises in folds above the surrounding land; it is harder to work but easier to defend.</German>
+		<Italian>[TAB]Hill country rises in folds above the surrounding land; it is harder to work but easier to defend.</Italian>
+		<Spanish>[TAB]Hill country rises in folds above the surrounding land; it is harder to work but easier to defend.</Spanish>
+	</TEXT>
+		<TEXT>
+		<Tag>TXT_KEY_TERRAIN_MOUNTAINS_PEDIA</Tag>
+		<English>[TAB]Mountain ground is high, stony and cold; only a thin living can be scratched from the slopes.</English>
+		<French>[TAB]Mountain ground is high, stony and cold; only a thin living can be scratched from the slopes.</French>
+		<German>[TAB]Mountain ground is high, stony and cold; only a thin living can be scratched from the slopes.</German>
+		<Italian>[TAB]Mountain ground is high, stony and cold; only a thin living can be scratched from the slopes.</Italian>
+		<Spanish>[TAB]Mountain ground is high, stony and cold; only a thin living can be scratched from the slopes.</Spanish>
+	</TEXT>
+		<TEXT>
+		<Tag>TXT_KEY_TERRAIN_FORESTS_PEDIA</Tag>
+		<English>[TAB]Forest here is dense enough to close over the ground: timber, game and cover, but slow to clear and slow to cross.</English>
+		<French>[TAB]Forest here is dense enough to close over the ground: timber, game and cover, but slow to clear and slow to cross.</French>
+		<German>[TAB]Forest here is dense enough to close over the ground: timber, game and cover, but slow to clear and slow to cross.</German>
+		<Italian>[TAB]Forest here is dense enough to close over the ground: timber, game and cover, but slow to clear and slow to cross.</Italian>
+		<Spanish>[TAB]Forest here is dense enough to close over the ground: timber, game and cover, but slow to clear and slow to cross.</Spanish>
+	</TEXT>
 </Civ4GameText>

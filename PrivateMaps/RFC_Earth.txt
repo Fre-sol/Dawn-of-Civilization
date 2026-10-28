@@ -60105,8 +60105,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=108,y=57
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=109,y=57
@@ -61201,8 +61201,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=104,y=58
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=105,y=58
@@ -61227,8 +61227,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=109,y=58
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=110,y=58
@@ -62300,8 +62300,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=104,y=59
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=105,y=59
@@ -62320,8 +62320,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=108,y=59
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=109,y=59
@@ -63388,18 +63388,23 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=106,y=60
+	isWOfRiver
+	RiverNSDirection=2
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=107,y=60
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=108,y=60
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	isNOfRiver
+	isNOfSurfaceRiver
+	RiverWEDirection=1
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=109,y=60
@@ -64481,20 +64486,20 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=101,y=61
+	TerrainType=TERRAIN_GRASS
+	PlotType=2
+EndPlot
+BeginPlot
+	x=102,y=61
 	isWOfRiver
 	RiverNSDirection=2
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
-	x=102,y=61
+	x=103,y=61
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
-EndPlot
-BeginPlot
-	x=103,y=61
-	TerrainType=TERRAIN_PLAINS
-	PlotType=1
 EndPlot
 BeginPlot
 	x=104,y=61
@@ -64508,13 +64513,16 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=106,y=61
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	isWOfRiver
+	isWOfSurfaceRiver
+	RiverNSDirection=2
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=107,y=61
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=108,y=61
@@ -65540,12 +65548,15 @@ EndPlot
 BeginPlot
 	x=101,y=62
 	isWOfRiver
-	RiverNSDirection=2
+	isWOfSurfaceRiver
+	RiverNSDirection=0
 	TerrainType=TERRAIN_PLAINS
 	PlotType=0
 EndPlot
 BeginPlot
 	x=102,y=62
+	isWOfRiver
+	RiverNSDirection=2
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -65556,13 +65567,13 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=104,y=62
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=105,y=62
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_DRYLANDS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=106,y=62
@@ -66639,28 +66650,28 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=100,y=63
-	isWOfRiver
-	isWOfSurfaceRiver
-	RiverNSDirection=0
 	TerrainType=TERRAIN_PLAINS
 	PlotType=0
 EndPlot
 BeginPlot
 	x=101,y=63
 	isWOfRiver
-	RiverNSDirection=2
+	isWOfSurfaceRiver
+	RiverNSDirection=0
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 EndPlot
 BeginPlot
 	x=102,y=63
+	isWOfRiver
+	RiverNSDirection=2
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=103,y=63
 	TerrainType=TERRAIN_PLAINS
-	PlotType=1
+	PlotType=0
 EndPlot
 BeginPlot
 	x=104,y=63
@@ -67745,25 +67756,26 @@ BeginPlot
 	x=99,y=64
 	isNOfRiver
 	RiverWEDirection=3
+	isWOfRiver
+	RiverNSDirection=2
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=100,y=64
-	isNOfRiver
-	RiverWEDirection=3
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=101,y=64
+	isWOfRiver
+	isWOfSurfaceRiver
+	RiverNSDirection=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=102,y=64
-	isNOfRiver
-	RiverWEDirection=3
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 EndPlot
@@ -68862,20 +68874,22 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=100,y=65
+	isNOfRiver
+	RiverWEDirection=3
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=101,y=65
-	isWOfRiver
-	RiverNSDirection=0
+	isNOfRiver
+	RiverWEDirection=3
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=102,y=65
-	isNOfRiver
-	RiverWEDirection=3
+	isWOfRiver
+	RiverNSDirection=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -69985,6 +69999,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=102,y=66
+	isNOfRiver
+	RiverWEDirection=3
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -71085,17 +71101,17 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=97,y=67
+	TerrainType=TERRAIN_HILLS
+	PlotType=1
+EndPlot
+BeginPlot
+	x=98,y=67
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
-	x=98,y=67
-	TerrainType=TERRAIN_PLAINS
-	PlotType=2
-EndPlot
-BeginPlot
 	x=99,y=67
-	TerrainType=TERRAIN_PLAINS
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
@@ -71106,8 +71122,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=101,y=67
-	TerrainType=TERRAIN_COAST
-	PlotType=3
+	TerrainType=TERRAIN_GRASS
+	PlotType=2
 EndPlot
 BeginPlot
 	x=102,y=67
@@ -71130,6 +71146,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=105,y=67
+	isNOfRiver
+	RiverWEDirection=3
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -72192,13 +72210,13 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=94,y=68
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_HILLS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=95,y=68
-	TerrainType=TERRAIN_PLAINS
-	PlotType=2
+	TerrainType=TERRAIN_HILLS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=96,y=68
@@ -72208,12 +72226,16 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=97,y=68
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	isNOfRiver
+	RiverWEDirection=3
+	isWOfRiver
+	RiverNSDirection=2
+	TerrainType=TERRAIN_HILLS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=98,y=68
-	TerrainType=TERRAIN_PLAINS
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
@@ -72221,16 +72243,17 @@ BeginPlot
 	isNOfRiver
 	isNOfSurfaceRiver
 	RiverWEDirection=1
-	TerrainType=TERRAIN_PLAINS
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=100,y=68
-	TerrainType=TERRAIN_PLAINS
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=101,y=68
+	FeatureType=FEATURE_WIDE_STRAIT, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -72238,6 +72261,8 @@ BeginPlot
 	x=102,y=68
 	isNOfRiver
 	RiverWEDirection=3
+	isWOfRiver
+	RiverNSDirection=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -73352,12 +73377,18 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=94,y=69
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	isNOfRiver
+	isNOfSurfaceRiver
+	RiverWEDirection=3
+	isWOfRiver
+	isWOfSurfaceRiver
+	RiverNSDirection=2
+	TerrainType=TERRAIN_HILLS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=95,y=69
-	TerrainType=TERRAIN_PLAINS
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
@@ -73373,12 +73404,16 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=98,y=69
-	TerrainType=TERRAIN_PLAINS
+	isWOfRiver
+	RiverNSDirection=2
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=99,y=69
-	TerrainType=TERRAIN_PLAINS
+	isNOfRiver
+	RiverWEDirection=1
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
@@ -74485,8 +74520,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=95,y=70
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_HILLS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=96,y=70
@@ -74502,13 +74537,13 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=98,y=70
-	TerrainType=TERRAIN_PLAINS
-	PlotType=2
+	TerrainType=TERRAIN_HILLS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=99,y=70
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_HILLS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=100,y=70
@@ -75589,13 +75624,13 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=97,y=71
-	TerrainType=TERRAIN_SAVANNA
-	PlotType=2
+	TerrainType=TERRAIN_HILLS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=98,y=71
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_HILLS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=99,y=71
@@ -76679,18 +76714,21 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=96,y=72
+	isWOfRiver
+	isWOfSurfaceRiver
+	RiverNSDirection=2
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=97,y=72
-	TerrainType=TERRAIN_TUNDRA
-	PlotType=2
+	TerrainType=TERRAIN_MOUNTAINS
+	PlotType=4
 EndPlot
 BeginPlot
 	x=98,y=72
-	TerrainType=TERRAIN_PLAINS
-	PlotType=2
+	TerrainType=TERRAIN_HILLS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=99,y=72
@@ -77775,8 +77813,11 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=97,y=73
-	TerrainType=TERRAIN_MOORLAND
-	PlotType=2
+	isNOfRiver
+	isNOfSurfaceRiver
+	RiverWEDirection=3
+	TerrainType=TERRAIN_HILLS
+	PlotType=0
 EndPlot
 BeginPlot
 	x=98,y=73

@@ -369,12 +369,35 @@ void CvDLLButtonPopup::OnOkClicked(CvPopup* pPopup, PopupReturn *pPopupReturn, C
 	case BUTTONPOPUP_DISBANDCITY:
 		if (pPopupReturn->getButtonClicked() == 1) // disband
 		{
-			CvCity* pCity = GET_PLAYER(GC.getGameINLINE().getActivePlayer()).getCity(info.getData1());
-			if (NULL != pCity)
+			CvPlayer& kDisbandPlayer = GET_PLAYER(GC.getGameINLINE().getActivePlayer());
+			CvCity* pCity = kDisbandPlayer.getCity(info.getData1());
+			if (NULL != pCity && info.getData2() == 1)
 			{
+				// Fresol: birth flip - leave ruins behind and let the people go as a settler
 				pCity->completeAcquisition(info.getData3());
+
+				CvPlot* pCityPlot = pCity->plot();
+				int iCityX = pCityPlot->getX_INLINE();
+				int iCityY = pCityPlot->getY_INLINE();
+
+				kDisbandPlayer.disband(pCity);
+
+				CvPlot* pRuinsPlot = GC.getMapINLINE().plotINLINE(iCityX, iCityY);
+				if (NULL != pRuinsPlot)
+				{
+					pRuinsPlot->setImprovementType((ImprovementTypes)GC.getInfoTypeForString("IMPROVEMENT_CITY_RUINS"));
+					pRuinsPlot->verifyUnitValidPlot();
+					kDisbandPlayer.initUnit((UnitTypes)GC.getInfoTypeForString("UNIT_SETTLER"), iCityX, iCityY, NO_UNITAI, NO_DIRECTION);
+				}
 			}
-			CvMessageControl::getInstance().sendDoTask(info.getData1(), TASK_DISBAND, -1, -1, false, false, false, false);
+			else
+			{
+				if (NULL != pCity)
+				{
+					pCity->completeAcquisition(info.getData3());
+				}
+				CvMessageControl::getInstance().sendDoTask(info.getData1(), TASK_DISBAND, -1, -1, false, false, false, false);
+			}
 		}
 		else if (pPopupReturn->getButtonClicked() == 0) // keep
 		{
@@ -396,6 +419,8 @@ void CvDLLButtonPopup::OnOkClicked(CvPopup* pPopup, PopupReturn *pPopupReturn, C
 			}
 
 			CvPopupInfo* pInfo = new CvPopupInfo(BUTTONPOPUP_DISBANDCITY, info.getData1());
+			pInfo->setData2(info.getData2());
+			pInfo->setData3(info.getData3());
 			gDLL->getInterfaceIFace()->addPopup(pInfo, GC.getGameINLINE().getActivePlayer(), false, true);
 		}
 // BUG - Examine Culture Flip - end
@@ -1523,12 +1548,14 @@ bool CvDLLButtonPopup::launchDisbandCityPopup(CvPopup* pPopup, CvPopupInfo &info
 	}
 
 	CvWString szBuffer;
-	szBuffer = gDLL->getText("TXT_KEY_POPUP_FLIPPED_CITY_KEEP", pNewCity->getNameKey());
+	// Fresol: a city that flips when the civilization is born can be traded for a settler
+	bool bBirthFlip = (info.getData2() == 1);
+	szBuffer = gDLL->getText(bBirthFlip ? "TXT_KEY_POPUP_FLIPPED_CITY_SETTLER_KEEP" : "TXT_KEY_POPUP_FLIPPED_CITY_KEEP", pNewCity->getNameKey());
 	gDLL->getInterfaceIFace()->popupSetBodyString(pPopup, szBuffer);
-	gDLL->getInterfaceIFace()->popupAddGenericButton(pPopup, gDLL->getText("TXT_KEY_POPUP_KEEP_FLIPPED_CITY").c_str(), NULL, 0, WIDGET_GENERAL);
+	gDLL->getInterfaceIFace()->popupAddGenericButton(pPopup, gDLL->getText(bBirthFlip ? "TXT_KEY_POPUP_KEEP_FLIPPED_CITY_SETTLER" : "TXT_KEY_POPUP_KEEP_FLIPPED_CITY").c_str(), NULL, 0, WIDGET_GENERAL);
 
 	// Leoreth: don't allow to disband holy cities
-	if (!pNewCity->isHolyCity()) gDLL->getInterfaceIFace()->popupAddGenericButton(pPopup, gDLL->getText("TXT_KEY_POPUP_DISBAND_FLIPPED_CITY").c_str(), NULL, 1, WIDGET_GENERAL);
+	if (!pNewCity->isHolyCity()) gDLL->getInterfaceIFace()->popupAddGenericButton(pPopup, gDLL->getText(bBirthFlip ? "TXT_KEY_POPUP_DISBAND_FLIPPED_CITY_SETTLER" : "TXT_KEY_POPUP_DISBAND_FLIPPED_CITY").c_str(), NULL, 1, WIDGET_GENERAL);
 
 // BUG - Examine Culture Flip - start
 	gDLL->getInterfaceIFace()->popupAddGenericButton(pPopup, gDLL->getText("TXT_KEY_CITY_WARNING_ANSWER3").c_str(), NULL, 2, WIDGET_GENERAL, -1, -1);

@@ -3234,6 +3234,30 @@
 		<Spanish>After the discovery of %s1, your cities have received %d2 [ICON_FOOD]</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_POPUP_FLIPPED_CITY_SETTLER_KEEP</Tag>
+		<English>The people of %s1_CityName wish to join our new empire.</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_POPUP_KEEP_FLIPPED_CITY_SETTLER</Tag>
+		<English>Welcome them into the empire.</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_POPUP_DISBAND_FLIPPED_CITY_SETTLER</Tag>
+		<English>Disband the city and let them go as settlers.</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_POPUP_GOLD_CITY_CAPTURE</Tag>
 		<English>You have pillaged %d1_Num [ICON_GOLD] from the capture of %s2_CityName!!! What are your next orders for our troops?</English>
 		<French>Vous avez pill&#233; %d1_Num [ICON_GOLD] en capturant %s2_CityName !!! Quels sont vos ordres ?</French>

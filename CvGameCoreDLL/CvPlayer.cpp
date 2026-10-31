@@ -1446,7 +1446,7 @@ CvCity* CvPlayer::initCity(int iX, int iY, bool bBumpUnits, bool bUpdatePlotGrou
 }
 
 
-void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bTrade, bool bUpdatePlotGroups)
+void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bTrade, bool bUpdatePlotGroups, bool bChoice)
 {
 	CLLNode<IDInfo>* pUnitNode;
 	CvCity* pNewCity;
@@ -2133,6 +2133,16 @@ void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bTrade, bool b
 			pNewCity->completeAcquisition(iCaptureGold);
 			CvEventReporter::getInstance().cityAcquiredAndKept(getID(), pNewCity);
 		}
+	}
+	else if (bChoice && isHuman())
+	{
+		// Fresol: a city flipped when the civilization is born - the player decides
+		// city by city whether to keep it or to disband it for a settler
+		CvPopupInfo* pInfo = new CvPopupInfo(BUTTONPOPUP_DISBANDCITY);
+		pInfo->setData1(pNewCity->getID());
+		pInfo->setData2(1);
+		pInfo->setData3(iCaptureGold);
+		gDLL->getInterfaceIFace()->addPopup(pInfo, getID());
 	}
 	else
 	{

@@ -1254,8 +1254,11 @@ class Birth(object):
 		
 		expelAreaUnits(self.iPlayer, flippedPlots)
 		
+		# Fresol: cities inside our own core are offered one by one, so the player can
+		# disband any of them for a settler; the others flip as before
+		coreCities = cities.core(self.iPlayer)
 		for city in flippedCities:
-			city = completeCityFlip(city, self.iPlayer, city.getOwner(), 100, bFlipUnits=True)
+			city = completeCityFlip(city, self.iPlayer, city.getOwner(), 100, bFlipUnits=True, bChoice=city in coreCities)
 			
 			self.prepareCity(city)
 		

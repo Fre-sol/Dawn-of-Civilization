@@ -30,6 +30,7 @@ void CyPlayerPythonInterface1(python::class_<CyPlayer>& x)
 
 		.def("initCity", &CyPlayer::initCity, python::return_value_policy<python::manage_new_object>(), "initCity( plotX, plotY ) - spawns a city at x,y")
 		.def("acquireCity", &CyPlayer::acquireCity, "void (CyCity* pCity, bool bConquest, bool bTrade)")
+		.def("acquireCityChoice", &CyPlayer::acquireCityChoice, "void (CyCity* pCity, bool bConquest, bool bTrade, bool bChoice)")
 		.def("killCities", &CyPlayer::killCities, "void ()")
 
 		.def("getNewCityName", &CyPlayer::getNewCityName, "wstring ()")

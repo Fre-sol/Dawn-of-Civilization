@@ -30,6 +30,7 @@ public:
 
 	CyCity* initCity(int x, int y);
 	void acquireCity(CyCity* pCity, bool bConquest, bool bTrade);
+	void acquireCityChoice(CyCity* pCity, bool bConquest, bool bTrade, bool bChoice);
 	void killCities();
 
 	std::wstring getNewCityName();

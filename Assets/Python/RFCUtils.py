@@ -125,7 +125,7 @@ def isRequirement(iPrereq, iTech):
 
 
 # used: RFCUtils, History
-def flipCity(tCityPlot, bConquest, bKillUnits, iNewOwner, lOldOwners = []):
+def flipCity(tCityPlot, bConquest, bKillUnits, iNewOwner, lOldOwners = [], bChoice = False):
 	"""Changes owner of city specified by tCityPlot.
 	bConquest specifies if it's conquered or traded.
 	If bKillUnits != 0 all the units in the city will be killed.
@@ -143,7 +143,10 @@ def flipCity(tCityPlot, bConquest, bKillUnits, iNewOwner, lOldOwners = []):
 				for unit in units.at(x, y).where(lambda unit: not unit.isCargo()):
 					unit.kill(False, iNewOwner)
 					
-			pNewOwner.acquireCity(flipCity, bConquest, not bConquest)
+			if bChoice:
+				pNewOwner.acquireCityChoice(flipCity, bConquest, not bConquest, True)
+			else:
+				pNewOwner.acquireCity(flipCity, bConquest, not bConquest)
 			
 			flippedCity = city(x, y)
 			flippedCity.setInfoDirty(True)
@@ -639,7 +642,7 @@ def createRoleUnit(iPlayer, location, iRole, iAmount=1, iExperience=0):
 	return created
 	
 # used: Congresses, History, RFCUtils, Rise, Stability
-def completeCityFlip(tPlot, iPlayer, iOwner, iCultureChange, bBarbarianDecay = True, bBarbarianConversion = False, bAlwaysOwnPlots = False, bFlipUnits = False, bPermanentCultureChange = True, bCreateGarrisons = True):
+def completeCityFlip(tPlot, iPlayer, iOwner, iCultureChange, bBarbarianDecay = True, bBarbarianConversion = False, bAlwaysOwnPlots = False, bFlipUnits = False, bPermanentCultureChange = True, bCreateGarrisons = True, bChoice = False):
 	plot = plot_(tPlot)
 	
 	if bPermanentCultureChange:
@@ -656,7 +659,7 @@ def completeCityFlip(tPlot, iPlayer, iOwner, iCultureChange, bBarbarianDecay = T
 		pushOutGarrisons(plot, iOwner)
 		relocateSeaGarrisons(plot, iOwner)
 	
-	flippedCity = flipCity(plot, False, False, iPlayer, [iOwner])
+	flippedCity = flipCity(plot, False, False, iPlayer, [iOwner], bChoice)
 	
 	if flippedCity:
 		flippedCity.setOccupationTimer(0)

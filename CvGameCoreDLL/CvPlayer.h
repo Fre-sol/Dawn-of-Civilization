@@ -60,7 +60,7 @@ public:
 	CvPlotGroup* initPlotGroup(CvPlot* pPlot);
 
 	CvCity* initCity(int iX, int iY, bool bBumpUnits, bool bUpdatePlotGroups);																																// Exposed to Python
-	void acquireCity(CvCity* pCity, bool bConquest, bool bTrade, bool bUpdatePlotGroups);																							// Exposed to Python
+	void acquireCity(CvCity* pCity, bool bConquest, bool bTrade, bool bUpdatePlotGroups, bool bChoice = false);																							// Exposed to Python
 	void killCities();																																												// Exposed to Python
 	CvWString getNewCityName() const;																																								// Exposed to Python
 	void getCivilizationCityName(CvWString& szBuffer, CivilizationTypes eCivilization) const;

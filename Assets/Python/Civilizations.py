@@ -345,10 +345,10 @@ lCivilizations = [
 	),
 	Civilization(
 		iFrance,
-		iGold=100,
+		iGold=200,
 		iStateReligion=iCatholicism,
-		lCivics=[iMonarchy, iManorialism, iMerchantTrade, iClergy, iHegemony],
-		techs=techs.column(6).without(iEthics)
+		lCivics=[iMonarchy, iVassalage, iManorialism, iMerchantTrade, iClergy, iHegemony],
+		techs=techs.column(6).without(iEthics).including(iFeudalism)
 	),
 	Civilization(
 		iMalays,
@@ -1379,8 +1379,8 @@ dExtraAIUnits = CivDict({
 		iShockCity: 8,
 	},
 	iGermany: {
-		iAttack: 10,
-		iSiege: 5,
+		iAttack: 6,
+		iSiege: 4,
 	},
 	iAmerica: {
 		iAttack: 4,

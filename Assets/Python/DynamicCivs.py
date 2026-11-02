@@ -150,6 +150,7 @@ dSpecificVassalTitles = deepdict({
 		iBabylonia : "TXT_KEY_CIV_ENGLISH_BABYLONIA",
 		iPersia : "TXT_KEY_MANDATE_OF",
 		iPhoenicia : "TXT_KEY_CIV_ENGLISH_PHOENICIA",
+		iCelts : "TXT_KEY_CIV_ENGLISH_CELTS",
 		iMaya : "TXT_KEY_CIV_ENGLISH_MAYA",
 		iByzantium : "TXT_KEY_CIV_ENGLISH_BYZANTIUM",
 		iNorse : "TXT_KEY_CIV_ENGLISH_NORSE",
@@ -2566,7 +2567,7 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 					if civic.iSociety == iEgalitarianism:
 						return "TXT_KEY_EMPIRE_OF"
 					
-					return "TXT_KEY_EMPIRE_ADJECTIVE"
+				return "TXT_KEY_EMPIRE_ADJECTIVE"
 					
 			return "TXT_KEY_EMPIRE_NAME"
 			
@@ -2719,8 +2720,8 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 				
 			return "TXT_KEY_CIV_ITALY_MARITIME_REPUBLICS"
 			
-		if not bResurrected:
-			if iReligion == iCatholicism:
+		if period(iPlayer) == -1:
+			if iReligion == iCatholicism and civic.iLegitimacy == iTheocracy:
 				if isCurrentCapital(iPlayer, "Roma"):
 					return "TXT_KEY_CIV_ITALY_PAPAL_STATES"
 					

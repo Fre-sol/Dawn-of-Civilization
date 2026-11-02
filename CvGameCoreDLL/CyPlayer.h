@@ -609,6 +609,8 @@ public:
 	int getTechnologyHistory(int iTurn);
 	int getPopulationHistory(int iTurn);
 	int getLandHistory(int iTurn);
+	int getSurplusHistory(int iTurn);
+	int getExpansionHistory(int iTurn);
 
 	bool isExisting();
 

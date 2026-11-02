@@ -322,10 +322,12 @@ def colonialConquest(iPlayer, tPlot):
 	if not targetPlot:
 		return
 	
-	if iCiv in [iSpain, iPortugal, iNetherlands]:
+	if iCiv in [iSpain, iPortugal]:
 		iNumUnits = 2
-	elif iCiv in [iFrance, iEngland]:
+	elif iCiv in [iFrance, iEngland, iNetherlands]:
 		iNumUnits = 3
+		if not player(iPlayer).isHuman():
+			iNumUnits += 1
 		
 	iExperience = not player(iPlayer).isHuman() and 2 or 0
 	
@@ -376,9 +378,9 @@ def getColonialTargets(iPlayer, bEmpty=False):
 	iCiv = civ(iPlayer)
 	
 	dNumCities = {
-		iFrance: 2,
+		iFrance: 3,
 		iSpain: 1,
-		iEngland: 4,
+		iEngland: 7,
 		iPortugal: 5,
 		iNetherlands: 4,
 	}
@@ -567,7 +569,7 @@ def isUnitOfRole(iUnit, iRole):
 	elif iRole == iExplore:
 		return unit.isNoBadGoodies()
 	elif iRole in [iSiege, iCitySiege]:
-		return iCombatType == UnitCombatTypes.UNITCOMBAT_SIEGE
+		return iCombatType == UnitCombatTypes.UNITCOMBAT_SIEGE and not unit.isOnlyDefensive()
 	elif iRole == iSkirmish:
 		return iCombatType in [UnitCombatTypes.UNITCOMBAT_ARCHER, UnitCombatTypes.UNITCOMBAT_GUN] and unit.getCollateralDamage() > 0
 	elif iRole == iLightEscort:
@@ -791,7 +793,7 @@ def canRespawn(iCiv):
 	
 	# Exception during Japanese UHV
 	if player(iJapan).isHuman() and year().between(1920, 1945):
-		if iCiv in [iChina, iKorea, iMalays, iJava, iThailand]:
+		if iCiv in [iChina, iKorea, iMalays, iJava, iBurma, iVietnam, iThailand, iManchuria]:
 			return False
 			
 	return True
@@ -1263,6 +1265,31 @@ def getColumn(iPlayer):
 	lTechs = [infos.tech(iTech).getGridX() for iTech in range(iNumTechs) if team(iPlayer).isHasTech(iTech)]
 	if not lTechs: return 0
 	return max(lTechs)
+
+
+# used: History, Rise
+def getClosestTargetCitySpawn(iPlayer, targets, iDistance=2):
+	attacker_cities = cities.owner(iPlayer)
+	target, attacker_closest = targets.closest_pair(attacker_cities)
+	
+	if not target:
+		return None, None
+	
+	defender_cities = cities.owner(target.getOwner())
+	defender_closest = defender_cities.closest(attacker_closest)
+	
+	spawn = possibleSpawnsBetween(attacker_closest, defender_closest, 2).closest(defender_closest)
+	return target, spawn
+	
+
+# used: History, Rise
+def deleteVolunteers(iPlayer):
+	for tile, tileUnits in units.owner(iPlayer).where(lambda u: u.isHasPromotion(iVolunteer)).grouped(location):
+		for unit in tileUnits:
+			unit.kill(False, -1)
+			
+		if city(tile):
+			ensureDefenders(iPlayer, tile, 2)
 
 
 def placeArtStyleUnits(iCiv):

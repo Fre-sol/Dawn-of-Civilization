@@ -29,6 +29,8 @@ dCivilizationAdministrationModifier = CivDict({
 	iNubia: -100,
 	iChina: -50,
 	iRome: 50,
+	iFrance: 50,
+	iJava: -50,
 	iMisr: -50,
 	iOttomans: -50,
 	iTatars: -50,
@@ -423,6 +425,16 @@ def calculateAdministration(city):
 	
 	if civ(iPlayer) == iOttomans and player(iPlayer).getCurrentEra() in [iMedieval, iRenaissance]:
 		iAdministrationModifier += 100
+	
+	#if civ(iPlayer) in [iFrance, iEngland]:
+	#	if player(iPlayer).getCurrentEra() == iIndustrial:
+	#		iAdministrationModifier += 100
+	#	elif player(iPlayer).getCurrentEra() == iGlobal:
+	#		iAdministrationModifier += 50
+	
+	if civ(iPlayer) in [iPortugal, iNetherlands]:
+		if player(iPlayer).getCurrentEra() == iIndustrial:
+			iAdministrationModifier += 50
 
 	iAdministration = iAdministrationModifier * iPopulation / 100
 	
@@ -495,7 +507,7 @@ def getSeparatismModifier(iPlayer, city):
 	if city.isColony():		
 		if iCurrentEra <= iIndustrial and civic.iTerritory == iColonialism and bHistorical: iModifier -= 1
 		
-		if iCurrentEra >= iIndustrial: iModifier += 1
+		#if iCurrentEra >= iIndustrial: iModifier += 1
 		if iCurrentEra >= iGlobal: iModifier += 1
 	
 	# cap

@@ -97,12 +97,14 @@ lBirthOrder = [
 	iCanada
 ]
 
-lCivOrder = lBirthOrder + [
+lMinors = [
 	iIndependent,
 	iIndependent2,
 	iNative,
 	iBarbarian
 ]
+
+lCivOrder = lBirthOrder + lMinors
 
 # used in: Congresses, DynamicCivs, Plague, RFCUtils, UniquePowers, Victory
 # a civilisation can be in multiple civ groups
@@ -1289,11 +1291,6 @@ iLagoon, iArcticCoast, iSemidesert, iSteppe, iMoorland, iSaltFlat, iSaltLake, iA
 
 #Plague
 iImmunity = 20
-
-# Victory
-iVictoryPaganism = 10
-iVictorySecularism = 11
-
 
 #leaders
 iNumLeaders = 160

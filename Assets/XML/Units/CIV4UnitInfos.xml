@@ -20113,9 +20113,9 @@
 					<bUnitAI>1</bUnitAI>
 				</UnitAI>
 			</UnitAIs>
-			<PrereqTech>TECH_ENGINE</PrereqTech>
+			<PrereqTech>TECH_REFINING</PrereqTech>
 			<TechTypes>
-				<PrereqTech>TECH_REFINING</PrereqTech>
+				<PrereqTech>TECH_ENGINE</PrereqTech>
 			</TechTypes>
 			<PrereqBonuses>
 				<BonusType>BONUS_COAL</BonusType>

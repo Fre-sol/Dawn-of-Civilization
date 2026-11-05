@@ -1313,12 +1313,9 @@ class PlotFactory:
 	def respawn(self, identifier, iPeriod=None):
 		if iPeriod is None:
 			iPeriod = period(identifier)
+		if iPeriod in dPeriodRespawnArea:
+			return self.area(dPeriodRespawnArea, dPeriodRespawnAreaExceptions, iPeriod)
 		if identifier in dRespawnArea:
-			if iPeriod in dPeriodRespawnArea:
-				# Fresol: dPeriodRespawnArea is keyed by the period, like dPeriodCoreArea below;
-				# passing the identifier raised KeyError for every player whose index is not one
-				# of those period keys, which abandoned the collapse half way.
-				return self.area(dPeriodRespawnArea, dPeriodRespawnAreaExceptions, iPeriod)
 			return self.area(dRespawnArea, dRespawnAreaExceptions, identifier)
 		if iPeriod in dPeriodCoreArea:
 			return self.area(dPeriodCoreArea, dPeriodCoreAreaExceptions, iPeriod)

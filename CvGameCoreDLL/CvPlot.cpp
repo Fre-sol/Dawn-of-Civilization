@@ -3011,16 +3011,10 @@ bool CvPlot::canBuild(BuildTypes eBuild, PlayerTypes ePlayer, bool bTestVisible)
 		bValid = true;
 	}
 
-	eRoute = ((RouteTypes)(GC.getBuildInfo(eBuild).getRoute()));
+	eRoute = (RouteTypes)(GC.getBuildInfo(eBuild).getRoute());
 
 	if (eRoute != NO_ROUTE)
 	{
-		// Leoreth: cannot build routes on Marsh
-		if (getFeatureType() == FEATURE_MARSH)
-		{
-			return false;
-		}
-
 		if (getRouteType() != NO_ROUTE)
 		{
 			if (getRouteType() == eRoute)
@@ -12564,7 +12558,15 @@ void CvPlot::setContinentArea(int iNewValue)
 
 bool CvPlot::isOverseas(const CvPlot* pPlot) const
 {
-	return getOverseasGroup() != pPlot->getOverseasGroup() && getContinentArea() != pPlot->getContinentArea();
+	if (getContinentArea() == pPlot->getContinentArea()) return false;
+	if (getOverseasGroup() == pPlot->getOverseasGroup()) return false;
+	
+	if (getAdjacentOverseasGroup() == NO_OVERSEAS_GROUP) return true;
+	if (pPlot->getAdjacentOverseasGroup() == NO_OVERSEAS_GROUP) return true;
+
+	if (getAdjacentOverseasGroup() == pPlot->getOverseasGroup() && getOverseasGroup() == pPlot->getAdjacentOverseasGroup()) return false;
+
+	return true;
 }
 
 void CvPlot::setBirthProtected(PlayerTypes ePlayer)
@@ -12615,32 +12617,6 @@ bool CvPlot::isExpansionEffect(PlayerTypes ePlayer) const
 bool CvPlot::isUnconquerable(const CvUnit* pUnit) const
 {
 	return isBirthProtected() && getBirthProtected() == getOwnerINLINE() && isEnemyCity(*pUnit) && GET_PLAYER(getOwnerINLINE()).getNumCities() <= 1;
-}
-
-int CvPlot::getContinentID() const
-{
-	switch (getRegionGroup())
-	{
-	case REGION_GROUP_EUROPE:
-		return 0;	// Europe = 0
-	case REGION_GROUP_MIDDLE_EAST:
-	case REGION_GROUP_NORTH_AFRICA:
-		return 1; // Middle East = 1
-	case REGION_GROUP_SOUTH_ASIA:
-	case REGION_GROUP_NORTH_ASIA:
-	case REGION_GROUP_EAST_ASIA:
-		return 2;	// East Asia = 2
-	case REGION_GROUP_OCEANIA:
-		return 3;	// Australia = 3
-	case REGION_GROUP_SUB_SAHARAN_AFRICA:
-		return 4;	// Africa = 4;
-	case REGION_GROUP_NORTH_AMERICA:
-		return 5;	// North America = 5
-	case REGION_GROUP_SOUTH_AMERICA:
-		return 6;	// South America = 6
-	}
-
-	return -1;
 }
 
 int CvPlot::getRegionGroup() const
@@ -12750,6 +12726,7 @@ int CvPlot::getRegionGroupForRegion(int iRegion)
 	case REGION_SOUTH_CHINA:
 	case REGION_NORTH_CHINA:
 	case REGION_TARIM_BASIN:
+	case REGION_TIBET:
 	case REGION_MANCHURIA:
 	case REGION_KOREA:
 	case REGION_JAPAN:
@@ -12781,6 +12758,36 @@ int CvPlot::getOverseasGroup() const
 		return OVERSEAS_GROUP_ASIA;
 	case REGION_GROUP_OCEANIA:
 		return OVERSEAS_GROUP_OCEANIA;
+	default:
+		return NO_OVERSEAS_GROUP;
+	}
+}
+
+int CvPlot::getAdjacentOverseasGroup() const
+{
+	switch (getRegionID())
+	{
+	case REGION_MAGHREB:
+	case REGION_ETHIOPIA:
+	case REGION_HORN_OF_AFRICA:
+	case REGION_SINDH:
+	case REGION_HINDU_KUSH:
+	case REGION_TARIM_BASIN:
+	case REGION_MONGOLIA:
+	case REGION_MANCHURIA:
+		return OVERSEAS_GROUP_EUROPE;
+	case REGION_IBERIA:
+	case REGION_EGYPT:
+	case REGION_NUBIA:
+	case REGION_ARABIA:
+		return OVERSEAS_GROUP_AFRICA;
+	case REGION_PERSIA:
+	case REGION_KHORASAN:
+	case REGION_TRANSOXIANA:
+	case REGION_CENTRAL_ASIAN_STEPPE:
+	case REGION_SIBERIA:
+	case REGION_AMUR:
+		return OVERSEAS_GROUP_ASIA;
 	default:
 		return NO_OVERSEAS_GROUP;
 	}

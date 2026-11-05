@@ -587,7 +587,7 @@ dGoals = {
 	),
 	iTibet: (
 		AcquiredCities(7, by=1000),
-		ReligionSpreadPopulationCount(iBuddhism, 60, by=1400),
+		ReligionSpreadPopulationCount(iBuddhism, 90, by=1400),
 		CitySpecialistCount(start(iTibet).named(LHASA), iSpecialistGreatProphet, 7, by=1700),
 	),
 	iMoors: (
@@ -857,7 +857,7 @@ dGoals = {
 		),
 		All(
 			GoldAmount(25000),
-			CultureAmount(50000),
+			CultureAmount(40000),
 			AreaPopulationPercent(plots.regions(rSouthChina, rNorthChina, rManchuria).named(CHINA_AND_MANCHURIA), 12),
 			by=1850,
 		),

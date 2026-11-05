@@ -1317,13 +1317,13 @@ dResurrectionLeaders = CivDict({
 })
 
 # update DLL constants when this changes
-iNumPeriods = 28
+iNumPeriods = 29
 (iPeriodPtolemaicEgypt, iPeriodMakuria, iPeriodMing, iPeriodLateGupta, iPeriodMaratha, 
 iPeriodModernGreece, iPeriodCarthage, iPeriodInsularCelts, iPeriodByzantineConstantinople, iPeriodNationalFrance, 
-iPeriodMeiji, iPeriodDenmark, iPeriodNorway, iPeriodSeljuks, iPeriodUzbeks, 
-iPeriodMorocco, iPeriodSpain, iPeriodAustria, iPeriodUnitedKingdom, iPeriodGreatBritain, 
-iPeriodYuan, iPeriodPeru, iPeriodLateInca, iPeriodModernItaly, iPeriodPakistan, 
-iPeriodOttomanConstantinople, iPeriodQing, iPeriodModernGermany) = range(iNumPeriods)
+iPeriodModernMalaysia, iPeriodMeiji, iPeriodDenmark, iPeriodNorway, iPeriodSeljuks, 
+iPeriodUzbeks, iPeriodMorocco, iPeriodSpain, iPeriodAustria, iPeriodUnitedKingdom, 
+iPeriodGreatBritain, iPeriodYuan, iPeriodPeru, iPeriodLateInca, iPeriodModernItaly, 
+iPeriodPakistan, iPeriodOttomanConstantinople, iPeriodQing, iPeriodModernGermany) = range(iNumPeriods)
 
 dCivPeriods = {
 	iEgypt: (iPeriodPtolemaicEgypt,),
@@ -1335,6 +1335,7 @@ dCivPeriods = {
 	iCelts : (iPeriodInsularCelts,),
 	iByzantium : (iPeriodByzantineConstantinople,),
 	iFrance : (iPeriodNationalFrance,),
+	iMalays : (iPeriodModernMalaysia,),
 	iJapan : (iPeriodMeiji,),
 	iNorse : (iPeriodDenmark, iPeriodNorway),
 	iTurks : (iPeriodSeljuks, iPeriodUzbeks),

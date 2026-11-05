@@ -10278,7 +10278,8 @@ void CvPlot::doCulture()
 		}
 	}
 
-	updateCulture(true, true);
+	// Fresol: the map turn replays the plot group update once at its end
+	updateCulture(true, false);
 }
 
 

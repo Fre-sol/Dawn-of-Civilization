@@ -154,6 +154,15 @@ protected:
 	
 	int m_iWorkersNeeded;
 	int m_iWorkersHave;
+
+	// phase3: building-value prelude cache
+	bool m_bBVValueCacheValid;
+	int m_iBVFoodDifference;
+	int m_iBVHappinessLevel;
+	int m_iBVHealthLevel;
+	bool m_bBVFinancialTrouble;
+	int m_iBVProductionRank;
+	int m_iBVCultureRank;
 	
 
 	void AI_doDraft(bool bForce = false);

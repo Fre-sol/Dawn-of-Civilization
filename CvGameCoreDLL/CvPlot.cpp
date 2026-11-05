@@ -8215,16 +8215,19 @@ void CvPlot::setPlotGroup(PlayerTypes ePlayer, CvPlotGroup* pNewValue)
 			updatePlotGroupBonus(false);
 		}
 
-		if (pOldPlotGroup != NULL)
+		if (!isCityBonusSyncSuspended())
 		{
-			if (pCity != NULL)
+			if (pOldPlotGroup != NULL)
 			{
-				if (pCity->getOwnerINLINE() == ePlayer)
+				if (pCity != NULL)
 				{
-					FAssertMsg((0 < GC.getNumBonusInfos()), "GC.getNumBonusInfos() is not greater than zero but an array is being allocated in CvPlot::setPlotGroup");
-					for (iI = 0; iI < GC.getNumBonusInfos(); ++iI)
+					if (pCity->getOwnerINLINE() == ePlayer)
 					{
-						pCity->changeNumBonuses(((BonusTypes)iI), -(pOldPlotGroup->getNumBonuses((BonusTypes)iI)));
+						FAssertMsg((0 < GC.getNumBonusInfos()), "GC.getNumBonusInfos() is not greater than zero but an array is being allocated in CvPlot::setPlotGroup");
+						for (iI = 0; iI < GC.getNumBonusInfos(); ++iI)
+						{
+							pCity->changeNumBonuses(((BonusTypes)iI), -(pOldPlotGroup->getNumBonuses((BonusTypes)iI)));
+						}
 					}
 				}
 			}
@@ -8239,16 +8242,19 @@ void CvPlot::setPlotGroup(PlayerTypes ePlayer, CvPlotGroup* pNewValue)
 			m_aiPlotGroup[ePlayer] = pNewValue->getID();
 		}
 
-		if (getPlotGroup(ePlayer) != NULL)
+		if (!isCityBonusSyncSuspended())
 		{
-			if (pCity != NULL)
+			if (getPlotGroup(ePlayer) != NULL)
 			{
-				if (pCity->getOwnerINLINE() == ePlayer)
+				if (pCity != NULL)
 				{
-					FAssertMsg((0 < GC.getNumBonusInfos()), "GC.getNumBonusInfos() is not greater than zero but an array is being allocated in CvPlot::setPlotGroup");
-					for (iI = 0; iI < GC.getNumBonusInfos(); ++iI)
+					if (pCity->getOwnerINLINE() == ePlayer)
 					{
-						pCity->changeNumBonuses(((BonusTypes)iI), getPlotGroup(ePlayer)->getNumBonuses((BonusTypes)iI));
+						FAssertMsg((0 < GC.getNumBonusInfos()), "GC.getNumBonusInfos() is not greater than zero but an array is being allocated in CvPlot::setPlotGroup");
+						for (iI = 0; iI < GC.getNumBonusInfos(); ++iI)
+						{
+							pCity->changeNumBonuses(((BonusTypes)iI), getPlotGroup(ePlayer)->getNumBonuses((BonusTypes)iI));
+						}
 					}
 				}
 			}

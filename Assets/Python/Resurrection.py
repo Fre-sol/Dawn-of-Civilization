@@ -233,36 +233,40 @@ def doResurrection(iCiv, lCityList, bAskFlip=True, bDisplay=False):
 	if iNewStateReligion >= 0:
 		pPlayer.setLastStateReligion(iNewStateReligion)
 	
-	for city in resurrectionCities:
-		iOwner = city.getOwner()
-		pOwner = player(iOwner)
+	game.setSuspendPlotGroups(True)
+	try:
+		for city in resurrectionCities:
+			iOwner = city.getOwner()
+			pOwner = player(iOwner)
 		
-		x = city.getX()
-		y = city.getY()
+			x = city.getX()
+			y = city.getY()
 		
-		bCapital = city.isCapital()
+			bCapital = city.isCapital()
 		
-		iNumDefenders = max(2, player(iPlayer).getCurrentEra()-1)
-		lFlippedUnits, lRelocatedUnits = flipOrRelocateGarrison(city, iNumDefenders)
-		dRelocatedUnits[iOwner].extend(lRelocatedUnits)
+			iNumDefenders = max(2, player(iPlayer).getCurrentEra()-1)
+			lFlippedUnits, lRelocatedUnits = flipOrRelocateGarrison(city, iNumDefenders)
+			dRelocatedUnits[iOwner].extend(lRelocatedUnits)
 		
-		iCultureChange = is_minor(iOwner) and 100 or 75
-		completeCityFlip(city, iPlayer, iOwner, iCultureChange, False, True, True)
-		flipOrCreateDefenders(iPlayer, lFlippedUnits, (x, y), iNumDefenders)
+			iCultureChange = is_minor(iOwner) and 100 or 75
+			completeCityFlip(city, iPlayer, iOwner, iCultureChange, False, True, True)
+			flipOrCreateDefenders(iPlayer, lFlippedUnits, (x, y), iNumDefenders)
 			
-		newCity = city_(x, y)
+			newCity = city_(x, y)
 		
-		# Leoreth: rebuild some city infrastructure
-		for iBuilding in range(iNumBuildings):
-			if pPlayer.canConstruct(iBuilding, True, False, False) and newCity.canConstruct(iBuilding, True, False, False) and pPlayer.getCurrentEra() >= gc.getBuildingInfo(iBuilding).getFreeStartEra() and not isGreatBuilding(iBuilding) and gc.getBuildingInfo(iBuilding).getPrereqReligion() == -1:
-				newCity.setHasRealBuilding(iBuilding, True)
+			# Leoreth: rebuild some city infrastructure
+			for iBuilding in range(iNumBuildings):
+				if pPlayer.canConstruct(iBuilding, True, False, False) and newCity.canConstruct(iBuilding, True, False, False) and pPlayer.getCurrentEra() >= gc.getBuildingInfo(iBuilding).getFreeStartEra() and not isGreatBuilding(iBuilding) and gc.getBuildingInfo(iBuilding).getPrereqReligion() == -1:
+					newCity.setHasRealBuilding(iBuilding, True)
 			
-		if bCapital and not is_minor(iOwner):
-			relocateCapital(iOwner, cities.capital(iOwner))
+			if bCapital and not is_minor(iOwner):
+				relocateCapital(iOwner, cities.capital(iOwner))
 			
-		if iOwner not in lOwners:
-			lOwners.append(iOwner)
+			if iOwner not in lOwners:
+				lOwners.append(iOwner)
 			
+	finally:
+		game.setSuspendPlotGroups(False)
 	for iOwner in dRelocatedUnits:
 		if not is_minor(iOwner):
 			relocateUnitsToCore(iOwner, dRelocatedUnits[iOwner])

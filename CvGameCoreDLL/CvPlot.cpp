@@ -8334,22 +8334,30 @@ void CvPlot::updatePlotGroup(PlayerTypes ePlayer, bool bRecalculate)
 				// merge puts it back into the very same group (isTradeNetworkConnected is not
 				// symmetric). The plot has to stay in the team's trade network either way.
 				bool bRepair = true;
+				bool bCountChecked = false;
+				bool bGroupHealthyWithoutPlot = false;
 				const TeamTypes eTeam = GET_PLAYER(ePlayer).getTeam();
 
-				if (isTradeNetwork(eTeam)
-					&& (pPlotGroup->countReachablePlots(ePlayer, this) == pPlotGroup->getLengthPlots() - 1))
+				if (isTradeNetwork(eTeam))
 				{
-					for (iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
-					{
-						pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+					bCountChecked = true;
 
-						if (pAdjacentPlot != NULL
-							&& pAdjacentPlot->getPlotGroup(ePlayer) == pPlotGroup
-							&& pAdjacentPlot->isTradeNetwork(eTeam)
-							&& isTradeNetworkConnected(pAdjacentPlot, eTeam))
+					if (pPlotGroup->countReachablePlots(ePlayer, this) == pPlotGroup->getLengthPlots() - 1)
+					{
+						bGroupHealthyWithoutPlot = true;
+
+						for (iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
 						{
-							bRepair = false;
-							break;
+							pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+
+							if (pAdjacentPlot != NULL
+								&& pAdjacentPlot->getPlotGroup(ePlayer) == pPlotGroup
+								&& pAdjacentPlot->isTradeNetwork(eTeam)
+								&& isTradeNetworkConnected(pAdjacentPlot, eTeam))
+							{
+								bRepair = false;
+								break;
+							}
 						}
 					}
 				}
@@ -8361,9 +8369,9 @@ void CvPlot::updatePlotGroup(PlayerTypes ePlayer, bool bRecalculate)
 
 					pPlotGroup->removePlot(this);
 
-					if (!bEmpty)
+					if (!bEmpty && !bGroupHealthyWithoutPlot)
 					{
-						pPlotGroup->recalculatePlots();
+						pPlotGroup->recalculatePlots(bCountChecked);
 					}
 				}
 			}

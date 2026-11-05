@@ -13069,9 +13069,6 @@ void CvPlayerAI::AI_doDiplo()
 	{
 		for (iI = 0; iI < MAX_CIV_PLAYERS; iI++)
 		{
-			// Leoreth: moved here because now it's player dependent
-			iGoldValuePercent = AI_goldTradeValuePercent((PlayerTypes)iI);
-
 			if (GET_PLAYER((PlayerTypes)iI).isAlive())
 			{
 				if (GET_PLAYER((PlayerTypes)iI).isHuman() == (iPass == 1))
@@ -13080,8 +13077,15 @@ void CvPlayerAI::AI_doDiplo()
 					{
 						if (GET_PLAYER((PlayerTypes)iI).getTeam() != getTeam())
 						{
+							// Leoreth: player dependent; only valid opponents reach here
+							iGoldValuePercent = AI_goldTradeValuePercent((PlayerTypes)iI);
 							for(pLoopDeal = GC.getGameINLINE().firstDeal(&iLoop); pLoopDeal != NULL; pLoopDeal = GC.getGameINLINE().nextDeal(&iLoop))
 							{
+								if (pLoopDeal->getFirstPlayer() != getID() && pLoopDeal->getSecondPlayer() != getID())
+								{
+									continue;
+								}
+
 								if (pLoopDeal->isCancelable(getID()))
 								{
 									if ((GC.getGameINLINE().getGameTurn() - pLoopDeal->getInitialGameTurn()) >= (GC.getDefineINT("PEACE_TREATY_LENGTH") * 2))
@@ -13260,6 +13264,13 @@ void CvPlayerAI::AI_doDiplo()
 
 								for (iJ = 0; iJ < GC.getNumTechInfos(); iJ++)
 								{
+									// phase1: canTradeItem needs giver has / receiver lacks
+									if (!GET_TEAM(getTeam()).isHasTech((TechTypes)iJ)
+										|| GET_TEAM(GET_PLAYER((PlayerTypes)iI).getTeam()).isHasTech((TechTypes)iJ))
+									{
+										continue;
+									}
+
 									if (GET_TEAM(getTeam()).AI_techTrade((TechTypes)iJ, GET_PLAYER((PlayerTypes)iI).getTeam()) == NO_DENIAL)
 									{
 										setTradeItem(&item, TRADE_TECHNOLOGIES, iJ);

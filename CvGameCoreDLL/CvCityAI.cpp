@@ -2983,6 +2983,9 @@ UnitTypes CvCityAI::AI_bestUnitAI(UnitAITypes eUnitAI, bool bAsync, AdvisorTypes
 	}
 	iBestOriginalValue = 0;
 
+	std::vector<int> aiUnitValue(GC.getNumUnitClassInfos(), 0); // phase1
+	std::vector<char> abUnitComputed(GC.getNumUnitClassInfos(), 0); // phase1
+
 	for (iI = 0; iI < GC.getNumUnitClassInfos(); iI++)
 	{
 		eLoopUnit = ((UnitTypes)(GC.getCivilizationInfo(getCivilizationType()).getCivilizationUnits(iI)));
@@ -2999,6 +3002,8 @@ UnitTypes CvCityAI::AI_bestUnitAI(UnitAITypes eUnitAI, bool bAsync, AdvisorTypes
 						if (canTrain(eLoopUnit))
 						{
 							iOriginalValue = GET_PLAYER(getOwnerINLINE()).AI_unitValue(eLoopUnit, eUnitAI, area());
+							aiUnitValue[iI] = iOriginalValue; // phase1
+							abUnitComputed[iI] = 1; // phase1
 
 							if (iOriginalValue > iBestOriginalValue)
 							{
@@ -3029,7 +3034,11 @@ UnitTypes CvCityAI::AI_bestUnitAI(UnitAITypes eUnitAI, bool bAsync, AdvisorTypes
 					{
 						if (canTrain(eLoopUnit))
 						{
-							iValue = GET_PLAYER(getOwnerINLINE()).AI_unitValue(eLoopUnit, eUnitAI, area());
+							if (!abUnitComputed[iI]) // phase1
+							{
+								continue;
+							}
+							iValue = aiUnitValue[iI]; // phase1
 
 							if ((iValue > ((iBestOriginalValue * 2) / 3)) && ((eUnitAI != UNITAI_EXPLORE) || (iValue >= iBestOriginalValue)))
 							{

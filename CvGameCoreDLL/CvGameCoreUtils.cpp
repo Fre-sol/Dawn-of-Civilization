@@ -2780,15 +2780,44 @@ bool canEverRespawn(CivilizationTypes eCivilization)
 
 bool isCivAlive(CivilizationTypes eCivilization)
 {
-	for (int iI = 0; iI < MAX_PLAYERS; iI++)
+	// Fresol: cache the alive set per game turn.  CvCity::doCulture asks this for
+	// every civilization in every city every turn, which used to mean a full
+	// MAX_PLAYERS scan each time.  Civilizations only come back to life between
+	// turns, so a per-turn cache is sufficient.
+	static int s_iCachedTurn = -1;
+	static bool s_abCivAlive[NUM_TOTAL_CIVILIZATIONS];
+
+	if (eCivilization < 0 || eCivilization >= NUM_TOTAL_CIVILIZATIONS)
 	{
-		if (GET_PLAYER((PlayerTypes)iI).isAlive() && GET_PLAYER((PlayerTypes)iI).getCivilizationType() == eCivilization)
-		{
-			return true;
-		}
+		return false;
 	}
 
-	return false;
+	const int iTurn = GC.getGameINLINE().getGameTurn();
+
+	if (iTurn != s_iCachedTurn)
+	{
+		for (int i = 0; i < NUM_TOTAL_CIVILIZATIONS; i++)
+		{
+			s_abCivAlive[i] = false;
+		}
+
+		for (int iI = 0; iI < MAX_PLAYERS; iI++)
+		{
+			if (GET_PLAYER((PlayerTypes)iI).isAlive())
+			{
+				const CivilizationTypes eCiv = (CivilizationTypes)GET_PLAYER((PlayerTypes)iI).getCivilizationType();
+
+				if (eCiv >= 0 && eCiv < NUM_TOTAL_CIVILIZATIONS)
+				{
+					s_abCivAlive[eCiv] = true;
+				}
+			}
+		}
+
+		s_iCachedTurn = iTurn;
+	}
+
+	return s_abCivAlive[eCivilization];
 }
 
 bool validatePeriodConstant(PeriodTypes ePeriod)

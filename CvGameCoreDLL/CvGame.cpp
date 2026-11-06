@@ -2355,6 +2355,8 @@ void CvGame::updateScore(bool bForce)
 {
 	bool abPlayerScored[MAX_CIV_PLAYERS];
 	bool abTeamScored[MAX_CIV_TEAMS];
+	int aiPlayerScore[MAX_CIV_PLAYERS];
+	int aiTeamScore[MAX_CIV_TEAMS];
 	int iScore;
 	int iBestScore;
 	PlayerTypes eBestPlayer;
@@ -2368,9 +2370,11 @@ void CvGame::updateScore(bool bForce)
 
 	setScoreDirty(false);
 
+	// Fresol: score each player once; the ranking loops below only compare values.
 	for (iI = 0; iI < MAX_CIV_PLAYERS; iI++)
 	{
 		abPlayerScored[iI] = false;
+		aiPlayerScore[iI] = GET_PLAYER((PlayerTypes)iI).calculateScore(false);
 	}
 
 	for (iI = 0; iI < MAX_CIV_PLAYERS; iI++)
@@ -2382,7 +2386,7 @@ void CvGame::updateScore(bool bForce)
 		{
 			if (!abPlayerScored[iJ])
 			{
-				iScore = GET_PLAYER((PlayerTypes)iJ).calculateScore(false);
+				iScore = aiPlayerScore[iJ];
 
 				if (iScore >= iBestScore)
 				{
@@ -2400,9 +2404,19 @@ void CvGame::updateScore(bool bForce)
 		setCivilizationHistory(HISTORY_SCORE, GET_PLAYER(eBestPlayer).getCivilizationType(), getGameTurn(), iBestScore);
 	}
 
+	// Fresol: team score = sum of its players' scores (already final above).
 	for (iI = 0; iI < MAX_CIV_TEAMS; iI++)
 	{
 		abTeamScored[iI] = false;
+		aiTeamScore[iI] = 0;
+
+		for (iJ = 0; iJ < MAX_CIV_PLAYERS; iJ++)
+		{
+			if (GET_PLAYER((PlayerTypes)iJ).getTeam() == iI)
+			{
+				aiTeamScore[iI] += getPlayerScore((PlayerTypes)iJ);
+			}
+		}
 	}
 
 	for (iI = 0; iI < MAX_CIV_TEAMS; iI++)
@@ -2414,15 +2428,7 @@ void CvGame::updateScore(bool bForce)
 		{
 			if (!abTeamScored[iJ])
 			{
-				iScore = 0;
-
-				for (iK = 0; iK < MAX_CIV_PLAYERS; iK++)
-				{
-					if (GET_PLAYER((PlayerTypes)iK).getTeam() == iJ)
-					{
-						iScore += getPlayerScore((PlayerTypes)iK);
-					}
-				}
+				iScore = aiTeamScore[iJ];
 
 				if (iScore >= iBestScore)
 				{

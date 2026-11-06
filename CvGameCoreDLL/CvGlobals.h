@@ -479,6 +479,9 @@ public:
 	DllExport int getNumBuildInfos();
 	std::vector<CvBuildInfo*>& getBuildInfo();
 	DllExport CvBuildInfo& getBuildInfo(BuildTypes eBuildNum);
+	const std::vector<BuildTypes>& getBuildsForImprovement(ImprovementTypes eImprovement);
+	const std::vector<BuildTypes>& getNonImprovementBuilds();
+	void initBuildCaches();
 
 	DllExport int getNumHandicapInfos();
 	std::vector<CvHandicapInfo*>& getHandicapInfo();
@@ -1014,6 +1017,9 @@ protected:
 	std::vector<CvImprovementInfo*> m_paImprovementInfo;
 	std::vector<CvGoodyInfo*> m_paGoodyInfo;
 	std::vector<CvBuildInfo*> m_paBuildInfo;
+	std::vector< std::vector<BuildTypes> > m_aBuildsForImprovement;
+	std::vector<BuildTypes> m_aNonImprovementBuilds;
+	bool m_bBuildCachesInitialized;
 	std::vector<CvHandicapInfo*> m_paHandicapInfo;
 	std::vector<CvGameSpeedInfo*> m_paGameSpeedInfo;
 	std::vector<CvTurnTimerInfo*> m_paTurnTimerInfo;

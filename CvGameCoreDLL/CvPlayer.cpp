@@ -5377,10 +5377,13 @@ void CvPlayer::disband(CvCity* pCity)
 
 	GC.getGameINLINE().addDestroyedCityName(pCity->getName());
 
+	// Fresol: kill() deletes the city, so read the owner before that
+	PlayerTypes eOwner = pCity->getOwnerINLINE();
+
 	pCity->kill(true);
 
 	// Leoreth
-	GET_PLAYER(pCity->getOwnerINLINE()).updateMaintenance();
+	GET_PLAYER(eOwner).updateMaintenance();
 }
 
 

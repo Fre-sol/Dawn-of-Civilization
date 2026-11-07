@@ -10,6 +10,7 @@ from Files import *
 from Periods import *
 
 from Events import events, handler
+from Consts import bSpawnAllCivs
 from Collapse import completeCollapse
 from Popups import popup
 
@@ -870,7 +871,7 @@ class Birth(object):
 				return False
 		
 
-		if autoplay():
+		if autoplay() and not bSpawnAllCivs:
 			if getImpact(self.iCiv) <= iImpactLimited:
 				if year(dBirth[civ(active())]) > year(dFall[self.iCiv]) + turns(20):
 					return False
@@ -1281,6 +1282,9 @@ class Birth(object):
 		self.switchPopup.text(adjective(self.iPlayer)).noSwitch().yesSwitch().launch()
 
 	def lowImpactCancel(self):
+		
+		if bSpawnAllCivs:
+			return False
 		
 		if civ() == self.iCiv:
 			return False

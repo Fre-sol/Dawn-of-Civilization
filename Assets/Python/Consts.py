@@ -7,6 +7,11 @@ from CoreTypes import *
 
 gc = CyGlobalContext()
 
+# Fresol: every civilization that reaches its birth year appears.  The author's rule
+# drops super-marginal and marginal civs unless they are neighbours of, influence, or
+# share a region group with the active civilization.  Set to False for the original.
+bSpawnAllCivs = True
+
 iWorldX = 150
 iWorldY = 80
 

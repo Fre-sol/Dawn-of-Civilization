@@ -453,50 +453,118 @@ bool isCorporationTech(TechTypes eTech)
 
 bool isTechRequiredForUnit(TechTypes eTech, UnitTypes eUnit)
 {
-	int iI;
-	CvUnitInfo& info = GC.getUnitInfo(eUnit);
+	// openciv4: pure function of XML that no runtime caller ever changes, but it costs
+	// several un-inlined calls and the tech-trade AI asks it for every (tech, unit) pair.
+	static std::vector<char> sc_results; // 0 = not cached, 1 = false, 2 = true
+	static int s_iTechs = -1;
+	static int s_iUnits = -1;
 
-	if (info.getPrereqAndTech() == eTech)
+	if (sc_results.empty())
 	{
-		return true;
+		s_iTechs = GC.getNumTechInfos();
+		s_iUnits = GC.getNumUnitInfos();
+		sc_results.assign((size_t)s_iTechs * (size_t)s_iUnits, 0);
 	}
 
-	for (iI = 0; iI < GC.getNUM_UNIT_AND_TECH_PREREQS(); iI++)
+	char* pSlot = NULL;
+	if (eTech >= 0 && eTech < s_iTechs && eUnit >= 0 && eUnit < s_iUnits)
 	{
-		if (info.getPrereqAndTechs(iI) == eTech)
+		pSlot = &sc_results[(size_t)eUnit * (size_t)s_iTechs + (size_t)eTech];
+		if (*pSlot != 0)
 		{
-			return true;
+			return (*pSlot == 2);
 		}
 	}
 
-	return false;
+	int iI;
+	CvUnitInfo& info = GC.getUnitInfo(eUnit);
+	bool bResult = false;
+
+	if (info.getPrereqAndTech() == eTech)
+	{
+		bResult = true;
+	}
+	else
+	{
+		for (iI = 0; iI < GC.getNUM_UNIT_AND_TECH_PREREQS(); iI++)
+		{
+			if (info.getPrereqAndTechs(iI) == eTech)
+			{
+				bResult = true;
+				break;
+			}
+		}
+	}
+
+	if (pSlot != NULL)
+	{
+		*pSlot = bResult ? 2 : 1;
+	}
+
+	return bResult;
 }
 
 bool isTechRequiredForBuilding(TechTypes eTech, BuildingTypes eBuilding)
 {
-	int iI;
-	CvBuildingInfo& info = GC.getBuildingInfo(eBuilding);
+	// openciv4: pure function of XML that no runtime caller ever changes, but it costs
+	// about ten un-inlined calls and the tech-trade AI asks it for every
+	// (tech, building) pair.
+	static std::vector<char> sc_results; // 0 = not cached, 1 = false, 2 = true
+	static int s_iTechs = -1;
+	static int s_iBuildings = -1;
 
-	if (info.getPrereqAndTech() == eTech)
+	if (sc_results.empty())
 	{
-		return true;
+		s_iTechs = GC.getNumTechInfos();
+		s_iBuildings = GC.getNumBuildingInfos();
+		sc_results.assign((size_t)s_iTechs * (size_t)s_iBuildings, 0);
 	}
 
-	for (iI = 0; iI < GC.getNUM_BUILDING_AND_TECH_PREREQS(); iI++)
+	char* pSlot = NULL;
+	if (eTech >= 0 && eTech < s_iTechs && eBuilding >= 0 && eBuilding < s_iBuildings)
 	{
-		if (info.getPrereqAndTechs(iI) == eTech)
+		pSlot = &sc_results[(size_t)eBuilding * (size_t)s_iTechs + (size_t)eTech];
+		if (*pSlot != 0)
 		{
-			return true;
+			return (*pSlot == 2);
 		}
 	}
 
-	SpecialBuildingTypes eSpecial = (SpecialBuildingTypes)info.getSpecialBuildingType();
-	if (NO_SPECIALBUILDING != eSpecial && GC.getSpecialBuildingInfo(eSpecial).getTechPrereq() == eTech)
+	int iI;
+	CvBuildingInfo& info = GC.getBuildingInfo(eBuilding);
+	bool bResult = false;
+
+	if (info.getPrereqAndTech() == eTech)
 	{
-		return true;
+		bResult = true;
+	}
+	else
+	{
+		for (iI = 0; iI < GC.getNUM_BUILDING_AND_TECH_PREREQS(); iI++)
+		{
+			if (info.getPrereqAndTechs(iI) == eTech)
+			{
+				bResult = true;
+				break;
+			}
+		}
 	}
 
-	return false;
+	if (!bResult)
+	{
+		SpecialBuildingTypes eSpecial = (SpecialBuildingTypes)info.getSpecialBuildingType();
+		if (NO_SPECIALBUILDING != eSpecial && GC.getSpecialBuildingInfo(eSpecial).getTechPrereq() == eTech)
+		{
+			bResult = true;
+		}
+	}
+
+	if (pSlot != NULL)
+	{
+		*pSlot = bResult ? 2 : 1;
+	}
+
+	return bResult;
 }
 
 bool isTechRequiredForProject(TechTypes eTech, ProjectTypes eProject)

@@ -5315,6 +5315,15 @@ void CvUnit::updatePlunder(int iChange, bool bUpdatePlotGroups)
 
 	bool bOldTradeNet;
 	bool bChanged = false;
+	// openciv4: blockadedCount only moves for teams isEnemy() holds for, and
+	// CvPlot::isTradeNetwork(T) reads only T's own count, so only those teams' trade
+	// networks can change.  Track them so the rebuild can skip every other player.
+	bool abTeamsChanged[MAX_TEAMS];
+
+	for (int iTeam = 0; iTeam < MAX_TEAMS; ++iTeam)
+	{
+		abTeamsChanged[iTeam] = false;
+	}
 
 	for (int iTeam = 0; iTeam < MAX_TEAMS; ++iTeam)
 	{
@@ -5328,16 +5337,20 @@ void CvUnit::updatePlunder(int iChange, bool bUpdatePlotGroups)
 
 					if (NULL != pLoopPlot && pLoopPlot->isWater() && pLoopPlot->area() == area())
 					{
-						if (!bChanged)
+						if (!abTeamsChanged[iTeam])
 						{
 							bOldTradeNet = pLoopPlot->isTradeNetwork((TeamTypes)iTeam);
 						}
 
 						pLoopPlot->changeBlockadedCount((TeamTypes)iTeam, iChange);
 
-						if (!bChanged)
+						if (!abTeamsChanged[iTeam])
 						{
-							bChanged = (bOldTradeNet != pLoopPlot->isTradeNetwork((TeamTypes)iTeam));
+							abTeamsChanged[iTeam] = (bOldTradeNet != pLoopPlot->isTradeNetwork((TeamTypes)iTeam));
+							if (abTeamsChanged[iTeam])
+							{
+								bChanged = true;
+							}
 						}
 					}
 				}
@@ -5351,7 +5364,7 @@ void CvUnit::updatePlunder(int iChange, bool bUpdatePlotGroups)
 
 		if (bUpdatePlotGroups)
 		{
-			GC.getGameINLINE().updatePlotGroups();
+			GC.getGameINLINE().updatePlotGroups(abTeamsChanged);
 		}
 	}
 }

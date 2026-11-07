@@ -1876,6 +1876,13 @@ bool CvTeam::canContact(TeamTypes eTeam) const
 {
 	int iI, iJ;
 
+	// openciv4: CvPlayer::canContact() refuses every cross-team pair whose teams have
+	// not met, so this double loop can only return true once they have.
+	if (eTeam != getID() && eTeam >= 0 && eTeam < MAX_TEAMS && !isHasMet(eTeam))
+	{
+		return false;
+	}
+
 	for (iI = 0; iI < MAX_PLAYERS; iI++)
 	{
 		if (GET_PLAYER((PlayerTypes)iI).isAlive())

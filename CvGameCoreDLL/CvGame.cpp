@@ -2488,6 +2488,40 @@ void CvGame::updatePlotGroups()
 	}
 }
 
+// openciv4: same sweep, but only for players whose team is flagged.  Callers that
+// know which trade networks moved (blockades) use this to skip the rest.
+void CvGame::updatePlotGroups(const bool* pabTeams)
+{
+	PROFILE_FUNC();
+
+	if (s_bSuspendPlotGroups)
+	{
+		return;
+	}
+
+	for (int iI = 0; iI < MAX_PLAYERS; iI++)
+	{
+		CvPlayer& kPlayer = GET_PLAYER((PlayerTypes)iI);
+
+		if (!kPlayer.isAlive())
+		{
+			continue;
+		}
+
+		if (pabTeams != NULL)
+		{
+			const TeamTypes eTeam = kPlayer.getTeam();
+
+			if (eTeam < 0 || eTeam >= MAX_TEAMS || !pabTeams[eTeam])
+			{
+				continue;
+			}
+		}
+
+		kPlayer.updatePlotGroups();
+	}
+}
+
 
 void CvGame::updateBuildingCommerce()
 {
